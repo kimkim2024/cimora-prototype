@@ -1,0 +1,14 @@
+{
+  "name": "cimora-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cimora static prototype: no build step, no framework, desktop only.",
+  "scripts": {
+    "preview": "node tools/preview.js",
+    "lint": "node tools/ui-lint.js",
+    "lint:verbose": "node tools/ui-lint.js --verbose",
+    "shots": "node tools/shots.js",
+    "shots:fast": "node tools/shots.js --no-shots",
+    "check": "node tools/ui-lint.js && node tools/shots.js"
+  }
+}

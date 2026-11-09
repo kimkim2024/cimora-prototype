@@ -1,0 +1,461 @@
+/* ===========================================================================
+   Glass folder cards — My Projects (#/app/projects)
+   A folder that is drawn as an object: a back panel holding the project's own
+   cover art, the chapters as real sheets inside it, and a frosted front panel.
+   Scoped to #cm-project-list.cf-grid so nothing else in the studio is touched.
+   =========================================================================== */
+
+#cm-project-list.cf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 112px 24px;
+  align-items: start;
+  justify-items: start;
+  margin-top: 4px;
+}
+
+#cm-project-list.cf-grid .cf-cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  min-width: 0;
+}
+
+/* an open folder leans over its neighbours instead of being clipped by them */
+#cm-project-list.cf-grid .cf-cell:has(.gf-root:hover) { z-index: 6; }
+#cm-project-list.cf-grid .cf-cell:has(.gf-root[data-open]) { z-index: 9; }
+
+/* ---- the object ---------------------------------------------------------- */
+#cm-project-list.cf-grid .gf-root {
+  --gf-px: 0;
+  --gf-py: 0;
+  --gf-ease: cubic-bezier(.2, .8, .2, 1);
+  --gf-spring: cubic-bezier(.34, 1.36, .5, 1);
+  --gf-hinge: 0deg;
+  --gf-lift: 40px;
+  --gf-spread: 0px;
+  --gf-fan: 0deg;
+  --gf-stack: 13px;
+  --gf-ink: #171717;
+  --gf-ink-soft: rgba(23, 23, 23, .5);
+  position: relative;
+  flex: none;
+  color: var(--gf-ink);
+  font-family: "Inter", ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  isolation: isolate;
+}
+
+#cm-project-list.cf-grid .gf-root:hover,
+#cm-project-list.cf-grid .gf-root:focus-within {
+  --gf-hinge: -10deg;
+  --gf-lift: -30px;
+  --gf-spread: 8px;
+  --gf-fan: 1.4deg;
+  --gf-stack: 9px;
+}
+
+#cm-project-list.cf-grid .gf-root[data-open] {
+  --gf-hinge: -19deg;
+  --gf-lift: -66px;
+  --gf-spread: 34px;
+  --gf-fan: 4deg;
+  --gf-stack: 28px;
+}
+
+#cm-project-list.cf-grid .gf-stage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 340px;
+  height: 272px;
+  transform-origin: 0 0;
+}
+
+#cm-project-list.cf-grid .gf-tilt {
+  position: absolute;
+  inset: 0;
+  transform: perspective(1400px) rotateX(calc(var(--gf-py) * -3deg)) rotateY(calc(var(--gf-px) * 4deg));
+  transition: transform .9s var(--gf-ease);
+}
+
+#cm-project-list.cf-grid .gf-shadow {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: -2px;
+  height: 48px;
+  border-radius: 40px;
+  background: rgba(23, 23, 23, .14);
+  filter: blur(20px);
+  transform: translateX(calc(var(--gf-px) * -8px));
+  transition: transform .9s var(--gf-ease), opacity .9s var(--gf-ease);
+}
+
+/* ---- back panel ---------------------------------------------------------- */
+#cm-project-list.cf-grid .gf-back {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #ececea;
+}
+
+#cm-project-list.cf-grid .gf-art {
+  position: absolute;
+  left: -12px;
+  top: -12px;
+  max-width: none;
+  object-fit: cover;
+  transform: translate(calc(var(--gf-px) * -7px), calc(var(--gf-py) * -6px)) scale(1.02);
+  transition: transform 1.1s var(--gf-ease);
+}
+
+#cm-project-list.cf-grid .gf-back-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, 0) 22%),
+    radial-gradient(120% 80% at 80% 0%, rgba(255, 255, 255, .16), rgba(255, 255, 255, 0) 60%);
+}
+
+#cm-project-list.cf-grid .gf-rim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+}
+
+#cm-project-list.cf-grid .gf-back-rim { width: 340px; height: 272px; }
+#cm-project-list.cf-grid .gf-back-rim path { stroke: rgba(255, 255, 255, .34); stroke-width: 1; }
+
+/* ---- the chapters, as sheets in the pocket -------------------------------- */
+#cm-project-list.cf-grid .gf-files {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  clip-path: inset(-400px -400px 10px -400px);
+}
+
+#cm-project-list.cf-grid .gf-sheet-slot { display: contents; }
+
+#cm-project-list.cf-grid .gf-sheet {
+  box-sizing: border-box;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-align: left;
+  font: inherit;
+  position: absolute;
+  left: 34px;
+  top: 96px;
+  width: 272px;
+  height: 184px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: auto;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f4f2 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    0 0 0 .5px rgba(23, 23, 23, .1),
+    0 8px 20px -8px rgba(16, 18, 24, .24);
+  transform-origin: 50% 100%;
+  transform:
+    translate(calc(var(--gf-jx) + var(--gf-slot) * var(--gf-spread)), calc(var(--gf-lift) + var(--gf-depth) * var(--gf-stack) * -1))
+    rotate(calc(var(--gf-jr) + var(--gf-slot) * var(--gf-fan)));
+  transition:
+    transform .75s var(--gf-spring) calc(var(--gf-depth) * 40ms),
+    box-shadow .4s var(--gf-ease);
+}
+
+#cm-project-list.cf-grid .gf-root[data-open] .gf-sheet:hover,
+#cm-project-list.cf-grid .gf-root[data-open] .gf-sheet:focus-visible {
+  transform:
+    translate(calc(var(--gf-jx) + var(--gf-slot) * var(--gf-spread)), calc(var(--gf-lift) + var(--gf-depth) * var(--gf-stack) * -1 - 16px))
+    rotate(calc(var(--gf-slot) * var(--gf-fan) * .6));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 0 0 .5px rgba(23, 23, 23, .1), 0 18px 34px -12px rgba(16, 18, 24, .34);
+  transition-delay: 0s;
+}
+
+#cm-project-list.cf-grid .gf-sheet:focus-visible {
+  outline: 2px solid #171717;
+  outline-offset: 2px;
+}
+
+#cm-project-list.cf-grid .gf-sheet-head {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 11px;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+#cm-project-list.cf-grid .gf-sheet-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  color: #171717;
+}
+
+#cm-project-list.cf-grid .gf-sheet-meta {
+  flex: none;
+  max-width: 104px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9.5px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: #77777a;
+}
+
+#cm-project-list.cf-grid .gf-lines {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+#cm-project-list.cf-grid .gf-lines i {
+  display: block;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(23, 23, 23, .07);
+}
+
+#cm-project-list.cf-grid .gf-lines i:first-child {
+  height: 9px;
+  margin-bottom: 4px;
+  background: rgba(23, 23, 23, .12);
+}
+
+/* ---- the frosted front panel, hinged on its bottom edge ------------------- */
+#cm-project-list.cf-grid .gf-front {
+  position: absolute;
+  left: 0;
+  top: 74px;
+  width: 340px;
+  height: 198px;
+  z-index: 10;
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
+  transform-origin: 50% 100%;
+  transform: perspective(760px) rotateX(var(--gf-hinge));
+  transition: transform .8s var(--gf-spring);
+}
+
+#cm-project-list.cf-grid .gf-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .44) 0%, rgba(255, 255, 255, .74) 40%, rgba(253, 253, 253, .95) 100%);
+}
+
+#cm-project-list.cf-grid .gf-spec {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: .7;
+  background: radial-gradient(260px 200px at calc(50% + var(--gf-px) * 46%) calc(30% + var(--gf-py) * 40%), rgba(255, 255, 255, .5), rgba(255, 255, 255, 0) 70%);
+}
+
+#cm-project-list.cf-grid .gf-front-rim { width: 340px; height: 198px; }
+#cm-project-list.cf-grid .gf-front-rim path { stroke-width: 1.6; }
+
+#cm-project-list.cf-grid .gf-hit {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#cm-project-list.cf-grid .gf-hit:focus-visible ~ .gf-label .gf-title {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+#cm-project-list.cf-grid .gf-front:has(.gf-hit:focus-visible) .gf-front-rim path { stroke-width: 4; }
+
+#cm-project-list.cf-grid .gf-label {
+  position: absolute;
+  left: 26px;
+  bottom: 26px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  max-width: 210px;
+  pointer-events: none;
+  color: var(--gf-ink);
+}
+
+#cm-project-list.cf-grid .gf-title {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.012em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#cm-project-list.cf-grid .gf-meta {
+  font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--gf-ink-soft);
+  white-space: nowrap;
+}
+
+#cm-project-list.cf-grid .gf-desc {
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: var(--gf-ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+/* ---- the key in the corner ------------------------------------------------ */
+#cm-project-list.cf-grid .gf-key {
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 12;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: #fff;
+  background: #171717;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 8px 16px -8px rgba(23, 23, 23, .5);
+  transition: transform .35s var(--gf-spring), background .3s var(--gf-ease), opacity .6s var(--gf-ease) .5s, scale .7s var(--gf-spring) .5s;
+}
+
+#cm-project-list.cf-grid .gf-key:hover { transform: translateY(-2px); background: #000; }
+#cm-project-list.cf-grid .gf-key:active { transform: translateY(0) scale(.93); transition-duration: .12s; }
+#cm-project-list.cf-grid .gf-key:focus-visible { outline: 2px solid #171717; outline-offset: 3px; }
+#cm-project-list.cf-grid .gf-key[aria-expanded="true"] { transform: scale(.96); }
+
+#cm-project-list.cf-grid .gf-dots {
+  display: block;
+  width: 24px;
+  height: 6px;
+  fill: currentColor;
+  max-width: none;
+}
+
+/* ---- the menu ------------------------------------------------------------- */
+#cm-project-list.cf-grid .gf-menu {
+  position: absolute;
+  right: 22px;
+  bottom: 78px;
+  z-index: 20;
+  min-width: 168px;
+  padding: 5px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(252, 252, 253, .78);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  backdrop-filter: blur(22px) saturate(1.5);
+  box-shadow: inset 0 1px 0 #fff, 0 0 0 .5px rgba(23, 23, 23, .12), 0 22px 44px -16px rgba(16, 18, 24, .34);
+  transform-origin: 100% 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px) scale(.94);
+  transition: opacity .2s var(--gf-ease), transform .32s var(--gf-spring), visibility 0s .32s;
+}
+
+#cm-project-list.cf-grid .gf-menu[data-open] { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+
+#cm-project-list.cf-grid .gf-menu-item {
+  appearance: none;
+  border: 0;
+  background: none;
+  margin: 0;
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 450;
+  text-align: left;
+  color: #171717;
+  cursor: pointer;
+}
+
+#cm-project-list.cf-grid .gf-menu-item:hover,
+#cm-project-list.cf-grid .gf-menu-item:focus-visible { background: rgba(23, 23, 23, .06); outline: none; }
+#cm-project-list.cf-grid .gf-menu-item--danger { color: #c02617; }
+
+/* ---- entrance: the folder assembles itself -------------------------------- */
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-back,
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-back-rim { translate: 0 22px; opacity: 0; }
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-sheet { translate: 0 -120px; opacity: 0; }
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-front { translate: 0 46px; opacity: 0; }
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-key { opacity: 0; scale: .6; }
+#cm-project-list.cf-grid .gf-root:not([data-entered]) .gf-shadow { opacity: 0; }
+
+#cm-project-list.cf-grid .gf-back,
+#cm-project-list.cf-grid .gf-back-rim { transition: translate 1s var(--gf-ease), opacity .9s var(--gf-ease); }
+#cm-project-list.cf-grid .gf-front { transition: transform .8s var(--gf-spring), translate 1s var(--gf-ease) .26s, opacity .9s var(--gf-ease) .26s; }
+#cm-project-list.cf-grid .gf-sheet { transition: transform .75s var(--gf-spring) calc(.14s + var(--gf-depth) * 80ms), box-shadow .4s var(--gf-ease), translate 1s var(--gf-ease) calc(.14s + var(--gf-depth) * 80ms), opacity .9s var(--gf-ease) calc(.14s + var(--gf-depth) * 80ms); }
+
+@media (prefers-reduced-motion: reduce) {
+  #cm-project-list.cf-grid .gf-root *,
+  #cm-project-list.cf-grid .gf-root *::before,
+  #cm-project-list.cf-grid .gf-root *::after {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    animation: none !important;
+  }
+  #cm-project-list.cf-grid .gf-tilt { transform: none; }
+}
+
+/* the output kind, sitting on the glass above the label */
+#cm-project-list.cf-grid .gf-kicker {
+  position: absolute;
+  left: 26px;
+  top: 22px;
+  z-index: 2;
+  pointer-events: none;
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(23, 23, 23, .6);
+}

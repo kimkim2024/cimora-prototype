@@ -1,0 +1,16 @@
+# generated output - never commit
+shots/
+dist/
+*.zip
+
+# tooling
+node_modules/
+
+# font API intermediates (regenerate with a one-liner if needed)
+assets/fonts/*.google.css
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

@@ -1,0 +1,82 @@
+/* Spider-Verse glitch button, scoped to the homepage closing CTA. */
+html[data-cimora-theme] body.cimora-home-public .hm-official .hm-final-cta .hm-final-poster-action>.sv-button{
+ position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;
+ min-height:56px;padding:16px 34px;gap:0;border-radius:999px;border:0;
+ background:#fff!important;color:#000!important;
+ font-size:17px;font-weight:900;line-height:1;letter-spacing:3px;text-transform:uppercase;
+ text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;
+ box-shadow:0 0 0 3px #17191c;
+ transform:translateZ(0);transition:box-shadow .15s ease-out;
+}
+html[data-cimora-theme] body.cimora-home-public .hm-official .hm-final-cta .hm-final-poster-action>.sv-button:hover,
+html[data-cimora-theme] body.cimora-home-public .hm-official .hm-final-cta .hm-final-poster-action>.sv-button:focus-visible{
+ background:#fff!important;color:#000!important;border-color:transparent!important;
+ animation:sv-button-glitch .3s steps(2) infinite;
+ box-shadow:0 0 0 3px #17191c,0 0 20px #ffffff80,0 0 30px #00ffff80,0 0 42px #ff00ff80;
+}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-label{position:relative;z-index:1;display:inline-block}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-layers{position:absolute;inset:0;pointer-events:none;border-radius:999px}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-layer{
+ position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+ background:#fff;border-radius:999px;opacity:0;transform-origin:center;
+ transition:opacity .15s ease-out;
+}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-1{color:#22d3ee}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-2{color:#d946ef}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:hover .sv-1,
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:focus-visible .sv-1{opacity:1;animation:sv-glitch-1 .4s steps(2) infinite}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:hover .sv-2,
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:focus-visible .sv-2{opacity:1;animation:sv-glitch-2 .4s steps(2) infinite}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-noise{
+ position:absolute;inset:0;pointer-events:none;border-radius:999px;opacity:0;
+ clip-path:inset(0 round 999px);transition:opacity .3s ease-out;
+ background:repeating-radial-gradient(circle at 50% 50%,transparent 0,rgba(0,0,0,.1) 1px,transparent 2px);
+ animation:sv-noise .2s steps(2) infinite;
+}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:hover .sv-noise,
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button:focus-visible .sv-noise{opacity:1}
+.hm-official .hm-final-cta .hm-final-poster-action>.sv-button .sv-slice{
+ position:absolute;left:0;width:100%;height:5px;background:#17191c;opacity:0;pointer-events:none;
+ animation:sv-slice 3s linear infinite;
+}
+@keyframes sv-button-glitch{
+ 0%{transform:translate(0) scale(1.06)}
+ 25%{transform:translate(-8px,4px) scale(1.1) skew(-5deg)}
+ 50%{transform:translate(8px,-4px) scale(1.06) skew(5deg)}
+ 75%{transform:translate(-11px,-4px) scale(1.02) skew(-3deg)}
+ 100%{transform:translate(0) scale(1.06)}
+}
+@keyframes sv-glitch-1{
+ 0%{transform:translate(-14px,-7px) scale(1.06) skew(-10deg);clip-path:polygon(0 20%,100% 20%,100% 50%,0 50%)}
+ 25%{transform:translate(14px,7px) scale(1.14) skew(10deg);clip-path:polygon(0 30%,100% 30%,100% 60%,0 60%)}
+ 50%{transform:translate(-11px,4px) scale(.94) skew(-5deg);clip-path:polygon(0 10%,100% 10%,100% 40%,0 40%)}
+ 75%{transform:translate(11px,-4px) scale(1.2) skew(5deg);clip-path:polygon(0 40%,100% 40%,100% 70%,0 70%)}
+ 100%{transform:translate(-14px,-7px) scale(1.06) skew(-10deg);clip-path:polygon(0 20%,100% 20%,100% 50%,0 50%)}
+}
+@keyframes sv-glitch-2{
+ 0%{transform:translate(14px,7px) scale(1.06) skew(10deg);clip-path:polygon(0 50%,100% 50%,100% 80%,0 80%)}
+ 25%{transform:translate(-14px,-7px) scale(1.14) skew(-10deg);clip-path:polygon(0 60%,100% 60%,100% 90%,0 90%)}
+ 50%{transform:translate(11px,-4px) scale(.94) skew(5deg);clip-path:polygon(0 40%,100% 40%,100% 70%,0 70%)}
+ 75%{transform:translate(-11px,4px) scale(1.2) skew(-5deg);clip-path:polygon(0 70%,100% 70%,100% 100%,0 100%)}
+ 100%{transform:translate(14px,7px) scale(1.06) skew(10deg);clip-path:polygon(0 50%,100% 50%,100% 80%,0 80%)}
+}
+@keyframes sv-noise{
+ 0%{transform:translate(0,0)}
+ 10%{transform:translate(-5%,-5%)}
+ 20%{transform:translate(10%,5%)}
+ 30%{transform:translate(-5%,10%)}
+ 40%{transform:translate(15%,-5%)}
+ 50%{transform:translate(-10%,15%)}
+ 60%{transform:translate(5%,-10%)}
+ 70%{transform:translate(-15%,5%)}
+ 80%{transform:translate(10%,10%)}
+ 90%{transform:translate(-5%,15%)}
+ 100%{transform:translate(0,0)}
+}
+@keyframes sv-slice{
+ 0%{top:-10%;opacity:0}
+ 1%{opacity:.5}
+ 3%{opacity:0}
+ 50%{top:110%}
+ 100%{top:110%}
+}

@@ -1,0 +1,8 @@
+/* Dot pattern layer around the homepage composer (SVG pattern + radial mask). */
+.hm-official .hm-public-launch{position:relative;isolation:isolate}
+.hm-official .hm-public-launch>.hm-dot-pattern{position:absolute;z-index:0;pointer-events:none;display:block;
+ left:-104px;top:-52px;width:calc(100% + 208px);height:calc(100% + 104px);
+ fill:#a3a3a3;fill-opacity:.8;
+ -webkit-mask-image:radial-gradient(closest-side,#fff 70%,#ffffff80 88%,transparent 100%);
+ mask-image:radial-gradient(closest-side,#fff 70%,#ffffff80 88%,transparent 100%)}
+.hm-official .hm-public-launch>.ac-form{position:relative;z-index:1}

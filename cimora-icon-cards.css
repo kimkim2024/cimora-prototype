@@ -1,0 +1,131 @@
+/* App-icon style recipe cards. Homepage only. */
+.course-templates .icon-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.course-templates .icon-card{width:80%;margin:0 auto;min-width:0;display:flex;flex-direction:column;gap:11px;
+ --icon-top:#7ef0a2;--icon-bottom:#17b268;--icon-band:#ffffff33;--icon-ring:#ffffff66;
+}
+.course-templates .icon-orange{--icon-top:#ffd79a;--icon-bottom:#f0842c;--icon-band:#ffffff2e;--icon-ring:#ffffff6b}
+.course-templates .icon-rose{--icon-top:#ffb3c1;--icon-bottom:#dd3f68;--icon-band:#ffffff30;--icon-ring:#ffffff6b}
+
+.course-templates .icon-card-art{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;text-align:center;
+ transition:transform .25s ease;
+}
+.course-templates .icon-card-tile{position:relative;display:flex;align-items:flex-end;width:100%;aspect-ratio:1/0.94;
+ border-radius:24%;overflow:hidden;
+ background:linear-gradient(160deg,var(--icon-top) 0%,var(--icon-bottom) 92%);
+ box-shadow:0 20px 44px -20px #0b2e1d59,inset 0 1px 0 #ffffff7a;
+ transition:box-shadow .25s ease;
+}
+/* Lift the whole button, not the tile: transforming the tile would make it a stacking
+   context and push the frosted label band behind the character figures. */
+.course-templates .icon-card-art:hover{transform:translateY(-5px)}
+.course-templates .icon-card-art:active{transform:translateY(-1px)}
+.course-templates .icon-card-art:hover .icon-card-tile{box-shadow:0 28px 52px -22px #0b2e1d73,inset 0 1px 0 #ffffff8c}
+
+/* Three overlapping avatar heads, the middle one pushed forward. */
+/* Three overlapping avatar heads, the middle one pushed forward. The layer sits above
+   the icon tile so a head can break past its top edge; it is clipped to the same box. */
+.course-templates .icon-card-avatars{position:absolute;left:0;right:0;top:6%;
+ display:flex;align-items:center;justify-content:center;z-index:2;clip-path:inset(0);
+}
+.course-templates .icon-card-avatar{width:clamp(85px,8.48vw,115px);aspect-ratio:1;border-radius:50%;
+ background-color:#ffffff26;background-repeat:no-repeat;background-position:50% 5%;background-size:104%;
+ box-shadow:0 8px 18px -6px #0b2e1d4d,inset 0 0 0 3px var(--icon-ring);
+ margin-left:-24px;flex:none;transform-origin:50% 92%;
+}
+.course-templates .icon-card-avatar:first-child{margin-left:0;
+ background-image:url("assets/avatar-2-sq.png");transform:rotate(-9deg) translateY(5px);
+}
+.course-templates .icon-card-avatar:nth-child(2){width:clamp(102px,10.24vw,138px);z-index:2;
+ background-color:#ffffff38;background-position:50% 0%;background-size:112%;
+ background-image:url("assets/avatar-1-sq.png");
+}
+.course-templates .icon-card-avatar:nth-child(3){z-index:1;
+ background-image:url("assets/avatar-3-sq.png");transform:rotate(9deg) translateY(5px);
+}
+
+/* Bottom label band, like an app icon caption. */
+.course-templates .icon-card-label{position:relative;z-index:1;width:100%;
+ min-height:138px;padding:21px 14px;border-radius:19px 19px 0 0;display:flex;align-items:center;justify-content:center;
+ background:var(--icon-band);border-top:1px solid #ffffff5c;
+ color:#fff;font-size:clamp(15px,1.4vw,21px);font-weight:800;line-height:1.2;letter-spacing:.01em;
+ text-shadow:0 2px 10px #0b2e1d4d;
+ -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+
+html[data-cimora-theme] body.cimora-home-public .course-templates .icon-card-art:focus-visible{outline:2px solid #17191c;outline-offset:4px;border-radius:24%}
+@media(prefers-reduced-motion:reduce){.course-templates .icon-card-tile{transition:none}.course-templates .icon-card-art:hover .icon-card-tile{transform:none}}
+
+/* Card 1 follows the app-icon reference: three bare busts filling the icon, the middle
+   one forward and its crown above the top edge, bodies tucked behind the label band. */
+.course-templates .icon-card:first-child{--icon-band:#ffffff30}
+.course-templates .icon-card:first-child .icon-card-avatars{top:-3%;clip-path:inset(-320px 0 0 0)}
+.course-templates .icon-card:first-child .icon-card-avatar{
+ width:clamp(65px,6.56vw,90px);aspect-ratio:420/680;border-radius:0;
+ background-color:transparent;box-shadow:none;margin-left:-56px;
+ background-size:contain;background-position:50% 100%;background-repeat:no-repeat;
+ transform-origin:50% 100%;
+}
+/* No negative margin on the first figure: the two overlaps then cancel out around the
+   middle one, which keeps it centred on the icon while the row sits to the right. */
+.course-templates .icon-card:first-child .icon-card-avatar:first-child{margin-left:0;
+ background-image:url("assets/avatar-2.png");transform:rotate(-12deg) translateY(-8px);
+}
+.course-templates .icon-card:first-child .icon-card-avatar:nth-child(2){
+ width:clamp(117px,11.76vw,160px);background-image:url("assets/avatar-1.png");
+ transform:translateY(-5px);z-index:2;
+}
+.course-templates .icon-card:first-child .icon-card-avatar:nth-child(3){
+ background-image:url("assets/avatar-3.png");transform:rotate(12deg) translateY(-8px);
+}
+/* The band is drawn above the figures so the bodies are cut by it, not faded out. */
+.course-templates .icon-card:first-child .icon-card-label{
+ z-index:3;background:linear-gradient(180deg,#ffffff3d,#ffffff26);
+ -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+
+/* The side figures now end above the label band, so their torso edge dissolves instead
+   of showing a hard cut. */
+.course-templates .icon-card:first-child .icon-card-avatar:first-child,
+.course-templates .icon-card:first-child .icon-card-avatar:nth-child(3){
+ -webkit-mask-image:linear-gradient(#000 56%,transparent 94%);
+ mask-image:linear-gradient(#000 56%,transparent 94%);
+}
+
+/* Card 3 shows the OC character render instead of the three circular heads. */
+.course-templates .icon-card:last-child .icon-card-avatars{display:none}
+.course-templates .icon-card:last-child .icon-card-art::after{
+ content:"";position:absolute;left:50%;bottom:clamp(78px,8vw,100px);z-index:2;pointer-events:none;
+ height:clamp(196px,20vw,250px);aspect-ratio:486/760;transform:translateX(-50%);
+ background:url("assets/oc-character.png") center bottom/contain no-repeat;
+}
+/* The OC figure stands behind the frosted band, same as the first card. */
+.course-templates .icon-card:last-child .icon-card-label{
+ z-index:3;background:linear-gradient(180deg,#ffffff3d,#ffffff26);
+ -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+
+/* Card 2 uses the writing-robot illustration in place of the three heads, behind the band. */
+.course-templates .icon-card:nth-child(2) .icon-card-avatars{display:none}
+.course-templates .icon-card:nth-child(2) .icon-card-label{
+ z-index:3;background:linear-gradient(180deg,#ffffff3d,#ffffff26);
+ -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+}
+.course-templates .icon-card:nth-child(2) .icon-card-art::after{
+ content:"";position:absolute;left:50%;bottom:clamp(100px,10.5vw,132px);z-index:2;pointer-events:none;
+ width:min(94%,clamp(240px,25vw,320px));aspect-ratio:720/405;transform:translateX(-50%);
+ background:url("assets/workflow-robot.png") center bottom/contain no-repeat;
+}
+/* Tombstone stands behind the OC render, on the left side of the third card. */
+.course-templates .icon-card:last-child .icon-card-art::before{
+ content:"";position:absolute;left:13%;bottom:clamp(88px,9.4vw,116px);z-index:1;pointer-events:none;
+ width:clamp(66px,6.9vw,92px);aspect-ratio:420/707;
+ background:url("assets/tombstone.png") center bottom/contain no-repeat;
+}
+
+/* Section heading: centred title, pulled up, with extra room before the cards. */
+.course-templates{padding-top:44px}
+.course-templates .hm-section-heading{display:block;position:relative;text-align:center;margin-bottom:48px}
+.course-templates .hm-section-heading>div{display:block}
+.course-templates .hm-section-heading h2{margin:0}
+.course-templates .hm-section-heading>.hm-text-link{position:absolute;right:0;bottom:0;margin:0}
+@media(max-width:1279px){.course-templates .hm-section-heading>.hm-text-link{position:static;display:inline-flex;margin-top:10px}}

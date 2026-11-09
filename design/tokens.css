@@ -1,0 +1,192 @@
+/* ===========================================================================
+   CIMORA DESIGN SYSTEM — tokens v1.0
+   ---------------------------------------------------------------------------
+   这是唯一的数值来源。页面样式只能引用这里的变量，不写字面值。
+
+   数值来源：Cimora-Homepage.zip 25 个 CSS 全量扫描
+             + 首页 #/ 347 个可见元素的 computed style 实测（已剔除未定稿区块）
+             + 创作空间 / My Projects 已验证模块
+   决策记录：design/DESIGN-SYSTEM.md §10（D1–D12）
+
+   用法：
+     color:#c8f24e;                    ✗ 禁止
+     color:var(--color-accent);              ✓
+   例外（允许写死）：1px 描边、图标描边宽度、以及 scale() 产生的分数值。
+   =========================================================================== */
+
+:root {
+  /* ── 1. 纸面 ───────────────────────────────────────────────────────────── */
+  --color-canvas:#ffffff;          /* 页面底色 */
+  --color-paper:#ffffff;         /* 卡片 / 面板 */
+  --color-paper-muted:#f5f5f5;   /* 次级块、输入底、表头 */
+  --color-paper-sunken:#f0f0f0;  /* 凹槽、缩略图占位 */
+  --color-paper-dark:#1a1714;    /* 深色编辑带（room-demo 等整节使用，见 D2） */
+  --color-paper-darkest:#0e0d0c;
+
+  /* ── 2. 墨 ─────────────────────────────────────────────────────────────── */
+  --color-ink:#171717;             /* 主文字、主按钮底 */
+  --color-ink-muted:#666666;       /* 说明、meta、次级信息（#6b7280 已并入此值，D3） */
+  --color-ink-quiet:#9a9a9a;       /* 占位符、禁用、时间戳 */
+  --color-ink-inverse:#ffffff;     /* 深底上的文字 */
+  --color-ink-on-accent:#171717;   /* 荧光底上的文字 */
+  --color-ink-label:#404040;       /* 仅工作室表单标签（studio-skin 专用值，D3） */
+
+  /* ── 3. 线 ─────────────────────────────────────────────────────────────── */
+  --color-hairline:#dedede;        /* 1px 分隔线、卡片描边 */
+  --color-hairline-strong:#a3a3a3; /* 输入框 hover、表格分隔加强 */
+  --color-hairline-inverse:rgba(255,255,255,.14); /* 深底分隔 */
+
+  /* ── 4. 品牌 ───────────────────────────────────────────────────────────── */
+  /* lime 是唯一品牌色：只出现在「当前可操作」的位置，一屏最多一处（§1 原则） */
+  --color-accent:#c8f24e;
+  --color-accent-deep:#9ccc0f;     /* 荧光绿当文字色时的可用替代（对比度安全） */
+  --color-accent-soft:rgba(200,242,78,.16); /* 荧光底衬（选区、进度槽） */
+
+  /* 版块色：只能整块出现（版块底色），不得用于按钮 / 标签 / 图标（D1） */
+  --color-section-warm:#3fae6b;    /* 深色带上的绿（room-demo） */
+  --color-section-poster:#0038ff;  /* 海报带蓝 */
+  --color-section-poster-ink:#001a99;
+  --color-section-poster-lime:#ccff00;
+
+  /* ── 5. 状态 ───────────────────────────────────────────────────────────── */
+  --color-positive:#256b51;
+  --color-warning:#b45309;         /* 由原 #facc15 降到可读对比度 */
+  --color-negative:#c02617;
+  --color-positive-soft:rgba(37,107,81,.10);
+  --color-warning-soft:rgba(180,83,9,.10);
+  --color-negative-soft:rgba(192,38,23,.08);
+
+  /* ── 6. 字体 ───────────────────────────────────────────────────────────── */
+  /* Inter 自托管（D6）；展示字先用 Inter + 负字距顶替（D5），换字体只需改这两行 */
+  --font-ui:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-display:"Space Grotesk","Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --font-display-alt:"Instrument Serif",Georgia,serif;         /* 对比候选 */
+  --font-display-alt2:"Bricolage Grotesque","Inter",sans-serif; /* 对比候选 */
+  --font-poster:"Luckiest Guy","Inter",Impact,sans-serif; /* 仅 CTA / 页脚字标 / 海报标题，D7 */
+  --font-mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+
+  /* ── 7. 字号 ───────────────────────────────────────────────────────────── */
+  --text-display:48px;   /* 首屏、海报、页脚字标 */
+  --text-h1:36px;        /* 页面标题 */
+  --text-h2:30px;        /* 段落标题 */
+  --text-h3:22px;        /* 小节标题、卡片标题（大） */
+  --text-lead:17px;      /* 导语、卡片标题 */
+  --text-body:14px;      /* 正文基线 */
+  --text-small:12px;     /* 说明、次级信息 */
+  --text-micro:10px;     /* meta、角标、表格辅助 */
+  --text-eyebrow:10px;   /* 眉标：配合 --tracking-wide + uppercase */
+
+  /* ── 8. 行高与字重与字距 ───────────────────────────────────────────────── */
+  --leading-none:1;
+  --leading-tight:1.2;
+  --leading-snug:1.4;
+  --leading-base:1.6;
+  --leading-relaxed:1.8;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-bold:700;
+  --weight-poster:900;   /* 只给海报带用 */
+
+  --tracking-display:-.02em;
+  --tracking-heading:-.01em;
+  --tracking-base:0;
+  --tracking-wide:.18em;   /* 眉标 */
+  --tracking-wider:.22em;  /* 全大写小标签 */
+
+  /* ── 9. 间距（4px 栅格，D8） ───────────────────────────────────────────── */
+  --space-1:4px;
+  --space-2:8px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-6:24px;
+  --space-8:32px;
+  --space-12:48px;
+  --space-16:64px;
+  --space-24:96px;
+
+  /* ── 10. 圆角（D9：999 只允许官网营销位与头像） ────────────────────────── */
+  --radius-xs:4px;    /* chip、标签 */
+  --radius-sm:6px;    /* 输入框、小按钮 */
+  --radius-md:8px;    /* 卡片、按钮（默认） */
+  --radius-lg:12px;   /* 面板、弹窗 */
+  --radius-xl:16px;   /* 大面板、表单卡 */
+  --radius-2xl:30px;  /* 海报玻璃块 */
+  --radius-pill:999px;
+  --radius-circle:50%;
+
+  /* ── 11. 阴影（4 级） ──────────────────────────────────────────────────── */
+  --shadow-sm:0 1px 2px rgba(23,23,23,.06);
+  --shadow-md:0 12px 32px -8px rgba(23,23,23,.08);
+  --shadow-lg:0 36px 70px -34px rgba(28,18,8,.42);
+  --shadow-key:0 10px 24px -10px rgba(23,23,23,.45); /* 黑胶键 */
+
+  /* 玻璃（只允许：海报带、玻璃文件夹、浮层菜单） */
+  --glass-blur:16px;
+  --glass-blur-strong:22px;
+  --glass-fill:rgba(255,255,255,.72);
+  --glass-hairline:rgba(23,23,23,.12);
+
+  /* ── 12. 动效 ──────────────────────────────────────────────────────────── */
+  --dur-fast:140ms;    /* hover、按下 */
+  --dur-base:200ms;    /* 默认过渡 */
+  --dur-slow:400ms;    /* 面板展开 */
+  --dur-hero:700ms;    /* 首屏/大位移 */
+  --ease-standard:cubic-bezier(.22,1,.36,1);
+  --ease-spring:cubic-bezier(.34,1.36,.5,1);
+  --ease-linear:linear;
+
+  /* ── 13. 焦点与可访问性 ────────────────────────────────────────────────── */
+  /* 全站统一焦点环：浅底用 --color-focus，深底用 --color-focus-inverse */
+  --color-focus:0 0 0 2px #ffffff, 0 0 0 4px #171717;
+  --color-focus-inverse:0 0 0 2px #171717, 0 0 0 4px #ffffff;
+
+  /* ── 14. 布局 ──────────────────────────────────────────────────────────── */
+  --container:1200px;        /* 官网内容宽 */
+  --container-gutter:48px;
+  --studio-max:1600px;       /* 工作室内最大宽 */
+  --studio-gutter:28px;
+  --bp-compact:1440px;       /* 唯一两个断点（D10）：≤1440 紧凑、≤1280 最紧 */
+  --bp-tight:1280px;
+  --bp-wide:1920px;
+
+  /* ── 15. 层级 ──────────────────────────────────────────────────────────── */
+  --z-base:0;
+  --z-sticky:10;
+  --z-dropdown:20;
+  --z-overlay:100;
+  --z-toast:150;
+
+  /* ── 16. 图标（D11） ───────────────────────────────────────────────────── */
+  --icon-sm:16px;
+  --icon-md:20px;
+  --icon-lg:24px;
+  --icon-stroke:1.5;
+}
+
+
+/* ── 17. 交互态与派生色（只用于组件状态，不做版块底色） ─────────────────── */
+:root{
+  --color-hairline-hover:#c8c8c8;
+  --color-ink-hover:#2b2b2b;
+  --color-accent-text:#4c6b00;
+  --color-focus-soft:rgba(23,23,23,.10);
+  --color-overlay:rgba(23,23,23,.82);
+  --color-accent-line:rgba(156,204,15,.35);
+  --color-positive-line:rgba(37,107,81,.28);
+  --color-warning-line:rgba(180,83,9,.28);
+  --color-negative-line:rgba(192,38,23,.26);
+  --color-placeholder-a:#e9e6df;
+  --color-placeholder-b:#cfd6d3;
+}
+
+/* ---------------------------------------------------------------------------
+   规范化入口：新页面/新模块从这里开始
+   ---------------------------------------------------------------------------
+   .sg-scope{
+     color:var(--color-ink);
+     font:var(--weight-regular) var(--text-body)/var(--leading-base) var(--font-ui);
+     background:var(--color-canvas);
+   }
+   .sg-scope :focus-visible{outline:none;box-shadow:var(--color-focus);border-radius:var(--radius-sm)}
+   --------------------------------------------------------------------------- */
