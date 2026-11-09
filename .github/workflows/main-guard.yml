@@ -1,0 +1,21 @@
+name: main-guard
+
+# Branch protection rules are not available on private repositories with a free
+# plan, so this workflow is the guard rail: main only accepts pushes from the
+# repository owner. Everyone else works on ui/<area> and opens a pull request.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: only the owner may push to main
+        run: |
+          if [ "${{ github.actor }}" != "${{ github.repository_owner }}" ]; then
+            echo "::error::main accepts reviewed pull requests only."
+            echo "Push your work to a ui/<area> branch and open a PR against main."
+            exit 1
+          fi
+          echo "push by ${{ github.actor }} (owner): ok"

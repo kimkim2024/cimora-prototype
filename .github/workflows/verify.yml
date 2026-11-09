@@ -1,0 +1,29 @@
+name: verify
+
+# Runs on every pull request: the same referee the designer runs locally.
+# Screenshots are not produced here (no browser on a bare runner) - the PR
+# template asks for them instead.
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: ui-lint
+        run: node tools/ui-lint.js
+      - name: changed files stay inside the page module
+        run: |
+          git fetch --depth=1 origin "${{ github.base_ref }}"
+          CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)
+          echo "$CHANGED"
+          BAD=$(echo "$CHANGED" | grep -E '^(site\.css|site-refinements\.css|cimora\.css|site-core\.js|cimora-pages\.js|site-workspace\.js)$' || true)
+          if [ -n "$BAD" ]; then
+            echo "::error::shared base files must not be edited in a page PR: $BAD"
+            exit 1
+          fi
