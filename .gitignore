@@ -14,3 +14,4 @@ assets/fonts/*.google.css
 Thumbs.db
 desktop.ini
 *.log
+.incoming/
