@@ -27,6 +27,8 @@ const arg = (n) => {
   return hit ? hit.split('=').slice(1).join('=') : null;
 };
 const ONLY = (arg('only') || '').split(',').filter(Boolean).map((e) => '.' + e.replace(/^\./, ''));
+// --skip=<substring,...> drops stray folders a packaging step left inside the zip
+const SKIP = (arg('skip') || '').split(',').filter(Boolean);
 
 if (!target) {
   console.error('usage: node tools/incoming-diff.js <path-to.zip | path-to-folder> [--extract]');
@@ -91,7 +93,7 @@ const same = (a, b) => {
   if (sa !== sb) return false;
   return fs.readFileSync(a).equals(fs.readFileSync(b));
 };
-const keep = (f) => !ONLY.length || ONLY.includes(path.extname(f).toLowerCase());
+const keep = (f) => (!ONLY.length || ONLY.includes(path.extname(f).toLowerCase())) && !SKIP.some((x) => f.includes(x));
 
 /* markers: things that exist only in this repository and would be lost by a
    naive "take theirs" merge */

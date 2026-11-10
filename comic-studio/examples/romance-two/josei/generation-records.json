@@ -1,0 +1,930 @@
+[
+  {
+    "name": "page-01-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:05:33",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:06:36",
+    "originalWrapperState": "failed",
+    "fileBytes": 1482051,
+    "apiCompletionEvidence": [
+      "Edit completed in 60.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-01-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:11:03",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-2-fix.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:13:04",
+    "originalWrapperState": "failed",
+    "fileBytes": 3404223,
+    "apiCompletionEvidence": [
+      "Edit completed in 119.1s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-01-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:05:33",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:07:37",
+    "originalWrapperState": "failed",
+    "fileBytes": 3570488,
+    "apiCompletionEvidence": [
+      "Edit completed in 121.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-01-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:05:33",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:07:35",
+    "originalWrapperState": "failed",
+    "fileBytes": 3676366,
+    "apiCompletionEvidence": [
+      "Edit completed in 119.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-01-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:11:03",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-4-fix.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/meng-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:12:25",
+    "originalWrapperState": "failed",
+    "fileBytes": 2146766,
+    "apiCompletionEvidence": [
+      "Edit completed in 80.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-01-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:06:36",
+    "prompt": "output/imagegen/romance-josei/page-01-panel-4.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:08:01",
+    "originalWrapperState": "failed",
+    "fileBytes": 2502070,
+    "apiCompletionEvidence": [
+      "Edit completed in 83.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-02-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:11:03",
+    "prompt": "output/imagegen/romance-josei/page-02-panel-1-fix.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:12:05",
+    "originalWrapperState": "failed",
+    "fileBytes": 1645244,
+    "apiCompletionEvidence": [
+      "Edit completed in 60.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-02-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:07:35",
+    "prompt": "output/imagegen/romance-josei/page-02-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:08:39",
+    "originalWrapperState": "failed",
+    "fileBytes": 1713954,
+    "apiCompletionEvidence": [
+      "Edit completed in 62.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-02-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:12:05",
+    "prompt": "output/imagegen/romance-josei/page-02-panel-2-fix.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:13:16",
+    "originalWrapperState": "failed",
+    "fileBytes": 1732200,
+    "apiCompletionEvidence": [
+      "Edit completed in 68.7s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-02-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:07:37",
+    "prompt": "output/imagegen/romance-josei/page-02-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:08:45",
+    "originalWrapperState": "failed",
+    "fileBytes": 1666489,
+    "apiCompletionEvidence": [
+      "Edit completed in 65.9s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-02-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:08:01",
+    "prompt": "output/imagegen/romance-josei/page-02-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x832",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:09:16",
+    "originalWrapperState": "failed",
+    "fileBytes": 2192593,
+    "apiCompletionEvidence": [
+      "Edit completed in 73.3s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-03-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:15:16",
+    "prompt": "output/imagegen/romance-josei/page-03-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/meng-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:16:11",
+    "originalWrapperState": "failed",
+    "fileBytes": 1476905,
+    "apiCompletionEvidence": [
+      "Edit completed in 52.8s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-03-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:15:16",
+    "prompt": "output/imagegen/romance-josei/page-03-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:17:19",
+    "originalWrapperState": "failed",
+    "fileBytes": 3083573,
+    "apiCompletionEvidence": [
+      "Edit completed in 120.5s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-03-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:15:16",
+    "prompt": "output/imagegen/romance-josei/page-03-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:17:25",
+    "originalWrapperState": "failed",
+    "fileBytes": 3305589,
+    "apiCompletionEvidence": [
+      "Edit completed in 127.3s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-03-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:16:11",
+    "prompt": "output/imagegen/romance-josei/page-03-panel-4.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:17:24",
+    "originalWrapperState": "failed",
+    "fileBytes": 1567917,
+    "apiCompletionEvidence": [
+      "Edit completed in 71.1s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-04-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:17:19",
+    "prompt": "output/imagegen/romance-josei/page-04-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:18:21",
+    "originalWrapperState": "failed",
+    "fileBytes": 1480958,
+    "apiCompletionEvidence": [
+      "Edit completed in 60.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-04-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:17:24",
+    "prompt": "output/imagegen/romance-josei/page-04-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:18:30",
+    "originalWrapperState": "failed",
+    "fileBytes": 1808200,
+    "apiCompletionEvidence": [
+      "Edit completed in 63.9s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-04-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:17:25",
+    "prompt": "output/imagegen/romance-josei/page-04-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x832",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:18:38",
+    "originalWrapperState": "failed",
+    "fileBytes": 1782960,
+    "apiCompletionEvidence": [
+      "Edit completed in 71.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-05-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:18:21",
+    "prompt": "output/imagegen/romance-josei/page-05-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:19:11",
+    "originalWrapperState": "failed",
+    "fileBytes": 1333850,
+    "apiCompletionEvidence": [
+      "Edit completed in 48.8s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-05-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:18:30",
+    "prompt": "output/imagegen/romance-josei/page-05-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:20:18",
+    "originalWrapperState": "failed",
+    "fileBytes": 3114408,
+    "apiCompletionEvidence": [
+      "Edit completed in 107.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-05-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:18:38",
+    "prompt": "output/imagegen/romance-josei/page-05-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:20:26",
+    "originalWrapperState": "failed",
+    "fileBytes": 2949675,
+    "apiCompletionEvidence": [
+      "Edit completed in 105.9s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-05-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:19:11",
+    "prompt": "output/imagegen/romance-josei/page-05-panel-4.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:20:25",
+    "originalWrapperState": "failed",
+    "fileBytes": 2126390,
+    "apiCompletionEvidence": [
+      "Edit completed in 71.6s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-06-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:20:18",
+    "prompt": "output/imagegen/romance-josei/page-06-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "1536x1296",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:21:57",
+    "originalWrapperState": "failed",
+    "fileBytes": 2734120,
+    "apiCompletionEvidence": [
+      "Edit completed in 96.7s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-06-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:20:25",
+    "prompt": "output/imagegen/romance-josei/page-06-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "816x1024",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:21:48",
+    "originalWrapperState": "failed",
+    "fileBytes": 988717,
+    "apiCompletionEvidence": [
+      "Edit completed in 80.8s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-06-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:20:26",
+    "prompt": "output/imagegen/romance-josei/page-06-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/night-space.png"
+    ],
+    "size": "816x1024",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:21:54",
+    "originalWrapperState": "failed",
+    "fileBytes": 1102788,
+    "apiCompletionEvidence": [
+      "Edit completed in 85.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-07-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:21:48",
+    "prompt": "output/imagegen/romance-josei/page-07-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x1296",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:23:31",
+    "originalWrapperState": "failed",
+    "fileBytes": 3362462,
+    "apiCompletionEvidence": [
+      "Edit completed in 102.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-07-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:21:54",
+    "prompt": "output/imagegen/romance-josei/page-07-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "816x1024",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:23:45",
+    "originalWrapperState": "failed",
+    "fileBytes": 1276333,
+    "apiCompletionEvidence": [
+      "Edit completed in 109.6s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-07-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:21:57",
+    "prompt": "output/imagegen/romance-josei/page-07-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "816x1024",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:23:38",
+    "originalWrapperState": "failed",
+    "fileBytes": 1254340,
+    "apiCompletionEvidence": [
+      "Edit completed in 98.5s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-08-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:23:31",
+    "prompt": "output/imagegen/romance-josei/page-08-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:24:35",
+    "originalWrapperState": "failed",
+    "fileBytes": 1759073,
+    "apiCompletionEvidence": [
+      "Edit completed in 61.9s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-08-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:23:38",
+    "prompt": "output/imagegen/romance-josei/page-08-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/shen-reference.png",
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:24:53",
+    "originalWrapperState": "failed",
+    "fileBytes": 2055974,
+    "apiCompletionEvidence": [
+      "Edit completed in 73.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-08-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:23:45",
+    "prompt": "output/imagegen/romance-josei/page-08-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/shen-reference.png",
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x832",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:24:57",
+    "originalWrapperState": "failed",
+    "fileBytes": 2113902,
+    "apiCompletionEvidence": [
+      "Edit completed in 69.8s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-09-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:24:35",
+    "prompt": "output/imagegen/romance-josei/page-09-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:25:41",
+    "originalWrapperState": "failed",
+    "fileBytes": 1445287,
+    "apiCompletionEvidence": [
+      "Edit completed in 64.1s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-09-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:24:53",
+    "prompt": "output/imagegen/romance-josei/page-09-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:26:56",
+    "originalWrapperState": "failed",
+    "fileBytes": 3492129,
+    "apiCompletionEvidence": [
+      "Edit completed in 121.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-09-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:24:57",
+    "prompt": "output/imagegen/romance-josei/page-09-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:26:53",
+    "originalWrapperState": "failed",
+    "fileBytes": 3694921,
+    "apiCompletionEvidence": [
+      "Edit completed in 114.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-09-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:25:41",
+    "prompt": "output/imagegen/romance-josei/page-09-panel-4.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:27:08",
+    "originalWrapperState": "failed",
+    "fileBytes": 2516344,
+    "apiCompletionEvidence": [
+      "Edit completed in 84.8s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-10-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:26:53",
+    "prompt": "output/imagegen/romance-josei/page-10-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:28:04",
+    "originalWrapperState": "failed",
+    "fileBytes": 1676983,
+    "apiCompletionEvidence": [
+      "Edit completed in 68.4s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-10-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:26:56",
+    "prompt": "output/imagegen/romance-josei/page-10-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:28:15",
+    "originalWrapperState": "failed",
+    "fileBytes": 2012185,
+    "apiCompletionEvidence": [
+      "Edit completed in 76.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-10-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:27:08",
+    "prompt": "output/imagegen/romance-josei/page-10-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x832",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:28:20",
+    "originalWrapperState": "failed",
+    "fileBytes": 2167434,
+    "apiCompletionEvidence": [
+      "Edit completed in 69.7s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-11-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:38:32",
+    "prompt": "output/imagegen/romance-josei/page-11-panel-1-fix.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:39:40",
+    "originalWrapperState": "failed",
+    "fileBytes": 1560112,
+    "apiCompletionEvidence": [
+      "Edit completed in 66.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-11-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:28:04",
+    "prompt": "output/imagegen/romance-josei/page-11-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x560",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:29:16",
+    "originalWrapperState": "failed",
+    "fileBytes": 1662933,
+    "apiCompletionEvidence": [
+      "Edit completed in 70.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-11-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:28:15",
+    "prompt": "output/imagegen/romance-josei/page-11-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:31:35",
+    "originalWrapperState": "failed",
+    "fileBytes": 3950506,
+    "apiCompletionEvidence": [
+      "Edit completed in 198.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-11-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:28:20",
+    "prompt": "output/imagegen/romance-josei/page-11-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x1520",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:31:28",
+    "originalWrapperState": "failed",
+    "fileBytes": 3140884,
+    "apiCompletionEvidence": [
+      "Edit completed in 186.3s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-11-panel-4",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:29:16",
+    "prompt": "output/imagegen/romance-josei/page-11-panel-4.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x928",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:32:06",
+    "originalWrapperState": "failed",
+    "fileBytes": 2413944,
+    "apiCompletionEvidence": [
+      "Edit completed in 167.2s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-12-panel-1",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:31:28",
+    "prompt": "output/imagegen/romance-josei/page-12-panel-1.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x656",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:32:58",
+    "originalWrapperState": "failed",
+    "fileBytes": 1819643,
+    "apiCompletionEvidence": [
+      "Edit completed in 88.0s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-12-panel-2",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:31:35",
+    "prompt": "output/imagegen/romance-josei/page-12-panel-2.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x752",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:33:04",
+    "originalWrapperState": "failed",
+    "fileBytes": 2059546,
+    "apiCompletionEvidence": [
+      "Edit completed in 86.5s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  },
+  {
+    "name": "page-12-panel-3",
+    "model": "gpt-image-2",
+    "started": "2026-11-03T01:32:06",
+    "prompt": "output/imagegen/romance-josei/page-12-panel-3.txt",
+    "images": [
+      "output/imagegen/romance-josei/lu-reference.png",
+      "output/imagegen/romance-josei/xu-reference.png",
+      "output/imagegen/romance-josei/day-space.png"
+    ],
+    "size": "1536x832",
+    "state": "completed-output-and-api-log-verified",
+    "exitCode": 1,
+    "finished": "2026-11-03T01:33:31",
+    "originalWrapperState": "failed",
+    "fileBytes": 2195275,
+    "apiCompletionEvidence": [
+      "Edit completed in 82.9s."
+    ],
+    "note": "接口日志完成且图片解码通过；exitCode原样保留。包装器非零不等于接口失败，未据此重发。"
+  }
+]

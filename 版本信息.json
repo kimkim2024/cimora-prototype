@@ -1,0 +1,13 @@
+{
+  "packagedAt": "2026-11-09T10:41:51.660Z",
+  "storyEpisodes": 10,
+  "comicEpisodes": 2,
+  "comicPages": 12,
+  "videoShots": 41,
+  "storageBytes": {
+    "framein-site-v1": 1572640,
+    "cimora-script-studio-v1": 439493,
+    "cimora-comic-studio-v1": 530227
+  },
+  "description": "最终运行文件、离线兼容入口及公开演示示例，不包含测试输出或个人浏览器数据"
+}

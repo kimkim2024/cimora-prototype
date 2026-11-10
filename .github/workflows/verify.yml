@@ -15,15 +15,20 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: ui-lint
         run: node tools/ui-lint.js
+
+      # shallow clones have no merge base, so diff against the PR base commit
+      # explicitly instead of relying on origin/main...HEAD
       - name: changed files stay inside the page module
         run: |
-          git fetch --depth=1 origin "${{ github.base_ref }}"
-          CHANGED=$(git diff --name-only "origin/${{ github.base_ref }}"...HEAD)
+          git fetch --no-tags --depth=1 origin "${{ github.event.pull_request.base.sha }}"
+          CHANGED=$(git diff --name-only FETCH_HEAD HEAD)
           echo "$CHANGED"
           BAD=$(echo "$CHANGED" | grep -E '^(site\.css|site-refinements\.css|cimora\.css|site-core\.js|cimora-pages\.js|site-workspace\.js)$' || true)
           if [ -n "$BAD" ]; then
             echo "::error::shared base files must not be edited in a page PR: $BAD"
             exit 1
           fi
+          echo "no shared base files touched"

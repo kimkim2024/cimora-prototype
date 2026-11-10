@@ -1,0 +1,17 @@
+{
+  "size": [
+    1024,
+    1536
+  ],
+  "AB_only_expected_regions": true,
+  "candidate_region": [
+    235,
+    670,
+    373,
+    837
+  ],
+  "candidate_not_adopted": true,
+  "refresh_png_bytes_identical": true,
+  "preview_export_unchanged": true,
+  "browser_errors": []
+}
