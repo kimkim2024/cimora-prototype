@@ -275,25 +275,21 @@ html body.cimora-home-app .cm-main{padding:0!important;max-width:none!important;
   html body.cimora-home-app .cm-main{padding:0!important}
 }
 
-/* ---------- sidebar avatar bar ---------- */
-html body.cimora-app .cm-studio-bar{position:relative;display:flex;align-items:center;gap:8px;margin:12px 0 14px;padding:8px;
-  border:1px solid rgba(255,255,255,.85);border-radius:14px;min-width:0;
-  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.46));
-  -webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);
-  box-shadow:0 8px 24px rgba(23,23,23,.07),inset 0 1px 0 rgba(255,255,255,.9)}
-html body.cimora-app .cm-studio-bar .cm-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;
+/* ---------- identity row inside the wallet card ---------- */
+html body.cimora-app .cm-account-id{display:flex;align-items:center;gap:8px;width:100%;
+  padding-bottom:10px;margin-bottom:2px;border-bottom:1px solid rgba(23,23,23,.08)}
+html body.cimora-app .cm-account-id .cm-avatar{width:30px;height:30px;border-radius:50%;overflow:hidden;
   border:1px solid #dedede;background:#f3f3f3;flex:none;display:block}
-html body.cimora-app .cm-studio-bar .cm-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-html body.cimora-app .cm-studio-bar .cm-studio-meta{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
-html body.cimora-app .cm-studio-bar .cm-studio-meta strong{font-size:12px;font-weight:600;line-height:16px;color:#171717;
+html body.cimora-app .cm-account-id .cm-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+html body.cimora-app .cm-account-id .cm-studio-meta{min-width:0;flex:1;display:flex;flex-direction:column;gap:2px}
+html body.cimora-app .cm-account-id .cm-studio-meta strong{font-size:11.5px;font-weight:600;line-height:15px;letter-spacing:-.01em;color:#171717;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-html body.cimora-app .cm-studio-bar .cm-studio-meta small{font-size:10px;line-height:14px;color:#666;margin:0}
+html body.cimora-app .cm-account-id .cm-studio-meta small{font-size:10px;line-height:14px;color:#666;margin:0}
 html body.cimora-app .cm-studio-tag{flex:none;display:inline-flex;align-items:center;justify-content:center;height:22px;padding:0 9px;
   border-radius:999px;background:#e6ecff;border:1px solid rgba(0,56,255,.18);color:#0038ff;
   font-size:10px;font-weight:600;line-height:1;white-space:nowrap}
-html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-studio-bar{border-color:rgba(255,255,255,.85)!important;background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.46))!important;-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%)}
-html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-studio-bar .cm-studio-meta strong{color:#171717!important}
-html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-studio-bar .cm-studio-meta small{color:#666!important}
+html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-account-id .cm-studio-meta strong{color:#171717!important}
+html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-account-id .cm-studio-meta small{color:#666!important}
 html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-studio-tag{color:#0038ff!important;background:#e6ecff!important;border-color:rgba(0,56,255,.18)!important}
 
 /* ---------- sidebar lime shader ---------- */
@@ -302,7 +298,6 @@ html body.cimora-app .cm-sidebar{--shader-surface:#ffffff;--shader-accent:#c8f24
 html body.cimora-app .cm-sidebar>.hm-shader-canvas{position:absolute;inset:0;width:100%;height:100%;
   z-index:0;opacity:.62;pointer-events:none}
 html body.cimora-app .cm-sidebar>*:not(.hm-shader-canvas){position:relative;z-index:1}
-html body.cimora-app .cm-sidebar .cm-studio-bar,
 html body.cimora-app .cm-sidebar .cm-wallet{backdrop-filter:blur(18px) saturate(140%)}
 
 /* ---------- sidebar logo (same image as the website) ---------- */
@@ -355,7 +350,7 @@ html body.cimora-app .cm-logomark{display:none}
 }
 
 /* ---------- sidebar balance card (Total Balance style) ---------- */
-html body.cimora-app .cm-wallet{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+html body.cimora-app .cm-wallet{display:flex;flex-direction:column;align-items:flex-start;gap:8px;
   padding:12px 14px;border-radius:14px;background:#fff;border:1px solid rgba(23,23,23,.10);
   box-shadow:0 2px 8px rgba(23,23,23,.05);text-decoration:none}
 html body.cimora-app .cm-wallet:hover{border-color:rgba(23,23,23,.18);box-shadow:0 4px 12px rgba(23,23,23,.07)}
@@ -376,7 +371,7 @@ html[data-cimora-theme] body.cimora-app .cm-sidebar .cm-wallet .cm-wallet-sub{co
 html body.cimora-app .cm-wallet{position:relative}
 html body.cimora-app .cm-wallet-link{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
   text-decoration:none;color:inherit;width:100%}
-html body.cimora-app .cm-wallet-refresh{position:absolute;top:10px;right:10px;width:26px;height:26px;
+html body.cimora-app .cm-wallet-refresh{position:static;margin-left:auto;flex:none;width:22px;height:22px;
   display:grid;place-items:center;border-radius:50%;border:0;background:transparent;
   color:#404040;cursor:pointer;padding:0;transition:background .15s,color .15s}
 html body.cimora-app .cm-wallet-refresh:hover{background:rgba(23,23,23,.06);color:#171717}
@@ -388,3 +383,12 @@ html body.cimora-app .cm-wallet-refresh.is-spinning svg{animation:vx-refresh-spi
 /* 全部创作空间页面：取消顶部栏 */
 html body.cimora-app .cm-topbar{display:none!important}
 html body.cimora-app .cm-app-main{min-height:100dvh}
+
+/* the wallet card started sizing to its content once the identity row was added */
+html body.cimora-app .cm-sidebar-bottom{align-items:stretch}
+html body.cimora-app .cm-wallet{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+html body.cimora-app .cm-account-id{width:auto;max-width:100%}
+html body.cimora-app .cm-account-id .cm-studio-meta{min-width:0}
+html body.cimora-app .cm-meta-row{display:flex;align-items:center;gap:6px;min-width:0;margin-top:2px}
+html body.cimora-app .cm-meta-row small{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+html body.cimora-app .cm-account-id .cm-studio-tag{height:17px;padding:0 5px;font-size:8.5px;letter-spacing:0}
