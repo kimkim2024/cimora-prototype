@@ -1,0 +1,506 @@
+[
+  {
+    "name": "page-01-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-01-panel-1-fixed.png",
+    "sourceSize": [
+      1536,
+      688
+    ],
+    "target": [
+      968,
+      430
+    ],
+    "cropFraction": 0.0083,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-01-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-01-panel-2.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      300
+    ],
+    "cropFraction": 0.0702,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-01-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-01-panel-3.png",
+    "sourceSize": [
+      672,
+      1536
+    ],
+    "target": [
+      292,
+      673
+    ],
+    "cropFraction": 0.0083,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-01-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-01-panel-4.png",
+    "sourceSize": [
+      1504,
+      1536
+    ],
+    "target": [
+      658,
+      673
+    ],
+    "cropFraction": 0.0015,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-02-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-02-panel-1.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "cropFraction": 0.0083,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-02-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-02-panel-2.png",
+    "sourceSize": [
+      1216,
+      1536
+    ],
+    "target": [
+      310,
+      390
+    ],
+    "cropFraction": 0.004,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-02-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-02-panel-3.png",
+    "sourceSize": [
+      1216,
+      1536
+    ],
+    "target": [
+      310,
+      390
+    ],
+    "cropFraction": 0.004,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-02-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-02-panel-4.png",
+    "sourceSize": [
+      1232,
+      1536
+    ],
+    "target": [
+      312,
+      390
+    ],
+    "cropFraction": 0.0026,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-02-panel-5",
+    "source": "output\\imagegen\\romance-director\\page-02-panel-5.png",
+    "sourceSize": [
+      1536,
+      1056
+    ],
+    "target": [
+      968,
+      663
+    ],
+    "cropFraction": 0.0038,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-03-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-03-panel-1.png",
+    "sourceSize": [
+      1040,
+      1536
+    ],
+    "target": [
+      475,
+      700
+    ],
+    "cropFraction": 0.0022,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-03-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-03-panel-2.png",
+    "sourceSize": [
+      1040,
+      1536
+    ],
+    "target": [
+      475,
+      700
+    ],
+    "cropFraction": 0.0022,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-03-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-03-panel-3.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      323
+    ],
+    "cropFraction": 0.001,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-03-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-03-panel-4.png",
+    "sourceSize": [
+      1536,
+      608
+    ],
+    "target": [
+      968,
+      380
+    ],
+    "cropFraction": 0.0083,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-04-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-04-panel-1.png",
+    "sourceSize": [
+      1536,
+      1360
+    ],
+    "target": [
+      475,
+      420
+    ],
+    "cropFraction": 0.0014,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-04-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-04-panel-2.png",
+    "sourceSize": [
+      1536,
+      1360
+    ],
+    "target": [
+      475,
+      420
+    ],
+    "cropFraction": 0.0014,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-04-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-04-panel-3.png",
+    "sourceSize": [
+      1488,
+      1536
+    ],
+    "target": [
+      968,
+      1001
+    ],
+    "cropFraction": 0.0018,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-05-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-05-panel-1.png",
+    "sourceSize": [
+      1536,
+      1392
+    ],
+    "target": [
+      968,
+      880
+    ],
+    "cropFraction": 0.0031,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-05-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-05-panel-2.png",
+    "sourceSize": [
+      1344,
+      1536
+    ],
+    "target": [
+      475,
+      541
+    ],
+    "cropFraction": 0.0034,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-05-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-05-panel-3-fixed.png",
+    "sourceSize": [
+      1344,
+      1536
+    ],
+    "target": [
+      475,
+      541
+    ],
+    "cropFraction": 0.0034,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-06-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-06-panel-1.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      300
+    ],
+    "cropFraction": 0.0702,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-06-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-06-panel-2.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      300
+    ],
+    "cropFraction": 0.0702,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-06-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-06-panel-3.png",
+    "sourceSize": [
+      912,
+      1536
+    ],
+    "target": [
+      475,
+      803
+    ],
+    "cropFraction": 0.0037,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-06-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-06-panel-4.png",
+    "sourceSize": [
+      912,
+      1536
+    ],
+    "target": [
+      475,
+      803
+    ],
+    "cropFraction": 0.0037,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-07-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-07-panel-1.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      324
+    ],
+    "cropFraction": 0.0041,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-07-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-07-panel-2.png",
+    "sourceSize": [
+      1536,
+      1216
+    ],
+    "target": [
+      620,
+      488
+    ],
+    "cropFraction": 0.0058,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-07-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-07-panel-3.png",
+    "sourceSize": [
+      1040,
+      1536
+    ],
+    "target": [
+      330,
+      488
+    ],
+    "cropFraction": 0.0013,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-07-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-07-panel-4.png",
+    "sourceSize": [
+      864,
+      1536
+    ],
+    "target": [
+      330,
+      591
+    ],
+    "cropFraction": 0.0073,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-07-panel-5",
+    "source": "output\\imagegen\\romance-director\\page-07-panel-5.png",
+    "sourceSize": [
+      1536,
+      1472
+    ],
+    "target": [
+      620,
+      591
+    ],
+    "cropFraction": 0.0053,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-08-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-08-panel-1.png",
+    "sourceSize": [
+      512,
+      1536
+    ],
+    "target": [
+      310,
+      920
+    ],
+    "cropFraction": 0.0108,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-08-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-08-panel-2.png",
+    "sourceSize": [
+      512,
+      1536
+    ],
+    "target": [
+      310,
+      920
+    ],
+    "cropFraction": 0.0108,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-08-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-08-panel-3.png",
+    "sourceSize": [
+      528,
+      1536
+    ],
+    "target": [
+      312,
+      920
+    ],
+    "cropFraction": 0.0134,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-08-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-08-panel-4.png",
+    "sourceSize": [
+      1536,
+      800
+    ],
+    "target": [
+      968,
+      501
+    ],
+    "cropFraction": 0.0063,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-09-panel-1",
+    "source": "output\\imagegen\\romance-director\\page-09-panel-1.png",
+    "sourceSize": [
+      1536,
+      1104
+    ],
+    "target": [
+      475,
+      340
+    ],
+    "cropFraction": 0.0041,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-09-panel-2",
+    "source": "output\\imagegen\\romance-director\\page-09-panel-2.png",
+    "sourceSize": [
+      1536,
+      1104
+    ],
+    "target": [
+      475,
+      340
+    ],
+    "cropFraction": 0.0041,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-09-panel-3",
+    "source": "output\\imagegen\\romance-director\\page-09-panel-3.png",
+    "sourceSize": [
+      1536,
+      512
+    ],
+    "target": [
+      968,
+      300
+    ],
+    "cropFraction": 0.0702,
+    "mode": "independent-generation-size-fit"
+  },
+  {
+    "name": "page-09-panel-4",
+    "source": "output\\imagegen\\romance-director\\page-09-panel-4.png",
+    "sourceSize": [
+      1536,
+      1216
+    ],
+    "target": [
+      968,
+      763
+    ],
+    "cropFraction": 0.0043,
+    "mode": "independent-generation-size-fit"
+  }
+]

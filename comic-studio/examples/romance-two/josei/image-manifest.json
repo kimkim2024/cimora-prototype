@@ -1,0 +1,617 @@
+[
+  {
+    "name": "page-01-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-01-panel-1.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-01-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-01-panel-2-fixed.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-01-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-01-panel-3.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-01-panel-4",
+    "source": "output\\imagegen\\romance-josei\\page-01-panel-4-fixed.png",
+    "sourceSize": [
+      1536,
+      928
+    ],
+    "target": [
+      968,
+      580
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-02-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-02-panel-1-fixed.png",
+    "sourceSize": [
+      1536,
+      656
+    ],
+    "target": [
+      968,
+      410
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-02-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-02-panel-2-fixed.png",
+    "sourceSize": [
+      1536,
+      752
+    ],
+    "target": [
+      968,
+      470
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-02-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-02-panel-3.png",
+    "sourceSize": [
+      1536,
+      832
+    ],
+    "target": [
+      968,
+      520
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-03-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-03-panel-1.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-03-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-03-panel-2.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-03-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-03-panel-3.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-03-panel-4",
+    "source": "output\\imagegen\\romance-josei\\page-03-panel-4.png",
+    "sourceSize": [
+      1536,
+      928
+    ],
+    "target": [
+      968,
+      580
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-04-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-04-panel-1.png",
+    "sourceSize": [
+      1536,
+      656
+    ],
+    "target": [
+      968,
+      410
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-04-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-04-panel-2.png",
+    "sourceSize": [
+      1536,
+      752
+    ],
+    "target": [
+      968,
+      470
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-04-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-04-panel-3.png",
+    "sourceSize": [
+      1536,
+      832
+    ],
+    "target": [
+      968,
+      520
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-05-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-05-panel-1.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-05-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-05-panel-2.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-05-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-05-panel-3.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-05-panel-4",
+    "source": "output\\imagegen\\romance-josei\\page-05-panel-4.png",
+    "sourceSize": [
+      1536,
+      928
+    ],
+    "target": [
+      968,
+      580
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-06-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-06-panel-1.png",
+    "sourceSize": [
+      1536,
+      1296
+    ],
+    "target": [
+      968,
+      820
+    ],
+    "fitLoss": 0.004,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-06-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-06-panel-2.png",
+    "sourceSize": [
+      816,
+      1024
+    ],
+    "target": [
+      474,
+      600
+    ],
+    "fitLoss": 0.0086,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-06-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-06-panel-3.png",
+    "sourceSize": [
+      816,
+      1024
+    ],
+    "target": [
+      474,
+      600
+    ],
+    "fitLoss": 0.0086,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-07-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-07-panel-1.png",
+    "sourceSize": [
+      1536,
+      1296
+    ],
+    "target": [
+      968,
+      820
+    ],
+    "fitLoss": 0.004,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-07-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-07-panel-2.png",
+    "sourceSize": [
+      816,
+      1024
+    ],
+    "target": [
+      474,
+      600
+    ],
+    "fitLoss": 0.0086,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": true
+  },
+  {
+    "name": "page-07-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-07-panel-3.png",
+    "sourceSize": [
+      816,
+      1024
+    ],
+    "target": [
+      474,
+      600
+    ],
+    "fitLoss": 0.0086,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-08-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-08-panel-1.png",
+    "sourceSize": [
+      1536,
+      656
+    ],
+    "target": [
+      968,
+      410
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-08-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-08-panel-2.png",
+    "sourceSize": [
+      1536,
+      752
+    ],
+    "target": [
+      968,
+      470
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-08-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-08-panel-3.png",
+    "sourceSize": [
+      1536,
+      832
+    ],
+    "target": [
+      968,
+      520
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-09-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-09-panel-1.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-09-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-09-panel-2.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-09-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-09-panel-3.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-09-panel-4",
+    "source": "output\\imagegen\\romance-josei\\page-09-panel-4.png",
+    "sourceSize": [
+      1536,
+      928
+    ],
+    "target": [
+      968,
+      580
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-10-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-10-panel-1.png",
+    "sourceSize": [
+      1536,
+      656
+    ],
+    "target": [
+      968,
+      410
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-10-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-10-panel-2.png",
+    "sourceSize": [
+      1536,
+      752
+    ],
+    "target": [
+      968,
+      470
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-10-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-10-panel-3.png",
+    "sourceSize": [
+      1536,
+      832
+    ],
+    "target": [
+      968,
+      520
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-11-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-11-panel-1-fixed.png",
+    "sourceSize": [
+      1536,
+      560
+    ],
+    "target": [
+      968,
+      350
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-11-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-11-panel-2.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-11-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-11-panel-3.png",
+    "sourceSize": [
+      1536,
+      1520
+    ],
+    "target": [
+      474,
+      470
+    ],
+    "fitLoss": 0.002,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-11-panel-4",
+    "source": "output\\imagegen\\romance-josei\\page-11-panel-4.png",
+    "sourceSize": [
+      1536,
+      928
+    ],
+    "target": [
+      968,
+      580
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-12-panel-1",
+    "source": "output\\imagegen\\romance-josei\\page-12-panel-1.png",
+    "sourceSize": [
+      1536,
+      656
+    ],
+    "target": [
+      968,
+      410
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-12-panel-2",
+    "source": "output\\imagegen\\romance-josei\\page-12-panel-2.png",
+    "sourceSize": [
+      1536,
+      752
+    ],
+    "target": [
+      968,
+      470
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  },
+  {
+    "name": "page-12-panel-3",
+    "source": "output\\imagegen\\romance-josei\\page-12-panel-3.png",
+    "sourceSize": [
+      1536,
+      832
+    ],
+    "target": [
+      968,
+      520
+    ],
+    "fitLoss": 0.0083,
+    "originalGeneration": true,
+    "horizontalMirrorForAxis": false
+  }
+]

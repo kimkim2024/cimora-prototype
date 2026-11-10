@@ -1,0 +1,80 @@
+{
+  "pages": [
+    {
+      "page": 1,
+      "sha256": "14ba46c8688d9916565045d112b44f9109b949c92bd2caf5aa4409be1251a5a7",
+      "bytes": 2562028
+    },
+    {
+      "page": 2,
+      "sha256": "3a03af40e4e68861823fa07ee0523eeb7a1f2dadd9cf7883fbdebe68cbbec08d",
+      "bytes": 2498692
+    },
+    {
+      "page": 3,
+      "sha256": "7d0c724fd5f352000226db862435bb6c77449e469718c2f032beecb729f98e26",
+      "bytes": 2113184
+    },
+    {
+      "page": 4,
+      "sha256": "d89186a13d3f094c21445b6b4f967d7935bb19a3d44d8a0b46c9c38e9a6b8d11",
+      "bytes": 2205394
+    },
+    {
+      "page": 5,
+      "sha256": "633495ca9f89887ad1e699c736db85c6d9b77daa5356057963c87b66521d34fd",
+      "bytes": 2043875
+    },
+    {
+      "page": 6,
+      "sha256": "76ca15021da7a409c6605a0839e790b9cbe2f08e9b915ed57a8d4d2aacd8a4c5",
+      "bytes": 1943045
+    },
+    {
+      "page": 7,
+      "sha256": "df5b05d047626aedab9c67944649d95825d9ef5e9e12ba9699c0446d1a450c53",
+      "bytes": 2606447
+    },
+    {
+      "page": 8,
+      "sha256": "3635f45cf2be074705718ae20ff7891ad3059cddbd25ae47b0bf17fdc7d0ce7a",
+      "bytes": 2618921
+    },
+    {
+      "page": 9,
+      "sha256": "b1261d44cca74f14122ecd9bc4547363cebd5ce9c8281a22223e9d4a1e0d47f1",
+      "bytes": 2511218
+    },
+    {
+      "page": 10,
+      "sha256": "896639d26b456cff07a4b2fce059c40ed4fffd9f87a608ccb20819b7ab7c56e3",
+      "bytes": 2569565
+    },
+    {
+      "page": 11,
+      "sha256": "9175f454fd8eb62ac2ccc668d635e9e9ae0026bf0d5b35aec9d8f8476047ae35",
+      "bytes": 2703541
+    },
+    {
+      "page": 12,
+      "sha256": "e39270d625733e78a1a941f09abd96b76356d6ff8bee5bb727b5e287bbd22ed2",
+      "bytes": 2789815
+    }
+  ],
+  "archives": [
+    {
+      "episode": 1,
+      "pages": 6,
+      "sha256": "b86e47f074d8ba2a85b1de85908ee065be1a4e5a4bf8d9525ecc0d31dc4ddc37",
+      "byteIdentical": true
+    },
+    {
+      "episode": 2,
+      "pages": 6,
+      "sha256": "1ab38ddab811322ed98f7f3938b1821c08b0b884a18f247eebd8ad70d25f7601",
+      "byteIdentical": true
+    }
+  ],
+  "portableBytes": 2635029,
+  "embeddedUniqueImages": 47
+}

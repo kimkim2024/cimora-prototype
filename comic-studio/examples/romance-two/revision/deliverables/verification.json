@@ -1,0 +1,27 @@
+[
+  {
+    "episode": 1,
+    "pages": 4,
+    "pngBytesMatch": true,
+    "entries": [
+      "01-第1页 · 宵夜桌上的名字.png",
+      "02-第2页 · 通过之前.png",
+      "03-第3页 · 一本书的理由.png",
+      "04-第4页 · 这次没有删.png"
+    ],
+    "zipSha256": "ccfce6524d6584050d56e6f42c643421ac860efc4cfe148390470849c680e6ba"
+  },
+  {
+    "episode": 2,
+    "pages": 5,
+    "pngBytesMatch": true,
+    "entries": [
+      "01-第1页 · 书店门口的两步.png",
+      "02-第2页 · 一小时与两碗面.png",
+      "03-第3页 · 她一直住在河西.png",
+      "04-第4页 · 不是为了谁.png",
+      "05-第5页 · 不用赶.png"
+    ],
+    "zipSha256": "5a4469a8aa566a92fda0d97a94fba6cef4b20929407b72625d5da84ae3e822f4"
+  }
+]

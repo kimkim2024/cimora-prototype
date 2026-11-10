@@ -1,0 +1,14 @@
+{
+  "planId": "director-a-2026-10-30T07-49-01-017Z",
+  "key": "A",
+  "savedAt": "2026-10-30T07:49:01.017Z",
+  "planSHA256": "48089e4aed839712322e770feb033ea51cbae4d717c2e652aada3351e0820b23",
+  "promptSHA256": "febd04e5d2007eda9362d51f81a2af9f01692bd6614588fdc72f29b754164fc2",
+  "svgSHA256": "cb0e580bb4c8f162b07f0874e3bac20b4ecfd52f1d236d7163ad6444a50033bc",
+  "requestStartedAt": "2026-10-30T07:50:00.561221+00:00",
+  "requestCompletedAt": "2026-10-30T07:54:50.160031+00:00",
+  "rasterSavedAt": "2026-10-30T07:49:01.232023+00:00",
+  "pngSHA256": "104217aadb2c53e904ae2cfe1e0d7f4cc4d59e7451a12ef5cfd435b758b9c7dd",
+  "outputSHA256": "eb4482d3948a5d6f766e4230b8ddba171d6402517e86478b231d58f348742036",
+  "outputPath": "output\\imagegen\\director-a-raw.png"
+}

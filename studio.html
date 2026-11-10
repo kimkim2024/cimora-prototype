@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><script src="portable-resources.js"></script><script src="portable-media.js"></script><script src="portable-seed.js"></script><script src="portable-boot.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#121316">
+  <title>Cimora — 条漫与动态漫创作工作台</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <nav class="rail" aria-label="工作空间导航">
+      <button class="brand" data-action="projects" title="Cimora工作空间" aria-label="Cimora工作空间"><svg viewBox="0 0 36 36"><path d="M6 28V8h10v6H12v14zM20 28V8h10v6h-4v14z" fill="currentColor"/><path d="m16 20 8-5v10z" fill="#121316"/></svg></button>
+      <div class="rail-main">
+        <button class="rail-item" data-action="projects" title="我的项目"><i data-icon="folder"></i><span>项目</span></button>
+        <button class="rail-item active" data-page="motion" title="创作工作台"><i data-icon="canvas"></i><span>创作</span></button>
+        <button class="rail-item" data-page="assets" title="资产库"><i data-icon="layers"></i><span>资产</span></button>
+      </div>
+      <div class="rail-bottom"><button class="rail-item" data-action="guide" title="原型导览"><i data-icon="help"></i><span>导览</span></button><button class="avatar" data-action="profile" aria-label="当前工作室">JZ</button></div>
+    </nav>
+
+    <header class="topbar">
+      <div class="breadcrumb"><button data-action="projects">我的项目</button><span>/</span><span class="project-name">雨停之前</span><span class="demo-tag">M0 原型</span></div>
+      <div class="top-actions"><span class="saved" id="save-status"><b></b> 已保存到本机</span><button class="icon-btn" data-action="history" title="操作记录"><i data-icon="history"></i></button><button class="btn" data-action="preview"><i data-icon="play"></i> 预览章节</button><button class="btn primary" data-page="export"><i data-icon="export"></i> 导出 <span class="key">↗</span></button></div>
+    </header>
+
+    <aside class="sidebar">
+      <button class="project-switch" data-action="projects"><span class="project-sigil">雨</span><span><strong>雨停之前</strong><small>BEFORE THE RAIN ENDS</small></span><i data-icon="chevrons"></i></button>
+      <div class="side-label">章节 <button class="text-icon" data-action="new-chapter" title="新增章节">+</button></div>
+      <button class="chapter selected" data-action="chapter"><span class="chapter-no">01</span><span><strong>重逢的第七天</strong><small>10 分格 · 48 秒</small></span><span class="dot green"></span></button>
+      <div class="side-divider"></div>
+      <div class="side-label">本章资产 <button class="text-icon" data-page="assets" title="管理资产">↗</button></div>
+      <div class="asset-tabs" role="tablist" aria-label="资产分类"><button class="active" role="tab" data-asset-tab="characters">角色 <small>2</small></button><button role="tab" data-asset-tab="scenes">场景 <small>2</small></button><button role="tab" data-asset-tab="style">画风</button></div>
+      <div id="sidebar-assets" class="sidebar-assets"></div>
+      <button class="add-asset" data-page="assets"><i data-icon="plus"></i> 管理本章资产</button>
+      <div class="side-divider"></div>
+      <div class="side-label">动画模板 <span class="tiny">5</span></div>
+      <div class="template-mini"><button data-template="缓慢推进"><span>↗</span> 缓慢推进</button><button data-template="横向摇移"><span>↔</span> 横向摇移</button><button data-template="视差景深"><span>▱</span> 视差景深</button></div>
+      <div class="sidebar-spacer"></div>
+      <button class="budget-card" data-action="budget"><span>本章制作预算 <i data-icon="arrow-up-right"></i></span><strong id="side-spend">$4.82 <small>/ $15.00</small></strong><span class="meter"><b id="side-meter"></b></span><small>每一次创作，费用都清晰可见</small></button>
+      <div class="side-footer"><span class="dot green"></span> 工作室模式 <span class="lock-label">资产已锁定</span></div>
+    </aside>
+
+    <nav class="stepbar" aria-label="章节制作步骤">
+      <button data-page="script"><span class="step-number done">✓</span><span>故事剧本</span></button><span class="step-line"></span>
+      <button data-page="assets"><span class="step-number done">✓</span><span>视觉资产</span></button><span class="step-line"></span>
+      <button data-page="comic"><span class="step-number done">✓</span><span>条漫创作</span><small>10</small></button><span class="step-line"></span>
+      <button data-page="motion" class="active"><span class="step-number">04</span><span>动态漫画布</span></button><span class="step-line"></span>
+      <button data-page="export"><span class="step-number">05</span><span>审批与导出</span></button>
+    </nav>
+
+    <main class="workspace" id="workspace"></main>
+    <section class="timeline" id="timeline" aria-label="章节时间线"></section>
+  </div>
+  <div class="modal-layer" id="modal-layer" hidden></div>
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+  <script src="art.js"></script><script src="cimora-art.js"></script>
+  <script src="app.js"></script>
+  <script src="studio-bridge.js"></script>
+</body>
+</html>
