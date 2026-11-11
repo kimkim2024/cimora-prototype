@@ -1,0 +1,299 @@
+/* ===========================================================================
+   Public light layer
+   ---------------------------------------------------------------------------
+   Brings /product, /features/*, /pricing, /tools, /showcase, /templates,
+   /resources, /help and /legal/* onto the design system.
+
+   The legacy stylesheet paints those pages on #191820 with lavender text
+   (#f2edf8 / #b1a7bf / #c4a6ff). This file re-declares the same components
+   with tokens; no HTML changes, no layout changes.
+
+   Deliberately scoped out: the homepage has its own light skin
+   (body.cimora-home-public) and the studio pages live under body.cimora-app.
+   =========================================================================== */
+
+body.public-body:not(.cimora-home-public) {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+/* ---- theme variables ------------------------------------------------------
+   cimora-appearance.css repaints .button / inputs / panels from the --ap-* set
+   with a specificity we cannot beat politely. Redefining the variables on the
+   public scope paints them in our palette instead of fighting selectors. */
+body.public-body:not(.cimora-home-public){
+  --ap-bg:var(--color-canvas);--ap-surface:var(--color-paper);--ap-raised:var(--color-paper-muted);
+  --ap-input:var(--color-paper);
+  --ap-text:var(--color-ink);--ap-muted:var(--color-ink-muted);--ap-secondary:var(--color-ink-label);
+  --ap-line:var(--color-hairline);--ap-line-strong:var(--color-hairline-strong);
+  --ap-accent:var(--color-ink);--ap-on-accent:var(--color-ink-inverse);
+  --ap-soft:var(--color-paper-sunken);--ap-hover:var(--color-paper-muted);
+  --ap-success:var(--color-positive);--ap-warning:var(--color-warning);--ap-danger:var(--color-negative);
+  --ap-shadow:var(--shadow-md);--ap-dot:var(--color-focus-soft);
+}
+
+/* ---- shell ---------------------------------------------------------------- */
+body.public-body:not(.cimora-home-public) .public-header {
+  background: var(--color-paper);
+  border-bottom: 1px solid var(--color-hairline);
+}
+/* keep this group narrow: an id inside a selector list raises the specificity of
+   every selector in the list, which used to repaint the header CTA grey. */
+body.public-body:not(.cimora-home-public) .public-nav > a,
+body.public-body:not(.cimora-home-public) .nav-dropdown summary {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .public-nav > a:hover,
+body.public-body:not(.cimora-home-public) .nav-dropdown summary:hover,
+body.public-body:not(.cimora-home-public) .public-nav > a.active {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .nav-dropdown > div {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+}
+body.public-body:not(.cimora-home-public) .nav-dropdown > div a {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .nav-dropdown > div a:hover {
+  color: var(--color-ink);
+  background: var(--color-paper-muted);
+}
+body.public-body:not(.cimora-home-public) .login-link {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .login-link:hover {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .ap-trigger {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .demo-pill {
+  background: var(--color-paper-muted);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-muted);
+}
+
+/* ---- type ----------------------------------------------------------------- */
+body.public-body:not(.cimora-home-public) h1,
+body.public-body:not(.cimora-home-public) h2,
+body.public-body:not(.cimora-home-public) h3,
+body.public-body:not(.cimora-home-public) h4,
+body.public-body:not(.cimora-home-public) strong,
+body.public-body:not(.cimora-home-public) b {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) p,
+body.public-body:not(.cimora-home-public) li,
+body.public-body:not(.cimora-home-public) dd,
+body.public-body:not(.cimora-home-public) figcaption {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .eyebrow {
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .muted,
+body.public-body:not(.cimora-home-public) small {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .text-link {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+body.public-body:not(.cimora-home-public) .text-link:hover {
+  color: var(--color-ink);
+  text-decoration-thickness: 2px;
+}
+body.public-body:not(.cimora-home-public) .section-head h2 {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .page-hero h1 {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .crumbs,
+body.public-body:not(.cimora-home-public) .crumbs a {
+  color: var(--color-ink-muted);
+}
+
+/* ---- surfaces ------------------------------------------------------------- */
+body.public-body:not(.cimora-home-public) .surface,
+body.public-body:not(.cimora-home-public) .tool-card,
+body.public-body:not(.cimora-home-public) .case-card,
+body.public-body:not(.cimora-home-public) .template-card,
+body.public-body:not(.cimora-home-public) .article-card,
+body.public-body:not(.cimora-home-public) .price-card,
+body.public-body:not(.cimora-home-public) .help-card,
+body.public-body:not(.cimora-home-public) .entry-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+  box-shadow: none;
+  border-radius: var(--radius-lg);
+}
+body.public-body:not(.cimora-home-public) .tool-card:hover,
+body.public-body:not(.cimora-home-public) .case-card:hover,
+body.public-body:not(.cimora-home-public) .template-card:hover,
+body.public-body:not(.cimora-home-public) .price-card:hover {
+  border-color: var(--color-hairline-strong);
+}
+body.public-body:not(.cimora-home-public) .tool-card-top,
+body.public-body:not(.cimora-home-public) .tool-card h3,
+body.public-body:not(.cimora-home-public) .case-copy h3,
+body.public-body:not(.cimora-home-public) .price {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .tool-icon {
+  background: var(--color-paper-muted);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .micro-tag {
+  background: transparent;
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .tool-card-foot {
+  border-top: 1px solid var(--color-hairline);
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .recommend-tag {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-ink-on-accent);
+}
+body.public-body:not(.cimora-home-public) .status-badge {
+  background: var(--color-paper-muted);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-muted);
+}
+
+/* ---- controls ------------------------------------------------------------- */
+body.public-body:not(.cimora-home-public) .button {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+  border-radius: var(--radius-md);
+}
+body.public-body:not(.cimora-home-public) .button:hover {
+  background: var(--color-paper-muted);
+  border-color: var(--color-hairline-strong);
+}
+body.public-body:not(.cimora-home-public) .button.primary {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-ink-inverse);
+}
+body.public-body:not(.cimora-home-public) .button.primary:hover {
+  background: var(--color-ink-hover);
+  border-color: var(--color-ink-hover);
+}
+/* the appearance layer paints .button.primary through :is() with five classes of
+   specificity; the repeated class is here to outrank it without !important */
+body.public-body:not(.cimora-home-public) .button.primary.primary {
+  color: var(--color-ink-inverse);
+}
+body.public-body:not(.cimora-home-public) .button.primary.primary:hover {
+  color: var(--color-ink-inverse);
+}
+
+body.public-body:not(.cimora-home-public) .button.ghost {
+  background: transparent;
+  border-color: var(--color-hairline);
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .button.ghost:hover {
+  background: var(--color-paper-muted);
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .filter {
+  background: transparent;
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink-muted);
+  border-radius: var(--radius-xs);
+}
+body.public-body:not(.cimora-home-public) .filter:hover {
+  color: var(--color-ink);
+  border-color: var(--color-hairline-strong);
+}
+body.public-body:not(.cimora-home-public) .filter.selected {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-ink-inverse);
+}
+body.public-body:not(.cimora-home-public) .period-toggle {
+  background: var(--color-paper-muted);
+  border: 1px solid var(--color-hairline);
+}
+body.public-body:not(.cimora-home-public) .period-toggle button.selected {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+}
+body.public-body:not(.cimora-home-public) .search-box {
+  background: var(--color-paper);
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .search-box input {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+/* the faq toggles and helper notes were the last lavender bits */
+body.public-body:not(.cimora-home-public) summary span,
+body.public-body:not(.cimora-home-public) details summary > span {
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .subtle-note,
+body.public-body:not(.cimora-home-public) .tool-bridge > div > span {
+  color: var(--color-ink-quiet);
+}
+
+/* ---- lists, prose, faq ---------------------------------------------------- */
+body.public-body:not(.cimora-home-public) .plain-list li,
+body.public-body:not(.cimora-home-public) .faq-list details {
+  border-color: var(--color-hairline);
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .plain-list li::marker {
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .faq-list summary {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .prose a {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .prose code {
+  background: var(--color-paper-muted);
+  color: var(--color-ink);
+}
+
+/* ---- footer --------------------------------------------------------------- */
+body.public-body:not(.cimora-home-public) .public-footer {
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-hairline);
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .public-footer h4 {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .public-footer a {
+  color: var(--color-ink-muted);
+}
+body.public-body:not(.cimora-home-public) .public-footer a:hover {
+  color: var(--color-ink);
+}
+body.public-body:not(.cimora-home-public) .footer-intro p,
+body.public-body:not(.cimora-home-public) .footer-intro small,
+body.public-body:not(.cimora-home-public) .footer-bottom {
+  color: var(--color-ink-quiet);
+}
+body.public-body:not(.cimora-home-public) .footer-bottom {
+  border-top: 1px solid var(--color-hairline);
+}
