@@ -22,7 +22,7 @@ const id=prefix=>prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(3
 function requireUser(pending){if(state.user)return false;state.pending=pending;save();route('/auth?return='+encodeURIComponent(location.hash.slice(1)||'/app'));return true;}
 function completeAuth(){state.user={name:'Story Creator',email:'creator@example.test'};const pending=state.pending,back=context.params.get('return');state.pending=null;save();toast('Signed in to the local demo account. No login details were sent.');if(pending?.action==='save-tool'){route('/tools/'+pending.tool);setTimeout(()=>S.tools.saveResult(pending.tool),0);}else if(pending?.path)route(pending.path);else route(back?.startsWith('/')?back:state.onboarded?'/app':'/onboarding');}
 function homeHeader(){
- const links=[['Product','/product'],['Pricing','/pricing'],['Docs','/help'],['Blog','/resources']];
+ const links=[['Product','/product'],['Tools','/tools'],['Showcase','/showcase'],['Templates','/templates'],['Pricing','/pricing'],['Guides','/resources']];
  const nav=()=>links.map(([label,url])=>link(label,url,'h17-link')).join('');
  const actions=()=>link('Sign in','/auth','h17-signin')+link('Get started','/app/new','h17-cta');
  const logo=()=>'<a href="#/" class="h17-image-logo" aria-label="Studio Cimora home"><img src="assets/studio-cimora-logo.png" alt="Studio Cimora" width="1672" height="941"></a>';
