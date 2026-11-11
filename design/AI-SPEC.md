@@ -202,7 +202,7 @@ npm run shots    # 12 routes x 1440/1920; 0 cjk, 0 arrows, 0 empty pages
 | Creation Space dashboard (`#/app`) | done, uses its own module values (not yet tokenised) |
 | Asset Library, Tasks, Showcase/Market, New project, Billing, Settings, workbench | **not restyled** — these are the pages a designer is expected to take on |
 | Legacy CSS (`site.css`, `cimora.css`, `cimora-home.css`, …) | dark base + light overrides; contains literal values and Chinese source strings that are tolerated for now. Do not refactor them wholesale; build new modules instead. |
-| Public header (`publicHeader` → `homeHeader`) | one shared `h17-header` bar on every public route; it reads the `--ap-*` set, which `cimora-public-light.css` now maps to tokens. Do not add a second header markup. |
+| Public header (`publicHeader` → `homeHeader`) | one shared `h17-header` bar on every public route; it reads the `--ap-*` set, which `cimora-public-light.css` now maps to tokens. Its background fades to transparent at the bottom so it blends into the page instead of ending on a rule. Do not add a second header markup. |
 | Breathing background | one WebGL shader (`cimora-shader-background.js`). The homepage mounts it in `.hm-hero-vignette`; every other public route mounts it in the fixed `.public-ambient` layer styled by `cimora-public-ambient.css`. Palette comes from `--shader-accent/-surface/-ink`; keep the CSS gradient fallback if you touch it. |
 | Public footer (`footer`) | still the legacy grid with literal values; restyle only when asked. |
 
