@@ -42,7 +42,7 @@ export function ParticlesField() {
       pointer.radius = 140 * dpr;
 
       const area = box.width * box.height;
-      const count = Math.max(20, Math.min(Math.floor(area / 12000), 150));
+      const count = Math.max(20, Math.min(Math.floor(area / 8200), 150));
       dots = Array.from({ length: count }, () => {
         const baseVx = (Math.random() - 0.5) * 0.6 * dpr;
         const baseVy = (Math.random() - 0.5) * 0.6 * dpr;
@@ -53,8 +53,8 @@ export function ParticlesField() {
           vy: baseVy,
           baseVx,
           baseVy,
-          radius: (Math.random() * 1.5 + 0.5) * dpr,
-          alpha: Math.random() * 0.42 + 0.12,
+          radius: (Math.random() * 1.6 + 0.6) * dpr,
+          alpha: Math.random() * 0.44 + 0.2,
         };
       });
       draw();

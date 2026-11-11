@@ -85,7 +85,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
       {/* two columns of running portraits, faded into the page on three sides */}
       <motion.div
         style={reduced ? undefined : { opacity }}
-        className="pointer-events-none absolute top-0 right-0 bottom-0 z-[5] flex w-[300px] select-none gap-3 overflow-hidden px-2 wide:right-16 wide:w-[420px] wide:gap-4 mega:right-24 mega:w-[480px]"
+        className="pointer-events-none absolute top-0 right-0 bottom-0 z-[5] flex w-[44%] max-w-[620px] select-none gap-3 overflow-hidden px-2 wide:gap-4 mega:max-w-[760px]"
       >
         <div className="relative h-full flex-1 overflow-hidden">
           <motion.div
@@ -100,7 +100,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover object-center opacity-[0.24] grayscale contrast-[1.05] brightness-[0.82]"
+                  className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
                 />
               </div>
             ))}
@@ -120,7 +120,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
                   alt=""
                   loading="lazy"
                   decoding="async"
-                  className="h-full w-full object-cover object-center opacity-[0.24] grayscale contrast-[1.05] brightness-[0.82]"
+                  className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
                 />
               </div>
             ))}
@@ -128,7 +128,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
         </div>
 
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-paper via-transparent to-paper" />
-        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-r from-paper via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[30%] bg-gradient-to-r from-paper to-transparent" />
       </motion.div>
 
       <motion.div style={style} className="relative z-20 flex w-full flex-1 flex-col gap-10 will-change-[opacity,transform,filter] xl:gap-14">
@@ -151,9 +151,9 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
           </div>
         </div>
 
-        <div className="mt-auto w-full">
+        <div className="mt-auto w-full wide:max-w-[58%] ultra:max-w-[56%]">
           <div className="overflow-hidden">
-            <h1 className="max-w-[22ch] font-display text-[40px] leading-[0.88] font-black tracking-[-0.035em] text-ink uppercase wide:text-[76px] mega:text-[92px]">
+            <h1 className="max-w-none text-balance font-display text-[46px] leading-[0.86] font-black tracking-[-0.035em] text-ink uppercase wide:text-[72px] ultra:text-[92px] mega:text-[112px]">
               {title}
               {titleTail ? (
                 <>
@@ -165,8 +165,8 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
           </div>
         </div>
 
-        <div className="space-y-7 xl:space-y-9">
-          <p className="max-w-[46ch] type-lead leading-relaxed font-light text-ink-muted">{description}</p>
+        <div className="space-y-6 xl:space-y-7 wide:max-w-[58%] ultra:max-w-[56%]">
+          <p className="max-w-[46ch] text-pretty type-lead leading-relaxed font-light text-ink-muted">{description}</p>
 
           <div className="flex flex-wrap items-center gap-4">
             <Link
