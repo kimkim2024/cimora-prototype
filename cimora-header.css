@@ -1,4 +1,6 @@
-/* Header17: homepage-only native adaptation. */
+/* Header17: the single public navigation bar. homeHeader() renders it on the
+   homepage and publicHeader() returns the same markup for every public route,
+   so all of them share one bar. Colours come from the --ap-* variables. */
 .h17-header{position:relative;z-index:80;background:var(--ap-bg,#101016);border:0}
 .h17-wrap{box-sizing:border-box;max-width:1280px;margin:auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
 .h17-wrap .cm-logo{gap:8px;flex-shrink:0}.h17-wrap .cm-logomark{width:24px;height:24px;min-width:24px;border-radius:7px;font-size:24px;line-height:24px}.h17-wrap .cm-logomark>span{font-size:9px;top:0;right:1px}.h17-wrap .cm-logo>strong{font-size:16px;font-weight:600;line-height:24px;letter-spacing:-.4px}.h17-wrap .cm-logo>strong>span{display:none}
