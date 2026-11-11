@@ -18,9 +18,16 @@ const TRACK_A = [
   '/hero-slider/kintaro-1.webp',
 ];
 const TRACK_B = [...TRACK_A].reverse();
+const TRACK_C = [...TRACK_A.slice(2), ...TRACK_A.slice(0, 2)];
 
-const COLUMN_A = [...TRACK_A, ...TRACK_A];
-const COLUMN_B = [...TRACK_B, ...TRACK_B];
+const track = (list: string[]) => [...list, ...list];
+
+/** each column runs in its own direction and tempo so the band never pulses */
+const COLUMNS = [
+  { images: track(TRACK_A), from: '0%', to: '-50%', duration: 32 },
+  { images: track(TRACK_B), from: '-50%', to: '0%', duration: 38 },
+  { images: track(TRACK_C), from: '0%', to: '-50%', duration: 27 },
+];
 
 type HeroSpotlightProps = {
   title: string;
@@ -85,50 +92,35 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
       {/* two columns of running portraits, faded into the page on three sides */}
       <motion.div
         style={reduced ? undefined : { opacity }}
-        className="pointer-events-none absolute top-0 right-0 bottom-0 z-[5] flex w-[44%] max-w-[620px] select-none gap-3 overflow-hidden px-2 wide:gap-4 mega:max-w-[760px]"
+        className="pointer-events-none absolute top-0 right-0 bottom-0 z-[5] flex w-[50%] max-w-[720px] select-none gap-3 overflow-hidden px-2 wide:gap-4 mega:max-w-[880px]"
       >
-        <div className="relative h-full flex-1 overflow-hidden">
-          <motion.div
-            className="flex flex-col gap-3 pt-4 wide:gap-4"
-            animate={reduced ? undefined : { y: ['0%', '-50%'] }}
-            transition={reduced ? undefined : { ease: 'linear', duration: 32, repeat: Infinity }}
-          >
-            {COLUMN_A.map((src, index) => (
-              <div key={`a-${index}`} className="relative aspect-[3/4] w-full overflow-hidden rounded-[28px] border border-hairline/60">
-                <img
-                  src={src}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        <div className="relative h-full flex-1 overflow-hidden">
-          <motion.div
-            className="flex flex-col gap-3 pt-4 wide:gap-4"
-            animate={reduced ? undefined : { y: ['-50%', '0%'] }}
-            transition={reduced ? undefined : { ease: 'linear', duration: 32, repeat: Infinity }}
-          >
-            {COLUMN_B.map((src, index) => (
-              <div key={`b-${index}`} className="relative aspect-[3/4] w-full overflow-hidden rounded-[28px] border border-hairline/60">
-                <img
-                  src={src}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
-                />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+        {COLUMNS.map((column, columnIndex) => (
+          <div key={columnIndex} className="relative h-full flex-1 overflow-hidden">
+            <motion.div
+              className="flex flex-col gap-3 pt-4 wide:gap-4"
+              animate={reduced ? undefined : { y: [column.from, column.to] }}
+              transition={reduced ? undefined : { ease: 'linear', duration: column.duration, repeat: Infinity }}
+            >
+              {column.images.map((src, index) => (
+                <div
+                  key={`${columnIndex}-${index}`}
+                  className="relative aspect-[3/4] w-full overflow-hidden rounded-[28px] border border-hairline/60"
+                >
+                  <img
+                    src={src}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        ))}
 
         <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-paper via-transparent to-paper" />
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[30%] bg-gradient-to-r from-paper to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[22%] bg-gradient-to-r from-paper to-transparent" />
       </motion.div>
 
       <motion.div style={style} className="relative z-20 flex w-full flex-1 flex-col gap-10 will-change-[opacity,transform,filter] xl:gap-14">
@@ -151,7 +143,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
           </div>
         </div>
 
-        <div className="mt-auto w-full wide:max-w-[58%] ultra:max-w-[56%]">
+        <div className="mt-auto w-full wide:max-w-[54%] ultra:max-w-[50%]">
           <div className="overflow-hidden">
             <h1 className="max-w-none text-balance font-display text-[46px] leading-[0.86] font-black tracking-[-0.035em] text-ink uppercase wide:text-[72px] ultra:text-[92px] mega:text-[112px]">
               {title}
@@ -165,7 +157,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
           </div>
         </div>
 
-        <div className="space-y-6 xl:space-y-7 wide:max-w-[58%] ultra:max-w-[56%]">
+        <div className="space-y-6 xl:space-y-7 wide:max-w-[54%] ultra:max-w-[50%]">
           <p className="max-w-[46ch] text-pretty type-lead leading-relaxed font-light text-ink-muted">{description}</p>
 
           <div className="flex flex-wrap items-center gap-4">
