@@ -3,7 +3,7 @@ import { PRODUCT_WORLD } from '../data/product';
 /** Four stills, side by side: the same story at each stage of production. */
 export function ProductWorld() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-14" aria-label="One story at four stages">
+    <section className="container-page pt-14" aria-label="One story at four stages">
       <div className="grid grid-cols-4 gap-3 rounded-2xl border border-hairline bg-paper p-3">
         {PRODUCT_WORLD.map((tile) => (
           <figure key={tile.id} className="group relative overflow-hidden rounded-lg bg-paper-sunken">

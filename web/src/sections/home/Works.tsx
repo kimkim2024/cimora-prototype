@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RECIPES, WORK_STORY, WORKS } from '../../data/home';
 import { label } from './label';
@@ -17,7 +17,7 @@ export function Works() {
   });
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-24">
+    <section className="container-page pt-24">
       <div className="flex items-end justify-between gap-6">
         {label('03 / Made of imagination', 'Every story has its own light.')}
         <Link to="/showcase" className="text-[12px] text-ink underline underline-offset-4">
@@ -103,7 +103,7 @@ export function Works() {
 /** "A good place to start": three recipes. */
 export function Recipes() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-24">
+    <section className="container-page pt-24">
       <div className="flex items-end justify-between gap-6">
         {label('', 'Let a good method be your next starting point.')}
         <Link to="/templates" className="text-[12px] text-ink underline underline-offset-4">
@@ -134,7 +134,7 @@ export function Recipes() {
                   (recipe.tone === 'ink' ? 'text-ink-inverse' : 'text-ink')
                 }
               >
-                {recipe.title.split('路')[0].trim()}
+                {recipe.title.split('·')[0].trim()}
               </span>
               <span aria-hidden className="absolute right-4 top-4 flex gap-1">
                 <span className="h-4 w-4 rounded-full bg-paper/70" />

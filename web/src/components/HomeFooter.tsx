@@ -34,7 +34,7 @@ const COLUMNS = [
 export function HomeFooter() {
   return (
     <footer className="mt-24 border-t border-hairline bg-paper" aria-label="Cimora footer">
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.5fr_repeat(3,1fr)] gap-10 px-10 pt-14">
+      <div className="container-page grid grid-cols-[1.5fr_repeat(3,1fr)] gap-10 pt-14">
         <div>
           <Link to="/" className="text-[15px] font-semibold tracking-[-0.02em] text-ink">
             Cimora
@@ -83,7 +83,7 @@ export function HomeFooter() {
         ))}
       </div>
 
-      <div className="mx-auto mt-12 flex w-full max-w-[1200px] items-center justify-between border-t border-hairline px-10 py-5 text-[11px] text-ink-quiet">
+      <div className="container-page mt-12 flex items-center justify-between border-t border-hairline py-5 text-[11px] text-ink-quiet">
         <div className="flex items-center gap-4">
           <span>© 2026 Cimora.</span>
           <Link to="/legal/privacy" className="transition-colors hover:text-ink">

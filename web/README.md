@@ -38,6 +38,24 @@ Rules that still apply here: one accent per screen (lime `#c8f24e`, only for
 "live / current / generating"), paper white surfaces, 1px `#dedede` hairlines,
 no decorative arrows, no uppercase kickers above headings.
 
+## Wide-screen layout
+
+Every page is desktop-first and scales up instead of sitting in a laptop-width
+column. The width rule lives in one place, `src/styles/theme.css`:
+
+| viewport | `.container-page` | gutters | `.container-prose` |
+| --- | --- | --- | --- |
+| < 1440 | 1200 | 40px | 820 |
+| >= 1440 (`wide`) | 1360 | 56px | 900 |
+| >= 1760 (`ultra`) | 1560 | 64px | 960 |
+| >= 2200 (`mega`) | 1720 | 72px | 1000 |
+
+`container-page` is for cards and catalog grids, `container-prose` for
+long-form reading (help, legal, guides). The breakpoints are also available as
+Tailwind variants — `wide:`, `ultra:`, `mega:` — for type steps
+(`text-[44px] wide:text-[48px]`) and stage sizes. Do not add a per-page width;
+change the container instead.
+
 ## Routing
 
 `react-router-dom` with a **hash router** (`src/router.tsx`): every link in the

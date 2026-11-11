@@ -1,4 +1,4 @@
-﻿import s0 from '../../../assets/cimora-story-0.webp';
+import s0 from '../../../assets/cimora-story-0.webp';
 import s1 from '../../../assets/cimora-story-1.webp';
 import s2 from '../../../assets/cimora-story-2.webp';
 import s3 from '../../../assets/cimora-story-3.webp';

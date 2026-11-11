@@ -1,10 +1,10 @@
-﻿import { CAPABILITIES } from '../../data/home';
+import { CAPABILITIES } from '../../data/home';
 
 /** Five dark poster cards: the things the studio actually does. */
 export function Capabilities() {
   return (
-    <section aria-label="Creation capabilities" className="mx-auto w-full max-w-[1200px] px-10 pt-14">
-      <div className="grid grid-cols-5 gap-4">
+    <section aria-label="Creation capabilities" className="container-page pt-14">
+      <div className="grid grid-cols-5 ultra:gap-6 gap-4">
         {CAPABILITIES.map((item) => (
           <article
             key={item.title}

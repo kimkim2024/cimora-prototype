@@ -44,7 +44,7 @@ export function Process() {
   const step = STEPS[active];
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-24">
+    <section className="container-page pt-24">
       {label('01 / Make your story', 'Every step of creating, firmly in your hands.', 'From the first line, to your first work.')}
 
       <div className="mt-10 grid grid-cols-[0.85fr_1.15fr] items-start gap-14">

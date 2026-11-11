@@ -14,7 +14,7 @@ export function HelpPage() {
   return (
     <>
       <PageHero title={<>Stuck while creating? Keep moving from here.</>} centered className="pb-10" />
-      <section className="mx-auto w-full max-w-[1200px] px-10">
+      <section className="container-page">
         <div className="grid grid-cols-4 gap-4">
           {HELP_CATEGORIES.map((category, i) => {
             const article = ARTICLES.find((entry) => entry.id === category.articleId);
@@ -48,7 +48,7 @@ export function LegalPage() {
   if (!title) return <NotFound />;
 
   return (
-    <article className="mx-auto w-full max-w-[820px] px-10 pb-24 pt-20">
+    <article className="container-prose pb-24 pt-20">
       <h1 className="text-[44px] font-medium leading-[1.12] tracking-[-0.035em] text-ink">{title}</h1>
 
       <p className="mt-8 rounded-2xl border border-hairline bg-paper-muted p-6 text-[13px] leading-[1.7] text-ink-muted">
@@ -95,7 +95,7 @@ export function ToolsPage() {
         <p className="mt-3 text-[12px] text-ink-quiet">14 standalone tools · local demo · no real API calls</p>
       </PageHero>
 
-      <section className="mx-auto w-full max-w-[1200px] px-10 pb-24">
+      <section className="container-page pb-24">
         <div className="flex items-center justify-between gap-6">
           <Chips options={TOOL_GROUPS} value={group} onChange={setGroup} label="Tool group" />
           <span className="text-[12px] text-ink-quiet">{items.length} tools</span>

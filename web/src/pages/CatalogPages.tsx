@@ -12,7 +12,7 @@ export function ShowcasePage() {
   return (
     <>
       <PageHero title={<>In these stories, see your next possibility.</>} centered className="pb-12" />
-      <section className="mx-auto w-full max-w-[1200px] px-10">
+      <section className="container-page">
         <div className="grid grid-cols-3 gap-5">
           {CASES.map((item, i) => (
             <CaseCard key={item.id} item={item} delay={i * 40} />
@@ -35,9 +35,9 @@ export function TemplatesPage() {
   return (
     <>
       <PageHero title="Give inspiration a starting point." centered className="pb-10" />
-      <section className="mx-auto w-full max-w-[1200px] px-10">
+      <section className="container-page">
         <Chips options={TEMPLATE_TYPES} value={type} onChange={setType} label="Template type" />
-        <div className="mt-8 grid grid-cols-3 gap-5">
+        <div className="mt-8 grid grid-cols-3 ultra:grid-cols-4 gap-5">
           {items.map((item) => (
             <TemplateCard key={item.id} item={item} />
           ))}
@@ -53,7 +53,7 @@ export function ResourcesPage() {
   return (
     <>
       <PageHero title="The methods behind making a story." centered className="pb-12" />
-      <section className="mx-auto w-full max-w-[1200px] px-10">
+      <section className="container-page">
         <div className="grid grid-cols-3 gap-5">
           {ARTICLES.map((item) => (
             <ArticleCard key={item.id} item={item} />

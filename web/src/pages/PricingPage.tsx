@@ -33,7 +33,7 @@ export default function PricingPage() {
         </div>
       </PageHero>
 
-      <section className="mx-auto w-full max-w-[1200px] px-10 pt-6">
+      <section className="container-page pt-6">
         <div className="grid grid-cols-3 gap-5">
           {PLANS.map((plan, i) => {
             const recommended = i === 1;

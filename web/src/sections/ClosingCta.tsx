@@ -4,7 +4,7 @@ import { legacyUrl } from '../lib/legacy';
 /** Closing call to action: one story, one next step. */
 export function ClosingCta() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 py-24">
+    <section className="container-page py-24">
       <div className="flex flex-col items-center rounded-2xl border border-hairline bg-paper px-10 py-20 text-center shadow-card">
         <h2 className="max-w-[26ch] text-[36px] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
           What happens in the next panel?

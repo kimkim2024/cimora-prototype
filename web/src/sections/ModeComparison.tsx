@@ -3,7 +3,7 @@ import { MODES } from '../data/product';
 /** Quick mode vs studio mode: two ways in, one destination. */
 export function ModeComparison() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-14" aria-label="Two ways to start">
+    <section className="container-page pt-14" aria-label="Two ways to start">
       <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-hairline bg-paper">
         {MODES.map((mode, i) => (
           <div key={mode.id} className={'px-10 py-9 ' + (i === 0 ? 'border-r border-hairline' : '')}>

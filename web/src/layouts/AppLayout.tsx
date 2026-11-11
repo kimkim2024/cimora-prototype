@@ -77,7 +77,7 @@ export function AppLayout() {
       </aside>
 
       <div className="ml-[248px] flex min-h-dvh w-full flex-col">
-        <main className="mx-auto w-full max-w-[1200px] flex-1 px-10 py-10">
+        <main className="container-page flex-1 py-10">
           <Outlet />
         </main>
       </div>

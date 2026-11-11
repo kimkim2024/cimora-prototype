@@ -11,7 +11,7 @@ export default function NotPorted() {
   useTitle('Not ported yet · Cimora');
 
   return (
-    <section className="mx-auto flex w-full max-w-[1200px] flex-col items-start px-10 py-24">
+    <section className="container-page flex flex-col items-start py-24">
       <p className="text-[12px] tracking-[0.02em] text-ink-quiet">Not ported yet</p>
       <h1 className="mt-4 max-w-[24ch] text-[36px] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
         <code className="text-[32px] text-ink-muted">{pathname}</code> still lives in the prototype.

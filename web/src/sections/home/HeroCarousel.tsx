@@ -35,10 +35,10 @@ export function HeroCarousel() {
         if (event.key === 'ArrowLeft') go(index - 1);
         if (event.key === 'ArrowRight') go(index + 1);
       }}
-      className="mx-auto w-full max-w-[1200px] px-10 pt-16"
+      className="container-page pt-16"
     >
       <div className="text-center">
-        <h1 className="mx-auto max-w-[26ch] text-[36px] font-medium leading-[1.3] tracking-[-0.02em] text-ink">
+        <h1 className="mx-auto max-w-[26ch] text-[36px] wide:text-[40px] mega:text-[46px] font-medium leading-[1.3] tracking-[-0.02em] text-ink">
           Turn the worlds you love, into your own work.
         </h1>
         <p className="mx-auto mt-3 max-w-[52ch] text-[12px] text-ink-muted">
@@ -46,7 +46,7 @@ export function HeroCarousel() {
         </p>
       </div>
 
-      <div className="relative mt-10 h-[420px]">
+      <div className="relative mt-10 h-[420px] wide:h-[470px] mega:h-[520px]">
         {REEL.map((film, i) => {
           const offset = (i - index + REEL.length) % REEL.length;
           const state = offset === 0 ? 'current' : offset === 1 ? 'next' : 'previous';
@@ -66,7 +66,7 @@ export function HeroCarousel() {
               tabIndex={state === 'current' ? -1 : 0}
               onClick={() => go(i)}
               className={
-                'absolute left-1/2 top-0 h-full w-[min(940px,76vw)] overflow-hidden rounded-2xl border border-hairline bg-paper-sunken text-left transition-all duration-500 ' +
+                'absolute left-1/2 top-0 h-full w-[min(940px,76vw)] wide:w-[min(1040px,72%)] mega:w-[min(1180px,70%)] overflow-hidden rounded-2xl border border-hairline bg-paper-sunken text-left transition-all duration-500 ' +
                 placement
               }
             >

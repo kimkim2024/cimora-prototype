@@ -27,7 +27,7 @@ export function CasePage() {
         </p>
       </PageHero>
 
-      <section className="mx-auto w-full max-w-[1200px] px-10">
+      <section className="container-page">
         <figure className="overflow-hidden rounded-2xl border border-hairline bg-paper-sunken">
           <img src={artUrl(item.art)} alt={item.title} className="aspect-[16/7] w-full object-cover" />
         </figure>
@@ -98,10 +98,10 @@ export function TemplatePage() {
 
   return (
     <>
-      <section className="mx-auto grid w-full max-w-[1200px] grid-cols-[1fr_1fr] items-center gap-14 px-10 pt-20">
+      <section className="container-page grid grid-cols-[1fr_1fr] items-center gap-14 pt-20">
         <div>
           <p className="text-[11px] text-ink-quiet">{item.type}</p>
-          <h1 className="mt-3 max-w-[18ch] text-[44px] font-medium leading-[1.1] tracking-[-0.035em] text-ink">
+          <h1 className="mt-3 max-w-[18ch] text-[44px] wide:text-[48px] mega:text-[52px] font-medium leading-[1.1] tracking-[-0.035em] text-ink">
             {item.title}
           </h1>
           <p className="mt-5 max-w-[46ch] text-[14px] leading-[1.7] text-ink-muted">{item.desc}</p>
@@ -147,7 +147,7 @@ export function ArticlePage() {
   if (!item) return <NotFound />;
 
   return (
-    <article className="mx-auto w-full max-w-[820px] px-10 pb-24 pt-20">
+    <article className="container-prose pb-24 pt-20">
       <p className="text-[11px] text-ink-quiet">
         {item.category} · {item.time} read
       </p>
@@ -200,7 +200,7 @@ export function UpdatesPage() {
   useTitle('Product updates · Cimora');
 
   return (
-    <div className="mx-auto w-full max-w-[820px] px-10 pb-24 pt-20">
+    <div className="container-prose pb-24 pt-20">
       <h1 className="text-[44px] font-medium leading-[1.12] tracking-[-0.035em] text-ink">Keep making creation better.</h1>
       <div className="mt-10 divide-y divide-hairline border-t border-hairline">
         {UPDATES.map(([date, title, body]) => (

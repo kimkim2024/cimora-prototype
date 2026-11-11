@@ -48,7 +48,7 @@ export function Engineering() {
   const status = STATUS[state];
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-24">
+    <section className="container-page pt-24">
       {label(
         '02 / Built for keeping going',
         'Great creation needs a project that can keep going.',

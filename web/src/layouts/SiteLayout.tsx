@@ -4,7 +4,7 @@ import { HomeFooter } from '../components/HomeFooter';
 import { SiteFooter } from '../components/SiteFooter';
 import { SiteHeader } from '../components/SiteHeader';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
-import { scrollToTop } from '../lib/scroll';
+import { scrollToTop, useWheelScrollFallback } from '../lib/scroll';
 
 /**
  * One shell for every public page: bar, page, footer. The home page carries its
@@ -19,6 +19,9 @@ export function SiteLayout() {
   useEffect(() => {
     scrollToTop();
   }, [pathname]);
+
+  // and keep the wheel working even if the browser drops it
+  useWheelScrollFallback();
 
   return (
     <div className="flex min-h-dvh flex-col bg-canvas font-sans text-ink">

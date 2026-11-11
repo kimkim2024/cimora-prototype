@@ -10,13 +10,13 @@ export function ProductHero() {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-10">
+    <section className="container-page pt-10">
       <div
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className="relative isolate overflow-hidden rounded-[48px] border border-hairline bg-paper"
       >
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-45 mix-blend-multiply">
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-35 mix-blend-multiply">
           <DitherField speed={hovered ? 0.6 : 0.2} color="#9ccc0f" />
         </div>
 

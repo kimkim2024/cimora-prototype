@@ -19,9 +19,9 @@ export default function FeaturesPage() {
 
   return (
     <>
-      <section className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.05fr_1fr] items-center gap-14 px-10 pt-20">
+      <section className="container-page grid grid-cols-[1.05fr_1fr] items-center gap-14 pt-20">
         <div>
-          <h1 className="max-w-[18ch] text-[44px] font-medium leading-[1.1] tracking-[-0.035em] text-ink">
+          <h1 className="max-w-[18ch] text-[44px] wide:text-[48px] mega:text-[52px] font-medium leading-[1.1] tracking-[-0.035em] text-ink">
             {feature.title}
           </h1>
           <div className="mt-8 flex items-center gap-3">
@@ -61,7 +61,7 @@ export default function FeaturesPage() {
           <img src={artUrl(feature.art + 3)} alt="" loading="lazy" className="aspect-[5/4] w-full object-cover" />
         </figure>
         <div>
-          <h2 className="text-[30px] font-medium leading-[1.25] tracking-[-0.025em] text-ink">
+          <h2 className="text-[30px] wide:text-[32px] mega:text-[36px] font-medium leading-[1.25] tracking-[-0.025em] text-ink">
             Creation is not a gacha pull. Every step can be refined further.
           </h2>
           <ul className="mt-6 space-y-4">

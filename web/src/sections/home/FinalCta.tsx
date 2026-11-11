@@ -4,7 +4,7 @@ import { CTA_BANNER } from '../../data/home';
 /** The closing poster: one image, one action, one line underneath. */
 export function FinalCta() {
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-24 text-center">
+    <section className="container-page pt-24 text-center">
       <span className="text-[10px] uppercase tracking-[0.18em] text-ink-quiet">Your next chapter starts here</span>
 
       <div className="relative mt-5 overflow-hidden rounded-2xl border border-hairline">

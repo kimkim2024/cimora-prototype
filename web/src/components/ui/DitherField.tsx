@@ -40,15 +40,16 @@ void main(){
   float f = fbm(p + 1.7 * q + vec2(t * .06, -t * .05));
 
   // a smooth field over the whole card, so the dither density varies instead of
-  // collapsing into solid blobs
+  // collapsing into solid blobs; kept light and bottom-weighted so the type on
+  // top stays clean
   float field = clamp((f - .12) * 1.7, 0., 1.);
-  field *= mix(.45, 1., smoothstep(0., .28, uv.y) * smoothstep(1., .62, uv.y + .1));
-  field = max(field, .08);
+  field *= .45;
+  field *= mix(.12, 1., smoothstep(.1, .62, uv.y));
 
   float d = bayer4(gl_FragCoord.xy);
   float on = step(d, field);
 
-  gl_FragColor = vec4(uColor, on * .8);
+  gl_FragColor = vec4(uColor, on * .55);
 }`;
 
 type Props = { speed: number; color?: string; scale?: number; className?: string };
@@ -71,7 +72,7 @@ export function DitherField({ speed, color = '#9ccc0f', scale = 1, className = '
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: true });
+    const gl = canvas.getContext('webgl', { antialias: false, alpha: true, premultipliedAlpha: false });
     if (!gl) return;
 
     const compile = (type: number, src: string) => {

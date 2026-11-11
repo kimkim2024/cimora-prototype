@@ -23,13 +23,13 @@ export function Composer() {
   };
 
   return (
-    <section className="mx-auto w-full max-w-[1200px] px-10 pt-8">
+    <section className="container-page pt-8">
       <form
         onSubmit={(event) => {
           event.preventDefault();
           send();
         }}
-        className="mx-auto max-w-[760px] rounded-2xl border border-hairline bg-paper p-4 shadow-card"
+        className="mx-auto max-w-[760px] wide:max-w-[860px] mega:max-w-[960px] rounded-2xl border border-hairline bg-paper p-4 shadow-card"
       >
         <div role="group" aria-label="Choose a format" className="flex items-center gap-1.5">
           {COMPOSER_MODES.map((option) => {

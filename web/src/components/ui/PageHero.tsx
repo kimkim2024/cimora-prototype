@@ -13,12 +13,12 @@ export function PageHero({ title, centered, lead, children, className = '' }: Pr
   return (
     <section
       className={
-        'mx-auto w-full max-w-[1200px] px-10 pt-20 ' + (centered ? 'text-center ' : '') + className
+        'container-page pt-20 ' + (centered ? 'text-center ' : '') + className
       }
     >
       <h1
         className={
-          'text-[44px] font-medium leading-[1.1] tracking-[-0.035em] text-ink ' +
+          'text-[44px] wide:text-[48px] mega:text-[52px] font-medium leading-[1.1] tracking-[-0.035em] text-ink ' +
           (centered ? 'mx-auto max-w-[20ch]' : 'max-w-[22ch]')
         }
       >
@@ -43,10 +43,10 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section className={'mx-auto w-full max-w-[1200px] px-10 pt-16 ' + className}>
+    <section className={'container-page pt-16 ' + className}>
       {(title || action) && (
         <div className="mb-6 flex items-end justify-between gap-6">
-          {title && <h2 className="text-[30px] font-medium leading-[1.25] tracking-[-0.025em] text-ink">{title}</h2>}
+          {title && <h2 className="text-[30px] wide:text-[32px] mega:text-[36px] font-medium leading-[1.25] tracking-[-0.025em] text-ink">{title}</h2>}
           {action}
         </div>
       )}
