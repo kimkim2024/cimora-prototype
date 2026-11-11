@@ -1,0 +1,61 @@
+/* Breathing ambient background for the public site.
+   The homepage mounts the WebGL shader inside its hero (cimora-home.css);
+   every other public route mounts the same shader in this fixed layer, so the
+   light drifts the same way behind the page. Palette is read from the page
+   scope, so it follows the light theme automatically. */
+
+.public-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: none;
+  pointer-events: none;
+  opacity: .85;
+  --shader-surface: var(--color-paper);
+  /* the hero uses ink here for a subtle shadowing at wave peaks; behind body
+     copy that reads as a grey smudge, so the ambient keeps it paper-white */
+  --shader-ink: var(--color-paper);
+  --shader-accent: var(--color-accent);
+}
+
+body.public-body:not(.cimora-home-public) .public-ambient { display: block; }
+
+/* keep page content above the ambient layer without touching the header */
+body.public-body:not(.cimora-home-public) #site {
+  position: relative;
+  z-index: 1;
+}
+
+/* CSS gradient stays as the fallback when WebGL is unavailable */
+.public-ambient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    90% 70% at 15% 0%,
+    color-mix(in oklab, var(--color-accent) 55%, var(--color-paper)) 0%,
+    transparent 72%
+  );
+}
+
+.public-ambient > .hm-shader-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: hidden;
+}
+
+.public-ambient[data-shader-status="running"] > .hm-shader-canvas { visibility: visible; }
+
+/* fade the glow out toward the bottom so long pages stay plain */
+.public-ambient::before,
+.public-ambient > .hm-shader-canvas {
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 54%, transparent 94%);
+  mask-image: linear-gradient(to bottom, black 0, black 54%, transparent 94%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-ambient { opacity: .45; }
+}

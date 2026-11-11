@@ -27,7 +27,7 @@ const VERBOSE = args.includes('--verbose');
 
 const CONFIG = {
   tokens: 'design/tokens.css',
-  tokenised: ['design/tokens.css', 'design/fonts.css', 'cimora-styleguide.css', 'cimora-public-light.css'],
+  tokenised: ['design/tokens.css', 'design/fonts.css', 'cimora-styleguide.css', 'cimora-public-light.css', 'cimora-public-ambient.css'],
   legacy: [
     'site.css', 'site-refinements.css', 'cimora.css', 'cimora-home.css', 'cimora-appearance.css',
     'cimora-production.css', 'cimora-adaptation.css', 'cimora-comic.css', 'cimora-import.css',

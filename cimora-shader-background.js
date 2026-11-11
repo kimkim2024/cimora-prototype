@@ -18,7 +18,7 @@
   gl_FragColor=vec4(colour,1.0);
  }`;
  const carried=new Map();
- const hostKey=host=>host.classList&&host.classList.contains('cm-sidebar')?'sidebar':'hero';
+ const hostKey=host=>host.classList&&host.classList.contains('cm-sidebar')?'sidebar':host.classList&&host.classList.contains('public-ambient')?'ambient':'hero';
  function mount(host,key=hostKey(host)){
   const canvas=document.createElement('canvas');canvas.className='hm-shader-canvas';canvas.setAttribute('aria-hidden','true');host.prepend(canvas);
   const abort=new AbortController(),on=(el,event,fn)=>el.addEventListener(event,fn,{signal:abort.signal,passive:event==='pointermove'});
@@ -57,6 +57,8 @@
   return dispose;
  }
  const mounted=new Map();
- function sync(){mounted.forEach((dispose,host)=>{if(!host.isConnected){dispose();mounted.delete(host);}});document.querySelectorAll('.hm-official .hm-hero-vignette, body.cimora-app .cm-sidebar').forEach(host=>{if(!mounted.has(host))mounted.set(host,mount(host,hostKey(host)));});}
+ const isAmbient=host=>host.classList&&host.classList.contains('public-ambient');
+const ambientPage=()=>document.body.classList.contains('public-body')&&!document.body.classList.contains('cimora-home-public');
+function sync(){mounted.forEach((dispose,host)=>{if(!host.isConnected||(isAmbient(host)&&!ambientPage())){dispose();mounted.delete(host);}});document.querySelectorAll('.hm-official .hm-hero-vignette, body.cimora-app .cm-sidebar, .public-ambient').forEach(host=>{if(isAmbient(host)&&!ambientPage())return;if(!mounted.has(host))mounted.set(host,mount(host,hostKey(host)));});}
  new MutationObserver(sync).observe(document.documentElement,{childList:true,subtree:true});sync();
 })();
