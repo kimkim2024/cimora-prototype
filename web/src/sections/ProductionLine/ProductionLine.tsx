@@ -12,7 +12,7 @@ import { LineDiagram } from './LineDiagram';
  */
 export function ProductionLine() {
   const reduced = useReducedMotion();
-  const [ref, inView] = useInView<HTMLElement>(0.12);
+  const [ref, inView] = useInView<HTMLElement>();
   const [hovered, setHovered] = useState<number | null>(null);
   const [auto] = useAutoCycle(STAGES.length, hovered !== null, reduced);
   const active = hovered ?? (reduced ? 0 : auto);

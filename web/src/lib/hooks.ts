@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 
-/** true once the element has been on screen; the observer disconnects itself. */
-export function useInView<T extends HTMLElement>(threshold = 0.2) {
+/**
+ * true once the element has been reached by the reader.
+ *
+ * This deliberately does not use IntersectionObserver. An observer fires when
+ * the *ratio* changes, so an element that goes from below the fold to above it
+ * in a single jump (a fast flick, an instant scroll, a wheel fallback step)
+ * reports "0 before, 0 after" and never calls back - the content then stays
+ * invisible until the reader scrolls back up. A scroll check answers the only
+ * question that matters: has the top of the element reached the viewport?
+ */
+export function useInView<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
 
@@ -9,22 +18,41 @@ export function useInView<T extends HTMLElement>(threshold = 0.2) {
     if (inView) return;
     const el = ref.current;
     if (!el) return;
-    if (typeof IntersectionObserver !== 'function') {
-      setInView(true);
-      return;
+
+    let frame = 0;
+    let done = false;
+
+    const stop = () => {
+      done = true;
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+
+    const measure = () => {
+      frame = 0;
+      if (done || !el.isConnected) return;
+      if (el.getBoundingClientRect().top < window.innerHeight) {
+        stop();
+        setInView(true);
+      }
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(measure);
+    };
+
+    measure(); // already on screen, or already passed
+    if (!done) {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
     }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setInView(true);
-          io.disconnect();
-        }
-      },
-      { threshold },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [inView, threshold]);
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      stop();
+    };
+  }, [inView]);
 
   return [ref, inView] as const;
 }
