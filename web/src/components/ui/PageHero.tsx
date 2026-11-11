@@ -24,7 +24,7 @@ export function PageHero({ title, centered, lead, children, className = '' }: Pr
       >
         {title}
       </h1>
-      {lead && <p className={'mt-5 text-[14px] leading-[1.7] text-ink-muted ' + (centered ? 'mx-auto max-w-[56ch]' : 'max-w-[56ch]')}>{lead}</p>}
+      {lead && <p className={'mt-5 type-body leading-[1.7] text-ink-muted ' + (centered ? 'mx-auto max-w-[56ch]' : 'max-w-[56ch]')}>{lead}</p>}
       {children}
     </section>
   );

@@ -37,10 +37,10 @@ export function AppLayout() {
     <div className="flex min-h-dvh bg-canvas font-sans text-ink">
       <aside className="fixed inset-y-0 left-0 flex w-[248px] flex-col border-r border-hairline bg-paper px-4 py-6">
         <div className="px-2">
-          <a href={legacyUrl('/')} className="text-[15px] font-semibold tracking-[-0.02em] text-ink">
+          <a href={legacyUrl('/')} className="type-lead font-semibold tracking-[-0.02em] text-ink">
             Studio Cimora
           </a>
-          <p className="mt-1 text-[11px] text-ink-quiet">Personal studio · Creator</p>
+          <p className="mt-1 type-meta text-ink-quiet">Personal studio · Creator</p>
         </div>
 
         <nav aria-label="Studio" className="mt-8 space-y-0.5">
@@ -50,7 +50,7 @@ export function AppLayout() {
               to={item.to}
               end={item.end}
               className={({ isActive }) =>
-                'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] transition-colors ' +
+                'flex items-center gap-2.5 rounded-lg px-2.5 py-2 type-copy transition-colors ' +
                 (isActive ? 'bg-paper-muted font-medium text-ink' : 'text-ink-muted hover:bg-paper-muted hover:text-ink')
               }
             >
@@ -62,16 +62,16 @@ export function AppLayout() {
 
         <div className="mt-auto rounded-xl border border-hairline bg-paper p-3">
           <div className="flex items-center justify-between">
-            <span className="text-[11px] text-ink-muted">Creator plan</span>
-            <span className="text-[11px] tabular-nums text-ink-quiet">128 / 300</span>
+            <span className="type-meta text-ink-muted">Creator plan</span>
+            <span className="type-meta tabular-nums text-ink-quiet">128 / 300</span>
           </div>
           <div className="mt-2 h-1 overflow-hidden rounded-full bg-paper-sunken">
             <div className="h-full w-[42%] rounded-full bg-accent" />
           </div>
-          <p className="mt-2 text-[10px] text-ink-quiet">Generation credits this month</p>
+          <p className="mt-2 type-label text-ink-quiet">Generation credits this month</p>
         </div>
 
-        <a href={legacyUrl('/')} className="mt-3 px-2 text-[11px] text-ink-quiet transition-colors hover:text-ink">
+        <a href={legacyUrl('/')} className="mt-3 px-2 type-meta text-ink-quiet transition-colors hover:text-ink">
           Back to the site
         </a>
       </aside>

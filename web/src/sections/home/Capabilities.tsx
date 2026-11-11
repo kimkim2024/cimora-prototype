@@ -19,8 +19,8 @@ export function Capabilities() {
             />
             <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(15,15,15,.95)_0%,rgba(15,15,15,.72)_34%,rgba(15,15,15,.28)_58%,transparent_78%)]" />
             <div className="absolute inset-x-4 bottom-4">
-              <h3 className="text-[14px] font-medium leading-[1.35]">{item.title}</h3>
-              <p className="mt-1 text-[11px] leading-[1.5] text-ink-inverse/70">{item.line}</p>
+              <h3 className="type-body font-medium leading-[1.35]">{item.title}</h3>
+              <p className="mt-1 type-meta leading-[1.5] text-ink-inverse/70">{item.line}</p>
             </div>
           </article>
         ))}

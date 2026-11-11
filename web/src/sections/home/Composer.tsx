@@ -41,7 +41,7 @@ export function Composer() {
                 aria-pressed={active}
                 onClick={() => setMode(option)}
                 className={
-                  'h-8 rounded-full px-3.5 text-[12px] font-medium transition-colors ' +
+                  'h-8 rounded-full px-3.5 type-list font-medium transition-colors ' +
                   (active ? 'bg-accent text-ink-on-accent' : 'text-ink-muted hover:bg-paper-muted hover:text-ink')
                 }
               >
@@ -60,7 +60,7 @@ export function Composer() {
           onChange={(event) => setText(event.target.value)}
           rows={2}
           placeholder="Write an idea to start your story / type @ to mention a character, scene, or prop"
-          className="mt-3 w-full resize-none bg-transparent px-1 text-[14px] leading-[1.7] text-ink outline-none placeholder:text-ink-quiet"
+          className="mt-3 w-full resize-none bg-transparent px-1 type-body leading-[1.7] text-ink outline-none placeholder:text-ink-quiet"
         />
 
         <div className="mt-2 flex items-center gap-2">
@@ -74,8 +74,8 @@ export function Composer() {
             </svg>
           </button>
 
-          <span className="inline-flex h-9 items-center gap-2 rounded-full bg-ink px-3 text-[12px] text-ink-inverse">
-            <span className="grid h-5 w-5 place-items-center rounded-full bg-ink-inverse/15 text-[10px] font-semibold">
+          <span className="inline-flex h-9 items-center gap-2 rounded-full bg-ink px-3 type-list text-ink-inverse">
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-ink-inverse/15 type-label font-semibold">
               A
             </span>
             {COMPOSER_MODEL.name}

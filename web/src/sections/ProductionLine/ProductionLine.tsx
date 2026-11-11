@@ -49,15 +49,15 @@ export function ProductionLine() {
               }
             >
               <div className="flex items-baseline gap-3">
-                <span className="text-[11px] tabular-nums text-ink-quiet">{stage.no}</span>
-                <h3 className="text-[17px] font-medium leading-[1.3] tracking-[-0.01em] text-ink">{stage.title}</h3>
+                <span className="type-meta tabular-nums text-ink-quiet">{stage.no}</span>
+                <h3 className="type-sub font-medium leading-[1.3] tracking-[-0.01em] text-ink">{stage.title}</h3>
               </div>
-              <p className="mt-3 max-w-[36ch] text-[13px] leading-[1.65] text-ink-muted">{stage.description}</p>
+              <p className="mt-3 max-w-[36ch] type-copy leading-[1.65] text-ink-muted">{stage.description}</p>
               <a
                 href={stage.href}
                 onFocus={() => setHovered(i)}
                 onBlur={() => setHovered(null)}
-                className="mt-5 inline-block text-[12px] text-ink underline decoration-transparent decoration-1 underline-offset-4 transition-colors hover:decoration-current focus-visible:decoration-current"
+                className="mt-5 inline-block type-list text-ink underline decoration-transparent decoration-1 underline-offset-4 transition-colors hover:decoration-current focus-visible:decoration-current"
               >
                 Learn more
               </a>

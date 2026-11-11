@@ -27,13 +27,13 @@ export default function FeaturesPage() {
           <div className="mt-8 flex items-center gap-3">
             <a
               href={legacyUrl(`/app/new?source=${feature.source}`)}
-              className="inline-flex h-11 items-center rounded-xl bg-ink px-5 text-[14px] font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
+              className="inline-flex h-11 items-center rounded-xl bg-ink px-5 type-body font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
             >
               Start here
             </a>
             <Link
               to="/app"
-              className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-5 text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
+              className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-5 type-body font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
             >
               Open the studio
             </Link>
@@ -48,9 +48,9 @@ export default function FeaturesPage() {
         <div className="grid grid-cols-4 gap-8 border-t border-hairline pt-6">
           {feature.steps.map((step, i) => (
             <div key={step}>
-              <span className="text-[11px] tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="mt-3 text-[15px] font-medium leading-[1.4] text-ink">{step}</h3>
-              <p className="mt-2 text-[12px] leading-[1.7] text-ink-muted">{feature.points[i % feature.points.length]}</p>
+              <span className="type-meta tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="mt-3 type-lead font-medium leading-[1.4] text-ink">{step}</h3>
+              <p className="mt-2 type-list leading-[1.7] text-ink-muted">{feature.points[i % feature.points.length]}</p>
             </div>
           ))}
         </div>
@@ -66,7 +66,7 @@ export default function FeaturesPage() {
           </h2>
           <ul className="mt-6 space-y-4">
             {feature.points.map((point) => (
-              <li key={point} className="flex gap-3 text-[13px] leading-[1.7] text-ink-muted">
+              <li key={point} className="flex gap-3 type-copy leading-[1.7] text-ink-muted">
                 <span aria-hidden className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-ink" />
                 {point}
               </li>
@@ -75,7 +75,7 @@ export default function FeaturesPage() {
         </div>
       </section>
 
-      <Section title="Tools that connect" action={<span className="text-[12px] text-ink-quiet">{tools.length} related tools</span>}>
+      <Section title="Tools that connect" action={<span className="type-list text-ink-quiet">{tools.length} related tools</span>}>
         <div className="grid grid-cols-3 gap-4">
           {tools.map((tool) => (
             <ToolCard key={tool.id} tool={tool} />

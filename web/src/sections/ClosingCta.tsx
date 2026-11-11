@@ -9,17 +9,17 @@ export function ClosingCta() {
         <h2 className="max-w-[26ch] text-[36px] font-medium leading-[1.15] tracking-[-0.03em] text-ink">
           What happens in the next panel?
         </h2>
-        <p className="mt-4 text-[14px] text-ink-muted">Bring your characters and story. Start here.</p>
+        <p className="mt-4 type-body text-ink-muted">Bring your characters and story. Start here.</p>
         <div className="mt-8 flex items-center gap-3">
           <a
             href={legacyUrl('/app/new')}
-            className="inline-flex h-11 items-center rounded-xl bg-ink px-6 text-[14px] font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
+            className="inline-flex h-11 items-center rounded-xl bg-ink px-6 type-body font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
           >
             Start a new story
           </a>
           <Link
             to="/tools"
-            className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-6 text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
+            className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-6 type-body font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
           >
             Try free tools first
           </Link>

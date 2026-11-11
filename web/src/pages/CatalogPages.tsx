@@ -18,7 +18,7 @@ export function ShowcasePage() {
             <CaseCard key={item.id} item={item} delay={i * 40} />
           ))}
         </div>
-        <p className="mt-6 text-[12px] text-ink-quiet">
+        <p className="mt-6 type-list text-ink-quiet">
           Original demo works · sample art and workflows, no customer work included.
         </p>
       </section>
@@ -60,7 +60,7 @@ export function ResourcesPage() {
           ))}
         </div>
         <Section className="!px-0 pt-12">
-          <Link to="/resources/updates" className="text-[13px] text-ink underline underline-offset-4">
+          <Link to="/resources/updates" className="type-copy text-ink underline underline-offset-4">
             View product updates
           </Link>
         </Section>

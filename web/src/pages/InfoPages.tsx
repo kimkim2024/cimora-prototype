@@ -24,9 +24,9 @@ export function HelpPage() {
                 to={`/resources/${category.articleId}`}
                 className="group rounded-2xl border border-hairline bg-paper p-6 transition-colors hover:border-hairline-strong"
               >
-                <span className="text-[11px] tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="mt-3 text-[15px] font-medium leading-[1.4] text-ink">{category.title}</h3>
-                <p className="mt-2 text-[12px] text-ink-muted">{article ? `${article.time} read` : 'Step guide'}</p>
+                <span className="type-meta tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="mt-3 type-lead font-medium leading-[1.4] text-ink">{category.title}</h3>
+                <p className="mt-2 type-list text-ink-muted">{article ? `${article.time} read` : 'Step guide'}</p>
               </Link>
             );
           })}
@@ -51,7 +51,7 @@ export function LegalPage() {
     <article className="container-prose pb-24 pt-20">
       <h1 className="text-[44px] font-medium leading-[1.12] tracking-[-0.035em] text-ink">{title}</h1>
 
-      <p className="mt-8 rounded-2xl border border-hairline bg-paper-muted p-6 text-[13px] leading-[1.7] text-ink-muted">
+      <p className="mt-8 rounded-2xl border border-hairline bg-paper-muted p-6 type-copy leading-[1.7] text-ink-muted">
         {LEGAL_NOTICE}
       </p>
 
@@ -59,7 +59,7 @@ export function LegalPage() {
         {LEGAL_SECTIONS.map(([heading, body]) => (
           <section key={heading} className="py-8">
             <h2 className="text-[22px] font-medium leading-[1.35] tracking-[-0.02em] text-ink">{heading}</h2>
-            <p className="mt-3 text-[13px] leading-[1.8] text-ink-muted">{body}</p>
+            <p className="mt-3 type-copy leading-[1.8] text-ink-muted">{body}</p>
           </section>
         ))}
       </div>
@@ -70,7 +70,7 @@ export function LegalPage() {
             key={key}
             to={`/legal/${key}`}
             className={
-              'inline-flex h-9 items-center rounded-full border px-4 text-[12px] transition-colors ' +
+              'inline-flex h-9 items-center rounded-full border px-4 type-list transition-colors ' +
               (key === doc
                 ? 'border-ink bg-ink text-ink-inverse'
                 : 'border-hairline text-ink-muted hover:border-hairline-strong hover:text-ink')
@@ -92,13 +92,13 @@ export function ToolsPage() {
   return (
     <>
       <PageHero title={<>Every step of creating, has a handy tool.</>} centered className="pb-10">
-        <p className="mt-3 text-[12px] text-ink-quiet">14 standalone tools · local demo · no real API calls</p>
+        <p className="mt-3 type-list text-ink-quiet">14 standalone tools · local demo · no real API calls</p>
       </PageHero>
 
       <section className="container-page pb-24">
         <div className="flex items-center justify-between gap-6">
           <Chips options={TOOL_GROUPS} value={group} onChange={setGroup} label="Tool group" />
-          <span className="text-[12px] text-ink-quiet">{items.length} tools</span>
+          <span className="type-list text-ink-quiet">{items.length} tools</span>
         </div>
         <div className="mt-8 grid grid-cols-4 gap-4">
           {items.map((tool) => (

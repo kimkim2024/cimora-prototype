@@ -145,7 +145,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
                 transition={reduced ? undefined : { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
               />
             </div>
-            <span className="text-[9px] font-mono tracking-[0.3em] text-ink-quiet uppercase [writing-mode:vertical-lr]">
+            <span className="type-micro font-mono tracking-[0.3em] text-ink-quiet uppercase [writing-mode:vertical-lr]">
               Scroll down
             </span>
           </div>
@@ -166,12 +166,12 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
         </div>
 
         <div className="space-y-7 xl:space-y-9">
-          <p className="max-w-[46ch] text-[15px] leading-relaxed font-light text-ink-muted wide:text-[17px]">{description}</p>
+          <p className="max-w-[46ch] type-lead leading-relaxed font-light text-ink-muted">{description}</p>
 
           <div className="flex flex-wrap items-center gap-4">
             <Link
               to={ctaTo}
-              className="group relative inline-flex h-12 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ink bg-ink px-6 text-[11px] font-semibold tracking-[0.15em] text-ink-inverse uppercase shadow-lg transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink/30 hover:bg-paper hover:text-ink xl:h-16 xl:px-10 xl:text-[13px]"
+              className="group relative inline-flex h-12 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-ink bg-ink px-6 type-meta font-semibold tracking-[0.15em] text-ink-inverse uppercase shadow-lg transition-all duration-500 ease-out hover:-translate-y-0.5 hover:border-ink/30 hover:bg-paper hover:text-ink xl:h-16 xl:px-10 xl:text-[13px]"
             >
               <span className="absolute inset-0 flex h-full w-full -translate-x-full -skew-x-12 justify-center transition-transform duration-700 group-hover:translate-x-full">
                 <span className="relative h-full w-8 bg-ink/10" />
@@ -187,7 +187,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
             <button
               type="button"
               onClick={scrollToLine}
-              className="group inline-flex h-12 cursor-pointer items-center justify-center rounded-full border border-transparent px-6 text-[11px] font-semibold tracking-[0.15em] text-ink-muted uppercase backdrop-blur-sm transition-all duration-500 hover:border-hairline hover:bg-paper-muted/60 hover:text-ink xl:h-16 xl:px-10 xl:text-[13px]"
+              className="group inline-flex h-12 cursor-pointer items-center justify-center rounded-full border border-transparent px-6 type-meta font-semibold tracking-[0.15em] text-ink-muted uppercase backdrop-blur-sm transition-all duration-500 hover:border-hairline hover:bg-paper-muted/60 hover:text-ink xl:h-16 xl:px-10 xl:text-[13px]"
             >
               <span className="flex items-center gap-2 xl:gap-3">
                 <span className="opacity-50 transition-opacity group-hover:opacity-100">

@@ -36,15 +36,15 @@ export function HomeFooter() {
     <footer className="mt-24 border-t border-hairline bg-paper" aria-label="Cimora footer">
       <div className="container-page grid grid-cols-[1.5fr_repeat(3,1fr)] gap-10 pt-14">
         <div>
-          <Link to="/" className="text-[15px] font-semibold tracking-[-0.02em] text-ink">
+          <Link to="/" className="type-lead font-semibold tracking-[-0.02em] text-ink">
             Cimora
           </Link>
-          <p className="mt-3 max-w-[34ch] text-[12px] leading-[1.7] text-ink-muted">
+          <p className="mt-3 max-w-[34ch] type-list leading-[1.7] text-ink-muted">
             Turn the worlds you love into your own work. Stories, characters, comics and motion in one studio.
           </p>
 
           <form className="mt-5 max-w-[320px]" onSubmit={(event) => event.preventDefault()}>
-            <label htmlFor="footer-email" className="block text-[11px] text-ink">
+            <label htmlFor="footer-email" className="block type-meta text-ink">
               Get product updates by email
             </label>
             <div className="mt-2 flex gap-2">
@@ -54,26 +54,26 @@ export function HomeFooter() {
                 required
                 autoComplete="email"
                 placeholder="you@studio.com"
-                className="h-9 min-w-0 flex-1 rounded-lg border border-hairline bg-paper px-3 text-[12px] text-ink outline-none placeholder:text-ink-quiet focus:border-hairline-strong"
+                className="h-9 min-w-0 flex-1 rounded-lg border border-hairline bg-paper px-3 type-list text-ink outline-none placeholder:text-ink-quiet focus:border-hairline-strong"
               />
               <button
                 type="submit"
-                className="h-9 rounded-lg bg-ink px-3.5 text-[12px] font-medium text-ink-inverse transition-opacity hover:opacity-85"
+                className="h-9 rounded-lg bg-ink px-3.5 type-list font-medium text-ink-inverse transition-opacity hover:opacity-85"
               >
                 Subscribe
               </button>
             </div>
-            <p className="mt-2 text-[10px] text-ink-quiet">Demo only — email subscriptions are not connected.</p>
+            <p className="mt-2 type-label text-ink-quiet">Demo only — email subscriptions are not connected.</p>
           </form>
         </div>
 
         {COLUMNS.map((column) => (
           <nav key={column.title} aria-label={column.title}>
-            <h3 className="text-[12px] font-medium text-ink">{column.title}</h3>
+            <h3 className="type-list font-medium text-ink">{column.title}</h3>
             <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.to} className="text-[12px] text-ink-muted transition-colors hover:text-ink">
+                  <Link to={link.to} className="type-list text-ink-muted transition-colors hover:text-ink">
                     {link.label}
                   </Link>
                 </li>
@@ -83,7 +83,7 @@ export function HomeFooter() {
         ))}
       </div>
 
-      <div className="container-page mt-12 flex items-center justify-between border-t border-hairline py-5 text-[11px] text-ink-quiet">
+      <div className="container-page mt-12 flex items-center justify-between border-t border-hairline py-5 type-meta text-ink-quiet">
         <div className="flex items-center gap-4">
           <span>© 2026 Cimora.</span>
           <Link to="/legal/privacy" className="transition-colors hover:text-ink">
@@ -96,7 +96,7 @@ export function HomeFooter() {
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-[11px] text-ink-quiet transition-colors hover:text-ink"
+          className="type-meta text-ink-quiet transition-colors hover:text-ink"
         >
           Back to top
         </button>
@@ -131,7 +131,7 @@ export function HomeFooter() {
               'radial-gradient(circle 170px at var(--df-x, -999px) var(--df-y, -999px), #000 0%, transparent 72%)',
           }}
         />
-        <span className="absolute inset-0 grid place-items-center text-[13px] font-medium tracking-[0.4em] text-ink-quiet">
+        <span className="absolute inset-0 grid place-items-center type-copy font-medium tracking-[0.4em] text-ink-quiet">
           CIMORA STUDIO
         </span>
       </div>

@@ -41,7 +41,7 @@ export function HeroCarousel() {
         <h1 className="mx-auto max-w-[26ch] text-[36px] wide:text-[40px] mega:text-[46px] font-medium leading-[1.3] tracking-[-0.02em] text-ink">
           Turn the worlds you love, into your own work.
         </h1>
-        <p className="mx-auto mt-3 max-w-[52ch] text-[12px] text-ink-muted">
+        <p className="mx-auto mt-3 max-w-[52ch] type-list text-ink-muted">
           From a single spark, to a comic chapter, to a story that moves.
         </p>
       </div>
@@ -78,10 +78,10 @@ export function HeroCarousel() {
               />
               <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(17,16,28,.82)_0%,rgba(24,18,41,.28)_42%,transparent_70%)]" />
 
-              <span className="absolute left-6 top-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-ink-inverse/85">
+              <span className="absolute left-6 top-5 flex items-center gap-2 type-label uppercase tracking-[0.16em] text-ink-inverse/85">
                 {film.en}
               </span>
-              <span className="absolute right-6 top-5 text-[10px] tabular-nums tracking-[0.1em] text-ink-inverse/85">
+              <span className="absolute right-6 top-5 type-label tabular-nums tracking-[0.1em] text-ink-inverse/85">
                 {String(i + 1).padStart(2, '0')} / {String(REEL.length).padStart(2, '0')}
               </span>
 
@@ -89,7 +89,7 @@ export function HeroCarousel() {
                 <span className="block text-[40px] font-medium leading-[1.1] tracking-[-0.02em] text-ink-inverse">
                   {film.title}
                 </span>
-                <span className="mt-2 block max-w-[52ch] text-[13px] leading-[1.6] text-ink-inverse/80">{film.line}</span>
+                <span className="mt-2 block max-w-[52ch] type-copy leading-[1.6] text-ink-inverse/80">{film.line}</span>
               </span>
             </button>
           );

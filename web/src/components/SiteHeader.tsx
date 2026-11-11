@@ -15,7 +15,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-transparent bg-paper/85 backdrop-blur-md">
       <div className="container-page flex h-[72px] items-center justify-between gap-8">
-        <Link to="/" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
+        <Link to="/" className="type-sub font-semibold tracking-[-0.02em] text-ink">
           Studio Cimora
         </Link>
 
@@ -25,7 +25,7 @@ export function SiteHeader() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                'rounded-md px-3 py-1.5 text-[14px] leading-5 transition-colors ' +
+                'rounded-md px-3 py-1.5 type-body leading-5 transition-colors ' +
                 (isActive ? 'bg-paper-muted text-ink' : 'text-ink-muted hover:bg-paper-muted hover:text-ink')
               }
             >
@@ -36,7 +36,7 @@ export function SiteHeader() {
 
         <a
           href={legacyUrl('/auth')}
-          className="inline-flex h-9 items-center rounded-full bg-ink px-5 text-[14px] font-medium text-ink-inverse transition-opacity hover:opacity-85"
+          className="inline-flex h-9 items-center rounded-full bg-ink px-5 type-body font-medium text-ink-inverse transition-opacity hover:opacity-85"
         >
           Get started
         </a>

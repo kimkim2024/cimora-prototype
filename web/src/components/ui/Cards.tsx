@@ -6,9 +6,9 @@ import { legacyUrl } from '../../lib/legacy';
 const CARD = 'group block overflow-hidden rounded-2xl border border-hairline bg-paper transition-colors hover:border-hairline-strong';
 const IMAGE = 'aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]';
 const BODY = 'p-5';
-const META = 'text-[11px] tracking-[0.02em] text-ink-quiet';
-const TITLE = 'mt-2 text-[17px] font-medium leading-[1.35] tracking-[-0.01em] text-ink';
-const BODY_COPY = 'mt-2 text-[13px] leading-[1.65] text-ink-muted';
+const META = 'type-meta tracking-[0.02em] text-ink-quiet';
+const TITLE = 'mt-2 type-sub font-medium leading-[1.35] tracking-[-0.01em] text-ink';
+const BODY_COPY = 'mt-2 type-copy leading-[1.65] text-ink-muted';
 
 export function ToolCard({ tool }: { tool: Tool }) {
   return (
@@ -17,11 +17,11 @@ export function ToolCard({ tool }: { tool: Tool }) {
       <div className={BODY}>
         <div className="flex items-center justify-between gap-3">
           <span className={META}>{tool.group}</span>
-          <span className="rounded-full border border-hairline px-2 py-0.5 text-[10px] text-ink-quiet">{tool.stage}</span>
+          <span className="rounded-full border border-hairline px-2 py-0.5 type-label text-ink-quiet">{tool.stage}</span>
         </div>
         <h3 className={TITLE}>{tool.title}</h3>
         <p className={BODY_COPY}>{tool.desc}</p>
-        <span className="mt-4 inline-block text-[12px] text-ink underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current">
+        <span className="mt-4 inline-block type-list text-ink underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current">
           Open tool
         </span>
       </div>

@@ -15,13 +15,13 @@ export default function NotFound() {
       <div className="mt-8 flex items-center gap-3">
         <Link
           to="/product"
-          className="inline-flex h-11 items-center rounded-xl bg-ink px-5 text-[14px] font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
+          className="inline-flex h-11 items-center rounded-xl bg-ink px-5 type-body font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
         >
           Back to product
         </Link>
         <Link
           to="/tools"
-          className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-5 text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
+          className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-5 type-body font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
         >
           Browse the tools
         </Link>

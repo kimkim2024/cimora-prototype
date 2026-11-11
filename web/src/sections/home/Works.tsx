@@ -20,7 +20,7 @@ export function Works() {
     <section className="container-page pt-24">
       <div className="flex items-end justify-between gap-6">
         {label('03 / Made of imagination', 'Every story has its own light.')}
-        <Link to="/showcase" className="text-[12px] text-ink underline underline-offset-4">
+        <Link to="/showcase" className="type-list text-ink underline underline-offset-4">
           Explore showcase
         </Link>
       </div>
@@ -35,7 +35,7 @@ export function Works() {
               aria-pressed={active}
               onClick={() => setFilter(option)}
               className={
-                'h-9 rounded-full border px-4 text-[12px] transition-colors ' +
+                'h-9 rounded-full border px-4 type-list transition-colors ' +
                 (active
                   ? 'border-ink bg-ink text-ink-inverse'
                   : 'border-hairline text-ink-muted hover:border-hairline-strong hover:text-ink')
@@ -59,15 +59,15 @@ export function Works() {
                   decoding="async"
                   className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 text-[9px] text-ink backdrop-blur">
+                <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 type-micro text-ink backdrop-blur">
                   Story
                 </span>
               </div>
             </Link>
-            <h3 className="mt-3 text-[13px] font-medium text-ink">{WORK_STORY.title}</h3>
-            <p className="mt-1 text-[10px] text-ink-muted">
+            <h3 className="mt-3 type-copy font-medium text-ink">{WORK_STORY.title}</h3>
+            <p className="mt-1 type-label text-ink-muted">
               {WORK_STORY.tag}
-              <span className="block text-[9px] text-ink-quiet">{WORK_STORY.note}</span>
+              <span className="block type-micro text-ink-quiet">{WORK_STORY.note}</span>
             </p>
           </article>
         )}
@@ -83,15 +83,15 @@ export function Works() {
                   decoding="async"
                   className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
-                <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 text-[9px] text-ink backdrop-blur">
+                <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 type-micro text-ink backdrop-blur">
                   {work.type}
                 </span>
               </div>
             </Link>
-            <h3 className="mt-3 text-[13px] font-medium text-ink">{work.title}</h3>
-            <p className="mt-1 text-[10px] text-ink-muted">
+            <h3 className="mt-3 type-copy font-medium text-ink">{work.title}</h3>
+            <p className="mt-1 type-label text-ink-muted">
               {work.tag}
-              <span className="block text-[9px] text-ink-quiet">Original demo</span>
+              <span className="block type-micro text-ink-quiet">Original demo</span>
             </p>
           </article>
         ))}
@@ -106,7 +106,7 @@ export function Recipes() {
     <section className="container-page pt-24">
       <div className="flex items-end justify-between gap-6">
         {label('', 'Let a good method be your next starting point.')}
-        <Link to="/templates" className="text-[12px] text-ink underline underline-offset-4">
+        <Link to="/templates" className="type-list text-ink underline underline-offset-4">
           Open skills & template market
         </Link>
       </div>
@@ -130,7 +130,7 @@ export function Recipes() {
             >
               <span
                 className={
-                  'text-[15px] font-medium leading-[1.3] ' +
+                  'type-lead font-medium leading-[1.3] ' +
                   (recipe.tone === 'ink' ? 'text-ink-inverse' : 'text-ink')
                 }
               >
@@ -143,12 +143,12 @@ export function Recipes() {
               </span>
             </div>
             <div className="flex flex-1 flex-col p-4">
-              <small className="text-[9px] uppercase tracking-[0.12em] text-ink-quiet">
+              <small className="type-micro uppercase tracking-[0.12em] text-ink-quiet">
                 {recipe.category} / {recipe.author}
               </small>
-              <h3 className="mt-2 text-[14px] font-medium leading-[1.35] text-ink">{recipe.title}</h3>
-              <p className="mt-2 text-[11px] leading-[1.6] text-ink-muted">{recipe.desc}</p>
-              <span className="mt-auto pt-4 text-[11px] text-ink underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current">
+              <h3 className="mt-2 type-body font-medium leading-[1.35] text-ink">{recipe.title}</h3>
+              <p className="mt-2 type-meta leading-[1.6] text-ink-muted">{recipe.desc}</p>
+              <span className="mt-auto pt-4 type-meta text-ink underline decoration-transparent underline-offset-4 transition-colors group-hover:decoration-current">
                 View recipe
               </span>
             </div>

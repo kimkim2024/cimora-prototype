@@ -98,11 +98,11 @@ export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: He
             ) : null}
           </h1>
 
-          <p className="mt-6 max-w-[46ch] text-[15px] leading-[1.7] text-ink-muted">{description}</p>
+          <p className="mt-6 max-w-[46ch] type-lead leading-[1.7] text-ink-muted">{description}</p>
 
           <Link
             to={ctaTo}
-            className="mt-9 inline-flex h-14 items-center justify-center rounded-full bg-ink px-9 text-[15px] font-medium text-ink-inverse transition-transform duration-300 hover:scale-[1.04] hover:bg-ink-hover active:scale-[0.97]"
+            className="mt-9 inline-flex h-14 items-center justify-center rounded-full bg-ink px-9 type-lead font-medium text-ink-inverse transition-transform duration-300 hover:scale-[1.04] hover:bg-ink-hover active:scale-[0.97]"
           >
             {ctaText}
           </Link>

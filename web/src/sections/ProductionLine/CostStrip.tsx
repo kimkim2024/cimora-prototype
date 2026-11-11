@@ -32,16 +32,16 @@ export function CostStrip({ reduced, inView }: Props) {
   return (
     <div className="flex items-center gap-8 border-t border-hairline px-8 py-6">
       <div className="w-[188px] shrink-0">
-        <p className="text-[11px] tracking-[0.02em] text-ink-quiet">Chapter budget</p>
-        <p className="mt-1 text-[17px] tabular-nums">
+        <p className="type-meta tracking-[0.02em] text-ink-quiet">Chapter budget</p>
+        <p className="mt-1 type-sub tabular-nums">
           {unit}
           {values[shown].toFixed(2)}
-          <span className="ml-1 text-[12px] text-ink-muted">
+          <span className="ml-1 type-list text-ink-muted">
             / {unit}
             {limit.toFixed(2)}
           </span>
         </p>
-        <p className="mt-1 text-[11px] tabular-nums text-ink-muted">
+        <p className="mt-1 type-meta tabular-nums text-ink-muted">
           Chapter {String(shown + 1).padStart(2, '0')} · {pct}% used
         </p>
       </div>

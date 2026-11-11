@@ -127,3 +127,30 @@
     }
   }
 }
+
+/* ============================================================================
+   Reading type
+   ----------------------------------------------------------------------------
+   Fixed px sizes never grew with the screen, so a 2560 monitor still read
+   12-13px body copy. These six roles scale smoothly from their current size at
+   1440 up to +2 steps at 2560, and stay put below 1440 (the clamp floor).
+   Use these instead of text-[Npx] for text that people actually read.
+   ========================================================================== */
+@layer components {
+  /* 9 -> 11 */
+  .type-micro { font-size: clamp(0.5625rem, 0.402rem + 0.179vw, 0.6875rem); }
+  /* 10 -> 12 */
+  .type-label { font-size: clamp(0.625rem, 0.464rem + 0.179vw, 0.75rem); }
+  /* 11 -> 13 */
+  .type-meta { font-size: clamp(0.6875rem, 0.527rem + 0.179vw, 0.8125rem); }
+  /* 12 -> 14 */
+  .type-list { font-size: clamp(0.75rem, 0.589rem + 0.179vw, 0.875rem); }
+  /* 13 -> 16 */
+  .type-copy { font-size: clamp(0.8125rem, 0.571rem + 0.268vw, 1rem); }
+  /* 14 -> 17 */
+  .type-body { font-size: clamp(0.875rem, 0.634rem + 0.268vw, 1.0625rem); }
+  /* 15 -> 18 */
+  .type-lead { font-size: clamp(0.9375rem, 0.696rem + 0.268vw, 1.125rem); }
+  /* 17 -> 20 */
+  .type-sub { font-size: clamp(1.0625rem, 0.821rem + 0.268vw, 1.25rem); }
+}

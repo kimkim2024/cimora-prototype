@@ -22,7 +22,7 @@ export function CasePage() {
         lead={item.subtitle}
         className="pb-10"
       >
-        <p className="mt-4 text-[12px] text-ink-quiet">
+        <p className="mt-4 type-list text-ink-quiet">
           {item.tag} / original story · {item.shots} comic panels · {item.seconds}s of video
         </p>
       </PageHero>
@@ -37,7 +37,7 @@ export function CasePage() {
             <h2 className="text-[22px] font-medium leading-[1.3] tracking-[-0.02em] text-ink">
               One world, two ways to tell it.
             </h2>
-            <p className="mt-3 max-w-[52ch] text-[13px] leading-[1.7] text-ink-muted">
+            <p className="mt-3 max-w-[52ch] type-copy leading-[1.7] text-ink-muted">
               The comic is the source of truth for visuals and story; the video reuses the same characters, scenes and
               voice. Every step in between stays in one project.
             </p>
@@ -45,13 +45,13 @@ export function CasePage() {
           <div className="flex items-end justify-start gap-3">
             <a
               href={legacyUrl(`/app/projects/${item.id}`)}
-              className="inline-flex h-10 items-center rounded-xl bg-ink px-4 text-[13px] font-medium text-ink-inverse transition-opacity hover:opacity-85"
+              className="inline-flex h-10 items-center rounded-xl bg-ink px-4 type-copy font-medium text-ink-inverse transition-opacity hover:opacity-85"
             >
               Open this demo project
             </a>
             <Link
               to="/showcase"
-              className="inline-flex h-10 items-center rounded-xl border border-hairline-strong px-4 text-[13px] font-medium text-ink transition-colors hover:border-ink"
+              className="inline-flex h-10 items-center rounded-xl border border-hairline-strong px-4 type-copy font-medium text-ink transition-colors hover:border-ink"
             >
               All stories
             </Link>
@@ -68,9 +68,9 @@ export function CasePage() {
             'Final review and version delivery',
           ].map((step, i) => (
             <div key={step}>
-              <span className="text-[11px] tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
-              <h3 className="mt-3 text-[15px] font-medium leading-[1.4] text-ink">{step}</h3>
-              <p className="mt-2 text-[12px] leading-[1.7] text-ink-muted">
+              <span className="type-meta tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
+              <h3 className="mt-3 type-lead font-medium leading-[1.4] text-ink">{step}</h3>
+              <p className="mt-2 type-list leading-[1.7] text-ink-muted">
                 Done in one project, with existing versions and candidates always kept.
               </p>
             </div>
@@ -100,14 +100,14 @@ export function TemplatePage() {
     <>
       <section className="container-page grid grid-cols-[1fr_1fr] items-center gap-14 pt-20">
         <div>
-          <p className="text-[11px] text-ink-quiet">{item.type}</p>
+          <p className="type-meta text-ink-quiet">{item.type}</p>
           <h1 className="mt-3 max-w-[18ch] text-[44px] wide:text-[48px] mega:text-[52px] font-medium leading-[1.1] tracking-[-0.035em] text-ink">
             {item.title}
           </h1>
-          <p className="mt-5 max-w-[46ch] text-[14px] leading-[1.7] text-ink-muted">{item.desc}</p>
+          <p className="mt-5 max-w-[46ch] type-body leading-[1.7] text-ink-muted">{item.desc}</p>
           <a
             href={legacyUrl('/app/new?template=' + item.id)}
-            className="mt-8 inline-flex h-11 items-center rounded-xl bg-ink px-5 text-[14px] font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
+            className="mt-8 inline-flex h-11 items-center rounded-xl bg-ink px-5 type-body font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
           >
             Use this template
           </a>
@@ -122,9 +122,9 @@ export function TemplatePage() {
           {['Choose or import your visuals', 'Replace characters and dialogue', 'Confirm the pacing and add to a chapter'].map(
             (step, i) => (
               <div key={step}>
-                <span className="text-[11px] tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="mt-3 text-[15px] font-medium leading-[1.4] text-ink">{step}</h3>
-                <p className="mt-2 text-[12px] leading-[1.7] text-ink-muted">
+                <span className="type-meta tabular-nums text-ink-quiet">{String(i + 1).padStart(2, '0')}</span>
+                <h3 className="mt-3 type-lead font-medium leading-[1.4] text-ink">{step}</h3>
+                <p className="mt-2 type-list leading-[1.7] text-ink-muted">
                   Adjust unsatisfying parts locally; existing versions are kept.
                 </p>
               </div>
@@ -148,7 +148,7 @@ export function ArticlePage() {
 
   return (
     <article className="container-prose pb-24 pt-20">
-      <p className="text-[11px] text-ink-quiet">
+      <p className="type-meta text-ink-quiet">
         {item.category} · {item.time} read
       </p>
       <h1 className="mt-3 text-[44px] font-medium leading-[1.12] tracking-[-0.035em] text-ink">{item.title}</h1>
@@ -157,16 +157,16 @@ export function ArticlePage() {
         <img src={artUrl(item.art)} alt="" className="aspect-[16/8] w-full object-cover" />
       </figure>
 
-      <p className="mt-10 text-[14px] leading-[1.8] text-ink-muted">
+      <p className="mt-10 type-body leading-[1.8] text-ink-muted">
         A complete creative flow should let you focus on the story itself. This guide uses “Before the Rain Ends” to
         show how to plan each step and keep existing results when you edit.
       </p>
 
       {item.steps.map((step, i) => (
         <section key={step} className="mt-10">
-          <span className="text-[11px] tabular-nums text-ink-quiet">STEP {String(i + 1).padStart(2, '0')}</span>
+          <span className="type-meta tabular-nums text-ink-quiet">STEP {String(i + 1).padStart(2, '0')}</span>
           <h2 className="mt-2 text-[22px] font-medium leading-[1.35] tracking-[-0.02em] text-ink">{step}</h2>
-          <p className="mt-3 text-[13px] leading-[1.8] text-ink-muted">
+          <p className="mt-3 type-copy leading-[1.8] text-ink-muted">
             {
               [
                 'First decide what you want the audience to feel in this chapter. Express the plot goal in short scenes and dialogue, and avoid batch-generating frames before the story is confirmed.',
@@ -180,13 +180,13 @@ export function ArticlePage() {
       ))}
 
       <div className="mt-12 rounded-2xl border border-hairline bg-paper-muted p-8">
-        <h2 className="text-[17px] font-medium text-ink">Try it yourself</h2>
-        <p className="mt-2 text-[13px] leading-[1.7] text-ink-muted">
+        <h2 className="type-sub font-medium text-ink">Try it yourself</h2>
+        <p className="mt-2 type-copy leading-[1.7] text-ink-muted">
           Open the local demo project and follow the steps. No paid models are called.
         </p>
         <a
           href={legacyUrl('/app/projects/rain')}
-          className="mt-5 inline-flex h-10 items-center rounded-xl bg-ink px-4 text-[13px] font-medium text-ink-inverse transition-opacity hover:opacity-85"
+          className="mt-5 inline-flex h-10 items-center rounded-xl bg-ink px-4 type-copy font-medium text-ink-inverse transition-opacity hover:opacity-85"
         >
           Open “Before the Rain Ends”
         </a>
@@ -205,13 +205,13 @@ export function UpdatesPage() {
       <div className="mt-10 divide-y divide-hairline border-t border-hairline">
         {UPDATES.map(([date, title, body]) => (
           <div key={date + title} className="py-7">
-            <span className="text-[11px] tabular-nums text-ink-quiet">{date}</span>
+            <span className="type-meta tabular-nums text-ink-quiet">{date}</span>
             <h2 className="mt-2 text-[22px] font-medium leading-[1.35] tracking-[-0.02em] text-ink">{title}</h2>
-            <p className="mt-2 max-w-[70ch] text-[13px] leading-[1.7] text-ink-muted">{body}</p>
+            <p className="mt-2 max-w-[70ch] type-copy leading-[1.7] text-ink-muted">{body}</p>
           </div>
         ))}
       </div>
-      <Link to="/resources" className="mt-10 inline-block text-[13px] text-ink underline underline-offset-4">
+      <Link to="/resources" className="mt-10 inline-block type-copy text-ink underline underline-offset-4">
         Back to guides
       </Link>
     </div>
