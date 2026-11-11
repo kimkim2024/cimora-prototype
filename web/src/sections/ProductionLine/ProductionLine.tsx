@@ -18,7 +18,7 @@ export function ProductionLine() {
   const active = hovered ?? (reduced ? 0 : auto);
 
   return (
-    <section ref={ref} className="mx-auto w-full max-w-[1200px] px-10 pb-24 pt-16" aria-labelledby="production-line-title">
+    <section ref={ref} className="mx-auto w-full max-w-[1200px] px-10 pb-4 pt-16" aria-labelledby="production-line-title">
       <h2
         id="production-line-title"
         className="text-[30px] font-medium leading-[1.25] tracking-[-0.025em] text-ink"

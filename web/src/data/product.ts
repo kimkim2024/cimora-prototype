@@ -1,3 +1,8 @@
+import storyWorld from '../../../assets/cimora-story-0.webp';
+import storyPanels from '../../../assets/cimora-story-1.webp';
+import storyMotion from '../../../assets/cimora-story-4.webp';
+import storyDelivery from '../../../assets/cimora-story-5.webp';
+
 export type Stage = {
   id: string;
   no: string;
@@ -45,3 +50,41 @@ export const BUDGET = {
   limit: 1.2,
   values: [0.12, 0.27, 0.39, 0.52, 0.61, 0.74, 0.86, 0.98],
 };
+
+export type WorldTile = { id: string; label: string; src: string; alt: string };
+
+/** The four stills that summarise the product, in order of production. */
+export const PRODUCT_WORLD: WorldTile[] = [
+  { id: 'story', label: 'Story & Characters', src: storyWorld, alt: 'Bookshop at dusk with warm windows' },
+  { id: 'panels', label: 'Comic Panels', src: storyPanels, alt: 'Character portrait in the rain' },
+  { id: 'motion', label: 'Motion Shot', src: storyMotion, alt: 'Two characters sharing an umbrella' },
+  { id: 'delivery', label: 'Delivery & Promotion', src: storyDelivery, alt: 'Character at golden hour' },
+];
+
+export type Mode = {
+  id: string;
+  title: string;
+  body: string;
+  cta: string;
+  href: string;
+  primary: boolean;
+};
+
+export const MODES: Mode[] = [
+  {
+    id: 'quick',
+    title: 'Quick mode',
+    body: 'See a complete direction first, then decide how deep to go. Character drafts and storyboards are arranged automatically, ideal for testing ideas.',
+    cta: 'Try a story fast',
+    href: '#/app/new?mode=quick',
+    primary: false,
+  },
+  {
+    id: 'studio',
+    title: 'Studio mode',
+    body: 'Confirm characters, scenes, style and storyboard first, then generate in batches. Ideal for building your own world over time.',
+    cta: 'Create a project',
+    href: '#/app/new?mode=studio',
+    primary: true,
+  },
+];
