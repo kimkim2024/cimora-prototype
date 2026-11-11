@@ -2,6 +2,20 @@
 
 A static, framework-free prototype of the Cimora studio: the public site, the creation space (`#/app`), the My Projects glass-folder cards, and the design system that keeps them consistent.
 
+## 快速开始 / Quick start
+
+仓库里现在有两套东西，都要在本地跑起来看：
+
+| 看哪一套 | 命令 | 地址 |
+| --- | --- | --- |
+| **新 UI（React，正式开发）** | `cd web && npm install && npm run dev` | http://localhost:5173 |
+| 老原型（可点的参考稿） | `npm install && npm run preview` | http://127.0.0.1:4173 |
+
+新 UI 已经覆盖：官网全部页面（product / features / showcase / templates / resources / pricing / help / tools / legal）+ 工作台的项目页（`#/app`）。
+还没搬：登录页 `#/auth`、资产库 / 任务 / 设置、`#/tools/<id>` 的 14 个工具 demo —— 这些点进去会看到占位页，带一个跳到老原型的按钮。
+
+设计规范在看 `design/DESIGN-SYSTEM.md` + `design/AI-SPEC.md`，颜色/字号/圆角都在 `design/tokens.css`（新 UI 的 Tailwind 主题由 `web/scripts/theme-check.mjs` 保证不跑偏）。
+
 **No build step.** Plain HTML, CSS and vanilla JS. Open `index.html` directly, or serve it:
 
 ```bash
