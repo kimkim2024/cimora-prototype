@@ -1,0 +1,491 @@
+/* Auth: split sign-in / sign-up page, ported from the Smoke Login reference.
+   Left half is a small stack of paper with live smoke drifting across it; the
+   right half is the form on plain paper. Colours come from tokens, and the
+   dark palette is mixed from the same tokens, so both themes stay on system. */
+
+.public-auth {
+  --pa-bg: var(--color-paper-muted);
+  --pa-paper: var(--color-paper);
+  --pa-sheet: var(--color-paper-sunken);
+  --pa-ink: var(--color-ink);
+  --pa-muted: var(--color-ink-muted);
+  --pa-line: var(--color-hairline);
+  --pa-field: var(--color-paper);
+  --pa-accent: var(--color-accent-deep);
+  --pa-btn: var(--color-ink);
+  --pa-btn-ink: var(--color-ink-inverse);
+  --pa-grain: multiply;
+
+  /* cimora-appearance.css repaints headings, inputs and panels from the --ap-*
+     set, so point that set at this page's palette too. */
+  --ap-bg: var(--pa-paper);
+  --ap-surface: var(--pa-paper);
+  --ap-raised: var(--pa-field);
+  --ap-input: var(--pa-field);
+  --ap-text: var(--pa-ink);
+  --ap-secondary: var(--pa-ink);
+  --ap-muted: var(--pa-muted);
+  --ap-line: var(--pa-line);
+  --ap-line-strong: var(--color-hairline-strong);
+  --ap-accent: var(--pa-accent);
+  --ap-on-accent: var(--pa-btn-ink);
+  --ap-soft: var(--pa-field);
+  --ap-hover: var(--pa-field);
+  --ap-success: var(--color-positive);
+  --ap-warning: var(--color-warning);
+  --ap-danger: var(--color-negative);
+  --ap-shadow: var(--shadow-md);
+  --ap-dot: var(--pa-line);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.08fr 1fr;
+  gap: 12px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 12px;
+  background: var(--pa-bg);
+  color: var(--pa-ink);
+  overflow-x: clip;
+  transition: background-color 700ms, color 700ms;
+}
+
+.public-auth[data-theme="dark"] {
+  --pa-bg: var(--color-paper-darkest);
+  --pa-paper: var(--color-paper-dark);
+  --pa-sheet: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-darkest));
+  --pa-ink: var(--color-ink-inverse);
+  --pa-muted: color-mix(in oklab, var(--color-ink-inverse) 58%, var(--color-paper-dark));
+  --pa-line: color-mix(in oklab, var(--color-ink-inverse) 16%, var(--color-paper-dark));
+  --pa-field: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-dark));
+  --pa-accent: var(--color-accent);
+  --pa-btn: var(--color-accent);
+  --pa-btn-ink: var(--color-ink-on-accent);
+  --pa-grain: soft-light;
+}
+
+/* paper tooth across the whole page */
+.public-auth .pa-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: .4;
+  pointer-events: none;
+  mix-blend-mode: var(--pa-grain);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.public-auth .pa-grain--panel { opacity: .6; }
+
+/* ---- left: the smoke, on a small stack of paper -------------------------- */
+.public-auth .pa-visual {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.public-auth .pa-sheet {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  transition: background-color 700ms;
+}
+
+.public-auth .pa-sheet--back {
+  transform: rotate(-1.4deg);
+  background: var(--pa-sheet);
+}
+
+.public-auth .pa-sheet--mid {
+  transform: rotate(.9deg);
+  background: var(--pa-paper);
+  box-shadow: var(--shadow-md);
+}
+
+.public-auth .pa-paper {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  background: var(--pa-paper);
+  box-shadow: var(--shadow-lg);
+  transition: background-color 700ms;
+}
+
+.public-auth .pa-smoke {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.public-auth .pa-brand {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  z-index: 2;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.public-auth .pa-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  max-width: 352px;
+}
+
+.public-auth .pa-caption-title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -.035em;
+}
+
+.public-auth .pa-caption-sub {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--pa-muted);
+}
+
+/* ---- right: the form ----------------------------------------------------- */
+.public-auth .pa-side {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 32px;
+}
+
+.public-auth .pa-theme {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border: 1px solid var(--pa-line);
+  border-radius: 999px;
+  background: var(--pa-field);
+  color: var(--pa-ink);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 200ms, background-color 700ms;
+}
+
+.public-auth .pa-theme:hover { border-color: var(--color-hairline-strong); }
+.public-auth .pa-theme svg { width: 16px; height: 16px; }
+.public-auth .pa-theme .pa-icon-sun { display: none; }
+.public-auth[data-theme="light"] .pa-theme .pa-icon-sun { display: block; }
+.public-auth[data-theme="light"] .pa-theme .pa-icon-moon { display: none; }
+
+.public-auth .pa-form {
+  width: 100%;
+  max-width: 360px;
+}
+
+.public-auth .pa-tabs {
+  display: inline-flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding: 4px;
+  border: 1px solid var(--pa-line);
+  border-radius: 999px;
+  background: var(--pa-field);
+}
+
+.public-auth .pa-tab {
+  height: 32px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--pa-muted);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 200ms, color 200ms;
+}
+
+.public-auth .pa-tab[aria-selected="true"] {
+  background: var(--pa-btn);
+  color: var(--pa-btn-ink);
+}
+
+.public-auth .pa-title {
+  margin: 0;
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -.045em;
+}
+
+/* cimora-public-light.css repaints headings and paragraphs dark on every
+   public route; this page carries its own theme, so restate the two colours
+   with the extra specificity it needs. */
+body.cimora-auth-page .public-auth .pa-title,
+body.cimora-auth-page .public-auth .pa-caption-title { color: var(--pa-ink); }
+
+body.cimora-auth-page .public-auth .pa-sub,
+body.cimora-auth-page .public-auth .pa-caption-sub,
+body.cimora-auth-page .public-auth .pa-foot,
+body.cimora-auth-page .public-auth .pa-legal,
+body.cimora-auth-page .public-auth .pa-or { color: var(--pa-muted); }
+
+.public-auth .pa-sub {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--pa-muted);
+}
+
+.public-auth .pa-fields {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.public-auth .pa-field {
+  display: block;
+  margin: 0;
+}
+
+.public-auth .pa-field[hidden] { display: none; }
+
+.public-auth .pa-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.public-auth .pa-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--pa-ink);
+}
+
+.public-auth .pa-input-wrap { position: relative; }
+
+.public-auth .pa-input {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 8px;
+  padding: 0 16px;
+  border: 1px solid var(--pa-line);
+  border-radius: 12px;
+  background: var(--pa-field);
+  color: var(--pa-ink);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 200ms, box-shadow 200ms, background-color 700ms;
+}
+
+.public-auth .pa-input::placeholder { color: var(--color-ink-quiet); }
+
+.public-auth .pa-input:focus {
+  border-color: var(--pa-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.public-auth .pa-input--pw { padding-right: 48px; }
+
+.public-auth .pa-eye {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--pa-muted);
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.public-auth .pa-eye:hover { color: var(--pa-ink); }
+.public-auth .pa-eye svg { width: 18px; height: 18px; }
+.public-auth .pa-eye .pa-icon-eye-off { display: none; }
+.public-auth .pa-eye[data-shown="true"] .pa-icon-eye { display: none; }
+.public-auth .pa-eye[data-shown="true"] .pa-icon-eye-off { display: block; }
+
+.public-auth .pa-text-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pa-muted);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.public-auth .pa-text-btn:hover { color: var(--pa-ink); }
+
+.public-auth .pa-actions { padding-top: 8px; }
+
+.public-auth .pa-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--pa-btn);
+  color: var(--pa-btn-ink);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--shadow-key);
+  transition: transform 200ms, box-shadow 300ms, opacity 200ms, background-color 700ms;
+}
+
+.public-auth .pa-submit:hover { transform: translateY(-1px); }
+.public-auth .pa-submit:active { transform: scale(.985); }
+.public-auth .pa-submit[disabled] { opacity: .8; cursor: progress; box-shadow: none; }
+
+.public-auth .pa-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: pa-spin 700ms linear infinite;
+}
+
+.public-auth .pa-submit[data-busy="true"] .pa-spinner { display: block; }
+
+.public-auth .pa-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0;
+  font-size: 12px;
+  color: var(--pa-muted);
+}
+
+.public-auth .pa-or span {
+  flex: 1;
+  height: 1px;
+  background: var(--pa-line);
+}
+
+.public-auth .pa-providers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.public-auth .pa-provider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  border: 1px solid var(--pa-line);
+  border-radius: 12px;
+  background: var(--pa-field);
+  color: var(--pa-ink);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 200ms, border-color 200ms, background-color 700ms;
+}
+
+.public-auth .pa-provider:hover { border-color: var(--color-hairline-strong); }
+.public-auth .pa-provider:active { transform: scale(.98); }
+.public-auth .pa-provider svg { width: 17px; height: 17px; }
+.public-auth .pa-provider[disabled] { opacity: .7; cursor: progress; }
+
+.public-auth .pa-foot {
+  margin: 32px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--pa-muted);
+}
+
+.public-auth .pa-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pa-ink);
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: transparent;
+  cursor: pointer;
+  transition: text-decoration-color 200ms;
+}
+
+.public-auth .pa-link:hover { text-decoration-color: currentColor; }
+
+.public-auth .pa-legal {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--pa-muted);
+}
+
+.public-auth .pa-legal a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms;
+}
+
+.public-auth .pa-legal a:hover { color: var(--pa-ink); }
+
+.public-auth .pa-note {
+  margin: 8px 0 0;
+  text-align: center;
+  font-size: 10px;
+  color: var(--color-ink-quiet);
+}
+
+/* ---- entrance: each block drifts up out of a blur ------------------------ */
+.public-auth .pa-rise {
+  animation: pa-rise 700ms cubic-bezier(.22, 1, .36, 1) both;
+  animation-delay: var(--pa-d, 0ms);
+}
+
+@keyframes pa-rise {
+  from { opacity: 0; transform: translateY(10px); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+@keyframes pa-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 1280px) {
+  .public-auth { gap: 8px; padding: 8px; }
+  .public-auth .pa-side { padding: 48px 24px; }
+  .public-auth .pa-caption-title { font-size: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .public-auth .pa-rise { animation: none; }
+  .public-auth .pa-spinner { animation: none; }
+  .public-auth .pa-submit,
+  .public-auth .pa-provider,
+  .public-auth .pa-theme,
+  .public-auth .pa-input { transition: none; }
+}

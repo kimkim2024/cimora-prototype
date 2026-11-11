@@ -204,6 +204,7 @@ npm run shots    # 12 routes x 1440/1920; 0 cjk, 0 arrows, 0 empty pages
 | Legacy CSS (`site.css`, `cimora.css`, `cimora-home.css`, …) | dark base + light overrides; contains literal values and Chinese source strings that are tolerated for now. Do not refactor them wholesale; build new modules instead. |
 | Public header (`publicHeader` → `homeHeader`) | one shared `h17-header` bar on every public route; it reads the `--ap-*` set, which `cimora-public-light.css` now maps to tokens. Its background fades to transparent at the bottom so it blends into the page instead of ending on a rule. Do not add a second header markup. |
 | Breathing background | one WebGL shader (`cimora-shader-background.js`). The homepage mounts it in `.hm-hero-vignette`; every other public route mounts it in the fixed `.public-ambient` layer styled by `cimora-public-ambient.css`. Palette comes from `--shader-accent/-surface/-ink`; keep the CSS gradient fallback if you touch it. |
+| Auth (`#/auth`) | `cimora-auth.js` / `cimora-auth.css`: stacked-paper panel with its own WebGL smoke shader on the left, sign-in / create-account form on the right. It is a full-page route with no site header, so it carries its own light/dark palette (`--pa-*`) and re-points `--ap-*` at it. Submit hands back to `completeAuth()`. |
 | Public footer (`footer`) | still the legacy grid with literal values; restyle only when asked. |
 
 ---

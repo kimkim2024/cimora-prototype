@@ -48,6 +48,8 @@ const ROUTES = [
   { name: 'settings', path: '/app/settings' },
   { name: 'pricing', path: '/pricing' },
   { name: 'tools', path: '/tools' },
+  { name: 'auth', path: '/auth' },
+  { name: 'showcase', path: '/showcase' },
 ];
 
 const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/g;

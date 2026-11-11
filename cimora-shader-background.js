@@ -65,7 +65,7 @@
  }
  const mounted=new Map();
  const isAmbient=host=>host.classList&&host.classList.contains('public-ambient');
-const ambientPage=()=>document.body.classList.contains('public-body')&&!document.body.classList.contains('cimora-home-public');
+const ambientPage=()=>document.body.classList.contains('public-body')&&!document.body.classList.contains('cimora-home-public')&&!document.body.classList.contains('cimora-auth-page');
 function sync(){mounted.forEach((dispose,host)=>{if(!host.isConnected||(isAmbient(host)&&!ambientPage())){dispose();mounted.delete(host);}});document.querySelectorAll('.hm-official .hm-hero-vignette, body.cimora-app .cm-sidebar, .public-ambient').forEach(host=>{if(isAmbient(host)&&!ambientPage())return;if(!mounted.has(host))mounted.set(host,mount(host,hostKey(host)));});}
  new MutationObserver(sync).observe(document.documentElement,{childList:true,subtree:true});sync();
 })();

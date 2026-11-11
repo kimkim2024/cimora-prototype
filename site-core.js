@@ -46,7 +46,7 @@ function faq(items=FrameData.faqs){return `<div class="faq-list">${items.map(([q
 function render(){
  const raw=location.hash.slice(1)||'/';const legacy=['motion','script','assets','comic','export'];const [path,query='']=raw.split('?');context={path:path.startsWith('/')?path:'/'+path,parts:path.replace(/^\//,'').split('/'),params:new URLSearchParams(query)};S.context=context;
  if(legacy.includes(raw)){context.path='/app/editor/rain/ch1';context.parts=['app','editor','rain','ch1'];context.params=new URLSearchParams('step='+raw);}
- const isApp=context.path==='/app'||context.path.startsWith('/app/');const editor=context.parts[0]==='app'&&context.parts[1]==='editor';document.body.className=editor?'editor-body':isApp?'app-body':'public-body';
+ const isApp=context.path==='/app'||context.path.startsWith('/app/');const editor=context.parts[0]==='app'&&context.parts[1]==='editor';document.body.className=editor?'editor-body':isApp?'app-body':context.path==='/auth'?'public-body cimora-auth-page':'public-body';
  let content;if(context.path==='/auth'||context.path==='/onboarding')content=S.workspace.render(context);else if(context.parts[0]==='share')content=S.workspace.render(context);else if(editor)content=S.workspace.editor(context);else if(isApp)content=appShell(Cimora.route(context)??S.workspace.render(context));else if(context.parts[0]==='tools')content=publicHeader()+S.tools.render(context)+footer();else content=publicHeader()+(context.path==='/'?Cimora.publicHome():S.public.render(context))+footer();
  // Strip decorative arrows only on the public homepage; shared page templates stay intact.
  if(context.path==='/')content=content.replace(/[↗→←]/g,'').replace(/class="hm-carousel-arrow /g,'hidden style="display:none" class="hm-carousel-arrow ');

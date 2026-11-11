@@ -20,6 +20,9 @@
 
 body.public-body:not(.cimora-home-public) .public-ambient { display: block; }
 
+/* the auth page brings its own smoke panel */
+body.public-body.cimora-auth-page .public-ambient { display: none; }
+
 /* keep page content above the ambient layer without touching the header */
 body.public-body:not(.cimora-home-public) #site {
   position: relative;
