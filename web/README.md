@@ -76,7 +76,7 @@ Every public page of the site:
 
 | route | file |
 | --- | --- |
-| /product | pages/ProductPage.tsx (hero: components/ui/HeroMarquee.tsx, then sections/ProductionLine, ModeComparison, ClosingCta) |
+| /product | pages/ProductPage.tsx (hero: components/ui/HeroMockup.tsx, then sections/ProductionLine, ModeComparison, ClosingCta) |
 | /features/:id | pages/FeaturesPage.tsx |
 | /showcase, /showcase/:id | pages/CatalogPages.tsx, pages/DetailPages.tsx |
 | /templates, /templates/:id | same pair |
