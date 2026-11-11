@@ -39,25 +39,52 @@ function canScrollInside(target: EventTarget | null, delta: number) {
 
 export function useWheelScrollFallback() {
   useEffect(() => {
+    let pending: { before: number; delta: number; seenScroll: boolean } | null = null;
+    let quietUntil = 0; // ignore the scroll events our own scrollTo() causes
+
+    const onScroll = () => {
+      if (pending && performance.now() > quietUntil) pending.seenScroll = true;
+    };
+
     const onWheel = (event: WheelEvent) => {
       if (event.ctrlKey || event.metaKey) return; // pinch-zoom / browser gestures
       const scroller = document.scrollingElement;
       if (!scroller) return;
-      const delta = (event.deltaY + event.deltaX) * lineHeightFactor(event);
+      const delta = event.deltaY * lineHeightFactor(event);
       if (!delta) return;
       // a scrollable child (a textarea, a panel) keeps its own scrolling
       if (canScrollInside(event.target, delta)) return;
 
-      const before = scroller.scrollTop;
+      // fold a burst of wheel events into one step
+      if (pending) {
+        pending.delta += delta;
+        return;
+      }
+
+      const batch = { before: scroller.scrollTop, delta, seenScroll: false };
+      pending = batch;
       requestAnimationFrame(() => {
-        if (Math.abs(scroller.scrollTop - before) >= 1) return; // the browser scrolled
-        const max = scroller.scrollHeight - window.innerHeight;
-        const next = Math.max(0, Math.min(max, before + delta));
-        if (next !== before) scroller.scrollTop = next;
+        // two frames: let the browser's own (often animated) scroll start
+        requestAnimationFrame(() => {
+          if (pending === batch) pending = null;
+          if (batch.seenScroll) return; // the browser scrolled
+          if (Math.abs(scroller.scrollTop - batch.before) >= 1) return; // already moving
+
+          const max = Math.max(0, scroller.scrollHeight - window.innerHeight);
+          const next = Math.max(0, Math.min(max, batch.before + batch.delta));
+          if (Math.abs(next - batch.before) < 1) return; // at the end of the page
+
+          quietUntil = performance.now() + 40;
+          scroller.scrollTo({ top: next, left: 0, behavior: 'instant' as ScrollBehavior });
+        });
       });
     };
 
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('wheel', onWheel, { passive: true });
-    return () => window.removeEventListener('wheel', onWheel);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onWheel);
+    };
   }, []);
 }
