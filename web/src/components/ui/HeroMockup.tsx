@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 type HeroMockupProps = {
-  tagline: string;
   title: string;
   /** second headline line, set in a quieter ink */
   titleTail?: string;
@@ -81,24 +80,16 @@ function QuickAction({ color, label, children }: { color: string; label: string;
  * window that holds the workspace header, the quick actions and a marker
  * underline, with a phone resting over its bottom corner.
  */
-export function HeroMockup({ tagline, title, titleTail, description, ctaText, ctaTo }: HeroMockupProps) {
+export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: HeroMockupProps) {
   return (
-    <section className="relative isolate overflow-hidden pt-14 pb-24 wide:pt-20 mega:pt-24">
+    <section className="relative isolate overflow-hidden pt-20 pb-24 wide:pt-24 mega:pt-28">
       <div className="container-page flex flex-col items-center text-center">
-        <span className="inline-flex items-center gap-2 rounded-full border border-hairline bg-paper/70 px-4 py-1.5 text-[12px] font-medium text-ink backdrop-blur-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-deep" />
-          </span>
-          {tagline}
-        </span>
-
-        <h1 className="mt-7 max-w-[760px] font-display text-[44px] font-semibold leading-[1.02] tracking-[-0.038em] text-ink wide:max-w-[900px] wide:text-[60px] mega:text-[68px]">
+        <h1 className="max-w-[760px] font-display text-[44px] font-semibold leading-[1.02] tracking-[-0.038em] text-ink wide:max-w-[900px] wide:text-[60px] mega:text-[68px]">
           {title}
           {titleTail ? (
             <>
               <br />
-              <span className="text-ink/45">{titleTail}</span>
+              <span>{titleTail}</span>
             </>
           ) : null}
         </h1>

@@ -1,13 +1,9 @@
 /* Product hero mockup - the hero visual only; the copy above it comes from the
    page itself. Mirrors web/src/components/ui/HeroMockup.tsx. */
-.p3m-hero{padding:clamp(48px,6vw,84px) 40px clamp(40px,5vw,72px)}
+.p3m-hero{padding:clamp(64px,7vw,104px) 40px clamp(40px,5vw,72px)}
 .p3m-inner{max-width:900px;margin:auto;text-align:center}
-.p3m-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--ap-line-strong,var(--ap-line));border-radius:999px;background:color-mix(in oklab,var(--ap-bg,#fff) 70%,transparent);backdrop-filter:blur(6px);font-size:12px;font-weight:500;color:var(--ap-text)}
-.p3m-dot{position:relative;width:8px;height:8px;border-radius:50%;background:#9ccc0f;flex-shrink:0}
-.p3m-dot::after{content:'';position:absolute;inset:0;border-radius:50%;background:#c8f24e;opacity:.75;animation:p3m-ping 1.6s cubic-bezier(0,0,.2,1) infinite}
-@keyframes p3m-ping{0%{transform:scale(1);opacity:.75}75%,100%{transform:scale(2.2);opacity:0}}
-.p3m-hero h1{margin:26px auto 0;max-width:900px;font-family:var(--font-display);font-size:clamp(34px,3.2vw,60px);font-weight:600;line-height:1.02;letter-spacing:-.038em;color:var(--ap-text)}
-.p3m-hero h1>span{color:color-mix(in oklab,var(--ap-text) 45%,transparent)}
+.p3m-hero h1{margin:0 auto;max-width:900px;font-family:var(--font-display);font-size:clamp(34px,3.2vw,60px);font-weight:600;line-height:1.02;letter-spacing:-.038em;color:var(--ap-text)}
+.p3m-hero h1>span{color:inherit}
 .p3m-desc{max-width:52ch;margin:22px auto 0;font-size:15px;line-height:1.7;color:var(--ap-muted)}
 .p3m-hero a.p3m-cta{margin-top:30px;border-radius:999px;padding:15px 34px;font-size:15px}
 

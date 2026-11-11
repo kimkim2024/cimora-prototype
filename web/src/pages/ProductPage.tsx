@@ -8,7 +8,6 @@ export default function ProductPage() {
   return (
     <>
       <HeroMockup
-        tagline="Local demo · no signup"
         title="Stop scattering your story"
         titleTail="across different tools."
         description="The comic is the source of truth for visuals and story; the video reuses the same characters, scenes and voice."

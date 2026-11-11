@@ -27,8 +27,7 @@ function p3mPhone() {
 function productHeroMockup() {
   return `<section class="p3m-hero">
     <div class="p3m-inner">
-      <span class="p3m-tag"><i class="p3m-dot"></i>Local demo \u00b7 no signup</span>
-      <h1>Stop scattering your story<br><span>across different tools.</span></h1>
+            <h1>Stop scattering your story<br><span>across different tools.</span></h1>
       <p class="p3m-desc">The comic is the source of truth for visuals and story; the video reuses the same characters, scenes and voice.</p>
       <a class="button primary p3m-cta" href="#/app">Open Demo Workspace</a>
     </div>
