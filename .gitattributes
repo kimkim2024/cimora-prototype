@@ -1,8 +1,1 @@
-﻿* text=auto
-
-# binary media lives in Git LFS: clone needs git lfs install once
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-*.png filter=lfs diff=lfs merge=lfs -text
-*.jpg filter=lfs diff=lfs merge=lfs -text
-*.jpeg filter=lfs diff=lfs merge=lfs -text
-*.webp filter=lfs diff=lfs merge=lfs -text
+* text=auto
