@@ -56,6 +56,20 @@ Tailwind variants — `wide:`, `ultra:`, `mega:` — for type steps
 (`text-[44px] wide:text-[48px]`) and stage sizes. Do not add a per-page width;
 change the container instead.
 
+## The product hero
+
+/product opens on the awwwards-portfolio pattern: drifting dust, two columns of
+running portraits, a very large headline, and a scroll-linked exit (opacity,
+scale, translate and blur over the first 800px) with the next section rising
+over it. ramer-motion is the only runtime dependency added for it (~50 kB
+gzipped); the dust is a plain canvas.
+
+The six portraits in public/hero-slider/ are the **placeholder art from the
+template** (MIT, xkintaro/kintarowwwards) - swap the two arrays at the top of
+sections/HeroSpotlight.tsx for Cimora stills before any public launch. The
+hero is light-theme adapted: ink dust, portraits at low opacity, no
+mix-blend-difference.
+
 ## Routing
 
 `react-router-dom` with a **hash router** (`src/router.tsx`): every link in the
@@ -76,7 +90,7 @@ Every public page of the site:
 
 | route | file |
 | --- | --- |
-| /product | pages/ProductPage.tsx (hero: components/ui/HeroMockup.tsx, then sections/ProductionLine, ModeComparison, ClosingCta) |
+| /product | pages/ProductPage.tsx (hero: sections/HeroSpotlight.tsx + components/effects/ParticlesField.tsx, then sections/ProductionLine, ModeComparison, ClosingCta) |
 | /features/:id | pages/FeaturesPage.tsx |
 | /showcase, /showcase/:id | pages/CatalogPages.tsx, pages/DetailPages.tsx |
 | /templates, /templates/:id | same pair |
