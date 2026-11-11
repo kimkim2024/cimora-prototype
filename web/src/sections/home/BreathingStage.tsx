@@ -120,8 +120,14 @@ export function BreathingStage({ children }: Props) {
     let frame = 0;
     let last = 0;
     let time = 0;
+    let visible = true;
     const loop = (now: number) => {
       if (!canvas.isConnected) return;
+      if (!visible || document.hidden) {
+        // off screen or in a background tab: stop drawing, keep the clock
+        frame = 0;
+        return;
+      }
       frame = requestAnimationFrame(loop);
       if (now - last < 1000 / 30 - 2) return;
       const dt = Math.min((now - last) / 1000, 0.1);
@@ -132,6 +138,16 @@ export function BreathingStage({ children }: Props) {
       draw(time);
     };
 
+    const start = () => {
+      if (reduced || frame) return;
+      last = 0;
+      frame = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
     const ro = new ResizeObserver(() => {
       resize();
       draw(time);
@@ -139,18 +155,33 @@ export function BreathingStage({ children }: Props) {
     ro.observe(canvas);
     resize();
 
+    const io = new IntersectionObserver((entries) => {
+      visible = entries[0]?.isIntersecting ?? true;
+      if (visible) start();
+      else stop();
+    });
+    io.observe(canvas);
+
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     if (reduced) {
       time = 4;
       draw(time);
     } else {
       document.addEventListener('pointermove', onMove, { passive: true });
-      frame = requestAnimationFrame(loop);
+      start();
     }
 
     return () => {
-      cancelAnimationFrame(frame);
+      stop();
       ro.disconnect();
+      io.disconnect();
       document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
   }, [reduced]);
 

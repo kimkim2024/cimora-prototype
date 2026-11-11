@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { HomeFooter } from '../components/HomeFooter';
 import { SiteFooter } from '../components/SiteFooter';
@@ -13,7 +14,11 @@ export function SiteLayout() {
   const { pathname } = useLocation();
   const home = pathname === '/';
   useDocumentTitle(pathname);
-  scrollToTop();
+
+  // reset the scroll after the route renders, never during render
+  useEffect(() => {
+    scrollToTop();
+  }, [pathname]);
 
   return (
     <div className="flex min-h-dvh flex-col bg-canvas font-sans text-ink">
