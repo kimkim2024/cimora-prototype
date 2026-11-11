@@ -1,0 +1,81 @@
+/* Product page production line - static twin of
+   web/src/sections/ProductionLine/*. Colours come from the --ap-* set. */
+.p3l{padding:56px 0 8px}
+.p3l h2{margin:0;font-family:var(--font-display);font-size:clamp(24px,2.2vw,32px);font-weight:500;line-height:1.25;letter-spacing:-.025em;color:var(--ap-text)}
+.p3l-card{margin-top:32px;overflow:hidden;border:1px solid var(--ap-line);border-radius:16px;background:var(--ap-bg,#fff);box-shadow:0 1px 2px #1717170a,0 18px 44px -28px #17171759;transition:opacity .7s,transform .7s}
+.p3l-diagram{padding:32px 32px 0}
+.p3l-svg{display:block;width:100%}
+
+/* svg palette */
+.p3l-f-paper{fill:var(--ap-bg,#fff)}
+.p3l-f-muted{fill:#fafafa}
+.p3l-f-sunken{fill:#f4f4f4}
+.p3l-f-ink{fill:var(--ap-text,#171717)}
+.p3l-f-hair{fill:#dedede}
+.p3l-f-hair-strong{fill:#cfcfcf}
+.p3l-f-quiet{fill:#9a9a9a}
+.p3l-f-accent{fill:#c8f24e}
+.p3l-s-hair{stroke:#dedede}
+.p3l-s-strong{stroke:#cfcfcf}
+.p3l-s-ink{stroke:var(--ap-text,#171717)}
+.p3l-s-on-accent{stroke:#171717}
+.p3l-t-quiet{fill:#9a9a9a}
+.p3l-t-muted{fill:#666}
+.p3l-t-ink{fill:var(--ap-text,#171717)}
+
+/* the active stage is the one the pointer is on, or the one the strip is cycling */
+.p3l-glow{opacity:0;transition:opacity .3s}
+[data-pl-active="0"] .p3l-glow[data-i="0"],
+[data-pl-active="1"] .p3l-glow[data-i="1"],
+[data-pl-active="2"] .p3l-glow[data-i="2"]{opacity:1}
+
+.p3l-node-box{fill:var(--ap-bg,#fff);stroke:#cfcfcf;transition:stroke .3s}
+[data-pl-active="0"] .p3l-node[data-i="0"] .p3l-node-box,
+[data-pl-active="1"] .p3l-node[data-i="1"] .p3l-node-box,
+[data-pl-active="2"] .p3l-node[data-i="2"] .p3l-node-box{stroke:var(--ap-text,#171717);stroke-width:1.6}
+
+.p3l-title{fill:#666;transition:opacity .3s}
+.p3l-stat{fill:var(--ap-text,#171717);opacity:0;transition:opacity .3s}
+[data-pl-active="0"] .p3l-node[data-i="0"] .p3l-title,
+[data-pl-active="1"] .p3l-node[data-i="1"] .p3l-title,
+[data-pl-active="2"] .p3l-node[data-i="2"] .p3l-title{opacity:0}
+[data-pl-active="0"] .p3l-node[data-i="0"] .p3l-stat,
+[data-pl-active="1"] .p3l-node[data-i="1"] .p3l-stat,
+[data-pl-active="2"] .p3l-node[data-i="2"] .p3l-stat{opacity:1}
+
+.p3l-row-done{fill:#f4f4f4;stroke:#dedede;transition:fill .3s}
+[data-pl-active="2"] .p3l-node[data-i="2"] .p3l-row-done{fill:#c8f24e;stroke:#cfcfcf}
+
+/* the three stages underneath */
+.p3l-stages{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px;border-top:1px solid var(--ap-line)}
+.p3l-stage{padding:28px 32px;border-right:1px solid var(--ap-line);transition:background .3s}
+.p3l-stage:last-child{border-right:0}
+[data-pl-active="0"] .p3l-stage[data-pl-stage="0"],
+[data-pl-active="1"] .p3l-stage[data-pl-stage="1"],
+[data-pl-active="2"] .p3l-stage[data-pl-stage="2"]{background:#fafafa}
+.p3l-stage-head{display:flex;align-items:baseline;gap:12px}
+.p3l-stage-head span{font-size:11px;font-variant-numeric:tabular-nums;color:#9a9a9a}
+.p3l-stage-head h3{margin:0;font-family:var(--font-display);font-size:17px;font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--ap-text)}
+.p3l-stage p{margin:12px 0 0;max-width:36ch;font-size:13px;line-height:1.65;color:var(--ap-muted)}
+.p3l-stage a{display:inline-block;margin-top:20px;font-size:12px;color:var(--ap-text);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .2s}
+.p3l-stage a:hover,.p3l-stage a:focus-visible{text-decoration-color:currentColor}
+
+/* chapter budget + curve */
+.p3l-cost{display:flex;align-items:center;gap:32px;border-top:1px solid var(--ap-line);padding:24px 32px}
+.p3l-cost-read{width:188px;flex-shrink:0}
+.p3l-cost-label{margin:0;font-size:11px;letter-spacing:.02em;color:#9a9a9a}
+.p3l-cost-value{margin:4px 0 0;font-size:17px;font-variant-numeric:tabular-nums;color:var(--ap-text)}
+.p3l-cost-value b{font-weight:400}
+.p3l-cost-value span{font-size:12px;color:var(--ap-muted)}
+.p3l-cost-meta{margin:4px 0 0;font-size:11px;font-variant-numeric:tabular-nums;color:var(--ap-muted)}
+.p3l-chart{display:block;width:100%;cursor:crosshair}
+
+@media(prefers-reduced-motion:reduce){
+  .p3l-card,.p3l-glow,.p3l-title,.p3l-stat,.p3l-node-box,.p3l-stage,.p3l-row-done{transition:none}
+}
+@media(max-width:900px){
+  .p3l-stages{grid-template-columns:1fr}
+  .p3l-stage{border-right:0;border-bottom:1px solid var(--ap-line)}
+  .p3l-cost{flex-direction:column;align-items:flex-start;gap:16px}
+  .p3l-diagram{padding:20px 20px 0}
+}
