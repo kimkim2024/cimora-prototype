@@ -53,7 +53,8 @@ export const router = createHashRouter([
     path: '/app',
     element: <AppLayout />,
     children: [
-      { index: true, element: <Navigate to="/app/projects" replace /> },
+      // the studio opens straight on the projects page: no dashboard in between
+      { index: true, element: <ProjectsPage /> },
       { path: 'projects', element: <ProjectsPage /> },
       { path: '*', element: <NotPorted /> },
     ],

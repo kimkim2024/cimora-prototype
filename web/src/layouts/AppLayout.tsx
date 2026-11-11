@@ -3,15 +3,13 @@ import { legacyUrl } from '../lib/legacy';
 import { useTitle } from '../lib/useTitle';
 
 const NAV = [
-  { to: '/app', label: 'Creation space', icon: 'space', end: true },
-  { to: '/app/projects', label: 'My projects', icon: 'folder' },
+  { to: '/app', label: 'My projects', icon: 'folder', end: true },
   { to: '/app/assets', label: 'Asset library', icon: 'assets' },
   { to: '/app/tasks', label: 'Tasks & budget', icon: 'tasks' },
   { to: '/app/settings', label: 'Settings', icon: 'settings' },
 ];
 
 const ICONS: Record<string, string> = {
-  space: 'M4 5h16M4 12h10M4 19h7',
   folder: 'M3 7a2 2 0 012-2h4l2 3h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z',
   assets: 'M4 6h6v6H4zM14 6h6v6h-6zM4 16h6v4H4zM14 16h6v4h-6z',
   tasks: 'M4 7h10M4 12h10M4 17h7M18 6v4M18 14v4',
@@ -33,7 +31,7 @@ function Icon({ name }: { name: string }) {
  */
 export function AppLayout() {
   const { pathname } = useLocation();
-  useTitle(pathname === '/app/projects' ? 'My projects · Cimora Studio' : 'Cimora Studio');
+  useTitle(pathname === '/app' || pathname === '/app/projects' ? 'My projects · Cimora Studio' : 'Cimora Studio');
 
   return (
     <div className="flex min-h-dvh bg-canvas font-sans text-ink">
