@@ -240,3 +240,24 @@ html[data-cimora-theme] body.cimora-app .cm-kpi-note{margin:0;font-size:11.5px;l
   html[data-cimora-theme] body.cimora-app .cm-kpi{opacity:1;transform:none;animation:none}
   html[data-cimora-theme] body.cimora-app .cm-kpi-meter i{animation:none}
 }
+
+/* ---------- radial gauge tile (allocation-arc vocabulary) ---------- */
+html[data-cimora-theme] body.cimora-app .cm-gauge-card{gap:6px}
+html[data-cimora-theme] body.cimora-app .cm-gauge-wrap{position:relative;width:100%;max-width:200px;margin:0 auto;padding-top:2px}
+html[data-cimora-theme] body.cimora-app .cm-gauge{display:block;width:100%;height:auto;overflow:visible}
+html[data-cimora-theme] body.cimora-app .cm-gauge rect{fill:#e6e6e6;animation:cm-gauge-in .5s cubic-bezier(.22,1,.36,1) both}
+html[data-cimora-theme] body.cimora-app .cm-gauge rect.is-on{fill:#171717}
+@keyframes cm-gauge-in{from{opacity:0}to{opacity:1}}
+html[data-cimora-theme] body.cimora-app .cm-gauge-center{position:absolute;left:0;right:0;bottom:10px;text-align:center;line-height:1;
+  display:flex;align-items:baseline;justify-content:center;gap:3px}
+html[data-cimora-theme] body.cimora-app .cm-gauge-center strong{font-size:40px;font-weight:300;letter-spacing:-.03em;
+  color:#171717;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-gauge-center small{font-size:12px;font-weight:400;color:#9a9a9a}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend{display:flex;justify-content:center;gap:18px;font-size:11.5px;line-height:15px;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend span{display:inline-flex;align-items:center;gap:5px}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend i{width:6px;height:6px;border-radius:50%;background:#e0e0e0;flex:none}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend i.is-on{background:#171717}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend b{font-weight:600;color:#171717;font-variant-numeric:tabular-nums;margin-left:2px}
+@media (prefers-reduced-motion: reduce){
+  html[data-cimora-theme] body.cimora-app .cm-gauge rect{animation:none}
+}
