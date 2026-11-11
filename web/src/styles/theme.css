@@ -127,3 +127,64 @@
     }
   }
 }
+
+/* ============================================================================
+   Hero motion
+   ----------------------------------------------------------------------------
+   Two effects, both pure CSS so no animation library enters the bundle: the
+   headline words rise one after another, and the image strip loops forever by
+   scrolling exactly half its own width (the strip is duplicated, so the seam
+   is invisible). Both stop under prefers-reduced-motion.
+   ========================================================================== */
+@keyframes hero-word-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0.18em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@layer components {
+  .hero-word {
+    display: inline-block;
+    margin-right: 0.22em;
+    animation: hero-word-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero-marquee {
+    overflow: hidden;
+    /* the strip fades in and out at its top and bottom edges */
+    mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
+  }
+
+  .hero-marquee-track {
+    animation: hero-marquee-scroll 52s linear infinite;
+    will-change: transform;
+  }
+
+  /* hovering holds the strip still so a label can actually be read */
+  .hero-marquee:hover .hero-marquee-track,
+  .hero-marquee:focus-within .hero-marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-word,
+  .hero-marquee-track {
+    animation: none;
+  }
+}
