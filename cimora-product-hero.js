@@ -57,6 +57,7 @@ function productHeroMockup() {
               ${p3mTile('#f97316', 'Assets', '<path d="M4 7a2 2 0 012-2h3l2 2h7a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2z"/>')}
               ${p3mTile('#ef4444', 'Delivery', '<path d="M5 12.5l4.5 4.5L19 7"/>')}
             </div>
+            <div class="p3m-chapter"><span>Chapter 01</span><i>12 panels</i><b><s></s></b></div>
           </div>
         </div>
 
