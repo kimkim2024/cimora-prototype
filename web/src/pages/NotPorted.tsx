@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { legacyUrl } from '../lib/legacy';
+import { useTitle } from '../lib/useTitle';
 
 /**
  * Placeholder for a route that has not been ported yet. It says so plainly and
@@ -7,6 +8,7 @@ import { legacyUrl } from '../lib/legacy';
  */
 export default function NotPorted() {
   const { pathname } = useLocation();
+  useTitle('Not ported yet · Cimora');
 
   return (
     <section className="mx-auto flex w-full max-w-[1200px] flex-col items-start px-10 py-24">

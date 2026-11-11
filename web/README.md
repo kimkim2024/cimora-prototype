@@ -54,20 +54,23 @@ Add a page by creating `src/pages/X.tsx` and one route entry; the shell
 
 ## What is ported so far
 
-`/product` is complete:
+Every public page of the site:
 
-- `src/components/SiteHeader.tsx` — the shared public bar (flat links, one CTA)
-- `src/components/SiteFooter.tsx` — the shared footer (brand, three link columns, legal row)
-- `src/sections/ProductWorld.tsx` — the four stills, one story at each stage
-- `src/sections/ProductionLine/` — "From creating to continuous production":
-  a live production line (story → comic panels → motion shot → studio workflow →
-  delivered), the three stage columns, and the chapter budget strip with a
-  scrubbable spend curve. Hover either the diagram or a column to pin the
-  highlight; the auto-cycle pauses while a pointer is inside and is disabled
-  under `prefers-reduced-motion`.
-- `src/sections/ModeComparison.tsx` — quick mode vs studio mode
-- `src/sections/ClosingCta.tsx` — the closing panel
+| route | file |
+| --- | --- |
+| /product | pages/ProductPage.tsx (+ sections/ProductionLine, ProductWorld, ModeComparison, ClosingCta) |
+| /features/:id | pages/FeaturesPage.tsx |
+| /showcase, /showcase/:id | pages/CatalogPages.tsx, pages/DetailPages.tsx |
+| /templates, /templates/:id | same pair |
+| /resources, /resources/:id, /resources/updates | same pair |
+| /pricing | pages/PricingPage.tsx |
+| /help | pages/InfoPages.tsx |
+| /tools | pages/InfoPages.tsx |
+| /legal/:doc | pages/InfoPages.tsx |
 
-Everything else (`#/pricing`, `#/tools`, `#/showcase`, `#/auth`, `#/app/*`, …)
-is still the vanilla prototype at the repo root; the router and those pages come
-next.
+Still in the prototype, reached through NotPorted: /auth (smoke login),
+/app/* (the studio), /tools/:id (the 14 tool demos) and /share/*.
+
+Shared pieces: components/SiteHeader, components/SiteFooter,
+components/ui/{PageHero,Section,Cards,Faq,Chips}, and the content in
+data/site.ts + data/product.ts, carried over from the prototype.

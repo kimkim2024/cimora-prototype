@@ -1,13 +1,19 @@
 import { createHashRouter, Navigate } from 'react-router-dom';
 import { SiteLayout } from './layouts/SiteLayout';
+import { ArticlePage, CasePage, TemplatePage, UpdatesPage } from './pages/DetailPages';
+import FeaturesPage from './pages/FeaturesPage';
+import { HelpPage, LegalPage, ToolsPage } from './pages/InfoPages';
+import { ResourcesPage, ShowcasePage, TemplatesPage } from './pages/CatalogPages';
 import NotPorted from './pages/NotPorted';
+import NotFound from './pages/NotFound';
+import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
 
 /**
  * Hash routing, on purpose: every existing link in the prototype and in the
  * marketing copy is written as `#/path`, so the new app inherits the URL scheme
- * instead of breaking it. Routes are added here as pages are ported; anything
- * unknown falls through to NotPorted, which links back to the prototype.
+ * instead of breaking it. Anything unknown falls through to NotFound; the few
+ * product surfaces still in the prototype use NotPorted.
  */
 export const router = createHashRouter([
   {
@@ -15,8 +21,32 @@ export const router = createHashRouter([
     element: <SiteLayout />,
     children: [
       { index: true, element: <Navigate to="/product" replace /> },
+
       { path: 'product', element: <ProductPage /> },
-      { path: '*', element: <NotPorted /> },
+      { path: 'features/:id', element: <FeaturesPage /> },
+
+      { path: 'showcase', element: <ShowcasePage /> },
+      { path: 'showcase/:id', element: <CasePage /> },
+
+      { path: 'templates', element: <TemplatesPage /> },
+      { path: 'templates/:id', element: <TemplatePage /> },
+
+      { path: 'resources', element: <ResourcesPage /> },
+      { path: 'resources/updates', element: <UpdatesPage /> },
+      { path: 'resources/:id', element: <ArticlePage /> },
+
+      { path: 'pricing', element: <PricingPage /> },
+      { path: 'help', element: <HelpPage /> },
+      { path: 'tools', element: <ToolsPage /> },
+      { path: 'legal/:doc', element: <LegalPage /> },
+
+      // product surfaces that still live in the prototype
+      { path: 'auth', element: <NotPorted /> },
+      { path: 'app/*', element: <NotPorted /> },
+      { path: 'tools/:id', element: <NotPorted /> },
+      { path: 'share/*', element: <NotPorted /> },
+
+      { path: '*', element: <NotFound /> },
     ],
   },
 ]);
