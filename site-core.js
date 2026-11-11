@@ -24,7 +24,7 @@ function completeAuth(){state.user={name:'Story Creator',email:'creator@example.
 function homeHeader(){
  const links=[['Product','/product'],['Tools','/tools'],['Showcase','/showcase'],['Templates','/templates'],['Pricing','/pricing'],['Guides','/resources']];
  const nav=()=>links.map(([label,url])=>link(label,url,'h17-link')).join('');
- const actions=()=>link('Sign in','/auth','h17-signin')+link('Get started','/app/new','h17-cta');
+ const actions=()=>link('Get started','/auth','h17-cta');
  const logo=()=>'<a href="#/" class="h17-image-logo" aria-label="Studio Cimora home"><img src="assets/studio-cimora-logo.png" alt="Studio Cimora" width="1672" height="941"></a>';
  return `<link rel="stylesheet" href="cimora-header.css"><header class="h17-header"><div class="h17-wrap">${logo()}<nav class="h17-desktop" aria-label="Website navigation">${nav()}</nav><div class="h17-actions">${actions()}</div><button type="button" class="h17-menu" data-h17="open" aria-label="Open navigation" aria-controls="h17-sheet" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button></div></header><dialog id="h17-sheet" class="h17-sheet" aria-labelledby="h17-title"><div class="h17-sheet-head"><h2 id="h17-title">Cimora</h2><button type="button" class="h17-close" data-h17="close" aria-label="Close navigation">×</button></div><nav class="h17-sheet-nav" aria-label="Mobile navigation">${nav()}</nav><div class="h17-sheet-actions">${actions()}</div></dialog>`;
 }

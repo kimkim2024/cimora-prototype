@@ -8,9 +8,7 @@
 .h17-link{display:block;border-radius:6px;padding:6px 12px;font-size:14px;line-height:20px;text-decoration:none;color:var(--ap-muted,#b1a7bf);transition:background .18s,color .18s;white-space:nowrap}
 .h17-link:hover{background:var(--ap-raised,#25212f);color:var(--ap-text,#f2edf8)}
 .h17-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.h17-signin,.h17-cta{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 12px;font-size:14px;line-height:20px;font-weight:500;text-decoration:none;white-space:nowrap;border-radius:6px;color:var(--ap-text,#f2edf8);transition:background .18s,opacity .18s}
-.h17-signin:hover{background:var(--ap-raised,#25212f)}
-.h17-cta{border-radius:999px;padding-inline:20px;background:var(--ap-accent,#c4a6ff);color:var(--ap-on-accent,#231331)}
+.h17-cta{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:8px 20px;font-size:14px;line-height:20px;font-weight:500;text-decoration:none;white-space:nowrap;border-radius:999px;background:var(--ap-accent,#c4a6ff);color:var(--ap-on-accent,#231331);transition:opacity .18s}
 .h17-cta:hover{opacity:.87}
 .h17-menu,.h17-close{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:1px solid var(--ap-line,#494052);background:transparent;color:var(--ap-text,#f2edf8);cursor:pointer;flex-shrink:0}
 .h17-menu{display:none}.h17-close{font-size:24px;line-height:1}
@@ -22,7 +20,7 @@
 .h17-sheet-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:16px}.h17-sheet-head h2{margin:0;font-size:20px;letter-spacing:-.5px}
 .h17-sheet-nav{display:flex;flex-direction:column;gap:4px}.h17-sheet-nav .h17-link{padding:10px 12px;color:var(--ap-text,#f2edf8);font-weight:500}
 .h17-features{border-top:1px solid var(--ap-line,#494052);margin:12px 0;padding-top:12px}.h17-features .h17-link{font-size:12px;color:var(--ap-muted,#b1a7bf)}
-.h17-sheet-actions{margin-top:auto;padding-top:24px;border-top:1px solid var(--ap-line,#494052);display:flex;flex-direction:column;gap:8px}.h17-sheet-actions .h17-signin{border:1px solid var(--ap-line,#494052)}
+.h17-sheet-actions{margin-top:auto;padding-top:24px;border-top:1px solid var(--ap-line,#494052);display:flex;flex-direction:column;gap:8px}
 body:has(.h17-sheet[open]){overflow:hidden}
 @keyframes h17-enter{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @media(max-width:767px){.h17-desktop,.h17-actions{display:none}.h17-menu{display:grid}.h17-wrap{padding:16px 40px;gap:12px}}
