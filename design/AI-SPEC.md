@@ -98,6 +98,7 @@ Copy values with `var(--name)`. Never hardcode.
 | `--color-overlay` | `rgba(23,23,23,.82)` | pill over imagery |
 | `--color-focus` | `0 0 0 2px #fff, 0 0 0 4px #171717` | focus ring (box-shadow) |
 | `--color-focus-inverse` | inverse of the above | focus ring on dark |
+| `--color-status-good` / `-warn` / `-bad` / `-idle` | `#2f9e63` / `#c9820a` / `#dc5343` / `#dedede` | progress bars, meters, gauge ticks - lighter than the text colours |
 | `--color-placeholder-a/b` | `#e9e6df` / `#cfd6d3` | empty artwork placeholders |
 
 **Section colours are ground colours only.** Never put `--color-section-*` on text, icons, buttons or tags.

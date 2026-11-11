@@ -185,23 +185,23 @@ html[data-cimora-theme] body.cimora-app .cm-run-stats>article.cm-budget{position
 html[data-cimora-theme] body.cimora-app .cm-budget-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
 html[data-cimora-theme] body.cimora-app .cm-budget-head>span:first-child{font-size:10px;line-height:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a}
 html[data-cimora-theme] body.cimora-app .cm-budget-state{flex:none;font-size:10px;line-height:1;font-weight:600;padding:4px 7px;border-radius:999px;letter-spacing:0;
-  color:#4c6b00;background:#f2fbdd;border:1px solid #d6ec9c}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-state{color:#8a4b00;background:#fdf3e4;border-color:#f0d4a8}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-state{color:#b3261e;background:#fdeceb;border-color:#f3c3bf}
+  color:var(--color-status-good-ink);background:var(--color-status-good-wash);border:1px solid var(--color-status-good-line)}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-state{color:var(--color-status-warn-ink);background:var(--color-status-warn-wash);border-color:var(--color-status-warn-line)}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-state{color:var(--color-status-bad-ink);background:var(--color-status-bad-wash);border-color:var(--color-status-bad-line)}
 html[data-cimora-theme] body.cimora-app .cm-budget-amount{display:block;margin:0;font-size:40px;line-height:1;font-weight:300;letter-spacing:-.04em;color:#171717;font-variant-numeric:tabular-nums}
 html[data-cimora-theme] body.cimora-app .cm-budget-amount small{font-size:13px;font-weight:400;letter-spacing:0;color:#9a9a9a;margin-left:7px}
 html[data-cimora-theme] body.cimora-app .cm-budget-bar{position:relative;height:4px;border-radius:999px;background:#ececec;overflow:hidden}
-html[data-cimora-theme] body.cimora-app .cm-budget-fill{display:block;height:100%;width:100%;border-radius:inherit;background:#171717;
+html[data-cimora-theme] body.cimora-app .cm-budget-fill{display:block;height:100%;width:100%;border-radius:inherit;background:var(--color-status-good);
   transform-origin:left center;transform:scaleX(var(--p,0));animation:cm-budget-grow .8s cubic-bezier(.22,1,.36,1) both}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-fill{background:#b45309}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-fill{background:#c02617}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-fill{background:var(--color-status-warn)}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-fill{background:var(--color-status-bad)}
 @keyframes cm-budget-grow{from{transform:scaleX(0)}to{transform:scaleX(var(--p,0))}}
 html[data-cimora-theme] body.cimora-app .cm-budget-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11.5px;line-height:15px;color:#8a8a8a}
 html[data-cimora-theme] body.cimora-app .cm-budget-legend span{display:inline-flex;align-items:center;gap:6px}
-html[data-cimora-theme] body.cimora-app .cm-budget-dot{width:7px;height:7px;border-radius:50%;flex:none;background:#171717}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-dot.is-spent{background:#b45309}
-html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-dot.is-spent{background:#c02617}
-html[data-cimora-theme] body.cimora-app .cm-budget-dot.is-left{background:#d7d7d7}
+html[data-cimora-theme] body.cimora-app .cm-budget-dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--color-status-good)}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-dot.is-spent{background:var(--color-status-warn)}
+html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-dot.is-spent{background:var(--color-status-bad)}
+html[data-cimora-theme] body.cimora-app .cm-budget-dot.is-left{background:var(--color-status-idle)}
 html[data-cimora-theme] body.cimora-app .cm-budget-fab{position:absolute;right:12px;bottom:12px;width:34px;height:34px;padding:0;
   display:grid;place-items:center;border-radius:50%;border:1px solid rgba(23,23,23,.14);background:#fff;color:#171717;cursor:pointer;
   box-shadow:0 1px 2px rgba(23,23,23,.06);transition:background .18s,border-color .18s,color .18s,transform .18s}
@@ -225,16 +225,16 @@ html[data-cimora-theme] body.cimora-app .cm-kpi-cap{display:flex;align-items:fle
   font-size:10px;line-height:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#8a8a8a}
 html[data-cimora-theme] body.cimora-app .cm-kpi-chip{flex:none;font-family:var(--font-mono);font-size:10px;line-height:1;font-weight:600;
   letter-spacing:0;text-transform:none;padding:4px 7px;border-radius:999px;background:#f3f3f3;color:#171717}
-html[data-cimora-theme] body.cimora-app .cm-kpi-chip.is-ok{background:#f2fbdd;color:#4c6b00}
-html[data-cimora-theme] body.cimora-app .cm-kpi-chip.is-warn{background:#fdf3e4;color:#8a4b00}
+html[data-cimora-theme] body.cimora-app .cm-kpi-chip.is-ok{background:var(--color-status-good-wash);color:var(--color-status-good-ink)}
+html[data-cimora-theme] body.cimora-app .cm-kpi-chip.is-warn{background:var(--color-status-warn-wash);color:var(--color-status-warn-ink)}
 html[data-cimora-theme] body.cimora-app .cm-kpi-big{display:block;margin:2px 0 0;font-size:40px;line-height:1;font-weight:300;
   letter-spacing:-.04em;color:#171717;font-variant-numeric:tabular-nums}
 html[data-cimora-theme] body.cimora-app .cm-kpi-big small{font-size:13px;font-weight:400;letter-spacing:0;color:#9a9a9a;margin-left:7px}
 html[data-cimora-theme] body.cimora-app .cm-kpi-meter{position:relative;height:4px;border-radius:999px;background:#ececec;overflow:hidden}
-html[data-cimora-theme] body.cimora-app .cm-kpi-meter i{display:block;height:100%;width:100%;border-radius:inherit;background:#171717;
+html[data-cimora-theme] body.cimora-app .cm-kpi-meter i{display:block;height:100%;width:100%;border-radius:inherit;background:var(--color-status-good);
   transform-origin:left center;transform:scaleX(var(--p,0));animation:cm-kpi-grow .8s cubic-bezier(.22,1,.36,1) both}
 @keyframes cm-kpi-grow{from{transform:scaleX(0)}to{transform:scaleX(var(--p,0))}}
-html[data-cimora-theme] body.cimora-app .cm-kpi.is-flagged .cm-kpi-meter i{background:#b45309}
+html[data-cimora-theme] body.cimora-app .cm-kpi.is-flagged .cm-kpi-meter i{background:var(--color-status-bad)}
 html[data-cimora-theme] body.cimora-app .cm-kpi-note{margin:0;font-size:11.5px;line-height:15px;color:#8a8a8a}
 @media (prefers-reduced-motion: reduce){
   html[data-cimora-theme] body.cimora-app .cm-kpi{opacity:1;transform:none;animation:none}
@@ -245,8 +245,8 @@ html[data-cimora-theme] body.cimora-app .cm-kpi-note{margin:0;font-size:11.5px;l
 html[data-cimora-theme] body.cimora-app .cm-gauge-card{gap:6px}
 html[data-cimora-theme] body.cimora-app .cm-gauge-wrap{position:relative;width:100%;max-width:200px;margin:0 auto;padding-top:2px}
 html[data-cimora-theme] body.cimora-app .cm-gauge{display:block;width:100%;height:auto;overflow:visible}
-html[data-cimora-theme] body.cimora-app .cm-gauge rect{fill:#e6e6e6;animation:cm-gauge-in .5s cubic-bezier(.22,1,.36,1) both}
-html[data-cimora-theme] body.cimora-app .cm-gauge rect.is-on{fill:#171717}
+html[data-cimora-theme] body.cimora-app .cm-gauge rect{fill:var(--color-status-idle);animation:cm-gauge-in .5s cubic-bezier(.22,1,.36,1) both}
+html[data-cimora-theme] body.cimora-app .cm-gauge rect.is-on{fill:var(--color-status-good)}
 @keyframes cm-gauge-in{from{opacity:0}to{opacity:1}}
 html[data-cimora-theme] body.cimora-app .cm-gauge-center{position:absolute;left:0;right:0;bottom:10px;text-align:center;line-height:1;
   display:flex;align-items:baseline;justify-content:center;gap:1px}
@@ -255,8 +255,8 @@ html[data-cimora-theme] body.cimora-app .cm-gauge-center strong{font-size:40px;f
 html[data-cimora-theme] body.cimora-app .cm-gauge-center small{font-size:14px;font-weight:400;color:#9a9a9a;letter-spacing:0}
 html[data-cimora-theme] body.cimora-app .cm-gauge-legend{display:flex;justify-content:center;gap:18px;font-size:11.5px;line-height:15px;color:#8a8a8a}
 html[data-cimora-theme] body.cimora-app .cm-gauge-legend span{display:inline-flex;align-items:center;gap:5px}
-html[data-cimora-theme] body.cimora-app .cm-gauge-legend i{width:6px;height:6px;border-radius:50%;background:#e0e0e0;flex:none}
-html[data-cimora-theme] body.cimora-app .cm-gauge-legend i.is-on{background:#171717}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend i{width:6px;height:6px;border-radius:50%;background:var(--color-status-idle);flex:none}
+html[data-cimora-theme] body.cimora-app .cm-gauge-legend i.is-on{background:var(--color-status-good)}
 html[data-cimora-theme] body.cimora-app .cm-gauge-legend b{font-weight:600;color:#171717;font-variant-numeric:tabular-nums;margin-left:2px}
 @media (prefers-reduced-motion: reduce){
   html[data-cimora-theme] body.cimora-app .cm-gauge rect{animation:none}

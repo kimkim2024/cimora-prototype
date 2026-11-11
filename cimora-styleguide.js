@@ -27,6 +27,8 @@
     sws([['--color-accent', '#c8f24e', 'active state, progress, Creator tag'], ['--color-accent-deep', '#9ccc0f', 'lime as text (contrast safe)'], ['--color-accent-soft', 'rgba(200,242,78,.16)', 'selection, progress track']]),
     '<h3 class="sg-h3">Section colours — whole blocks only, never on a button or tag</h3>',
     sws([['--color-section-warm', '#3fae6b', 'on the dark room-demo band'], ['--color-section-poster', '#0038ff', 'poster band ground'], ['--color-section-poster-ink', '#001a99', 'poster shadow'], ['--color-section-poster-lime', '#ccff00', 'poster type']]),
+    '<h3 class="sg-h3">Status for meters and gauges - lighter than the text colours</h3>',
+    sws([['--color-status-good', '#2f9e63', 'progress, a healthy state'], ['--color-status-warn', '#c9820a', 'nearly there'], ['--color-status-bad', '#dc5343', 'over budget, failed steps'], ['--color-status-idle', '#dedede', 'remaining track and ticks']]),
     '<h3 class="sg-h3">Status</h3>',
     sws([['--color-positive', '#256b51', 'done, saved'], ['--color-warning', '#b45309', 'needs review'], ['--color-negative', '#c02617', 'failed, destructive']]),
   ].join('');

@@ -180,6 +180,26 @@
   --color-placeholder-b:#cfd6d3;
 }
 
+
+/* ── 18. 状态色（轻量版：图表与进度用 good/warn/bad，文字用对应的 -ink） ────
+   深色版 --color-positive/warning/negative 仍保留给文字与图标；
+   这一组更亮，专给进度条、仪表刻度、状态胶囊用，避免整屏发黑。 */
+:root{
+  --color-status-good:#2f9e63;
+  --color-status-good-wash:#eaf7ef;
+  --color-status-good-ink:#1f6b45;
+  --color-status-good-line:#cfe9d9;
+  --color-status-warn:#c9820a;
+  --color-status-warn-wash:#fdf4e5;
+  --color-status-warn-ink:#8a5200;
+  --color-status-warn-line:#f0d9b0;
+  --color-status-bad:#dc5343;
+  --color-status-bad-wash:#fdeeec;
+  --color-status-bad-ink:#a92a1f;
+  --color-status-bad-line:#f5cdc7;
+  --color-status-idle:#dedede;
+}
+
 /* ---------------------------------------------------------------------------
    规范化入口：新页面/新模块从这里开始
    ---------------------------------------------------------------------------
