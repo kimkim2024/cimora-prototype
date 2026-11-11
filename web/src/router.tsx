@@ -1,4 +1,5 @@
 import { createHashRouter, Navigate } from 'react-router-dom';
+import { AppLayout } from './layouts/AppLayout';
 import { SiteLayout } from './layouts/SiteLayout';
 import { ArticlePage, CasePage, TemplatePage, UpdatesPage } from './pages/DetailPages';
 import FeaturesPage from './pages/FeaturesPage';
@@ -8,12 +9,13 @@ import NotPorted from './pages/NotPorted';
 import NotFound from './pages/NotFound';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
+import ProjectsPage from './pages/app/ProjectsPage';
 
 /**
  * Hash routing, on purpose: every existing link in the prototype and in the
  * marketing copy is written as `#/path`, so the new app inherits the URL scheme
- * instead of breaking it. Anything unknown falls through to NotFound; the few
- * product surfaces still in the prototype use NotPorted.
+ * instead of breaking it. The studio has its own shell; whatever is still only
+ * in the prototype falls through to NotPorted.
  */
 export const router = createHashRouter([
   {
@@ -40,13 +42,20 @@ export const router = createHashRouter([
       { path: 'tools', element: <ToolsPage /> },
       { path: 'legal/:doc', element: <LegalPage /> },
 
-      // product surfaces that still live in the prototype
       { path: 'auth', element: <NotPorted /> },
-      { path: 'app/*', element: <NotPorted /> },
       { path: 'tools/:id', element: <NotPorted /> },
       { path: 'share/*', element: <NotPorted /> },
 
       { path: '*', element: <NotFound /> },
+    ],
+  },
+  {
+    path: '/app',
+    element: <AppLayout />,
+    children: [
+      { index: true, element: <Navigate to="/app/projects" replace /> },
+      { path: 'projects', element: <ProjectsPage /> },
+      { path: '*', element: <NotPorted /> },
     ],
   },
 ]);

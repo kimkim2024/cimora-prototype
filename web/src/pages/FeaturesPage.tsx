@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { artUrl } from '../data/art';
 import { FEATURES, TOOLS } from '../data/site';
 import { Faq } from '../components/ui/Faq';
@@ -31,12 +31,12 @@ export default function FeaturesPage() {
             >
               Start here
             </a>
-            <a
-              href={legacyUrl('/app')}
+            <Link
+              to="/app"
               className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-5 text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
             >
               Open the studio
-            </a>
+            </Link>
           </div>
         </div>
         <figure className="relative overflow-hidden rounded-2xl border border-hairline bg-paper-sunken">

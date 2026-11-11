@@ -68,8 +68,16 @@ Every public page of the site:
 | /tools | pages/InfoPages.tsx |
 | /legal/:doc | pages/InfoPages.tsx |
 
+Studio (AppLayout, sidebar shell):
+
+| route | state |
+| --- | --- |
+| /app | redirects to /app/projects |
+| /app/projects | pages/app/ProjectsPage.tsx — filter, search, folder cards, new-project tile |
+| /app/assets, /app/tasks, /app/settings | NotPorted (links into the prototype) |
+
 Still in the prototype, reached through NotPorted: /auth (smoke login),
-/app/* (the studio), /tools/:id (the 14 tool demos) and /share/*.
+/tools/:id (the 14 tool demos) and /share/*.
 
 Shared pieces: components/SiteHeader, components/SiteFooter,
 components/ui/{PageHero,Section,Cards,Faq,Chips}, and the content in
