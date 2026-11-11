@@ -181,7 +181,7 @@ html[data-cimora-theme] body.cimora-app .cm-main table{color:#171717}
 .public-footer .cm-logo img{display:block;height:30px;width:auto;max-width:none}
 
 /* ---------- chapter budget meter (spent / budget) ---------- */
-html[data-cimora-theme] body.cimora-app .cm-run-stats>article.cm-budget{display:flex;flex-direction:column;gap:10px}
+html[data-cimora-theme] body.cimora-app .cm-run-stats>article.cm-budget{position:relative;display:flex;flex-direction:column;gap:10px;padding-bottom:48px}
 html[data-cimora-theme] body.cimora-app .cm-budget-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
 html[data-cimora-theme] body.cimora-app .cm-budget-head>span:first-child{font-size:11px;line-height:15px;color:#666666}
 html[data-cimora-theme] body.cimora-app .cm-budget-state{flex:none;font-size:10px;line-height:1;font-weight:600;padding:4px 8px;border-radius:999px;
@@ -202,7 +202,13 @@ html[data-cimora-theme] body.cimora-app .cm-budget-dot{width:7px;height:7px;bord
 html[data-cimora-theme] body.cimora-app .cm-budget.is-near .cm-budget-dot.is-spent{background:#b45309}
 html[data-cimora-theme] body.cimora-app .cm-budget.is-over .cm-budget-dot.is-spent{background:#c02617}
 html[data-cimora-theme] body.cimora-app .cm-budget-dot.is-left{background:#d7d7d7}
-html[data-cimora-theme] body.cimora-app .cm-budget .cm-text-link{font-size:11px;padding:0;color:#171717!important;text-decoration:underline;text-underline-offset:3px}
+html[data-cimora-theme] body.cimora-app .cm-budget-fab{position:absolute;right:12px;bottom:12px;width:34px;height:34px;padding:0;
+  display:grid;place-items:center;border-radius:50%;border:1px solid rgba(23,23,23,.14);background:#fff;color:#171717;cursor:pointer;
+  box-shadow:0 1px 2px rgba(23,23,23,.06);transition:background .18s,border-color .18s,color .18s,transform .18s}
+html[data-cimora-theme] body.cimora-app .cm-budget-fab:hover{background:#171717;border-color:#171717;color:#fff}
+html[data-cimora-theme] body.cimora-app .cm-budget-fab:active{transform:scale(.94)}
+html[data-cimora-theme] body.cimora-app .cm-budget-fab:focus-visible{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px #171717}
+html[data-cimora-theme] body.cimora-app .cm-budget-fab svg{display:block}
 @media (prefers-reduced-motion: reduce){
   html[data-cimora-theme] body.cimora-app .cm-budget-fill{animation:none;transform:scaleX(var(--p,0))}
 }
