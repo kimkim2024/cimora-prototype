@@ -41,7 +41,7 @@ function footer(){if(context.path==='/'&&window.CimoraFooter03)return window.Cim
 function appShell(content){return Cimora.shell(content,context);}
 function empty(title,text,action='New Project',to='/app/new'){return `<div class="empty"><span>✧</span><h3>${esc(title)}</h3><p>${esc(text)}</p>${link(action,to,'button primary')}</div>`;}
 function crumbs(items){return `<nav class="crumbs" aria-label="Breadcrumb">${items.map(([label,to])=>to?link(esc(label),to):`<span>${esc(label)}</span>`).join('<i>/</i>')}</nav>`;}
-function sectionHead(kicker,title,desc='',extra=''){return `<div class="section-head"><div><span class="eyebrow">${kicker}</span><h2>${title}</h2>${desc?`<p>${desc}</p>`:''}</div>${extra}</div>`;}
+function sectionHead(kicker,title,desc='',extra=''){return `<div class="section-head"><div><h2>${title}</h2>${desc?`<p>${desc}</p>`:''}</div>${extra}</div>`;}
 function faq(items=FrameData.faqs){return `<div class="faq-list">${items.map(([q,a])=>`<details><summary>${esc(q)}<span>＋</span></summary><p>${esc(a)}</p></details>`).join('')}</div>`;}
 function render(){
  const raw=location.hash.slice(1)||'/';const legacy=['motion','script','assets','comic','export'];const [path,query='']=raw.split('?');context={path:path.startsWith('/')?path:'/'+path,parts:path.replace(/^\//,'').split('/'),params:new URLSearchParams(query)};S.context=context;
