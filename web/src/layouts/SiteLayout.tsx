@@ -1,15 +1,17 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
+import { HomeFooter } from '../components/HomeFooter';
 import { SiteFooter } from '../components/SiteFooter';
 import { SiteHeader } from '../components/SiteHeader';
 import { useDocumentTitle } from '../lib/useDocumentTitle';
 import { scrollToTop } from '../lib/scroll';
 
 /**
- * One shell for every public page: bar, page, footer. Route changes reset the
- * scroll position and swap the document title.
+ * One shell for every public page: bar, page, footer. The home page carries its
+ * own footer (the dotted band one), everything else shares the standard one.
  */
 export function SiteLayout() {
   const { pathname } = useLocation();
+  const home = pathname === '/';
   useDocumentTitle(pathname);
   scrollToTop();
 
@@ -19,7 +21,7 @@ export function SiteLayout() {
       <main className="flex-1">
         <Outlet />
       </main>
-      <SiteFooter />
+      {home ? <HomeFooter /> : <SiteFooter />}
     </div>
   );
 }

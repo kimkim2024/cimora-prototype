@@ -6,6 +6,11 @@ import videoCreation from '../../../assets/video-creation.jpg';
 import ocDressUp from '../../../assets/oc-dress-up.png';
 import infiniteCanvas from '../../../assets/infinite-canvas.jpg';
 import miniTools from '../../../assets/mini-tools-arcade.png';
+import work01 from '../../../assets/work-01.jpg';
+import work02 from '../../../assets/work-02.jpg';
+import work03 from '../../../assets/work-03.jpg';
+import work04 from '../../../assets/work-04.jpg';
+import ctaBanner from '../../../assets/cta-banner.png';
 
 export type Film = {
   title: string;
@@ -54,3 +59,51 @@ export const CAPABILITIES = [
 
 export const COMPOSER_MODES = ['Video', 'Comic', 'Canvas'] as const;
 export const COMPOSER_MODEL = { name: 'Aurora Dreamscape', tier: 'Fine' };
+
+export const WORK_STORY = {
+  title: 'The Last Train Recording',
+  tag: 'Mystery · a late reconciliation',
+  note: 'Original complete short story',
+  cover: work01,
+};
+
+export type Work = {
+  title: string;
+  tag: string;
+  type: string;
+  cover: string;
+  comic: boolean;
+  motion: boolean;
+};
+
+export const WORKS: Work[] = [
+  { title: 'Letters to the Stars', tag: 'Fantasy · original world', type: 'Comic', cover: work02, comic: true, motion: false },
+  { title: 'Before the Rain Ends', tag: 'Urban · a gentle reunion', type: 'Comic / Video', cover: work03, comic: true, motion: true },
+  { title: 'The Last Train of Summer', tag: 'Youth · a musical journey', type: 'Video concept', cover: work04, comic: false, motion: true },
+];
+
+export const RECIPES = [
+  {
+    title: 'Rainy Day Letters · breathing webtoon',
+    category: 'Comic layout',
+    desc: 'Generous white space and restrained dialogue leave every reunion room to linger.',
+    author: 'Misty Isle Studio',
+    tone: 'accent' as const,
+  },
+  {
+    title: 'From one chapter to a motion trailer',
+    category: 'Video',
+    desc: 'A complete recipe for storyboards, assets, key shots and review.',
+    author: 'Cimora Studio',
+    tone: 'ink' as const,
+  },
+  {
+    title: 'OC identity sheet · continuity edition',
+    category: 'Character assets',
+    desc: 'Give appearance, outfit, mood and story relationships something solid to rely on.',
+    author: 'Tsukimi Lab',
+    tone: 'sunken' as const,
+  },
+];
+
+export const CTA_BANNER = ctaBanner;
