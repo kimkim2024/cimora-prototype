@@ -1,4 +1,4 @@
-import { CAPABILITIES } from '../../data/home';
+﻿import { CAPABILITIES } from '../../data/home';
 
 /** Five dark poster cards: the things the studio actually does. */
 export function Capabilities() {
@@ -14,6 +14,7 @@ export function Capabilities() {
               src={item.image}
               alt=""
               loading="lazy"
+              decoding="async"
               className="aspect-[3/4] w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-[1.03]"
             />
             <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(0deg,rgba(15,15,15,.95)_0%,rgba(15,15,15,.72)_34%,rgba(15,15,15,.28)_58%,transparent_78%)]" />

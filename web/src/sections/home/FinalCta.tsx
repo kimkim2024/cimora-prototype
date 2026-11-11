@@ -8,7 +8,7 @@ export function FinalCta() {
       <span className="text-[10px] uppercase tracking-[0.18em] text-ink-quiet">Your next chapter starts here</span>
 
       <div className="relative mt-5 overflow-hidden rounded-2xl border border-hairline">
-        <img src={CTA_BANNER} alt="" className="w-full object-cover" />
+        <img src={CTA_BANNER} alt="" loading="lazy" decoding="async" className="w-full object-cover" />
         <div className="absolute inset-0 grid place-items-center">
           <Link
             to="/app"

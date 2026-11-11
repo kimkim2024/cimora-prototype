@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RECIPES, WORK_STORY, WORKS } from '../../data/home';
 import { label } from './label';
@@ -56,6 +56,7 @@ export function Works() {
                   src={WORK_STORY.cover}
                   alt=""
                   loading="lazy"
+                  decoding="async"
                   className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 text-[9px] text-ink backdrop-blur">
@@ -79,6 +80,7 @@ export function Works() {
                   src={work.cover}
                   alt=""
                   loading="lazy"
+                  decoding="async"
                   className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
                 <span className="absolute left-3 top-3 rounded-full bg-paper/85 px-2.5 py-1 text-[9px] text-ink backdrop-blur">
@@ -132,7 +134,7 @@ export function Recipes() {
                   (recipe.tone === 'ink' ? 'text-ink-inverse' : 'text-ink')
                 }
               >
-                {recipe.title.split('·')[0].trim()}
+                {recipe.title.split('路')[0].trim()}
               </span>
               <span aria-hidden className="absolute right-4 top-4 flex gap-1">
                 <span className="h-4 w-4 rounded-full bg-paper/70" />
