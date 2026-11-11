@@ -1,29 +1,31 @@
+import { Link } from 'react-router-dom';
+
 const COLUMNS = [
   {
     title: 'Create',
     links: [
-      { label: 'Webtoon creation', href: '#/features/webtoon' },
-      { label: 'Motion comic', href: '#/features/motion-comic' },
-      { label: 'Tools hub', href: '#/tools' },
-      { label: 'Studio', href: '#/app' },
+      { label: 'Webtoon creation', to: '/features/webtoon' },
+      { label: 'Motion comic', to: '/features/motion-comic' },
+      { label: 'Tools hub', to: '/tools' },
+      { label: 'Studio', to: '/app' },
     ],
   },
   {
     title: 'Inspiration & support',
     links: [
-      { label: 'Showcase', href: '#/showcase' },
-      { label: 'Guides', href: '#/resources' },
-      { label: 'Help center', href: '#/help' },
-      { label: 'Changelog', href: '#/resources/updates' },
+      { label: 'Showcase', to: '/showcase' },
+      { label: 'Guides', to: '/resources' },
+      { label: 'Help center', to: '/help' },
+      { label: 'Changelog', to: '/resources/updates' },
     ],
   },
   {
     title: 'About usage',
     links: [
-      { label: 'Pricing & usage', href: '#/pricing' },
-      { label: 'Privacy & data', href: '#/legal/privacy' },
-      { label: 'Commercial use & copyright', href: '#/legal/copyright' },
-      { label: 'Terms of service', href: '#/legal/terms' },
+      { label: 'Pricing & usage', to: '/pricing' },
+      { label: 'Privacy & data', to: '/legal/privacy' },
+      { label: 'Commercial use & copyright', to: '/legal/copyright' },
+      { label: 'Terms of service', to: '/legal/terms' },
     ],
   },
 ];
@@ -34,9 +36,9 @@ export function SiteFooter() {
     <footer className="border-t border-hairline bg-paper">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.6fr_repeat(3,1fr)] gap-10 px-10 pb-8 pt-14">
         <div>
-          <a href="#/" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
+          <Link to="/product" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
             Studio Cimora
-          </a>
+          </Link>
           <p className="mt-4 max-w-[30ch] text-[13px] leading-[1.7] text-ink-muted">
             Let your story grow between every frame. Consistent characters, editable creation, clear steps.
           </p>
@@ -47,10 +49,10 @@ export function SiteFooter() {
             <h3 className="text-[12px] font-medium text-ink">{column.title}</h3>
             <ul className="mt-4 space-y-2.5">
               {column.links.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-[12px] text-ink-muted transition-colors hover:text-ink">
+                <li key={link.to}>
+                  <Link to={link.to} className="text-[12px] text-ink-muted transition-colors hover:text-ink">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

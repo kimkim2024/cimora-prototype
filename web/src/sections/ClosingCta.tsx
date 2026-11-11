@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { legacyUrl } from '../lib/legacy';
+
 /** Closing call to action: one story, one next step. */
 export function ClosingCta() {
   return (
@@ -9,17 +12,17 @@ export function ClosingCta() {
         <p className="mt-4 text-[14px] text-ink-muted">Bring your characters and story. Start here.</p>
         <div className="mt-8 flex items-center gap-3">
           <a
-            href="#/app/new"
+            href={legacyUrl('/app/new')}
             className="inline-flex h-11 items-center rounded-xl bg-ink px-6 text-[14px] font-medium text-ink-inverse shadow-key transition-transform hover:-translate-y-px"
           >
             Start a new story
           </a>
-          <a
-            href="#/tools"
+          <Link
+            to="/tools"
             className="inline-flex h-11 items-center rounded-xl border border-hairline-strong px-6 text-[14px] font-medium text-ink transition-colors hover:border-ink hover:bg-paper-muted"
           >
             Try free tools first
-          </a>
+          </Link>
         </div>
       </div>
     </section>

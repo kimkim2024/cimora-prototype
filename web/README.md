@@ -38,6 +38,20 @@ Rules that still apply here: one accent per screen (lime `#c8f24e`, only for
 "live / current / generating"), paper white surfaces, 1px `#dedede` hairlines,
 no decorative arrows, no uppercase kickers above headings.
 
+## Routing
+
+`react-router-dom` with a **hash router** (`src/router.tsx`): every link in the
+prototype and in the copy is written as `#/path`, so the new app inherits the
+scheme instead of rewriting it, and a static host needs no rewrite rules.
+
+- `/` → redirects to `/product`
+- `/product` → the ported page
+- anything else → `NotPorted`, which names the route and offers a link into the
+  prototype (`VITE_LEGACY_URL`, default `http://127.0.0.1:4173`)
+
+Add a page by creating `src/pages/X.tsx` and one route entry; the shell
+(`SiteLayout`) supplies the header, footer, title and scroll reset.
+
 ## What is ported so far
 
 `/product` is complete:
