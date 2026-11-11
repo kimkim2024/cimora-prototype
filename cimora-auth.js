@@ -75,7 +75,6 @@ void main(){
       foot: 'New here?',
       footAction: 'Create an account',
       autocomplete: 'current-password',
-      theme: 'Switch to light mode',
     },
     signup: {
       title: 'Create your studio',
@@ -84,7 +83,6 @@ void main(){
       foot: 'Already have an account?',
       footAction: 'Sign in',
       autocomplete: 'new-password',
-      theme: 'Switch to light mode',
     },
   };
 
@@ -99,7 +97,7 @@ void main(){
     // workspace.afterRender is replaced by later modules, so mount right after
     // the markup lands instead of relying on it.
     requestAnimationFrame(mount);
-    return `<link rel="stylesheet" href="cimora-auth.css"><main class="public-auth" data-theme="dark" data-mode="signin">
+    return `<link rel="stylesheet" href="cimora-auth.css"><main class="public-auth" data-mode="signin">
 <div class="pa-grain" aria-hidden="true"></div>
 <section class="pa-visual" aria-hidden="true">
 <div class="pa-sheet pa-sheet--back"></div>
@@ -115,10 +113,8 @@ void main(){
 </div>
 </section>
 <section class="pa-side">
-<button type="button" class="pa-theme" data-pa="theme" aria-label="Switch to light mode">
-<svg class="pa-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/></svg>
-<svg class="pa-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
-<span class="pa-theme-text">Dark</span>
+<button type="button" class="pa-close" data-pa="cancel" aria-label="Cancel and go back">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
 </button>
 <div class="pa-form">
 <div class="pa-tabs" role="tablist" aria-label="Account mode">
@@ -170,8 +166,7 @@ void main(){
   function smoke(root) {
     const canvas = root.querySelector('.pa-smoke');
     const gl = canvas && canvas.getContext('webgl', { antialias: false, alpha: false, depth: false });
-    let darkTarget = root.dataset.theme === 'dark' ? 1 : 0;
-    if (!canvas || !gl) return { setDark: (dark) => { darkTarget = dark ? 1 : 0; } }; // the paper colour stands in
+    if (!canvas || !gl) return {}; // the paper colour stands in
 
     const shader = (type, src) => {
       const s = gl.createShader(type);
@@ -185,7 +180,7 @@ void main(){
     gl.linkProgram(program);
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       console.error('[Cimora auth smoke]', gl.getProgramInfoLog(program));
-      return { setDark: (dark) => { darkTarget = dark ? 1 : 0; } };
+      return {};
     }
     gl.useProgram(program);
 
@@ -203,7 +198,6 @@ void main(){
     const started = performance.now();
     // Start mid-drift so the first frame is already full of smoke.
     const mouse = { x: .7, y: .4, tx: .7, ty: .4 };
-    let shade = darkTarget;
     let time = 40;
     let frame = 0;
     let last = 0;
@@ -212,7 +206,7 @@ void main(){
       gl.uniform2f(uRes, canvas.width, canvas.height);
       gl.uniform1f(uTime, time);
       gl.uniform2f(uMouse, mouse.x, mouse.y);
-      gl.uniform1f(uDark, shade);
+      gl.uniform1f(uDark, 1.);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
@@ -223,10 +217,9 @@ void main(){
       const dt = Math.min((now - last) / 1000, .1);
       last = now;
       time = 40 + (now - started) / 1000;
-      // Ease the pointer and the theme so both glide rather than snap.
+      // Ease the pointer so the eddy glides rather than snaps.
       mouse.x += (mouse.tx - mouse.x) * Math.min(1, dt * 2.2);
       mouse.y += (mouse.ty - mouse.y) * Math.min(1, dt * 2.2);
-      shade += (darkTarget - shade) * Math.min(1, dt * 3.5);
       draw();
     };
 
@@ -258,13 +251,7 @@ void main(){
     resize();
     play();
 
-    return {
-      setDark(dark) {
-        darkTarget = dark ? 1 : 0;
-        // Under reduced motion there is no loop, so a theme change redraws once.
-        if (reduce.matches) { shade = darkTarget; draw(); }
-      },
-    };
+    return {};
   }
 
   /* ---- interactions ----------------------------------------------------- */
@@ -274,14 +261,12 @@ void main(){
     root.dataset.paMounted = 'true';
     const site = window.Site;
 
-    const shader = smoke(root);
+    smoke(root);
     const form = root.querySelector('[data-pa="form"]');
     const submit = root.querySelector('[data-pa="submit"]');
     const action = root.querySelector('[data-pa="action"]');
     const password = root.querySelector('#pa-password');
     const nameField = root.querySelector('[data-pa="name-field"]');
-    const themeBtn = root.querySelector('[data-pa="theme"]');
-    const themeText = root.querySelector('.pa-theme-text');
     const control = root.querySelectorAll('.pa-submit, .pa-provider');
     let busy = false;
 
@@ -324,12 +309,10 @@ void main(){
       setMode(root.dataset.mode === 'signin' ? 'signup' : 'signin');
     });
 
-    themeBtn.addEventListener('click', () => {
-      const dark = root.dataset.theme !== 'dark';
-      root.dataset.theme = dark ? 'dark' : 'light';
-      themeText.textContent = dark ? 'Dark' : 'Light';
-      themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-      shader.setDark(dark);
+    // Cancel leaves the sign-in flow instead of dismissing it in place.
+    root.querySelector('[data-pa="cancel"]').addEventListener('click', () => {
+      if (history.length > 1) history.back();
+      else location.hash = '#/';
     });
 
     root.querySelector('[data-pa="eye"]').addEventListener('click', (event) => {

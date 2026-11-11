@@ -1,20 +1,20 @@
 /* Auth: split sign-in / sign-up page, ported from the Smoke Login reference.
    Left half is a small stack of paper with live smoke drifting across it; the
-   right half is the form on plain paper. Colours come from tokens, and the
-   dark palette is mixed from the same tokens, so both themes stay on system. */
+   right half is the form on plain paper. The page is dark by design and has no
+   theme switch, so the palette is mixed once from tokens. */
 
 .public-auth {
-  --pa-bg: var(--color-paper-muted);
-  --pa-paper: var(--color-paper);
-  --pa-sheet: var(--color-paper-sunken);
-  --pa-ink: var(--color-ink);
-  --pa-muted: var(--color-ink-muted);
-  --pa-line: var(--color-hairline);
-  --pa-field: var(--color-paper);
-  --pa-accent: var(--color-accent-deep);
-  --pa-btn: var(--color-ink);
-  --pa-btn-ink: var(--color-ink-inverse);
-  --pa-grain: multiply;
+  --pa-bg: var(--color-paper-darkest);
+  --pa-paper: var(--color-paper-dark);
+  --pa-sheet: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-darkest));
+  --pa-ink: var(--color-ink-inverse);
+  --pa-muted: color-mix(in oklab, var(--color-ink-inverse) 58%, var(--color-paper-dark));
+  --pa-line: color-mix(in oklab, var(--color-ink-inverse) 16%, var(--color-paper-dark));
+  --pa-field: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-dark));
+  --pa-accent: var(--color-accent);
+  --pa-btn: var(--color-accent);
+  --pa-btn-ink: var(--color-ink-on-accent);
+  --pa-grain: soft-light;
 
   /* cimora-appearance.css repaints headings, inputs and panels from the --ap-*
      set, so point that set at this page's palette too. */
@@ -47,21 +47,6 @@
   background: var(--pa-bg);
   color: var(--pa-ink);
   overflow-x: clip;
-  transition: background-color 700ms, color 700ms;
-}
-
-.public-auth[data-theme="dark"] {
-  --pa-bg: var(--color-paper-darkest);
-  --pa-paper: var(--color-paper-dark);
-  --pa-sheet: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-darkest));
-  --pa-ink: var(--color-ink-inverse);
-  --pa-muted: color-mix(in oklab, var(--color-ink-inverse) 58%, var(--color-paper-dark));
-  --pa-line: color-mix(in oklab, var(--color-ink-inverse) 16%, var(--color-paper-dark));
-  --pa-field: color-mix(in oklab, var(--color-ink-inverse) 6%, var(--color-paper-dark));
-  --pa-accent: var(--color-accent);
-  --pa-btn: var(--color-accent);
-  --pa-btn-ink: var(--color-ink-on-accent);
-  --pa-grain: soft-light;
 }
 
 /* paper tooth across the whole page */
@@ -166,30 +151,31 @@
   padding: 64px 32px;
 }
 
-.public-auth .pa-theme {
+/* cancel: leave the sign-in flow and go back */
+.public-auth .pa-close {
   position: absolute;
   right: 24px;
   top: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: grid;
+  place-items: center;
+  width: 36px;
   height: 36px;
-  padding: 0 16px;
+  padding: 0;
   border: 1px solid var(--pa-line);
   border-radius: 999px;
   background: var(--pa-field);
   color: var(--pa-ink);
-  font-size: 12px;
-  font-weight: 500;
   cursor: pointer;
-  transition: border-color 200ms, background-color 700ms;
+  transition: border-color 200ms, background-color 200ms, transform 200ms;
 }
 
-.public-auth .pa-theme:hover { border-color: var(--color-hairline-strong); }
-.public-auth .pa-theme svg { width: 16px; height: 16px; }
-.public-auth .pa-theme .pa-icon-sun { display: none; }
-.public-auth[data-theme="light"] .pa-theme .pa-icon-sun { display: block; }
-.public-auth[data-theme="light"] .pa-theme .pa-icon-moon { display: none; }
+.public-auth .pa-close:hover {
+  border-color: var(--color-hairline-strong);
+  transform: scale(1.04);
+}
+
+.public-auth .pa-close:active { transform: scale(.96); }
+.public-auth .pa-close svg { width: 16px; height: 16px; }
 
 .public-auth .pa-form {
   width: 100%;
@@ -486,6 +472,6 @@ body.cimora-auth-page .public-auth .pa-or { color: var(--pa-muted); }
   .public-auth .pa-spinner { animation: none; }
   .public-auth .pa-submit,
   .public-auth .pa-provider,
-  .public-auth .pa-theme,
+  .public-auth .pa-close,
   .public-auth .pa-input { transition: none; }
 }
