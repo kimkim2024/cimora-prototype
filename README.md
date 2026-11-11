@@ -10,6 +10,19 @@ npm run preview      # http://127.0.0.1:4173/    (optional, nicer for reviews)
 
 Routes worth knowing: `#/` (site) · `#/app` (creation space) · `#/app/projects` · `#/styleguide` (the design system).
 
+## Real UI (`web/`)
+
+New work is no longer a mockup: the product UI is being rebuilt in **React 19 + TypeScript + Tailwind 4** under [`web/`](web/). The prototype above stays as the interactive reference while pages move over one at a time.
+
+```bash
+cd web
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # theme check → type check → dist/
+```
+
+First section ported: "From creating to continuous production" (live production line + chapter budget curve). See [`web/README.md`](web/README.md).
+
 ## Design system
 
 | What | Where |
