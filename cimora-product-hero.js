@@ -26,13 +26,16 @@ function p3mPhone() {
 
 function productHeroMockup() {
   return `<section class="p3m-hero">
-    <div class="p3m-inner">
+    <div class="p3m-layout">
+      <div class="p3m-copy">
             <h1>Stop scattering your story<br><span>across different tools.</span></h1>
       <p class="p3m-desc">The comic is the source of truth for visuals and story; the video reuses the same characters, scenes and voice.</p>
       <a class="button primary p3m-cta" href="#/app">Open Demo Workspace</a>
     </div>
 
-    <div class="p3m-stage">
+      </div>
+
+      <div class="p3m-stage">
       <div class="p3m-art" aria-hidden="true">
         <div class="p3m-sheet p3m-lilac"></div>
         <div class="p3m-sheet p3m-peach"></div>
@@ -60,6 +63,7 @@ function productHeroMockup() {
         </div>
 
         ${p3mPhone()}
+      </div>
       </div>
     </div>
   </section>`;

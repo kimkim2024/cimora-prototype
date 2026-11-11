@@ -82,33 +82,33 @@ function QuickAction({ color, label, children }: { color: string; label: string;
  */
 export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: HeroMockupProps) {
   return (
-    <section className="relative isolate overflow-hidden pt-20 pb-24 wide:pt-24 mega:pt-28">
-      <div className="container-page flex flex-col items-center text-center">
-        <h1 className="max-w-[760px] font-display text-[44px] font-semibold leading-[1.02] tracking-[-0.038em] text-ink wide:max-w-[900px] wide:text-[60px] mega:text-[68px]">
-          {title}
-          {titleTail ? (
-            <>
-              <br />
-              <span>{titleTail}</span>
-            </>
-          ) : null}
-        </h1>
+    <section className="relative isolate overflow-hidden pt-14 pb-16 wide:pt-16 wide:pb-24">
+      <div className="container-page grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 wide:grid-cols-[minmax(0,600px)_minmax(0,1fr)]">
+        <div className="min-w-0">
+          <h1 className="max-w-none font-display text-[42px] font-semibold leading-[1.03] tracking-[-0.038em] text-ink wide:text-[54px] mega:text-[62px]">
+            {title}
+            {titleTail ? (
+              <>
+                <br />
+                <span>{titleTail}</span>
+              </>
+            ) : null}
+          </h1>
 
-        <p className="mt-6 max-w-[52ch] text-[15px] leading-[1.7] text-ink-muted">{description}</p>
+          <p className="mt-6 max-w-[46ch] text-[15px] leading-[1.7] text-ink-muted">{description}</p>
 
-        <Link
-          to={ctaTo}
-          className="mt-8 inline-flex h-14 items-center justify-center rounded-full bg-ink px-9 text-[15px] font-medium text-ink-inverse transition-transform duration-300 hover:scale-[1.04] hover:bg-ink-hover active:scale-[0.97]"
-        >
-          {ctaText}
-        </Link>
-      </div>
+          <Link
+            to={ctaTo}
+            className="mt-9 inline-flex h-14 items-center justify-center rounded-full bg-ink px-9 text-[15px] font-medium text-ink-inverse transition-transform duration-300 hover:scale-[1.04] hover:bg-ink-hover active:scale-[0.97]"
+          >
+            {ctaText}
+          </Link>
+        </div>
 
-      {/* ------------------------------------------------ the device mockup */}
-      {/* the sheets and the phone are positioned against the window, so the
-          composition holds together at every width */}
-      <div className="mx-auto mt-16 w-full max-w-[660px] px-10 pb-14 wide:mt-20 wide:max-w-[760px] mega:max-w-[860px]">
-        <div className="relative" aria-hidden="true">
+        {/* the mockup column reaches past the container, so the phone is clipped
+            by the viewport edge instead of ending on a margin */}
+        <div className="relative min-w-0 -mr-8 wide:-mr-12">
+          <div className="relative" aria-hidden="true">
           <div className="absolute -inset-x-3 -top-3 bottom-4 -rotate-[6deg] rounded-[22px] bg-[#cbbcfa]" />
           <div className="absolute -inset-x-1.5 -top-1.5 bottom-2 -rotate-[2.5deg] rounded-[20px] bg-[#f8cba6]" />
 
@@ -186,6 +186,7 @@ export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: He
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
