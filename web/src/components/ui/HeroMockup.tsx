@@ -83,7 +83,7 @@ function QuickAction({ color, label, children }: { color: string; label: string;
 export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: HeroMockupProps) {
   return (
     <section className="relative isolate overflow-hidden pt-14 pb-16 wide:pt-16 wide:pb-24">
-      <div className="container-page grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 wide:grid-cols-[minmax(0,600px)_minmax(0,1fr)]">
+      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-14 wide:grid-cols-[minmax(0,600px)_minmax(0,1fr)] pl-[max(40px,calc((100vw-1200px)/2+40px))] wide:pl-[max(56px,calc((100vw-1360px)/2+56px))] ultra:pl-[max(64px,calc((100vw-1560px)/2+64px))] mega:pl-[max(72px,calc((100vw-1720px)/2+72px))]">
         <div className="min-w-0">
           <h1 className="max-w-none font-display text-[42px] font-semibold leading-[1.03] tracking-[-0.038em] text-ink wide:text-[54px] mega:text-[62px]">
             {title}
@@ -108,7 +108,7 @@ export function HeroMockup({ title, titleTail, description, ctaText, ctaTo }: He
         {/* the mockup column reaches past the container, so the phone is clipped
             by the viewport edge instead of ending on a margin */}
         <div className="relative min-w-0 -mr-8 wide:-mr-12">
-          <div className="relative" aria-hidden="true">
+          <div className="relative ml-auto w-full max-w-[900px]" aria-hidden="true">
           <div className="absolute -inset-x-3 -top-3 bottom-4 -rotate-[6deg] rounded-[22px] bg-[#cbbcfa]" />
           <div className="absolute -inset-x-1.5 -top-1.5 bottom-2 -rotate-[2.5deg] rounded-[20px] bg-[#f8cba6]" />
 

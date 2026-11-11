@@ -2,16 +2,16 @@
    page itself. Mirrors web/src/components/ui/HeroMockup.tsx. */
 .p3m-hero{padding:clamp(40px,4vw,64px) 0 clamp(40px,5vw,72px)}
 /* copy on the left, the mockup on the right reaching past the container edge */
-.p3m-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:center;width:min(1200px,calc(100% - 96px));margin:auto}
-.p3m-copy{min-width:0}
+.p3m-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:center;width:100%;padding-left:max(48px,calc((100vw - 1200px)/2 + 48px));padding-right:0}
+.p3m-copy{min-width:0;max-width:572px}
 .p3m-hero h1{margin:0;font-family:var(--font-display);font-size:clamp(30px,2.55vw,46px);font-weight:600;line-height:1.03;letter-spacing:-.038em;color:var(--ap-text)}
 .p3m-hero h1>span{color:inherit}
 .p3m-desc{max-width:46ch;margin:22px 0 0;font-size:15px;line-height:1.7;color:var(--ap-muted)}
 .p3m-hero a.p3m-cta{margin-top:30px;border-radius:999px;padding:15px 34px;font-size:15px}
 
 /* ---- the device mockup ---------------------------------------------------- */
-.p3m-stage{min-width:0;margin-right:calc((100vw - 100%)/-2);padding-bottom:56px}
-.p3m-art{position:relative;width:100%;max-width:640px;margin-left:auto}
+.p3m-stage{min-width:0}
+.p3m-art{position:relative;width:100%;max-width:760px;margin-left:auto}
 .p3m-sheet{position:absolute;border-radius:22px}
 .p3m-lilac{left:-12px;right:-12px;top:-12px;bottom:16px;transform:rotate(-6deg);background:#cbbcfa}
 .p3m-peach{left:-6px;right:-6px;top:-6px;bottom:8px;transform:rotate(-2.5deg);background:#f8cba6;border-radius:20px}
