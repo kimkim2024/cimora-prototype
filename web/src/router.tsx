@@ -1,10 +1,11 @@
-import { createHashRouter, Navigate } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { AppLayout } from './layouts/AppLayout';
 import { SiteLayout } from './layouts/SiteLayout';
 import { ArticlePage, CasePage, TemplatePage, UpdatesPage } from './pages/DetailPages';
 import FeaturesPage from './pages/FeaturesPage';
 import { HelpPage, LegalPage, ToolsPage } from './pages/InfoPages';
 import { ResourcesPage, ShowcasePage, TemplatesPage } from './pages/CatalogPages';
+import HomePage from './pages/HomePage';
 import NotPorted from './pages/NotPorted';
 import NotFound from './pages/NotFound';
 import PricingPage from './pages/PricingPage';
@@ -22,7 +23,7 @@ export const router = createHashRouter([
     path: '/',
     element: <SiteLayout />,
     children: [
-      { index: true, element: <Navigate to="/product" replace /> },
+      { index: true, element: <HomePage /> },
 
       { path: 'product', element: <ProductPage /> },
       { path: 'features/:id', element: <FeaturesPage /> },

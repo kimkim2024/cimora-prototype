@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const TITLES: Record<string, string> = {
-  '/': 'Cimora · Product',
+  '/': 'Cimora · Turn the worlds you love into your own work',
   '/product': 'All-in-one studio · Cimora',
   '/pricing': 'Pricing & usage · Cimora',
   '/tools': 'Tools hub · Cimora',

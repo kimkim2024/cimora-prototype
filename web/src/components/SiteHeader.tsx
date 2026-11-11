@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+﻿import { Link, NavLink } from 'react-router-dom';
 import { legacyUrl } from '../lib/legacy';
 
 const LINKS = [
@@ -15,7 +15,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-transparent bg-paper/85 backdrop-blur-md">
       <div className="mx-auto flex h-[72px] w-full max-w-[1200px] items-center justify-between gap-8 px-10">
-        <Link to="/product" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
+        <Link to="/" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
           Studio Cimora
         </Link>
 

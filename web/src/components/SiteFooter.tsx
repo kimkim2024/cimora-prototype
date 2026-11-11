@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 
 const COLUMNS = [
   {
@@ -36,7 +36,7 @@ export function SiteFooter() {
     <footer className="border-t border-hairline bg-paper">
       <div className="mx-auto grid w-full max-w-[1200px] grid-cols-[1.6fr_repeat(3,1fr)] gap-10 px-10 pb-8 pt-14">
         <div>
-          <Link to="/product" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
+          <Link to="/" className="text-[17px] font-semibold tracking-[-0.02em] text-ink">
             Studio Cimora
           </Link>
           <p className="mt-4 max-w-[30ch] text-[13px] leading-[1.7] text-ink-muted">
@@ -60,8 +60,8 @@ export function SiteFooter() {
         ))}
 
         <div className="col-span-full mt-6 flex items-center justify-between border-t border-hairline pt-6 text-[11px] text-ink-quiet">
-          <p>© 2026 Cimora · Full-site interactive prototype</p>
-          <p>Local demo · generation, billing and publishing are simulated</p>
+          <p>漏 2026 Cimora 路 Full-site interactive prototype</p>
+          <p>Local demo 路 generation, billing and publishing are simulated</p>
         </div>
       </div>
     </footer>
