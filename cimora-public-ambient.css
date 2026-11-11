@@ -49,11 +49,12 @@ body.public-body:not(.cimora-home-public) #site {
 
 .public-ambient[data-shader-status="running"] > .hm-shader-canvas { visibility: visible; }
 
-/* fade the glow out toward the bottom so long pages stay plain */
+/* fade the glow out toward the bottom so long pages stay plain, while keeping
+   most of the viewport responsive to the pointer */
 .public-ambient::before,
 .public-ambient > .hm-shader-canvas {
-  -webkit-mask-image: linear-gradient(to bottom, black 0, black 54%, transparent 94%);
-  mask-image: linear-gradient(to bottom, black 0, black 54%, transparent 94%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 66%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0, black 66%, transparent 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -25,6 +25,9 @@
   let frame=0,last=0,time=carried.get(key)||0,visible=true,lost=false,failed=false,disposed=false,program=null,buffer=null,shaders=[];
   let ro,io,mo;const motion=matchMedia('(prefers-reduced-motion: reduce)');
   const pointer={x:.5,y:.5,tx:.5,ty:.5};
+  /* the page-wide ambient should feel like it is following the cursor; the
+     hero keeps its slower drift */
+  const ease=host.classList&&host.classList.contains('public-ambient')?.11:.06;
   const stop=()=>{cancelAnimationFrame(frame);frame=0;last=0;carried.set(key,time);host.dataset.shaderAnimating='false';};
   const fail=error=>{failed=true;stop();host.dataset.shaderStatus='error';console.error('[Cimora shader]',error);};
   host.dataset.shaderStatus='starting';
@@ -43,14 +46,18 @@
    function palette(){if(lost||failed)return;const cs=getComputedStyle(host);for(const key of ['accent','surface','ink']){ctx.clearRect(0,0,1,1);ctx.fillStyle=cs.getPropertyValue('--shader-'+key).trim();ctx.fillRect(0,0,1,1);const rgb=ctx.getImageData(0,0,1,1).data;gl.uniform3fv(gl.getUniformLocation(program,'u_'+key),[rgb[0]/255,rgb[1]/255,rgb[2]/255]);}}
    function resize(){const r=host.getBoundingClientRect(),ratio=Math.min(2,devicePixelRatio||1)*.5;const max=gl.getParameter(gl.MAX_VIEWPORT_DIMS);canvas.width=Math.max(1,Math.min(max[0],Math.round(r.width*ratio)));canvas.height=Math.max(1,Math.min(max[1],Math.round(r.height*ratio)));gl.viewport(0,0,canvas.width,canvas.height);}
    function draw(t){if(lost||failed||disposed)return;gl.uniform1f(uTime,t);gl.uniform2f(uResolution,canvas.width,canvas.height);gl.uniform2f(uPointer,pointer.x,pointer.y);gl.drawArrays(gl.TRIANGLES,0,3);}
-   function loop(now){frame=0;if(disposed||lost||failed||!visible||document.hidden||motion.matches){stop();return;}if(last)time+=Math.min(.1,(now-last)/1000);last=now;pointer.x+=(pointer.tx-pointer.x)*.06;pointer.y+=(pointer.ty-pointer.y)*.06;draw(time);frame=requestAnimationFrame(loop);}
+   function loop(now){frame=0;if(disposed||lost||failed||!visible||document.hidden||motion.matches){stop();return;}if(last)time+=Math.min(.1,(now-last)/1000);last=now;pointer.x+=(pointer.tx-pointer.x)*ease;pointer.y+=(pointer.ty-pointer.y)*ease;draw(time);frame=requestAnimationFrame(loop);}
    function start(){stop();if(lost||failed||disposed)return;if(motion.matches)draw(4);else if(visible&&!document.hidden){frame=requestAnimationFrame(loop);host.dataset.shaderAnimating='true';}}
    resize();palette();draw(motion.matches?4:0);host.dataset.shaderStatus='running';start();
    ro=new ResizeObserver(()=>{if(lost||disposed)return;resize();draw(motion.matches?4:time);});ro.observe(host);
    io=new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;start();});io.observe(host);
    mo=new MutationObserver(()=>{palette();draw(motion.matches?4:time);});mo.observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme','data-cimora-theme']});
    on(document,'visibilitychange',start);on(motion,'change',start);
-   on(host,'pointermove',e=>{const r=host.getBoundingClientRect();if(!r.width||!r.height)return;pointer.tx=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));pointer.ty=Math.max(0,Math.min(1,1-(e.clientY-r.top)/r.height));});
+   /* The ambient layer is pointer-events:none, so it can never receive the
+     event itself; track the pointer on the document instead. Its rect is the
+     viewport, which keeps the same 0..1 mapping. */
+  const pointerTarget=host.classList&&host.classList.contains('public-ambient')?document:host;
+  on(pointerTarget,'pointermove',e=>{const r=host.getBoundingClientRect();if(!r.width||!r.height)return;pointer.tx=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));pointer.ty=Math.max(0,Math.min(1,1-(e.clientY-r.top)/r.height));});
    on(canvas,'webglcontextlost',e=>{e.preventDefault();lost=true;stop();host.dataset.shaderStatus='unsupported';});
    on(canvas,'webglcontextrestored',()=>{if(disposed)return;dispose();if(host.isConnected)mounted.set(host,mount(host,key));});
   }catch(error){fail(error);}
