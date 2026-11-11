@@ -102,15 +102,35 @@ export function HomeFooter() {
         </button>
       </div>
 
-      {/* the dotted band the prototype closes the home page with */}
+      {/* the dotted band the prototype closes the home page with: the dots light
+          up around the pointer, and stay dim the rest of the time */}
       <div
         aria-hidden
-        className="relative h-[168px] overflow-hidden border-t border-hairline bg-paper-muted"
+        className="group relative h-[168px] overflow-hidden border-t border-hairline bg-paper-muted"
+        onPointerMove={(event) => {
+          const box = event.currentTarget.getBoundingClientRect();
+          event.currentTarget.style.setProperty('--df-x', `${event.clientX - box.left}px`);
+          event.currentTarget.style.setProperty('--df-y', `${event.clientY - box.top}px`);
+        }}
+        onPointerLeave={(event) => {
+          event.currentTarget.style.setProperty('--df-x', '-999px');
+          event.currentTarget.style.setProperty('--df-y', '-999px');
+        }}
         style={{
           backgroundImage: 'radial-gradient(var(--color-hairline-strong) 1px, transparent 1px)',
           backgroundSize: '14px 14px',
         }}
       >
+        <span
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            backgroundImage: 'radial-gradient(var(--color-ink) 1.4px, transparent 1.4px)',
+            backgroundSize: '14px 14px',
+            maskImage: 'radial-gradient(circle 170px at var(--df-x, -999px) var(--df-y, -999px), #000 0%, transparent 72%)',
+            WebkitMaskImage:
+              'radial-gradient(circle 170px at var(--df-x, -999px) var(--df-y, -999px), #000 0%, transparent 72%)',
+          }}
+        />
         <span className="absolute inset-0 grid place-items-center text-[13px] font-medium tracking-[0.4em] text-ink-quiet">
           CIMORA STUDIO
         </span>
