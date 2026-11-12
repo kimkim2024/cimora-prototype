@@ -4,6 +4,10 @@
 /* ---------- shell (studio-wide skin lives in cimora-studio-skin.css) ---------- */
 html body.cimora-home-app{overflow:hidden;background:#ffffff}
 html body.cimora-app .cm-shell{height:100dvh;min-height:0;background:#ffffff;background-image:none;border:1px solid #dedede;border-radius:20px;overflow:hidden}
+/* The fixed studio shell needs a scroll owner on every route, not only /app. */
+html body.cimora-app:not(.cimora-home-app) .cm-app-main{
+  min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;
+}
 html body.cimora-app .cm-sidebar{position:relative;height:100%;border-right:1px solid #dedede;padding:20px 12px 12px;
   background-color:#fff;
   background-image:radial-gradient(120% 55% at 0% 0%,rgba(200,242,78,.22),rgba(255,255,255,0) 62%),
@@ -380,8 +384,9 @@ html body.cimora-app .cm-wallet-refresh.is-spinning svg{animation:vx-refresh-spi
 @keyframes vx-refresh-spin{to{transform:rotate(360deg)}}
 @media(prefers-reduced-motion:reduce){html body.cimora-app .cm-wallet-refresh.is-spinning svg{animation:none}}
 
-/* 全部创作空间页面：取消顶部栏 */
-html body.cimora-app .cm-topbar{display:none!important}
+/* Hide the studio topbar except for My Projects' existing action toolbar. */
+html body.cimora-app .cm-app-main:not(:has(>.cm-main>.pl-page))>.cm-topbar{display:none!important}
+html body.cimora-app .cm-app-main:has(>.cm-main>.pl-page)>.cm-topbar{display:flex!important}
 html body.cimora-app .cm-app-main{min-height:100dvh}
 
 /* the wallet card started sizing to its content once the identity row was added */
