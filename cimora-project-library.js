@@ -4,7 +4,7 @@
   const C=Cimora,{S,E,ui}=C;
   const model=createProjectLibraryModel(S);
   const demoCovers={'rain':'assets/project-cover-pop-art.webp','project-portable-romance-v2':'assets/project-cover-rope-run.webp'};
-  const demoProjects=[{id:'demo-kimono-strike',name:'霓虹追逐 · 示例',desc:'动作 · 霓虹追逐',art:6,source:'script',mode:'studio',assetIds:[],chapters:[{id:'ch1',title:'起始镜头',status:'故事草稿',seconds:0}],cover:'assets/project-cover-kimono-strike.webp'},{id:'project-portable-romance-v2',name:'Portable Romance · 示例',desc:'都市恋爱 · 命运的绳结',art:6,source:'script',mode:'studio',assetIds:[],chapters:[{id:'ch1',title:'起始镜头',status:'故事草稿',seconds:0}],cover:'assets/project-cover-rope-run.webp'}];
+  const demoProjects=[{id:'demo-kimono-strike',name:'Neon Chase · Demo',desc:'Action · Neon Chase',art:6,source:'script',mode:'studio',assetIds:[],chapters:[{id:'ch1',title:'Opening shot',status:'Story draft',seconds:0}],cover:'assets/project-cover-kimono-strike.webp'},{id:'project-portable-romance-v2',name:'Portable Romance · Demo',desc:'Urban romance · a knot of fate',art:6,source:'script',mode:'studio',assetIds:[],chapters:[{id:'ch1',title:'Opening shot',status:'Story draft',seconds:0}],cover:'assets/project-cover-rope-run.webp'}];
   const settings={filter:'all',sort:'edited'};
   const sorts=[['edited','Last Edited'],['created','Date Created'],['name','Name']];
   ui.projectSearch??='';
@@ -211,7 +211,13 @@
     let changed=false;
     for(const [id,src] of Object.entries(demoCovers)){const p=model.byId(id);if(p&&!Object.hasOwn(p,'cover')){p.cover=src;changed=true;}}
     for(const demo of demoProjects){
-      if(model.byId(demo.id))continue;
+      const existing=model.byId(demo.id);
+      if(existing){
+        // a seed written before the copy was English still carries the old labels
+        const stale=/[\u4e00-\u9fff]/.test(existing.name+existing.desc+existing.chapters.map(c=>c.title+c.status).join(''));
+        if(stale){existing.name=demo.name;existing.desc=demo.desc;existing.chapters=demo.chapters.map(c=>({...c}));changed=true;}
+        continue;
+      }
       S.state.projects.push({...demo,chapters:demo.chapters.map(c=>({...c})),updated:'Just Now'});
       changed=true;
     }

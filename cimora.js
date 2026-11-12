@@ -66,7 +66,7 @@ window.Cimora=(()=>{
       M.save();return C.studio(c);
     }
     if(k==='runs')return C.runs(M.activate(context.parts[2],context.parts[3]));
-    if(k==='tools'){const html=S.tools.render({parts:['tools',context.parts[2]]});return `<div class="cm-tool-context">${scopePicker()}<p>Tool results keep their source and can be saved to the current chapter.${link('Back to creating →',path(ctx(),ctx().e.stage),'cm-text-link')}${ui.toolContext&&context.parts[2]?btn('将结果带回选中panel','apply-tool-result','cm-button ghost small',`data-id="${context.parts[2]}"`):''}</p></div>`+html;}
+    if(k==='tools'){const html=S.tools.render({parts:['tools',context.parts[2]]});return `<div class="cm-tool-context">${scopePicker()}<p>Tool results keep their source and can be saved to the current chapter.${link('Back to creating →',path(ctx(),ctx().e.stage),'cm-text-link')}${ui.toolContext&&context.parts[2]?btn('Bring result into the selected panel','apply-tool-result','cm-button ghost small',`data-id="${context.parts[2]}"`):''}</p></div>`+html;}
     if(C.pages?.[k||'home'])return C.pages[k||'home'](context);
     if(k==='projects'&&context.parts[2])return C.project(S.project(context.parts[2]));
     return null;

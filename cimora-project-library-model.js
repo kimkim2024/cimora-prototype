@@ -94,7 +94,7 @@
       const project=copy(original),ed=state.cimora?.projects,editor=ed?.[id]&&copy(ed[id]);
       const base=String(original.name||'Untitled project')+' · Copy';let name=base,n=2;
       while(state.projects.some(p=>p.name===name))name=base+' '+n++;
-      Object.assign(project,{id:newId,name,archived:false,starred:false,createdAt:new Date(clock()).toISOString(),updatedAt:new Date(clock()).toISOString(),updated:'刚刚'});
+      Object.assign(project,{id:newId,name,archived:false,starred:false,createdAt:new Date(clock()).toISOString(),updatedAt:new Date(clock()).toISOString(),updated:'Just now'});
       delete project.lastOpenedAt;
       if(editor)for(const e of Object.values(editor)){
         if(!e||typeof e!=='object')continue;e.projectId=newId;e.run=null;
