@@ -111,7 +111,7 @@ export function HeroSpotlight({ title, titleTail, description, ctaText, ctaTo }:
                     alt=""
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover object-center opacity-[0.3] grayscale contrast-[1.06] brightness-[0.8]"
+                    className="h-full w-full object-cover object-center opacity-[0.45]"
                   />
                 </div>
               ))}
