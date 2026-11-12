@@ -261,7 +261,7 @@
 
   function enhance() {
     const grid = document.getElementById('cm-project-list');
-    if (!grid) return;
+    if (!grid || grid.closest('.pl-page')) return;
     const cards = Array.from(grid.querySelectorAll('.cm-project-card'));
     if (!cards.length) return;
 

@@ -6,7 +6,7 @@ const defaults=()=>({user:null,onboarded:false,plan:'Free',cycle:'monthly',proje
 let state=defaults();try{const saved=JSON.parse(localStorage.getItem('framein-site-v3'));if(saved)state={...state,...saved};}catch{}
 let context={path:'/',parts:[],params:new URLSearchParams()},modalFocus=null,downloadPreviewURL=null;
 const ui={toolGroup:'All',toolQuery:'',projectQuery:'',assetType:'All',assetQuery:'',templateType:'All',caseType:'All',resourceQuery:'',taskFilter:'All',projectView:'grid'};
-function save(){try{localStorage.setItem('framein-site-v3',JSON.stringify(state));return true;}catch{toast('Local storage is unavailable. You can keep exploring in this session.');return false;}}
+function save(){try{S.beforeSave?.();localStorage.setItem('framein-site-v3',JSON.stringify(state));return true;}catch{toast('Local storage is unavailable. You can keep exploring in this session.');return false;}}
 function art(i=0,alt='',cls=''){return `<img src="${Art.url(i)}" alt="${esc(alt||'Original sample storyboard')}" class="${cls}" loading="lazy">`;}
 const logo=()=>window.Cimora?Cimora.logo('/'):`<a class="logo" href="#/" aria-label="Cimora Home"><span class="logo-mark">c<span>✦</span></span><strong>cimora</strong></a>`;
 const link=(text,to,cls='')=>`<a href="#${to}" class="${cls}">${text}</a>`;
@@ -44,6 +44,8 @@ function crumbs(items){return `<nav class="crumbs" aria-label="Breadcrumb">${ite
 function sectionHead(kicker,title,desc='',extra=''){return `<div class="section-head"><div><h2>${title}</h2>${desc?`<p>${desc}</p>`:''}</div>${extra}</div>`;}
 function faq(items=FrameData.faqs){return `<div class="faq-list">${items.map(([q,a])=>`<details><summary>${esc(q)}<span>＋</span></summary><p>${esc(a)}</p></details>`).join('')}</div>`;}
 function render(){
+ const previousRendering=S.rendering;S.rendering=true;
+ try{
  const raw=location.hash.slice(1)||'/';const legacy=['motion','script','assets','comic','export'];const [path,query='']=raw.split('?');context={path:path.startsWith('/')?path:'/'+path,parts:path.replace(/^\//,'').split('/'),params:new URLSearchParams(query)};S.context=context;
  if(legacy.includes(raw)){context.path='/app/editor/rain/ch1';context.parts=['app','editor','rain','ch1'];context.params=new URLSearchParams('step='+raw);}
  const isApp=context.path==='/app'||context.path.startsWith('/app/');const editor=context.parts[0]==='app'&&context.parts[1]==='editor';document.body.className=editor?'editor-body':isApp?'app-body':context.path==='/auth'?'public-body cimora-auth-page':'public-body';
@@ -52,6 +54,7 @@ function render(){
  if(context.path==='/')content=content.replace(/[↗→←]/g,'').replace(/class="hm-carousel-arrow /g,'hidden style="display:none" class="hm-carousel-arrow ');
  else if(isApp||context.parts[0]==='tools'||context.parts[0]==='share')content=content.replace(/[\u2197\u2192\u2190\u2191\u2193\u27a1\u21b6\u21bb]/g,'');
  $('#site').innerHTML=content;document.title=(isApp?Cimora.pageTitle(context):(S.pageTitle||'Create your universe'))+' · Cimora';if(!editor)window.scrollTo(0,0);S.tools?.afterRender?.(context);S.workspace?.afterRender?.(context);S.public?.afterRender?.(context);Cimora.afterRender(context);
+ }finally{S.rendering=previousRendering;}
 }
 const ARROW_RE=/[\u2197\u2192\u2190\u2191\u2193\u27a1\u21b6\u21bb]/g;
 function stripArrowsIn(root){
