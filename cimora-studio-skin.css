@@ -326,3 +326,18 @@ html[data-cimora-theme] body.cimora-app .cm-license strong{color:#171717}
 /* 创作市场 · 步骤列表：去掉旧紫色，按设计系统显示 */
 html[data-cimora-theme] body.cimora-app .cm-template-steps li{color:#404040;font-size:12px;line-height:1.7}
 html[data-cimora-theme] body.cimora-app .cm-template-steps li::before{color:#171717;border:1px solid #dedede;background:#ffffff;font-size:10px}
+
+/* 作品阅读：正文 / 漫画页 / 分镜三视图 */
+html[data-cimora-theme] body.cimora-app .cm-reader-modes{display:inline-flex;gap:3px;padding:3px;margin:0 0 16px;border:1px solid #dedede;border-radius:999px;background:#fff}
+html[data-cimora-theme] body.cimora-app .cm-reader-mode{background:none;border:0;border-radius:999px;padding:6px 13px;font-size:11px;color:#666666;min-height:28px}
+html[data-cimora-theme] body.cimora-app .cm-reader-mode:hover{background:#f3f3f3;color:#171717}
+html[data-cimora-theme] body.cimora-app .cm-reader-mode.selected{background:#171717;color:#ffffff}
+html[data-cimora-theme] body.cimora-app .cm-story-text{display:grid;gap:15px;max-width:64ch}
+html[data-cimora-theme] body.cimora-app .cm-story-text p{margin:0;font-size:14px;line-height:1.95;color:#333333}
+html[data-cimora-theme] body.cimora-app .cm-shot-list{list-style:none;margin:0;padding:0}
+html[data-cimora-theme] body.cimora-app .cm-shot-list li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid #ededed}
+html[data-cimora-theme] body.cimora-app .cm-shot-list li:first-child{border-top:0}
+html[data-cimora-theme] body.cimora-app .cm-shot-list li>span{font-size:11px;color:#a3a3a3;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-shot-list strong{font-size:12px;color:#171717}
+html[data-cimora-theme] body.cimora-app .cm-shot-list p{margin:3px 0 2px;font-size:12px;line-height:1.7;color:#404040}
+html[data-cimora-theme] body.cimora-app .cm-shot-list small{font-size:11px;color:#8a8a8a}

@@ -91,6 +91,7 @@
       case'gallery-tab':{ui.galleryTab=el.dataset.tab;ui.openChapter=null;repaint();return;}
       case'gallery-genre':{ui.galleryGenre=el.dataset.genre;repaint();return;}
       case'follow-work':{const i=M.db.follows.indexOf(el.dataset.id);if(i>=0)M.db.follows.splice(i,1);else M.db.follows.push(el.dataset.id);M.save();repaint();return;}
+      case'read-mode':{ui.readMode=el.dataset.mode;repaint();return;}
       case'read-chapter':{ui.openChapter=el.dataset.id;repaint();const r=S.$('.cm-reader');if(r&&r.scrollIntoView)r.scrollIntoView({block:'center',behavior:'smooth'});return;}
       case'unlock-chapter':{const w=C.showcaseWork&&C.showcaseWork(S.context.parts[2]);const c=w&&(w.chapters||[]).find(x=>x.id===el.dataset.id);if(!w||!c)return;const err=M.unlock(w,c);if(err){S.toast(err);return;}ui.openChapter=c.id;repaint();S.toast('Chapter unlocked with '+c.price+' credits. Local demo only.');return;}
       case'work-view':S.$('#cm-work-reader').classList.toggle('motion',el.dataset.view==='motion');S.$$('.cm-work-detail [data-cm="work-view"]').forEach(b=>b.classList.toggle('primary',b===el));return;

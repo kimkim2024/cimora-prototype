@@ -14,8 +14,36 @@
       desc: 'A letter that was never sent, and a reunion seven years late.',
       type: 'both', kinds: ['story', 'comic', 'motion'], published: '2026-11-02',
       chapters: [
-        { id: 'c1', title: 'The Seventh Day After', free: true, pages: 8 },
-        { id: 'c2', title: 'The Unsent Letter', free: false, price: 40, pages: 8 },
+        {
+          id: 'c1', title: 'The Seventh Day After', free: true, pages: 8,
+          text: [
+            'The forecast said the rain would stop by Thursday. It was already the seventh day, and the street still smelled of wet concrete and closed umbrellas.',
+            'Lin Xia stopped in front of the bookshop without deciding to. The sign had been repainted, but the brass handle was the same one she had gripped seven years ago, on the afternoon she said she was leaving.',
+            'Through the window she could see the shelf she used to lean against. Someone had put a chair there, as if the shop had learned that people sometimes need to sit down before they can speak.',
+            'The door opened. The bell above it had not been replaced either.'
+          ],
+          shots: [
+            { n: 1, framing: 'Wide, street corner', action: 'Rain on the old bookshop sign; Lin Xia stops in the middle of the crossing.', line: 'Narration: the seventh day of rain.' },
+            { n: 2, framing: 'Close-up, hands', action: 'Her fingers tighten around the red scarf.', line: 'Narration: she had counted the years in umbrellas.' },
+            { n: 3, framing: 'Over-shoulder, window', action: 'She looks in: the chair by the shelf, the light left on.', line: 'No dialogue.' },
+            { n: 4, framing: 'Medium close, doorway', action: 'Chen Xu turns around behind the door frame.', line: 'Chen Xu: You came back on a rainy day.' },
+            { n: 5, framing: 'Two-shot, interior', action: 'Neither moves; the bell keeps swinging.', line: 'Lin Xia: I was passing by.' },
+            { n: 6, framing: 'Wide, interior', action: 'Rain on the glass, two silhouettes and a chair between them.', line: 'Narration: the shop had been waiting longer than either of them.' }
+          ]
+        },
+        {
+          id: 'c2', title: 'The Unsent Letter', free: false, price: 40, pages: 8,
+          text: [
+            'The envelope was yellowed at the corners, the way paper goes when it has been carried in a coat pocket for a week and then put away for years.',
+            'She did not open it in front of him. She put it on the counter, next to the empty cup he had not cleared, and said the only sentence she had practiced on the way over.'
+          ],
+          shots: [
+            { n: 1, framing: 'Prop close-up', action: 'The envelope lands on the counter; a crease catches the window light.', line: 'Narration: some words waited seven years.' },
+            { n: 2, framing: 'Close-up, faces', action: 'Chen Xu looks at the envelope, not at her.', line: 'Chen Xu: You kept it.' },
+            { n: 3, framing: 'Medium, counter', action: 'Her hand stays flat on the paper.', line: 'Lin Xia: I never finished it.' },
+            { n: 4, framing: 'Two-shot, wide', action: 'The rain gets quieter outside; neither of them moves.', line: 'Narration: this time nobody left first.' }
+          ]
+        },
         { id: 'c3', title: 'Rain on the Shop Window', free: false, price: 40, pages: 9 },
         { id: 'c4', title: 'Under the Same Umbrella', free: false, price: 40, pages: 7 }
       ]
@@ -25,7 +53,14 @@
       desc: 'She delivers letters for the stars, and is also looking for her own place to belong.',
       type: 'comic', kinds: ['story', 'comic'], published: '2026-10-24',
       chapters: [
-        { id: 's1', title: 'Letters for the Stars', free: true, pages: 10 },
+        {
+          id: 's1', title: 'Letters for the Stars', free: true, pages: 10,
+          text: [
+            'The post office opened only when the sky was clear enough to see where the letters had to go.',
+            'She sorted them by brightness: the ones that had waited a long time glowed faintly, and those were always the hardest to deliver.',
+            'Tonight there was one address she had never seen before, written in her own handwriting.'
+          ]
+        },
         { id: 's2', title: 'The Address Nobody Found', free: false, price: 30, pages: 9 }
       ]
     },
@@ -159,6 +194,7 @@
     const follow = M.db.follows.includes(w.id);
     const openId = chapters.some((c) => c.id === ui.openChapter) ? ui.openChapter : null;
     const open = chapters.find((c) => c.id === openId) || null;
+    const mode = ui.readMode || 'Pages';
     const unlocked = (cid) => M.db.unlocks.includes(w.id + '/' + cid);
     const rows = chapters.map((c, i) => {
       const isOpen = c.id === openId;
@@ -171,10 +207,25 @@
       const action = has
         ? btn(isOpen ? 'Reading' : 'Read chapter', 'read-chapter', 'cm-button ghost small', `data-id="${c.id}"`)
         : btn('Unlock', 'unlock-chapter', 'cm-button primary small', `data-id="${c.id}"`);
-      return `<div class="cm-chapter-row${isOpen ? ' open' : ''}"><span class="cm-chapter-number">${String(i + 1).padStart(2, '0')}</span><div><strong>${E(c.title)}</strong><small>${c.pages} ${c.pages === 1 ? 'page' : 'pages'}</small></div>${pill}${action}</div>`;
+      return `<div class="cm-chapter-row${isOpen ? ' open' : ''}"><span class="cm-chapter-number">${String(i + 1).padStart(2, '0')}</span><div><strong>${E(c.title)}</strong><small>${c.pages} ${c.pages === 1 ? 'page' : 'pages'}${c.text ? ' · with story text' : ''}</small></div>${pill}${action}</div>`;
     }).join('');
+    const modes = open
+      ? `<div class="cm-reader-modes" role="group" aria-label="Reading mode">${['Story text', 'Comic pages', 'Shot list'].map((label) => btn(label, 'read-mode', 'cm-reader-mode' + (mode === label ? ' selected' : ''), `data-mode="${label}"`)).join('')}</div>`
+      : '';
+    let body = '';
+    if (open && mode === 'Story text') {
+      body = open.text
+        ? `<div class="cm-story-text">${open.text.map((p) => `<p>${E(p)}</p>`).join('')}</div><p class="cm-help">Sample chapter text for the demo. The project script in the studio holds the full episode.</p>`
+        : `<p class="cm-help">This chapter has no story text in the demo. Switch to Comic pages to see the page previews.</p>`;
+    } else if (open && mode === 'Shot list') {
+      body = open.shots
+        ? `<ol class="cm-shot-list">${open.shots.map((s) => `<li><span>${String(s.n).padStart(2, '0')}</span><div><strong>${E(s.framing)}</strong><p>${E(s.action)}</p><small>${E(s.line)}</small></div></li>`).join('')}</ol><p class="cm-help">Shots carry the same panel and asset links as the storyboard in the studio; motion is not rendered in this demo.</p>`
+        : `<p class="cm-help">This chapter has no shot list in the demo.</p>`;
+    } else if (open) {
+      body = `<div class="cm-reader-pages">${Array.from({ length: Math.min(open.pages, 4) }, (_, i) => `<figure>${art((w.art + i) % 12, open.title + ' sample page ' + (i + 1))}<figcaption>Page ${String(i + 1).padStart(2, '0')} / ${open.pages}</figcaption></figure>`).join('')}</div><p class="cm-help">Page previews only. Full page creation and export stay inside the studio.</p>`;
+    }
     const reader = open
-      ? `<div class="cm-reader"><header><h3>${E(open.title)}</h3><small>${open.pages} sample ${open.pages === 1 ? 'page' : 'pages'} · demo images, not a finished chapter</small></header><div class="cm-reader-pages">${Array.from({ length: Math.min(open.pages, 4) }, (_, i) => `<figure>${art((w.art + i) % 12, open.title + ' sample page ' + (i + 1))}<figcaption>Page ${String(i + 1).padStart(2, '0')} / ${open.pages}</figcaption></figure>`).join('')}</div><p class="cm-help">Page previews only. Full page creation and export stay inside the studio.</p></div>`
+      ? `<div class="cm-reader"><header><h3>${E(open.title)}</h3><small>${open.pages} sample ${open.pages === 1 ? 'page' : 'pages'} · demo content, not a finished chapter</small></header>${modes}${body}</div>`
       : '';
     return `<div class="cm-work-detail"><section><div class="cm-work-feature">${art(w.art, w.title)}<span>${w.local ? 'LOCAL PUBLISH SNAPSHOT' : 'CIMORA ORIGINAL DEMO'}</span></div><div class="cm-panel"><div class="cm-panel-title"><div><h1>${E(w.title)}</h1><p class="cm-work-byline">${E(w.author)} · ${E(w.tag || 'Original work')}</p></div><div class="cm-inline-actions">${btn(follow ? 'Following' : 'Follow creator', 'follow-work', 'cm-button ghost' + (follow ? ' selected' : ''), `data-id="${w.id}"`)}${btn(favor ? 'Saved' : 'Save', 'favorite-work', 'cm-button ghost', `data-id="${w.id}"`)}</div></div><p class="cm-work-desc">${E(w.desc || 'Original demo work.')}</p><div class="cm-work-facts"><span>${chapters.length} ${chapters.length === 1 ? 'chapter' : 'chapters'}</span><span>${workLabel(w)}</span><span>${E(w.published || 'Sample work')}</span></div><div class="cm-chapter-list">${rows || '<p class="cm-help">This work has no readable chapters yet.</p>'}</div>${reader}</div></section><aside class="cm-panel"><span class="cm-kicker">BEHIND THE STORY</span><h3>The craft behind the story.</h3><p>Showing a work and licensing its source pipeline are managed separately. Author prompts, assets and project files are never published here automatically.</p><ul class="cm-work-notes"><li>Chapters unlock with credits in this local demo.</li><li>Following a creator only fills the Following feed.</li><li>Reading never exposes the project file.</li></ul>${link('Browsing related creative resources','/app/market','cm-text-link')}</aside></div>`;
   }
