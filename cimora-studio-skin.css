@@ -341,3 +341,13 @@ html[data-cimora-theme] body.cimora-app .cm-shot-list li>span{font-size:11px;col
 html[data-cimora-theme] body.cimora-app .cm-shot-list strong{font-size:12px;color:#171717}
 html[data-cimora-theme] body.cimora-app .cm-shot-list p{margin:3px 0 2px;font-size:12px;line-height:1.7;color:#404040}
 html[data-cimora-theme] body.cimora-app .cm-shot-list small{font-size:11px;color:#8a8a8a}
+
+/* 钱包：概览卡与流水改回白卡 + 发丝线 */
+html[data-cimora-theme] body.cimora-app .cm-wallet-overview>section{background:#ffffff;border:1px solid #dedede;border-radius:14px;padding:26px 28px}
+html[data-cimora-theme] body.cimora-app .cm-wallet-overview>section>span{font-size:11px;letter-spacing:.02em;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-wallet-overview h2{font-size:40px;color:#171717;margin:14px 0 10px;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-wallet-overview h2 small{font-size:14px;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-wallet-overview p{font-size:11px;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-ledger-row{border-bottom:1px solid #ededed;font-size:12px;color:#171717}
+html[data-cimora-theme] body.cimora-app .cm-ledger-row>b{color:#171717;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-ledger-row>small{color:#a3a3a3}
