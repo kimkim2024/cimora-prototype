@@ -315,3 +315,14 @@ html[data-cimora-theme] body.cimora-app .cm-gallery-feature h2{color:#ffffff;fon
 html[data-cimora-theme] body.cimora-app .cm-gallery-feature p{color:rgba(255,255,255,.78);font-size:13px;line-height:1.65;margin:0 0 20px;max-width:32ch}
 html[data-cimora-theme] body.cimora-app .cm-gallery-feature .cm-button.glass{background:#ffffff;border:1px solid #ffffff;color:#171717;border-radius:999px;padding:11px 20px;font-size:12px;min-height:38px}
 html[data-cimora-theme] body.cimora-app .cm-gallery-feature .cm-button.glass:hover{background:#f3f3f3;border-color:#f3f3f3}
+
+/* 创作市场 · 资产包：内含清单与许可段落 */
+html[data-cimora-theme] body.cimora-app .cm-pack-contents{display:grid;gap:8px;margin:12px 0 22px;padding:0;list-style:none}
+html[data-cimora-theme] body.cimora-app .cm-pack-contents li{position:relative;padding-left:18px;font-size:12px;line-height:1.7;color:#404040}
+html[data-cimora-theme] body.cimora-app .cm-pack-contents li::before{content:'';position:absolute;left:2px;top:8px;width:5px;height:5px;border-radius:50%;background:#9ccc0f}
+html[data-cimora-theme] body.cimora-app .cm-license{background:#fafafa;border:1px solid #ededed;border-radius:10px;padding:13px 15px;font-size:12px;line-height:1.75;color:#666666}
+html[data-cimora-theme] body.cimora-app .cm-license strong{color:#171717}
+
+/* 创作市场 · 步骤列表：去掉旧紫色，按设计系统显示 */
+html[data-cimora-theme] body.cimora-app .cm-template-steps li{color:#404040;font-size:12px;line-height:1.7}
+html[data-cimora-theme] body.cimora-app .cm-template-steps li::before{color:#171717;border:1px solid #dedede;background:#ffffff;font-size:10px}

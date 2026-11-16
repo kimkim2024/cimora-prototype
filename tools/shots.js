@@ -52,6 +52,10 @@ const ROUTES = [
   { name: 'showcase', path: '/showcase' },
   { name: 'app-showcase', path: '/app/community' },
   { name: 'app-showcase-work', path: '/app/community/rain-public' },
+  { name: 'app-market', path: '/app/market' },
+  { name: 'app-market-pack', path: '/app/market/pack-urban-character' },
+  { name: 'app-creator', path: '/app/creator' },
+  { name: 'app-wallet', path: '/app/wallet' },
 ];
 
 const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/g;
