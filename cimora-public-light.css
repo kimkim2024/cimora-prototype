@@ -268,5 +268,5 @@ body.public-body:not(.cimora-home-public) .footer-bottom {
 }
 
 /* 公开侧：流程步骤编号用设计系统的静默灰，不再落到旧紫色变量 */
-.process-grid>div{border-top:1px solid var(--color-hairline)}
-.process-grid>div>span{color:var(--color-ink-quiet);font-variant-numeric:tabular-nums}
+body.public-body:not(.cimora-home-public) .process-grid>div{border-top:1px solid var(--color-hairline)}
+body.public-body:not(.cimora-home-public) .process-grid>div>span{color:var(--color-ink-quiet);font-variant-numeric:tabular-nums}
