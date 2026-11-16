@@ -8,7 +8,46 @@
     {id:'continuity-skill',title:'Prop and outfit continuity check',type:'Skills',category:'Pipeline efficiency',desc:'Find the spots in chapter changes that need creator confirmation.',price:90,art:3,author:'Daylight production room',uses:'Chapters and assets → difference list',steps:['Read fixed asset version','Compare chapter state','Locate the panel that needs review']},
     {id:'starter-free',title:'Chapter one · Beginner creation recipe',type:'Workflow',category:'Getting started',desc:'Start from one idea and finish chapter one in the fewest steps.',price:0,art:8,author:'Cimora Studio',uses:'Idea description → Chapter 1 draft',steps:['Expand the story direction','Split chapters and storyboard','Confirm sketch','Finish comic layout']}
   ];
-  const works=[{id:'rain-public',title:'Before the Rain Stops',author:'Cimora Originals',type:'both',tag:'Urban romance',art:6,desc:'A letter that was never sent, and a reunion seven years late.'},{id:'sky-public',title:'Star Sea Post Office',author:'Yuejian Huiyan',type:'comic',tag:'Fantasy healing',art:10,desc:'She delivers letters for the stars, and is also looking for her own place to belong.'},{id:'book-public',title:'Slow Days Bookshop',author:'Cimora Originals',type:'comic',tag:'Slice of life',art:0,desc:'Between old books and the sound of rain, pick up the tenderness that was forgotten.'},{id:'light-public',title:'Letters in the Glimmer',author:'Mist Island design studio',type:'motion',tag:'Mood short',art:8,desc:'Dusk falls into the eyes; the story has only just begun.'}];
+  const works=[
+    {
+      id: 'rain-public', title: 'Before the Rain Stops', author: 'Cimora Originals', tag: 'Urban romance', art: 6,
+      desc: 'A letter that was never sent, and a reunion seven years late.',
+      type: 'both', kinds: ['story', 'comic', 'motion'], published: '2026-11-02',
+      chapters: [
+        { id: 'c1', title: 'The Seventh Day After', free: true, pages: 8 },
+        { id: 'c2', title: 'The Unsent Letter', free: false, price: 40, pages: 8 },
+        { id: 'c3', title: 'Rain on the Shop Window', free: false, price: 40, pages: 9 },
+        { id: 'c4', title: 'Under the Same Umbrella', free: false, price: 40, pages: 7 }
+      ]
+    },
+    {
+      id: 'sky-public', title: 'Star Sea Post Office', author: 'Yuejian Huiyan', tag: 'Fantasy healing', art: 10,
+      desc: 'She delivers letters for the stars, and is also looking for her own place to belong.',
+      type: 'comic', kinds: ['story', 'comic'], published: '2026-10-24',
+      chapters: [
+        { id: 's1', title: 'Letters for the Stars', free: true, pages: 10 },
+        { id: 's2', title: 'The Address Nobody Found', free: false, price: 30, pages: 9 }
+      ]
+    },
+    {
+      id: 'book-public', title: 'Slow Days Bookshop', author: 'Cimora Originals', tag: 'Slice of life', art: 0,
+      desc: 'Between old books and the sound of rain, pick up the tenderness that was forgotten.',
+      type: 'comic', kinds: ['comic'], published: '2026-10-11',
+      chapters: [
+        { id: 'b1', title: 'The Doorbell in the Rain', free: true, pages: 6 },
+        { id: 'b2', title: 'A Book Nobody Borrowed', free: false, price: 30, pages: 6 }
+      ]
+    },
+    {
+      id: 'light-public', title: 'Letters in the Glimmer', author: 'Mist Island studio', tag: 'Mood short', art: 8,
+      desc: 'Dusk falls into the eyes; the story has only just begun.',
+      type: 'motion', kinds: ['motion', 'image'], published: '2026-09-30',
+      chapters: [
+        { id: 'v1', title: 'Dusk Into the Eyes', free: true, pages: 1 },
+        { id: 'v2', title: 'Glimmer, Shot 02', free: false, price: 20, pages: 1 }
+      ]
+    }
+  ];
   function heading(k,h,p='',a=''){return `<div class="cm-page-heading"><div><span class="cm-kicker">${k}</span><h1>${h}</h1><p>${p}</p></div><div>${a}</div></div>`;}
   function projectCard(p){const c=M.resume(p),e=c.e;return `<article class="cm-project-card"><a href="#/app/projects/${p.id}">${art(p.art,p.name)}<span class="cm-image-badge">${M.output(p)==='comic'?'Comic':M.output(p)==='motion'?'Video':'Comic + Video'}</span><div class="cm-project-hover">Continue story ↗</div></a><div><small>${p.chapters.length} chapter · ${p.assetIds?.length||0} assets</small><h3>${link(E(p.name),'/app/projects/'+p.id,'')}</h3><p>${E(p.desc)}</p><footer><span><i></i>${E(p.updated||'Local草稿')}</span>${link('Continue: '+E(M.navigation?.task(c)||e.stage),M.navigation?.resume(c)||path(c,e.stage),'cm-text-link')}</footer></div></article>`;}
   function home(){const ps=S.state.projects.filter(p=>!p.archived);return heading('YOUR CREATIVE UNIVERSE','Welcome back, creator.','Every world starts with your imagination.',link('＋ New project','/app/new','cm-button primary'))+`<section class="cm-dashboard-hero"><img src="assets/cimora-cover.webp" alt="Cimora original star-sea girl and fantasy city" class="cm-hero-image"><div class="cm-dashboard-hero-copy"><span class="cm-kicker">WHERE YOUR STORIES COME ALIVE</span><h2>Turn the world in your head,<br>into your next work.</h2><p>A line of inspiration, a chapter of comic, a story that moves.<br>Let characters and stories grow in the same universe.</p><div>${link('✧ 从灵感开始','/app/new?source=idea','cm-button primary')}${link('⌘ 自由Canvas','/app/new?view=canvas','cm-button glass')}</div></div><span class="cm-original-mark">CIMORA ORIGINAL WORLD / 001</span></section><div class="cm-quick-starts">${[['✎','Comic创作','分镜、草图到长图排版','comic'],['▷','Video creation','镜头、Voice到动态演绎','motion'],['⌘','无限Canvas','让灵感与Flow自由连接','canvas'],['✧','创作小工具','为正在做的作品添一点灵感','tools']].map(([ic,t,d,v])=>link(`<span>${ic}</span><div><h3>${t}</h3><p>${d}</p></div><b>↗</b>`,v==='tools'?'/app/tools':v==='canvas'?'/app/new?view=canvas':'/app/new?output='+v,'cm-quick-start')).join('')}</div><div class="cm-section-head"><div><span class="cm-kicker">CONTINUE CREATING</span><h2>The story continues.</h2></div>${link('All projects →','/app/projects','cm-text-link')}</div><div class="cm-project-grid">${ps.slice(0,3).map(projectCard).join('')}${ps.length<3?link('<b>＋</b><h3>下一个世界</h3><p>从一个小小的想法开始。</p>','/app/new','cm-empty-project'):''}</div><div class="cm-section-head"><div><span class="cm-kicker">MADE WITH IMAGINATION</span><h2>Inspiration from the Creative Universe.</h2></div>${link('探索Showcase →','/app/community','cm-text-link')}</div><div class="cm-discovery-row">${works.slice(1).map(workCard).join('')}</div>`;}
@@ -24,12 +63,87 @@
   function allCatalog(){return [...catalog,...M.db.drafts.filter(d=>d.published)];}
   function market(ctx){const item=ctx.parts[2]&&allCatalog().find(it=>it.id===ctx.parts[2]);if(ctx.parts[2])return item?marketDetail(item):S.empty('Resource not found','Return to the Market.','Market','/app/market');return heading('MADE BY CREATORS, FOR CREATORS','Help good methods get seen by more people.','Explore skills, creation templates and workflows, and turn someone else’s experience into your new starting point.',link('Become a creator ↗','/app/creator','cm-button ghost'))+`<section class="cm-market-banner"><div><span class="cm-kicker">THE CREATOR EXCHANGE</span><h2>Inspiration is worth sharing,<br>experience has its own value.</h2><p>Exchange creative methods with credits. Bought resources and model run costs are shown separately.</p></div>${art(10,'原创星海世界')}</section><div class="cm-filter-toolbar"><div class="cm-filter-tabs">${['All','Skill','Template','Workflow','Owned'].map(t=>btn(t,'market-filter',ui.marketType===t?'selected':'',`data-type="${t}"`)).join('')}</div>${link('✦ '+M.db.wallet+' credits','/app/wallet','cm-credit-pill')}</div><div class="cm-market-grid">${allCatalog().filter(it=>ui.marketType==='All'||ui.marketType==='Owned'?ui.marketType==='All'||M.db.purchases.includes(it.id):it.type===ui.marketType).map(marketCard).join('')||'<div class="cm-empty-small">资源库还是空的，先领取Free的新人创作配方。</div>'}</div>`;}
   function marketDetail(it){const owns=M.db.purchases.includes(it.id);return `<div class="cm-market-detail-header">${link('← Market','/app/market','cm-back')}<div><span class="cm-soft-tag">${it.type} / ${it.category}</span><h1>${E(it.title)}</h1><p>${E(it.desc)}</p><small>BY ${E(it.author)} · Resource v1.0 · local product example</small></div></div><div class="cm-market-detail"><div><div class="cm-market-main-art">${art(it.art,it.title)}</div><section class="cm-panel"><h3>What you get</h3><p>${E(it.uses)}</p><ol class="cm-template-steps">${it.steps.map(t=>`<li>${E(t)}</li>`).join('')}</ol><h3>Inputs, permissions and cost</h3><p>Reads only the chapter content and reference assets you choose, and outputs a candidate for your confirmation. This version runs no external code and fetches no keys.</p><p>License example: usable in your own creative projects; no resale as-is. Formal licensing must be explicitly confirmed by the creator.</p></section></div><aside class="cm-panel"><span class="cm-kicker">ADD TO YOUR PROCESS</span><h2>${owns?'已在资源库':it.price?'✦ '+it.price+' credits':'Free领取'}</h2><p>Resources are bought once; model calls are billed separately by usage. The prototype only simulates credits and creates no real transactions.</p>${btn(owns?'在当前 items目中使用':'Add to my library',owns?'use-market':'buy-market','cm-button primary full',`data-id="${it.id}"`)}${C.scopePicker()}<div class="cm-notice">When you use it, you'll see what will be added or applied; existing works aren't overwritten.</div>${link('View creditsledger →','/app/wallet','cm-text-link')}</aside></div>`;}
-  function workCard(w){return link(`<div class="cm-work-picture">${art(w.art,w.title)}<span>${w.type==='comic'?'Comic':w.type==='motion'?'▷ Video':'Comic / Video'}</span>${w.local?'<b>Local发布</b>':''}</div><div><h3>${E(w.title)} <span>↗</span></h3><p>${E(w.author)} <small>· ${w.tag||'原创作品'}</small></p></div>`,'/app/community/'+w.id,'cm-work-card');}
-  function community(ctx){const list=[...M.db.publications,...works],w=ctx.parts[2]&&list.find(w=>w.id===ctx.parts[2]);if(ctx.parts[2])return w?workDetail(w):S.empty('Work not found','Back to Showcase.','Showcase','/app/community');return heading('A UNIVERSE OF ORIGINAL STORIES','Every kind of imagination deserves to be seen.','Meet new characters, worlds and creators. Official site cases and public works each have their place here.',btn('Publish my work','publish-work','cm-button primary'))+`<div class="cm-gallery-feature">${art(10,'星海邮局原创幻想世界')}<div><span class="cm-kicker">CIMORA ORIGINALS / FEATURED</span><h2>Star Sea Post Office</h2><p>Send the words left unsaid to where the stars live.</p>${link('Step into this world ↗','/app/community/sky-public','cm-button glass')}</div></div><div class="cm-filter-toolbar"><div class="cm-filter-tabs">${['All','Comic','Video','My saved','My publishes'].map(t=>btn(t,'gallery-filter',ui.galleryType===t?'selected':'',`data-type="${t}"`)).join('')}</div><small class="cm-help">Featured as original demo works · no fabricated popularity data</small></div><div class="cm-gallery-grid">${list.filter(w=>ui.galleryType==='All'||ui.galleryType==='Comic'&&w.type!=='motion'||ui.galleryType==='Video'&&w.type!=='comic'||ui.galleryType==='My saved'&&M.db.favorites.includes(w.id)||ui.galleryType==='My publishes'&&w.local).map(workCard).join('')||'<div class="cm-empty-small">这里还没有作品。收藏喜欢的世界，或发布自己的Local快照。</div>'}</div>`;}
-  function workDetail(w){const favor=M.db.favorites.includes(w.id),boards=w.snapshot?.boards||M.context('rain','ch1').e.boards;return `<div class="cm-work-detail"><section><div class="cm-work-feature">${art(w.art,w.title)}<span>${w.local?'Local发布快照':'CIMORA ORIGINAL DEMO'}</span></div><div class="cm-panel"><div class="cm-panel-title"><h1>${E(w.title)}</h1>${btn(favor?'♥ 已收藏':'♡ 收藏','favorite-work','cm-button ghost',`data-id="${w.id}"`)}</div><p>${E(w.author)} · ${E(w.desc||w.snapshot?.chapter||'我的原创作品')}</p><div class="cm-inline-actions">${btn('Comic阅读','work-view','cm-button primary small','data-view="comic"')}${btn('动态示意','work-view','cm-button ghost small','data-view="motion"')}</div><div id="cm-work-reader" class="cm-work-reader">${boards.map(b=>`<figure>${art(b.art,b.title)}<figcaption>${E(b.dialogue)}</figcaption></figure>`).join('')}</div></div></section><aside class="cm-panel"><span class="cm-kicker">BEHIND THE STORY</span><h3>The craft behind the story.</h3><p>Showing a work and licensing its source pipeline are managed separately. Author prompts, assets and project files are never published here automatically.</p>${!w.local?link('探索关联创作Template →','/app/market/rain-layout','cm-button primary full'):'<div class="cm-notice">这是独立发布快照。Continue修改工程，不会改变本页内容。</div>'}${link('回到Showcase','/app/community','cm-button ghost full')}<small class="cm-help">The motion is a camera-move illustration; no real video is generated. Sample works share some original demo frames.</small></aside></div>`;}
+  function workLabel(w){return w.type==='motion'?'Video':w.type==='both'?'Comic and video':'Comic';}
+  function workCard(w){
+    const chapters=w.chapters||[];
+    return link(`<div class="cm-work-picture">${art(w.art,w.title)}<span>${workLabel(w)}</span>${w.local?'<b>Local publish</b>':''}</div><div class="cm-work-copy"><h3>${E(w.title)}</h3><p>${E(w.author)} <small>· ${E(w.tag||'Original work')}</small></p><div class="cm-work-meta"><span>${chapters.length||1} ${chapters.length===1?'chapter':'chapters'}</span><span>${E(w.published||'Sample work')}</span></div></div>`,'/app/community/'+w.id,'cm-work-card');
+  }
+  const SHOWCASE_TABS = ['Featured', 'Latest updates', 'Following', 'Saved', 'My publishes'];
+  const SHOWCASE_KINDS = [['All', 'all'], ['Story', 'story'], ['Comic', 'comic'], ['Video', 'motion'], ['Image and sound', 'image']];
+  function showcaseLibrary() { return [...M.db.publications, ...works]; }
+  function showcaseFilter() {
+    const tab = ui.galleryTab || 'Featured';
+    const kind = ui.galleryGenre || 'all';
+    const query = String(ui.galleryQuery || '').trim().toLowerCase();
+    let list = showcaseLibrary();
+    if (tab === 'Latest updates') list = [...list].sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')));
+    if (tab === 'Following') list = list.filter((w) => M.db.follows.includes(w.id));
+    if (tab === 'Saved') list = list.filter((w) => M.db.favorites.includes(w.id));
+    if (tab === 'My publishes') list = list.filter((w) => w.local);
+    if (kind !== 'all') list = list.filter((w) => (w.kinds || [w.type]).includes(kind));
+    if (query) list = list.filter((w) => [w.title, w.author, w.tag, w.desc].filter(Boolean).join(' ').toLowerCase().includes(query));
+    return list;
+  }
+  function showcaseList() {
+    const list = showcaseFilter();
+    if (!list.length) {
+      const text = String(ui.galleryQuery || '').trim()
+        ? 'No work matches that search. Try another title, author or genre.'
+        : (ui.galleryTab || 'Featured') === 'Following'
+          ? 'You are not following anyone yet. Follow a creator from a work page and their updates land here.'
+          : (ui.galleryTab || 'Featured') === 'My publishes'
+            ? 'Nothing published under this local account yet. Open a project and publish a work snapshot.'
+            : 'Nothing here yet. Save a world you like, or publish your own snapshot.';
+      return `<div class="cm-empty-small">${text}</div>`;
+    }
+    return list.map(workCard).join('');
+  }
+  function community(ctx) {
+    const list = showcaseLibrary();
+    const w = ctx.parts[2] && list.find((item) => item.id === ctx.parts[2]);
+    if (ctx.parts[2]) return w ? workDetail(w) : S.empty('Work not found', 'Back to Showcase.', 'Showcase', '/app/community');
+    const tab = ui.galleryTab || 'Featured';
+    const kind = ui.galleryGenre || 'all';
+    const shown = showcaseFilter();
+    const feature = tab === 'Featured'
+      ? `<div class="cm-gallery-feature">${art(10,'Star Sea Post Office, original fantasy world')}<div><span class="cm-kicker">CIMORA ORIGINALS / FEATURED</span><h2>Star Sea Post Office</h2><p>Send the words left unsaid to where the stars live.</p>${link('Step into this world','/app/community/sky-public','cm-button glass')}</div></div>`
+      : '';
+    const tabs = `<div class="cm-showcase-tabs" role="tablist" aria-label="Showcase feeds">${SHOWCASE_TABS.map((t) => btn(t, 'gallery-tab', 'cm-showcase-tab' + (tab === t ? ' selected' : ''), `data-tab="${t}" role="tab" aria-selected="${tab === t}"`)).join('')}</div>`;
+    const filters = `<div class="cm-showcase-bar"><div class="cm-filter-tabs" role="group" aria-label="Filter by kind">${SHOWCASE_KINDS.map(([label, key]) => btn(label, 'gallery-genre', kind === key ? 'selected' : '', `data-genre="${key}"`)).join('')}</div><label class="cm-showcase-search"><span>Search</span><input type="search" data-cm-input="gallery-search" value="${E(ui.galleryQuery||'')}" placeholder="Title, author or genre" aria-label="Search works"></label></div>`;
+    return heading('A UNIVERSE OF ORIGINAL STORIES','Every kind of imagination deserves to be seen.','Meet new characters, worlds and creators. Official site cases and public works each have their place here.',btn('Publish my work','publish-work','cm-button primary'))
+      + tabs + feature + filters
+      + `<p class="cm-result-count">${shown.length} ${shown.length === 1 ? 'work' : 'works'} in this view · original demo works, no invented popularity numbers</p>`
+      + `<div class="cm-gallery-grid" id="cm-gallery-grid">${showcaseList()}</div>`;
+  }
+  function workDetail(w) {
+    const chapters = w.chapters || [];
+    const favor = M.db.favorites.includes(w.id);
+    const follow = M.db.follows.includes(w.id);
+    const openId = chapters.some((c) => c.id === ui.openChapter) ? ui.openChapter : null;
+    const open = chapters.find((c) => c.id === openId) || null;
+    const unlocked = (cid) => M.db.unlocks.includes(w.id + '/' + cid);
+    const rows = chapters.map((c, i) => {
+      const isOpen = c.id === openId;
+      const has = !!c.free || unlocked(c.id);
+      const pill = c.free
+        ? '<span class="cm-chapter-pill accent">Free</span>'
+        : has
+          ? '<span class="cm-chapter-pill">Unlocked</span>'
+          : `<span class="cm-chapter-pill">✦ ${c.price} credits</span>`;
+      const action = has
+        ? btn(isOpen ? 'Reading' : 'Read chapter', 'read-chapter', 'cm-button ghost small', `data-id="${c.id}"`)
+        : btn('Unlock', 'unlock-chapter', 'cm-button primary small', `data-id="${c.id}"`);
+      return `<div class="cm-chapter-row${isOpen ? ' open' : ''}"><span class="cm-chapter-number">${String(i + 1).padStart(2, '0')}</span><div><strong>${E(c.title)}</strong><small>${c.pages} ${c.pages === 1 ? 'page' : 'pages'}</small></div>${pill}${action}</div>`;
+    }).join('');
+    const reader = open
+      ? `<div class="cm-reader"><header><h3>${E(open.title)}</h3><small>${open.pages} sample ${open.pages === 1 ? 'page' : 'pages'} · demo images, not a finished chapter</small></header><div class="cm-reader-pages">${Array.from({ length: Math.min(open.pages, 4) }, (_, i) => `<figure>${art((w.art + i) % 12, open.title + ' sample page ' + (i + 1))}<figcaption>Page ${String(i + 1).padStart(2, '0')} / ${open.pages}</figcaption></figure>`).join('')}</div><p class="cm-help">Page previews only. Full page creation and export stay inside the studio.</p></div>`
+      : '';
+    return `<div class="cm-work-detail"><section><div class="cm-work-feature">${art(w.art, w.title)}<span>${w.local ? 'LOCAL PUBLISH SNAPSHOT' : 'CIMORA ORIGINAL DEMO'}</span></div><div class="cm-panel"><div class="cm-panel-title"><div><h1>${E(w.title)}</h1><p class="cm-work-byline">${E(w.author)} · ${E(w.tag || 'Original work')}</p></div><div class="cm-inline-actions">${btn(follow ? 'Following' : 'Follow creator', 'follow-work', 'cm-button ghost' + (follow ? ' selected' : ''), `data-id="${w.id}"`)}${btn(favor ? 'Saved' : 'Save', 'favorite-work', 'cm-button ghost', `data-id="${w.id}"`)}</div></div><p class="cm-work-desc">${E(w.desc || 'Original demo work.')}</p><div class="cm-work-facts"><span>${chapters.length} ${chapters.length === 1 ? 'chapter' : 'chapters'}</span><span>${workLabel(w)}</span><span>${E(w.published || 'Sample work')}</span></div><div class="cm-chapter-list">${rows || '<p class="cm-help">This work has no readable chapters yet.</p>'}</div>${reader}</div></section><aside class="cm-panel"><span class="cm-kicker">BEHIND THE STORY</span><h3>The craft behind the story.</h3><p>Showing a work and licensing its source pipeline are managed separately. Author prompts, assets and project files are never published here automatically.</p><ul class="cm-work-notes"><li>Chapters unlock with credits in this local demo.</li><li>Following a creator only fills the Following feed.</li><li>Reading never exposes the project file.</li></ul>${link('Browsing related creative resources','/app/market','cm-text-link')}</aside></div>`;
+  }
   function wallet(){return heading('YOUR CREATIVE RESOURCES','Credits and resources','Purchases, claims and creator earnings are recorded separately. Credits are a local demo only.',link('Discover new assets ↗','/app/market','cm-button primary'))+`<div class="cm-wallet-overview"><section><span>Available credits</span><h2>✦ ${M.db.wallet}</h2><p>Local sample balance · no withdrawal · no real payment</p></section><section><span>My library</span><h2>${M.db.purchases.length}<small> items</small></h2><p>Skills, templates and workflows</p></section></div><div class="cm-market-grid">${allCatalog().filter(it=>M.db.purchases.includes(it.id)).map(marketCard).join('')}</div><section class="cm-panel"><h3>Credits ledger</h3>${M.db.ledger.map(l=>`<div class="cm-ledger-row"><span>${E(l.title)}</span><small>${new Date(l.time).toLocaleDateString('zh-CN')}</small><b>${l.delta>0?'+':''}${l.delta}</b></div>`).join('')||'<p>No credit changes yet. The starting demo balance is 680 credits.</p>'}<p class="cm-help">Model run budgets are shown separately in USD examples and are not deducted from this balance.</p></section>`;}
   function creator(){return heading('SHARE WHAT YOU KNOW','Turn a method that works into the next spark of inspiration.','Publish your skills and creation templates. Earnings come from valid transactions; uploading a draft does not award credits directly.',btn('＋ Create asset draft','creator-draft','cm-button primary'))+`<div class="cm-creator-intro"><span>✦</span><div><h2>Creators can build tools, too.</h2><p>Give a resource clear inputs, outputs, examples and licensing so others can finish their work.</p></div></div><section class="cm-panel"><h3>My resources</h3>${M.db.drafts.map(d=>`<div class="cm-candidate-row"><div><strong>${E(d.title)}</strong><p>${d.type} · ${d.price} credits · ${d.published?'Local上架sample':'草稿待完善'}</p></div>${btn(d.published?'View商品':'预览并模拟上架',d.published?'open-market':'publish-resource','cm-button ghost',`data-id="${d.id}"`)}</div>`).join('')||'<p>还没有资源草稿。先分享一个你反复使用的创作方法。</p>'}</section>`;}
   function tasks(){const c=C.ctx();return C.runs(c);}
   function publicHome(){return `<main class="cm-public-home"><header class="cm-public-hero"><img src="assets/cimora-cover.webp" alt="Cimora original anime fantasy world"><div class="cm-public-hero-copy"><span class="cm-kicker">FOR EVERY WORLD INSIDE YOU</span><h1>Your imagination<br>deserves a <span>universe.</span></h1><p>From a single spark of inspiration to a chapter of comic, then to a story that moves.<br>At Cimora, create the world you love with your own hands.</p><div>${link('进入Creation Space ↗','/app','cm-button primary large')}${link('探索作品','/app/community','cm-button glass large')}</div><small>Story co-creation / Unified assets / Free canvas / Motion staging</small></div><div class="cm-public-art-caption">ORIGINAL WORLD NO.001<br><strong>Sea of Stars Post Office / LETTERS TO THE STARS</strong></div></header><section class="cm-public-manifesto"><span>YOUR STORY.</span><i>✦</i><span>YOUR CHARACTERS.</span><i>✦</i><span>YOUR UNIVERSE.</span></section><section class="cm-public-section"><span class="cm-kicker">FROM YOUR FIRST SPARK</span><h2>Inspiration does not have to be complete,<br>a story can grow with you.</h2><div class="cm-public-entry-grid">${[['✧','只有一句灵感','从故事方向、大纲到 chapters内容。','idea'],['▤','想让小说被看见','提炼人物、动作与可视化分镜。','novel'],['▦','已经拥有Comic','让panel、Character和对白Continue成为动态故事。','comic']].map(([ic,h,p,v])=>link(`<span>${ic}</span><h3>${h}</h3><p>${p}</p><b>开始创作 ↗</b>`,'/app/new?source='+v,'')).join('')}</div></section><section class="cm-public-split"><div>${art(6,'雨停之前原创二次元作品')}</div><article><span class="cm-kicker">ONE WORLD, MANY WAYS TO CREATE</span><h2>One story,<br>more than one way to tell it.</h2><p>Comics pace emotion with empty space, while video carries the story on with shots and sound. Characters, scenes, props and every edit stay connected in the same pipeline.</p><div>${link('☷ 跟着Flow开始','/app/new','cm-button primary')}${link('⌘ 打开自由Canvas','/app/new?view=canvas','cm-button ghost')}</div></article></section><section class="cm-public-section"><div class="cm-section-head"><div><span class="cm-kicker">CREATED, NOT JUST GENERATED</span><h2>Every creation leaves a trace.</h2></div>${link('体验制作编排 →','/app/tasks','cm-text-link')}</div><div class="cm-public-benefits">${[['◈','Character始终属于你的世界',' items目与 chapters固定引用资产版本，修改后只同步受影响的画面。'],['⌘','按自己的习惯创作','在Flow和无限Canvas之间切换，内容、依赖和候选始终相连。'],['↶','好作品，留有余地','成功结果保留，失败步骤单独重试，增强不覆盖稳定底稿。']].map(([ic,h,p])=>`<article><span>${ic}</span><h3>${h}</h3><p>${p}</p></article>`).join('')}</div></section><section class="cm-public-section"><div class="cm-section-head"><div><span class="cm-kicker">A UNIVERSE OF CREATORS</span><h2>Meet new worlds, and share your own.</h2></div>${link('走进Showcase →','/app/community','cm-text-link')}</div><div class="cm-discovery-row">${works.slice(0,3).map(workCard).join('')}</div></section><section class="cm-public-cta"><span>✦</span><h2>The next work you love,<br>might come from your hands.</h2>${link('开始创造你的宇宙 ↗','/app','cm-button primary large')}<p>Cimora · anime story creation space</p></section></main>`;}
-  C.pages={home,projects,new:newProject,assets,tasks,market,community,wallet,creator};C.publicHome=publicHome;C.catalog=allCatalog;C.projectList=projectList;C.assetList=assetList;C.scopedAssets=scopedAssets;C.works=()=>[...M.db.publications,...works];
+  function showcaseWork(id){return showcaseLibrary().find(w=>w.id===id)||null;}
+  C.pages={home,projects,new:newProject,assets,tasks,market,community,wallet,creator};C.publicHome=publicHome;C.catalog=allCatalog;C.projectList=projectList;C.assetList=assetList;C.scopedAssets=scopedAssets;C.works=()=>[...M.db.publications,...works];C.showcaseList=showcaseList;C.showcaseWork=showcaseWork;C.showcaseCount=()=>showcaseFilter().length;
 })();

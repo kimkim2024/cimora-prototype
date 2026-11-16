@@ -88,7 +88,11 @@
       case'deliver-motion':if(!e.reviewChecks?.every(Boolean)||e.reviewChecks.length<3){S.toast('Complete the three reviews first.');return;}if(e.graph.nodes.some(n=>n.version>n.adopted)){S.toast('New candidates are still unadopted; please confirm a version first.');return;}S.state.exports.unshift({id:S.id('delivery'),projectId:c.p.id,name:c.p.name+' · '+c.c.title,kind:'MP4',status:'Demo complete',size:'No real video file',date:'Just now'});M.log(e,'Create simulated delivery snapshot','Version frozen; the generated output is not a real MP4');modal('Delivery flow demo complete',`<h3>${E(c.p.name)} / ${E(c.c.title)}</h3><p>The adopted version, cost and pipeline info of this run have been recorded. This prototype does not encode video; you can download the pipeline JSON or publish a local work snapshot.</p>`,btn('Download pipeline notes','export-project','cm-button ghost')+btn('Publish work snapshot','publish-work','cm-button primary'));return;
       case'publish-work':publish();return;
       case'favorite-work':{const i=M.db.favorites.indexOf(el.dataset.id);if(i>=0)M.db.favorites.splice(i,1);else M.db.favorites.push(el.dataset.id);M.save();repaint();return;}
-      case'gallery-filter':ui.galleryType=el.dataset.type;repaint();return;
+      case'gallery-tab':{ui.galleryTab=el.dataset.tab;ui.openChapter=null;repaint();return;}
+      case'gallery-genre':{ui.galleryGenre=el.dataset.genre;repaint();return;}
+      case'follow-work':{const i=M.db.follows.indexOf(el.dataset.id);if(i>=0)M.db.follows.splice(i,1);else M.db.follows.push(el.dataset.id);M.save();repaint();return;}
+      case'read-chapter':{ui.openChapter=el.dataset.id;repaint();const r=S.$('.cm-reader');if(r&&r.scrollIntoView)r.scrollIntoView({block:'center',behavior:'smooth'});return;}
+      case'unlock-chapter':{const w=C.showcaseWork&&C.showcaseWork(S.context.parts[2]);const c=w&&(w.chapters||[]).find(x=>x.id===el.dataset.id);if(!w||!c)return;const err=M.unlock(w,c);if(err){S.toast(err);return;}ui.openChapter=c.id;repaint();S.toast('Chapter unlocked with '+c.price+' credits. Local demo only.');return;}
       case'work-view':S.$('#cm-work-reader').classList.toggle('motion',el.dataset.view==='motion');S.$$('.cm-work-detail [data-cm="work-view"]').forEach(b=>b.classList.toggle('primary',b===el));return;
       case'market-filter':ui.marketType=el.dataset.type;repaint();return;
       case'buy-market':{const it=C.catalog().find(it=>it.id===el.dataset.id);modal('Confirm and add to library',`<h3>${E(it.title)}</h3><p>${it.type} / ${it.price?it.price+' credits':'Free'} · Currently available ${M.db.wallet} credits</p><p>This is a simulated purchase of a resource usage license. Later model run costs are estimated separately and are not included in the purchased credits.</p>`,btn('Back','close-cm','cm-button ghost')+btn('Confirm'+(it.price?'Use credits':'Claim for free'),'confirm-buy-market','cm-button primary',`data-id="${it.id}"`));return;}
@@ -111,6 +115,7 @@
     if(k==='script')c.e.scriptDraft=el.value;
     if(k==='asset-search'){ui.assetSearch=el.value;S.$('#cm-library-grid').innerHTML=C.assetList();}
     if(k==='project-search'){ui.projectSearch=el.value;S.$('#cm-project-list').innerHTML=C.projectList();}
+    if(k==='gallery-search'){ui.galleryQuery=el.value;const grid=S.$('#cm-gallery-grid');if(grid)grid.innerHTML=C.showcaseList();const count=S.$('.cm-result-count');if(count&&C.showcaseCount){const n=C.showcaseCount();count.textContent=n+' '+(n===1?'work':'works')+' in this view \u00b7 original demo works, no invented popularity numbers';}}
     if(k==='comic-gap'){c.e.comicGap=+el.value;S.$('.cm-long-comic').style.gap=el.value+'px';S.$('#cm-gap-label').textContent=el.value+'px';}
     if(k==='seek')S.$('#cm-seek-label').textContent=C.timecode(+el.value)+' / '+C.timecode(C.seconds(c.e))+' · Audio track layout preview';
     M.save();

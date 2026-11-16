@@ -2,9 +2,9 @@
 window.createCimoraModel=function(S){
   'use strict';
   const state=S.state;
-  state.cimora??={version:2,projects:{},wallet:680,purchases:[],ledger:[],favorites:[],publications:[],drafts:[],activeProject:'rain',activeChapter:'ch1'};
+  state.cimora??={version:2,projects:{},wallet:680,purchases:[],ledger:[],favorites:[],follows:[],unlocks:[],publications:[],drafts:[],activeProject:'rain',activeChapter:'ch1'};
   const db=state.cimora;
-  for(const k of ['purchases','ledger','favorites','publications','drafts'])db[k]??=[];
+  for(const k of ['purchases','ledger','favorites','follows','unlocks','publications','drafts'])db[k]??=[];
   db.projects??={};
   const clone=v=>JSON.parse(JSON.stringify(v));
   const save=()=>S.save();
@@ -123,7 +123,8 @@ window.createCimoraModel=function(S){
   function adopt(e,nid){const n=e.graph.nodes.find(n=>n.id===nid);if(!n||n.status!=='done')return false;n.adopted=n.version;log(e,'Adopt candidate',`${n.title} v${n.version}`);return true;}
   function addNode(e,kind){const def=defs[kind]||defs.sketch,k=id(kind);e.graph.nodes.push({id:k,kind,title:def[0]+' · Branch',x:800,y:780,status:'idle',version:0,adopted:0,cost:def[3],provider:def[4],attempts:0});save();return k;}
   function purchase(item){if(db.purchases.includes(item.id))return 'Already in your asset library';if(db.wallet<item.price)return 'Not enough available credits';db.wallet-=item.price;db.purchases.push(item.id);db.ledger.unshift({id:id('points'),title:'Buy · '+item.title,delta:-item.price,time:new Date().toISOString()});save();return null;}
+  function unlock(work,chapter){if(!work||!chapter)return 'Chapter not found';const key=work.id+'/'+chapter.id;if(db.unlocks.includes(key))return 'Chapter already unlocked';if(chapter.free)return null;if(db.wallet<chapter.price)return 'Not enough available credits';db.wallet-=chapter.price;db.unlocks.push(key);db.ledger.unshift({id:id('points'),title:'Unlock \u00b7 '+work.title+' / '+chapter.title,delta:-chapter.price,time:new Date().toISOString()});save();return null;}
   function publish(ctx,title){const pub={id:id('work'),title:title||ctx.p.name,author:'My studio',projectId:ctx.p.id,chapterId:ctx.c.id,art:ctx.p.art,type:output(ctx.p),snapshot:clone({chapter:ctx.c.title,script:ctx.e.script,boards:ctx.e.boards,versions:ctx.e.graph.nodes.map(n=>({id:n.id,version:n.adopted}))}),createdAt:new Date().toISOString(),local:true};db.publications.unshift(pub);save();return pub;}
   save();
-  return {db,defs,context,activate,remember,resume,startFromHome,restoreHomeDraft,ensure,create,generateStory,descendants,change,connect,plan,begin,tick,adopt,addNode,purchase,publish,log,save,clone,output};
+  return {unlock,db,defs,context,activate,remember,resume,startFromHome,restoreHomeDraft,ensure,create,generateStory,descendants,change,connect,plan,begin,tick,adopt,addNode,purchase,publish,log,save,clone,output};
 };

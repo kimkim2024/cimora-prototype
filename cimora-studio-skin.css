@@ -261,3 +261,57 @@ html[data-cimora-theme] body.cimora-app .cm-gauge-legend b{font-weight:600;color
 @media (prefers-reduced-motion: reduce){
   html[data-cimora-theme] body.cimora-app .cm-gauge rect{animation:none}
 }
+
+/* 作品广场：五个 feed、筛选、章节解锁与阅读器（并入 2026-11-16 构建的能力，按本站设计系统重绘） */
+html[data-cimora-theme] body.cimora-app .cm-showcase-tabs{display:flex;gap:26px;margin:30px 0 0;border-bottom:1px solid #dedede;min-height:34px}
+html[data-cimora-theme] body.cimora-app .cm-showcase-tabs .cm-showcase-tab{background:none;border:0;border-bottom:2px solid transparent;border-radius:0;padding:0 0 11px;min-height:0;color:#8a8a8a;font-size:12px;letter-spacing:.01em;white-space:nowrap}
+html[data-cimora-theme] body.cimora-app .cm-showcase-tabs .cm-showcase-tab:hover{background:none;color:#171717;border-color:transparent;border-bottom-color:#c8c8c8}
+html[data-cimora-theme] body.cimora-app .cm-showcase-tabs .cm-showcase-tab.selected{color:#171717;border-bottom-color:#171717}
+html[data-cimora-theme] body.cimora-app .cm-showcase-bar{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:22px 0 10px;flex-wrap:wrap}
+html[data-cimora-theme] body.cimora-app .cm-showcase-search{display:grid;gap:6px;width:260px}
+html[data-cimora-theme] body.cimora-app .cm-showcase-search>span{font-size:10px;letter-spacing:.08em;color:#a3a3a3;text-transform:none}
+html[data-cimora-theme] body.cimora-app .cm-showcase-search input{height:36px;border:1px solid #dedede;border-radius:8px;background:#fff;color:#171717;padding:0 12px;font-size:12px}
+html[data-cimora-theme] body.cimora-app .cm-showcase-search input::placeholder{color:#a3a3a3}
+html[data-cimora-theme] body.cimora-app .cm-result-count{font-size:11px;color:#8a8a8a;margin:0 0 20px}
+html[data-cimora-theme] body.cimora-app .cm-work-copy{display:grid;gap:4px;margin-top:12px}
+html[data-cimora-theme] body.cimora-app .cm-work-copy h3{font-size:14px;color:#171717;margin:0}
+html[data-cimora-theme] body.cimora-app .cm-work-copy p{font-size:11px;color:#666666;margin:0}
+html[data-cimora-theme] body.cimora-app .cm-work-copy p small{color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-work-meta{display:flex;justify-content:space-between;gap:10px;font-size:10px;color:#a3a3a3;padding-top:8px;border-top:1px solid #ededed;margin-top:6px}
+html[data-cimora-theme] body.cimora-app .cm-work-byline{font-size:12px;color:#666666;margin:6px 0 0}
+html[data-cimora-theme] body.cimora-app .cm-work-desc{font-size:13px;line-height:1.75;color:#404040;margin:14px 0 0;max-width:62ch}
+html[data-cimora-theme] body.cimora-app .cm-work-facts{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0 0;padding:12px 0;border-top:1px solid #ededed;border-bottom:1px solid #ededed;font-size:11px;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-chapter-list{margin:18px 0 0;display:grid}
+html[data-cimora-theme] body.cimora-app .cm-chapter-row{display:grid;grid-template-columns:32px minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid #f0f0f0}
+html[data-cimora-theme] body.cimora-app .cm-chapter-row:last-child{border-bottom:0}
+html[data-cimora-theme] body.cimora-app .cm-chapter-row.open{background:#fafafa}
+html[data-cimora-theme] body.cimora-app .cm-chapter-number{font-size:11px;color:#a3a3a3;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-chapter-row strong{display:block;font-size:13px;color:#171717}
+html[data-cimora-theme] body.cimora-app .cm-chapter-row small{font-size:10px;color:#a3a3a3}
+html[data-cimora-theme] body.cimora-app .cm-chapter-pill{display:inline-flex;align-items:center;height:24px;padding:0 9px;border:1px solid #dedede;border-radius:999px;background:#fff;color:#666666;font-size:10px;white-space:nowrap}
+html[data-cimora-theme] body.cimora-app .cm-chapter-pill.accent{background:#f4fbe3;border-color:#9ccc0f;color:#3f5a00}
+html[data-cimora-theme] body.cimora-app .cm-reader{margin:22px 0 0;padding:20px;border:1px solid #dedede;border-radius:14px;background:#fafafa}
+html[data-cimora-theme] body.cimora-app .cm-reader>header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px}
+html[data-cimora-theme] body.cimora-app .cm-reader>header h3{font-size:14px;color:#171717;margin:0}
+html[data-cimora-theme] body.cimora-app .cm-reader>header small{font-size:10px;color:#8a8a8a}
+html[data-cimora-theme] body.cimora-app .cm-reader-pages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+html[data-cimora-theme] body.cimora-app .cm-reader-pages figure{margin:0;display:grid;gap:7px}
+html[data-cimora-theme] body.cimora-app .cm-reader-pages img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:9px;border:1px solid #dedede;background:#fff}
+html[data-cimora-theme] body.cimora-app .cm-reader-pages figcaption{font-size:10px;color:#a3a3a3;font-variant-numeric:tabular-nums}
+html[data-cimora-theme] body.cimora-app .cm-work-notes{margin:14px 0 18px;padding-left:16px;display:grid;gap:7px;font-size:11px;line-height:1.7;color:#666666}
+html[data-cimora-theme] body.cimora-app .cm-work-notes li::marker{color:#a3a3a3}
+html[data-cimora-theme] body.cimora-app .cm-button.ghost.selected{background:#171717;border-color:#171717;color:#ffffff}
+@media(max-width:1180px){
+  html[data-cimora-theme] body.cimora-app .cm-reader-pages{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html[data-cimora-theme] body.cimora-app .cm-chapter-row{grid-template-columns:26px minmax(0,1fr) auto;row-gap:8px}
+}
+
+/* 作品广场 · 精选横幅：深色遮罩 + 白字，替换旧紫色渐变 */
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature{height:340px;border:1px solid #dedede;border-radius:16px}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature:after{background:linear-gradient(90deg,rgba(17,17,17,.88),rgba(17,17,17,.46) 46%,rgba(17,17,17,.06) 78%,transparent)}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature>div{left:44px;top:50%;transform:translateY(-50%);max-width:46%}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature .cm-kicker{color:rgba(255,255,255,.7);font-size:10px;letter-spacing:.14em}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature h2{color:#ffffff;font-size:33px;line-height:1.1;margin:14px 0 10px}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature p{color:rgba(255,255,255,.78);font-size:13px;line-height:1.65;margin:0 0 20px;max-width:32ch}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature .cm-button.glass{background:#ffffff;border:1px solid #ffffff;color:#171717;border-radius:999px;padding:11px 20px;font-size:12px;min-height:38px}
+html[data-cimora-theme] body.cimora-app .cm-gallery-feature .cm-button.glass:hover{background:#f3f3f3;border-color:#f3f3f3}

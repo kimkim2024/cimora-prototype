@@ -50,6 +50,8 @@ const ROUTES = [
   { name: 'tools', path: '/tools' },
   { name: 'auth', path: '/auth' },
   { name: 'showcase', path: '/showcase' },
+  { name: 'app-showcase', path: '/app/community' },
+  { name: 'app-showcase-work', path: '/app/community/rain-public' },
 ];
 
 const CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/g;
