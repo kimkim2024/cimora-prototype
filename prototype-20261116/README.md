@@ -37,5 +37,15 @@ original zip.
 - The build is not wired to `tools/ui-lint.js` / `tools/shots.js` (those check the
   root prototype's routes), and it is not mirrored by the React app in `web/`.
 - The root prototype still carries work this build predates: the device-mockup hero,
-  the production-line module, the project library from PR #2, the sticky header and
-  the scroll guard.
+  the production-line module, the project library from PR #2 and the sticky header.
+
+## Local patches on top of the shipped zip
+
+Two changes, both about scrolling:
+
+| Files | Change |
+| --- | --- |
+| 55 `**/*.html` | the injected `<script src="cimora-scroll-guard.js">` now carries the depth-correct relative path. As shipped, every sub-page asked for e.g. `market/cimora-scroll-guard.js` and got a 404, so the guard never ran outside the six top-level pages. |
+| `cimora-scroll-guard.js` | rewritten. The build calls `document.open()` + `document.write()` on the whole app shell about 120 ms after load, and Chrome drops every window listener in the process — the old one-shot `__cimoraScrollGuard` flag survived that and left the page unscrollable. The guard now keeps its handlers on `window`, re-attaches from a `Document.prototype.open`/`close` hook, scrolls the nearest scrollable pane rather than only the document, and applies via `behavior: 'instant'` so `<html style="scroll-behavior: smooth">` cannot swallow it. |
+
+`node tests/scroll-guard.test.cjs` at the repo root checks both properties.
