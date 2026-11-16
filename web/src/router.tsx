@@ -10,7 +10,13 @@ import NotPorted from './pages/NotPorted';
 import NotFound from './pages/NotFound';
 import PricingPage from './pages/PricingPage';
 import ProductPage from './pages/ProductPage';
+import CreatorPage from './pages/app/CreatorPage';
+import MarketPage from './pages/app/MarketPage';
+import PackPage from './pages/app/PackPage';
 import ProjectsPage from './pages/app/ProjectsPage';
+import StudioShowcasePage from './pages/app/ShowcasePage';
+import WalletPage from './pages/app/WalletPage';
+import WorkPage from './pages/app/WorkPage';
 
 /**
  * Hash routing, on purpose: every existing link in the prototype and in the
@@ -57,6 +63,15 @@ export const router = createHashRouter([
       // the studio opens straight on the projects page: no dashboard in between
       { index: true, element: <ProjectsPage /> },
       { path: 'projects', element: <ProjectsPage /> },
+
+      // ported from the prototype in this batch
+      { path: 'community', element: <StudioShowcasePage /> },
+      { path: 'community/:id', element: <WorkPage /> },
+      { path: 'market', element: <MarketPage /> },
+      { path: 'market/:id', element: <PackPage /> },
+      { path: 'creator', element: <CreatorPage /> },
+      { path: 'wallet', element: <WalletPage /> },
+
       { path: '*', element: <NotPorted /> },
     ],
   },
