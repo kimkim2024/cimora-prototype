@@ -57,6 +57,14 @@ npm run shots    # 12 routes x 1440/1920 screenshots + rendered-text checks
 
 Both are dependency-free Node scripts; `shots` drives the installed Chrome or Edge.
 
+## A second prototype version
+
+`prototype-20261116/` holds the client's packaged 2026-11-16 demo: a Chinese,
+purple-accented, multi-page prototype with market, community, export center, task
+center, wallet, studio library and 14 tool pages. It is kept as its own version -
+the files at the repo root are the English prototype this project has been
+iterating on. See `prototype-20261116/README.md`.
+
 ## Collaborating
 
 1. Branch: `ui/<area>` (one page per branch, one `cimora-<area>.css` per page).

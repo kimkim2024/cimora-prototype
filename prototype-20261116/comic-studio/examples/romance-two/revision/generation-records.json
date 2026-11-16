@@ -1,0 +1,470 @@
+[
+  {
+    "name": "page-01-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x688",
+    "actualSize": [
+      1536,
+      688
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-01-panel-1-fixed.png",
+    "original": "output\\imagegen\\romance-director\\page-01-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-01-panel-1-fixed.png.stderr.log"
+  },
+  {
+    "name": "page-01-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-01-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-01-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-01-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-01-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "672x1536",
+    "actualSize": [
+      672,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-01-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-01-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-01-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-01-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "1504x1536",
+    "actualSize": [
+      1504,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-01-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-01-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-01-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-02-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x560",
+    "actualSize": [
+      1536,
+      560
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-02-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-02-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-02-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-02-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1216x1536",
+    "actualSize": [
+      1216,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-02-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-02-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-02-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-02-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1216x1536",
+    "actualSize": [
+      1216,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-02-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-02-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-02-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-02-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "1232x1536",
+    "actualSize": [
+      1232,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-02-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-02-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-02-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-02-panel-5",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1056",
+    "actualSize": [
+      1536,
+      1056
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-02-panel-5.png",
+    "original": "output\\imagegen\\romance-director\\page-02-panel-5.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-02-panel-5.png.stderr.log"
+  },
+  {
+    "name": "page-03-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1040x1536",
+    "actualSize": [
+      1040,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-03-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-03-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-03-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-03-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1040x1536",
+    "actualSize": [
+      1040,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-03-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-03-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-03-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-03-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-03-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-03-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-03-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-03-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x608",
+    "actualSize": [
+      1536,
+      608
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-03-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-03-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-03-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-04-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1360",
+    "actualSize": [
+      1536,
+      1360
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-04-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-04-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-04-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-04-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1360",
+    "actualSize": [
+      1536,
+      1360
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-04-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-04-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-04-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-04-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1488x1536",
+    "actualSize": [
+      1488,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-04-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-04-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-04-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-05-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1392",
+    "actualSize": [
+      1536,
+      1392
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-05-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-05-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-05-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-05-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1344x1536",
+    "actualSize": [
+      1344,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-05-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-05-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-05-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-05-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1344x1536",
+    "actualSize": [
+      1344,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-05-panel-3-fixed.png",
+    "original": "output\\imagegen\\romance-director\\page-05-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-05-panel-3-fixed.png.stderr.log"
+  },
+  {
+    "name": "page-06-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-06-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-06-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-06-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-06-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-06-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-06-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-06-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-06-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "912x1536",
+    "actualSize": [
+      912,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-06-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-06-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-06-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-06-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "912x1536",
+    "actualSize": [
+      912,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-06-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-06-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-06-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-07-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-07-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-07-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-07-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-07-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1216",
+    "actualSize": [
+      1536,
+      1216
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-07-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-07-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-07-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-07-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1040x1536",
+    "actualSize": [
+      1040,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-07-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-07-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-07-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-07-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "864x1536",
+    "actualSize": [
+      864,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-07-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-07-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-07-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-07-panel-5",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1472",
+    "actualSize": [
+      1536,
+      1472
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-07-panel-5.png",
+    "original": "output\\imagegen\\romance-director\\page-07-panel-5.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-07-panel-5.png.stderr.log"
+  },
+  {
+    "name": "page-08-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "512x1536",
+    "actualSize": [
+      512,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-08-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-08-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-08-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-08-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "512x1536",
+    "actualSize": [
+      512,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-08-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-08-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-08-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-08-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "528x1536",
+    "actualSize": [
+      528,
+      1536
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-08-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-08-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-08-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-08-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x800",
+    "actualSize": [
+      1536,
+      800
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-08-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-08-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-08-panel-4.png.stderr.log"
+  },
+  {
+    "name": "page-09-panel-1",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1104",
+    "actualSize": [
+      1536,
+      1104
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-09-panel-1.png",
+    "original": "output\\imagegen\\romance-director\\page-09-panel-1.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-09-panel-1.png.stderr.log"
+  },
+  {
+    "name": "page-09-panel-2",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1104",
+    "actualSize": [
+      1536,
+      1104
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-09-panel-2.png",
+    "original": "output\\imagegen\\romance-director\\page-09-panel-2.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-09-panel-2.png.stderr.log"
+  },
+  {
+    "name": "page-09-panel-3",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x512",
+    "actualSize": [
+      1536,
+      512
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-09-panel-3.png",
+    "original": "output\\imagegen\\romance-director\\page-09-panel-3.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-09-panel-3.png.stderr.log"
+  },
+  {
+    "name": "page-09-panel-4",
+    "model": "gpt-image-2",
+    "requestedSize": "1536x1216",
+    "actualSize": [
+      1536,
+      1216
+    ],
+    "adopted": "output\\imagegen\\romance-director\\page-09-panel-4.png",
+    "original": "output\\imagegen\\romance-director\\page-09-panel-4.png",
+    "success": true,
+    "generationLog": "output\\imagegen\\romance-director\\page-09-panel-4.png.stderr.log"
+  }
+]

@@ -1,0 +1,92 @@
+{
+  "A": {
+    "method": "人工看图定位格线附近的矩形，像素坐标为近似；不用于改写先验草图",
+    "plannedEnvironmentPercent": 26.8,
+    "observedEnvironmentPercent": 29.6,
+    "plannedHandoffPercent": 15.8,
+    "observedHandoffPercent": 13.7,
+    "observedApproxBoxes": [
+      [
+        16,
+        17,
+        714,
+        652
+      ],
+      [
+        741,
+        17,
+        266,
+        321
+      ],
+      [
+        741,
+        351,
+        266,
+        318
+      ],
+      [
+        16,
+        683,
+        406,
+        374
+      ],
+      [
+        431,
+        683,
+        576,
+        374
+      ],
+      [
+        16,
+        1073,
+        991,
+        446
+      ]
+    ]
+  },
+  "B": {
+    "method": "人工看图定位格线附近的矩形，像素坐标为近似；不用于改写先验草图",
+    "plannedEnvironmentPercent": 12.7,
+    "observedEnvironmentPercent": 22.5,
+    "plannedHandoffPercent": 29.4,
+    "observedHandoffPercent": 15.0,
+    "observedApproxBoxes": [
+      [
+        16,
+        17,
+        630,
+        562
+      ],
+      [
+        653,
+        17,
+        354,
+        317
+      ],
+      [
+        653,
+        348,
+        354,
+        231
+      ],
+      [
+        16,
+        595,
+        448,
+        439
+      ],
+      [
+        469,
+        595,
+        538,
+        439
+      ],
+      [
+        16,
+        1051,
+        991,
+        468
+      ]
+    ]
+  }
+}

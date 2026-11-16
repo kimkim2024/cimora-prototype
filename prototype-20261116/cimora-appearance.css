@@ -1,0 +1,163 @@
+/* 全站语义配色。图片和视频上的玻璃标签保持独立，避免浅色主题反转作品。 */
+:root[data-cimora-theme]{
+  --ap-bg:#101016;--ap-surface:#191820;--ap-raised:#25212f;--ap-input:#14111c;
+  --ap-text:#f2edf8;--ap-muted:#b1a7bf;--ap-secondary:#d0c1e0;--ap-line:#494052;--ap-line-strong:#7b6b8c;
+  --ap-accent:#c4a6ff;--ap-on-accent:#231331;--ap-soft:#32253f;--ap-hover:#3c2e4b;
+  --ap-success:#a3dcca;--ap-warning:#efc18d;--ap-danger:#f1a0b5;
+  --ap-shadow:0 16px 48px #00000024;--ap-dot:#85739445;
+}
+:root[data-cimora-theme="white"]{
+  --ap-bg:#f7f8fc;--ap-surface:#ffffff;--ap-raised:#edf0f6;--ap-input:#ffffff;
+  --ap-text:#232332;--ap-muted:#5d6174;--ap-secondary:#494e65;--ap-line:#d6d9e3;--ap-line-strong:#9a92ad;
+  --ap-accent:#6338aa;--ap-on-accent:#ffffff;--ap-soft:#ece5f9;--ap-hover:#e2d6f2;
+  --ap-success:#256b51;--ap-warning:#825216;--ap-danger:#aa304e;--ap-shadow:0 14px 44px #3524490d;--ap-dot:#77718d30;
+}
+:root[data-cimora-theme="pink"]{
+  --ap-bg:#fff3f7;--ap-surface:#fffbfd;--ap-raised:#f9e6ef;--ap-input:#ffffff;
+  --ap-text:#412737;--ap-muted:#77576c;--ap-secondary:#704359;--ap-line:#e9c5d5;--ap-line-strong:#ba7b96;
+  --ap-accent:#a62e65;--ap-on-accent:#ffffff;--ap-soft:#f8dfeb;--ap-hover:#f1cbdc;
+  --ap-success:#256b51;--ap-warning:#825216;--ap-danger:#aa304e;--ap-shadow:0 14px 44px #9327510d;--ap-dot:#b6799330;
+}
+:root[data-cimora-theme="purple"]{
+  --ap-bg:#f4f0ff;--ap-surface:#fcfaff;--ap-raised:#ebe2fa;--ap-input:#ffffff;
+  --ap-text:#332343;--ap-muted:#64516f;--ap-secondary:#644c7a;--ap-line:#dbcaec;--ap-line-strong:#a18ab9;
+  --ap-accent:#7240ad;--ap-on-accent:#ffffff;--ap-soft:#e8daf8;--ap-hover:#ddc9f0;
+  --ap-success:#256b51;--ap-warning:#825216;--ap-danger:#aa304e;--ap-shadow:0 14px 44px #6338aa10;--ap-dot:#9679b830;
+}
+:root[data-cimora-theme="orange"]{
+  --ap-bg:#fff6eb;--ap-surface:#fffdf8;--ap-raised:#f9e8d3;--ap-input:#ffffff;
+  --ap-text:#49301d;--ap-muted:#796149;--ap-secondary:#745030;--ap-line:#e8cdb1;--ap-line-strong:#bb9169;
+  --ap-accent:#a64a14;--ap-on-accent:#ffffff;--ap-soft:#fbe2cc;--ap-hover:#f3d0ad;
+  --ap-success:#256b51;--ap-warning:#825216;--ap-danger:#aa304e;--ap-shadow:0 14px 44px #9a4c1c0d;--ap-dot:#ac805530;
+}
+/* 兼容官网、产品、工具和旧工作台已有的颜色变量。 */
+:root[data-cimora-theme]{
+  --bg:var(--ap-bg);--surface:var(--ap-surface);--raised:var(--ap-raised);--line:var(--ap-line);--text:var(--ap-text);--muted:var(--ap-muted);
+  --purple:var(--ap-accent);--ink:var(--ap-on-accent);--green:var(--ap-success);--amber:var(--ap-warning);
+  --cm-bg:var(--ap-bg);--cm-panel:var(--ap-surface);--cm-panel-2:var(--ap-raised);--cm-border:var(--ap-line);--cm-text:var(--ap-text);--cm-muted:var(--ap-muted);--cm-primary:var(--ap-accent);--cm-mint:var(--ap-success);
+}
+html[data-cimora-theme] body{background:var(--ap-bg);color:var(--ap-text)}
+html[data-cimora-theme] .hm-home{--hm-bg:var(--ap-bg);--hm-card:var(--ap-surface);--hm-line:var(--ap-line);--hm-muted:var(--ap-muted);--hm-white:var(--ap-text);--hm-accent:var(--ap-accent);color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-shell,.hm-official,.cm-public-home,.app,.workspace-shell){background:var(--ap-bg);color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-sidebar,.cm-topbar,.public-header,.cimora-home-public .public-header,.app-sidebar,.app-header,.editor-frame-header){background:var(--ap-surface);border-color:var(--ap-line);color:var(--ap-text)}
+html[data-cimora-theme] :is(.public-footer,.cimora-home-public .public-footer){background:var(--ap-raised);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.cm-panel,.cm-project-card,.cm-board,.cm-library-asset,.cm-market-card,.hm-template-card,.hm-resume-card,.hm-tool-card,.hm-tasks,.surface,.tool-card,.tool-input,.tool-result,.cimora-app .tool-card,.cimora-app .tool-input,.cimora-app .tool-result,.nav-dropdown>div,.dialog,.cm-overview-stats,.cm-run-stats>article){background:var(--ap-surface);border-color:var(--ap-line);color:var(--ap-text)}
+html[data-cimora-theme] :is(.hm-workspace-launch,.hm-workspace-start,.hm-process-preview,.cm-market-banner,.cm-project-overview,.cm-public-manifesto,.cm-source-tabs,.cm-view-switch,.cm-search,.cm-reading-stage,.cm-candidate-text,.cm-script-area,.cm-track-ruler,.cm-canvas-shell,.cm-filter-tabs,.cm-library-scope){background:var(--ap-raised);border-color:var(--ap-line);color:var(--ap-text)}
+html[data-cimora-theme] :is(.hm-composer,.hm-workspace-start .hm-composer,.hm-project-search,.hm-draft-summary,.dialog pre,.dialog details){background:var(--ap-input);border-color:var(--ap-line);color:var(--ap-text)}
+html[data-cimora-theme] :is(.hm-engine-preview,.hm-process-preview){background:var(--ap-surface);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.hm-preview-bar,.hm-preview-foot,.hm-boards-preview figcaption,.hm-boards-preview figure,.hm-script-preview>div>span,.hm-tiny-graph i){background:var(--ap-raised);border-color:var(--ap-line);color:var(--ap-secondary)}
+html[data-cimora-theme] :is(.hm-workspace-footer,.hm-section,.hm-process-steps article,.hm-task-detail,.hm-template-card footer,.hm-tasks-note,.hm-engine-status,.hm-asset-mini,.cm-history-item,.cm-plan-list>div,.cm-template-steps li,.cm-ledger-row,.cm-detail-lines,.cm-graph-node>header,.dialog>header,.dialog>footer,hr){border-color:var(--ap-line)}
+
+/* 表单、按钮与其状态跟随主题，不能只换页面背景。 */
+html[data-cimora-theme] :is(input:not([type="checkbox"],[type="radio"],[type="range"]),textarea,select,.cm-shell input,.cm-shell textarea,.cm-shell select,.dialog .cm-label input,.dialog .cm-label textarea,.dialog .cm-label select){background:var(--ap-input);color:var(--ap-text);border-color:var(--ap-line-strong);color-scheme:inherit;caret-color:var(--ap-accent)}
+html[data-cimora-theme] :is(input,textarea)::placeholder{color:var(--ap-muted);opacity:1}
+html[data-cimora-theme] :is(.hm-home .hm-composer textarea,.hm-project-search input,.search-box input){background:transparent;border:0;color:var(--ap-text)}
+html[data-cimora-theme] :is(input,textarea,select):focus{border-color:var(--ap-accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--ap-accent) 15%,transparent)}
+html[data-cimora-theme] :is(input[type="checkbox"],input[type="radio"],input[type="range"]){accent-color:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-button,.hm-button,.button,.cm-icon-button,.ap-trigger){background:var(--ap-raised);border-color:var(--ap-line-strong);color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-button,.hm-button,.button,.cm-icon-button,.ap-trigger):hover{background:var(--ap-hover);border-color:var(--ap-accent);color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-button.primary,.hm-button.primary,.button.primary,.public-header .nav-actions .button.primary){background:var(--ap-accent);border-color:var(--ap-accent);color:var(--ap-on-accent);box-shadow:none}
+html[data-cimora-theme] :is(.cm-button.primary,.hm-button.primary,.button.primary):hover{background:color-mix(in srgb,var(--ap-accent) 87%,var(--ap-text));color:var(--ap-on-accent)}
+html[data-cimora-theme] :is(.cm-button.ghost,.button.ghost,.hm-button.secondary){background:transparent;color:var(--ap-text);border-color:var(--ap-line-strong)}
+html[data-cimora-theme] :is(.cm-button.ghost,.button.ghost,.hm-button.secondary):hover{background:var(--ap-soft);border-color:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-text-link,.hm-text-link,.hm-resume-card footer .hm-text-link,.text-link,.text-button,.cm-back){color:var(--ap-accent)!important}
+html[data-cimora-theme] :is(a,button,input,textarea,select,summary):focus-visible{outline:2px solid var(--ap-accent);outline-offset:3px}
+html[data-cimora-theme] :is(.cm-nav-item,.cm-nav-item>span,.cm-breadcrumb,.cm-source-tabs button,.cm-direction-tabs button,.cm-start-choice button,.cm-view-switch button,.cm-step-nav>a,.cm-layout-list>button,.cm-library-scope button,.cm-filter-tabs button,.hm-composer-modes button,.hm-collection-filters button,.filter,.period-toggle button){color:var(--ap-muted)}
+html[data-cimora-theme] :is(.cm-nav-item:hover,.cm-nav-item.active,.cm-source-tabs button.selected,.cm-direction-tabs button.selected,.cm-start-choice button.selected,.cm-view-switch button.selected,.cm-step-nav>a.active,.cm-layout-list>button.selected,.cm-library-scope button.selected,.cm-filter-tabs button.selected,.hm-composer-modes button[aria-pressed="true"],.hm-script-preview>div .active,.filter.selected,.period-toggle button.selected){background:var(--ap-soft);color:var(--ap-accent);border-color:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-nav-item.active>span,.hm-collection-filters button[aria-pressed="true"],.hm-process-steps article.active h3 button,.hm-gallery-intro h1 em){color:var(--ap-accent)}
+html[data-cimora-theme] .cm-nav-item{color:var(--ap-muted)!important}
+html[data-cimora-theme] :is(.cm-nav-item.active,.cm-nav-item:hover,.cm-credit-pill){color:var(--ap-accent)!important}
+html[data-cimora-theme] :is(.cm-wallet>span,.cm-wallet b){color:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-library-asset footer b,.cm-work-card h3>span){color:var(--ap-accent)}
+html[data-cimora-theme] :is(.hm-script-preview blockquote,.cm-board-copy blockquote){color:var(--ap-secondary);border-color:var(--ap-accent)}
+html[data-cimora-theme] .cm-board-copy blockquote{background:var(--ap-soft)}
+html[data-cimora-theme] .cm-shot{background:var(--ap-surface);border-color:var(--ap-line)}
+html[data-cimora-theme] .cm-shot.selected{border-color:var(--ap-accent);box-shadow:0 0 0 2px var(--ap-soft)}
+html[data-cimora-theme] .cm-script-area{background:var(--ap-input)!important}
+html[data-cimora-theme] .cm-project-note{color:var(--ap-muted)}
+html[data-cimora-theme] :is(.cm-outline-item>span,.cm-tip-card>span){color:var(--ap-accent)}
+html[data-cimora-theme] :is(.price-card,.entry-card,.case-card,.showcase-view,.panel-result-card,.project-pick,.story-demo,.mode-comparison>div,.sticky-actions){background:var(--ap-surface);color:var(--ap-text);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.price-card.recommended,.tools-home,.product-world,.demo-assets>div){background:var(--ap-raised);color:var(--ap-text);border-color:var(--ap-line-strong)}
+html[data-cimora-theme] :is(.notice,.policy-notice){background:var(--ap-soft);color:var(--ap-secondary);border-color:var(--ap-line-strong)}
+html[data-cimora-theme] .public-header.menu-open .public-nav{background:var(--ap-surface);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.feature-art-label,.product-world>div,.product-world span,.showcase-overlay,.motion-demo>b,.puppet-stage>span,.color-comparison span){color:#f2eafa}
+html[data-cimora-theme] :is(.plain-list li,.prose>p,.prose li,.story-feature-list>div>span,.demo-toolbar,.result-summary>span,.sticky-actions>span,.auth-legal,.entry-no,.hero-note,.manifesto-strip){color:var(--ap-muted)}
+html[data-cimora-theme] :is(.entry-arrow,.auth-legal a){color:var(--ap-accent)}
+html[data-cimora-theme] :is(.footer-bottom,.hm-sr){color:var(--ap-muted)}
+html[data-cimora-theme] :is(label,.panel-heading,.sample-row>span,.crumbs,.crumbs i,.micro-tag,.tool-card-foot){color:var(--ap-muted)}
+html[data-cimora-theme] .tool-card-foot>span{color:var(--ap-accent)}
+html[data-cimora-theme] :is(.status-badge,.demo-pill){color:var(--ap-success);border-color:color-mix(in srgb,var(--ap-success) 35%,transparent);background:color-mix(in srgb,var(--ap-success) 8%,var(--ap-surface))}
+html[data-cimora-theme] .status-badge.amber{color:var(--ap-warning);border-color:color-mix(in srgb,var(--ap-warning) 35%,transparent);background:color-mix(in srgb,var(--ap-warning) 8%,var(--ap-surface))}
+html[data-cimora-theme] :is(.oc-header h2 small,.oc-notes small){color:#68525f}
+html[data-cimora-theme] .oc-notes label{color:#6d5966}
+html[data-cimora-theme] .cm-start-choice>strong{color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-start-choice button:not(.selected),.cm-layout-list>button:not(.selected),.cm-quick-start,.cm-asset-type,.cm-pick-item){background:var(--ap-surface);border-color:var(--ap-line);color:var(--ap-text)}
+html[data-cimora-theme] :is(.cm-step-nav b,.cm-step-nav>a.active b,.cm-quick-start>span,.cm-node-icon,.cm-chapter-index,.cm-soft-tag,.cm-credit-pill,.cm-avatar,.cm-wallet){background:var(--ap-soft);color:var(--ap-accent);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.cm-logo,.cm-breadcrumb strong,.cm-studio-name,.hm-tasks-heading,.hm-workspace-footer>span,.hm-draft-summary strong,.hm-task-detail strong,.hm-home-empty h3,.hm-preview-modal h3,.hm-template-modal>ol,.hm-process-steps h3 button,.hm-engine-status strong,.hm-asset-mini strong,.cm-detail-lines b,.cm-run-stats strong,.cm-overview-stats b,.cm-canvas-inspector h4){color:var(--ap-text)!important}
+html[data-cimora-theme] :is(.cm-logomark,.cm-logomark>span,.logo-mark,.logo-mark>span){background:var(--ap-accent);color:var(--ap-on-accent)}
+html[data-cimora-theme] :is(.cm-logo strong>span,.cm-kicker,.cm-nav-label,.cm-local,.cm-saved,.cm-help,.cm-label,.cm-check,.cm-detail-lines>span,.cm-scope label span,.cm-scope>i,.cm-project-card>div>small,.cm-project-card footer>span,.cm-new-input .cm-inline-actions>span,.cm-start-choice button small,.cm-creation-header h1>span,.cm-creation-header p i,.cm-chapter-strip>span,.cm-layout-list button>span,.cm-shot small,.cm-edit-track>strong,.cm-node-text,.cm-node-footer>span:last-child,.cm-canvas-help,.cm-zoom-controls span,.cm-run-stats>article>span,.cm-run-stats strong small,.cm-execution-log time,.cm-plan-list small,.cm-history-item p,.cm-history-item small,.cm-context-tool-list span,.cm-context-tool-list small,.cm-pick-item small,.cm-library-asset footer,.cm-market-banner p,.cm-market-copy>small,.cm-market-copy footer span:last-child,.cm-wallet-overview>section>span,.cm-work-card p small){color:var(--ap-muted)!important}
+html[data-cimora-theme] :is(.public-nav>a,.public-header .public-nav>a,.public-header summary,.cimora-home-public .public-header summary,.login-link,.hm-subtle,.hm-eyebrow,.hm-gallery-intro .hm-eyebrow,.hm-gallery-intro p,.hm-carousel-bottom,.hm-composer-hint,.hm-draft-note,.hm-capability p,.hm-process-steps h3 span,.hm-process-steps h3 b,.hm-process-copy p,.hm-script-preview p,.hm-script-preview>small,.hm-script-preview>span,.hm-preview-bar>span:last-child,.hm-boards-preview figcaption span,.hm-assets-preview>div>p,.hm-asset-mini small,.hm-engine-explainer,.hm-engineering-grid>div>small,.hm-graph-header,.hm-sample-tag,.hm-engine-arrow,.hm-engine-status p,.hm-work-tile p,.hm-work-tile p>span,.hm-template-card small,.hm-template-card p,.hm-final-cta .hm-eyebrow,.hm-final-cta p,.hm-new-label,.hm-section-count,.hm-resume-card p,.hm-resume-card p i,.hm-resume-card footer small,.hm-task-row,.hm-task-row>i,.hm-tasks-note,.hm-tasks-note>span,.hm-tool-card>p,.hm-workspace-footer,.hm-home-empty p,.hm-preview-modal p,.hm-draft-intro,.hm-draft-summary p,.hm-task-detail p,.hm-template-modal>p,.hm-template-modal>small){color:var(--ap-muted)}
+html[data-cimora-theme] :is(.hm-capability h3 b,.hm-tool-card h3>b,.hm-template-card footer>span,.hm-tiny-graph b,.hm-home-empty>span,.cm-sparkle,.cm-market-copy footer span:first-child){color:var(--ap-accent)}
+html[data-cimora-theme] :is(.hm-task-row>b,.hm-task-row .hm-task-icon){color:var(--ap-text)!important}
+html[data-cimora-theme] :is(.hm-subtle,.hm-task-row):hover{background:var(--ap-soft);color:var(--ap-accent)}
+html[data-cimora-theme] .hm-process-steps article.active{border-color:var(--ap-accent)}
+html[data-cimora-theme] :is(.hm-project-progress,.cm-dependency-list>div,.cm-mini-map){background:var(--ap-raised);border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.hm-project-progress>span,.hm-dot[aria-pressed="true"]:after,.hm-preview-bar i,.hm-graph-header i,.hm-pulse,.cm-seek){background:var(--ap-accent)}
+html[data-cimora-theme] .hm-dot:after{background:var(--ap-line-strong)}
+html[data-cimora-theme] :is(.cm-status.done,.hm-asset-mini>span,.hm-tasks-note>i,.cm-ledger-row>b){color:var(--ap-success)}
+html[data-cimora-theme] :is(.cm-status.failed,.cm-status.stale,.cm-status.blocked,.hm-resume-card footer .warning,.cm-notice.warning){color:var(--ap-warning)}
+html[data-cimora-theme] :is(.danger,.hm-resume-card footer .error){color:var(--ap-danger)!important}
+html[data-cimora-theme] :is(.cm-status.running,.cm-status.queued){color:var(--ap-accent)}
+html[data-cimora-theme] .cm-status.done i{background:var(--ap-success)}
+html[data-cimora-theme] :is(.cm-status.failed i,.cm-status.stale i,.cm-status.blocked i){background:var(--ap-warning)}
+html[data-cimora-theme] :is(.cm-status.running i,.cm-status.queued i){background:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-notice,.cm-empty-small,.cm-empty-project,.cm-upload,.cm-outline-item.active){background:var(--ap-soft);color:var(--ap-secondary);border-color:var(--ap-line-strong)}
+html[data-cimora-theme] :is(.hm-engine-node,.cm-graph-node){background:var(--ap-surface);border-color:var(--ap-line-strong);color:var(--ap-text);box-shadow:var(--ap-shadow)}
+html[data-cimora-theme] :is(.hm-engine-node>span,.cm-graph-node header>span,.cm-graph-node header>small){color:var(--ap-accent)}
+html[data-cimora-theme] .hm-engine-node strong{color:var(--ap-text)}
+html[data-cimora-theme] .hm-engine-node small{color:var(--ap-muted)}
+html[data-cimora-theme] :is(.hm-engine-node.stale,.cm-graph-node.failed){border-color:var(--ap-warning);background:color-mix(in srgb,var(--ap-warning) 8%,var(--ap-surface))}
+html[data-cimora-theme] .hm-engine-node.stale small{color:var(--ap-warning)}
+html[data-cimora-theme] .hm-engine-node.failed{border-color:var(--ap-danger);background:color-mix(in srgb,var(--ap-danger) 8%,var(--ap-surface))}
+html[data-cimora-theme] .hm-engine-node.failed small{color:var(--ap-danger)}
+html[data-cimora-theme] .hm-engine-node.recovered{border-color:var(--ap-success);background:color-mix(in srgb,var(--ap-success) 8%,var(--ap-surface))}
+html[data-cimora-theme] .hm-engine-node.recovered small{color:var(--ap-success)}
+html[data-cimora-theme] :is(.cm-canvas-toolbar,.cm-canvas-inspector,.cm-graph-node>header,.cm-zoom-controls){background:var(--ap-raised);color:var(--ap-text);border-color:var(--ap-line)}
+html[data-cimora-theme] .cm-canvas-viewport{background-color:var(--ap-bg);background-image:radial-gradient(var(--ap-dot) 1px,transparent 1px)}
+html[data-cimora-theme] :is(.cm-graph-node.selected,.cm-graph-node.running){border-color:var(--ap-accent);box-shadow:0 0 0 3px var(--ap-soft)}
+html[data-cimora-theme] .cm-graph-edges>path{stroke:var(--ap-line-strong)}
+html[data-cimora-theme] .cm-graph-edges>path.ready{stroke:var(--ap-accent)}
+html[data-cimora-theme] .cm-port{background:var(--ap-surface);border-color:var(--ap-accent)}
+html[data-cimora-theme] .cm-port.output{background:var(--ap-accent)}
+html[data-cimora-theme] :is(.cm-status,.cm-dependency-list>div){color:var(--ap-muted)}
+html[data-cimora-theme] .cm-mini-map>span{background:transparent;color:var(--ap-muted)}
+html[data-cimora-theme] .cm-step-nav{border-color:var(--ap-line)}
+html[data-cimora-theme] :is(.cm-long-comic,.cm-work-reader){background:#fffaf2;color:#382e36}
+html[data-cimora-theme] :is(.cm-long-comic figcaption,.cm-work-reader figcaption){color:#493f49}
+html[data-cimora-theme] .cm-work-reader.motion figcaption{color:#fff}
+html[data-cimora-theme] .site-toast{background:var(--ap-text);border:1px solid var(--ap-line);color:var(--ap-bg);box-shadow:var(--ap-shadow)}
+html[data-cimora-theme] #site-modal{background:#14101e70;backdrop-filter:blur(9px)}
+/* 作品本身、画面上的标签和字幕保持固定对比度。 */
+html[data-cimora-theme] :is(.hm-film,.hm-launch-art,.hm-resume-art,.hm-work-art,.cm-image-badge,.cm-project-hover,.cm-work-picture,.cm-gallery-feature){color:#fff}
+html[data-cimora-theme] :is(.hm-button.glass,.cm-button.glass){background:#181120cc;color:#fff;border-color:#ffffff66}
+html[data-cimora-theme] .cm-gallery-feature .cm-kicker{color:#e9ddf5!important}
+html[data-cimora-theme] :is(.hm-carousel-arrow,.hm-launch-preview){background:#181120cc;color:#fff;border-color:#ffffff66}
+html[data-cimora-theme] .hm-launch-art>span{color:#eee3fc}
+html[data-cimora-theme] .hm-launch-art>span>b{color:#fff}
+
+/* 外观面板 */
+.dialog:has(.ap-panel){display:flex;flex-direction:column;max-height:calc(100dvh - 40px);overflow:hidden}.dialog:has(.ap-panel)>header,.dialog:has(.ap-panel)>footer{flex-shrink:0;padding:19px 24px}.dialog:has(.ap-panel)>.dialog-body{overflow:auto;min-height:0;padding:20px 24px;overscroll-behavior:contain}
+.ap-trigger{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;width:34px;height:34px;border:1px solid var(--ap-line);border-radius:8px;font-size:21px;line-height:1;cursor:pointer}
+.ap-panel{color:var(--ap-text)}.ap-intro{color:var(--ap-muted);font-size:13px;margin-bottom:20px}
+.ap-auto{display:grid;grid-template-columns:1fr 1fr;gap:12px}.ap-auto>button{display:flex;align-items:center;gap:12px;text-align:left;padding:15px 12px;border:1px solid var(--ap-line-strong);border-radius:11px;background:var(--ap-surface);color:var(--ap-text);cursor:pointer;font:inherit}
+.ap-auto>button>span{font-size:25px;color:var(--ap-accent)}.ap-auto strong{font-size:13px;font-weight:600;flex:1}.ap-auto small{display:block;font-size:10px;font-weight:400;line-height:1.7;margin-top:5px;color:var(--ap-muted)}.ap-auto i{font-style:normal;color:var(--ap-accent);visibility:hidden;font-weight:700}
+.ap-auto>button[aria-pressed="true"]{border-color:var(--ap-accent);background:var(--ap-soft)}.ap-auto>button[aria-pressed="true"] i{visibility:visible}
+.ap-section-title{display:flex;gap:10px;align-items:center;color:var(--ap-text);font-size:13px;font-weight:550;margin:24px 0 14px}.ap-section-title>span{color:var(--ap-muted);font-size:11px;font-weight:400}
+.ap-swatches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.ap-swatches>button{border:0;padding:0;background:transparent;color:var(--ap-muted);font:inherit;cursor:pointer}.ap-swatch{display:flex;align-items:center;justify-content:space-between;border:1px solid #0002;border-radius:10px;height:57px;padding:10px;position:relative;outline:2px solid transparent;outline-offset:3px}.ap-swatch b{font-size:21px;font-weight:500}.ap-swatch i{font-size:13px;font-style:normal;visibility:hidden}.ap-swatches strong{font-size:11px;font-weight:400;display:block;margin-top:11px}.ap-swatches>button[aria-pressed="true"] .ap-swatch{outline-color:var(--ap-accent)}.ap-swatches>button[aria-pressed="true"]{color:var(--ap-accent)}.ap-swatches>button[aria-pressed="true"] i{visibility:visible}
+.ap-swatch.black{background:#16131e;color:#eee6fc}.ap-swatch.white{background:#fff;color:#232332}.ap-swatch.pink{background:#fbdce9;color:#922454}.ap-swatch.purple{background:#e6d6fa;color:#6639a0}.ap-swatch.orange{background:#ffe2c1;color:#934113}
+.ap-schedule{background:var(--ap-raised);border:1px solid var(--ap-line);border-radius:11px;padding:0 16px 16px;margin-top:24px}.ap-time-fields{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}.ap-time-fields label{font-size:12px;color:var(--ap-secondary);margin:0}.ap-time-fields input{display:block;margin-top:7px}.ap-time-fields>span{margin-top:23px;color:var(--ap-muted)}.ap-schedule>p{font-size:11px;color:var(--ap-muted);line-height:1.8;margin:13px 0}.ap-schedule .cm-button{font-size:12px;min-height:36px;padding:7px 12px}
+.ap-preview{display:flex;align-items:center;gap:13px;background:var(--ap-raised);border:1px solid var(--ap-line);padding:15px;border-radius:11px;margin-top:25px}.ap-preview-icon{font-size:25px;color:var(--ap-accent)}.ap-preview strong{font-size:13px}.ap-preview p{font-size:11px;line-height:1.8;margin-top:4px;color:var(--ap-muted)}.ap-preview-pill{margin-left:auto;white-space:nowrap;font-size:10px;border-radius:5px;padding:4px 7px;background:var(--ap-soft);color:var(--ap-accent)}
+.ap-current{font-size:12px;color:var(--ap-accent);margin-top:22px}.ap-local{font-size:11px;color:var(--ap-muted);margin-top:7px}.ap-settings{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:24px}.ap-settings h2{margin-bottom:8px}.ap-settings p{margin-bottom:8px}.ap-preference-name{color:var(--ap-accent);font-size:12px}
+@media(max-width:800px){html[data-cimora-theme] .hm-workspace-start{background:color-mix(in srgb,var(--ap-surface) 94%,transparent)}}
+@media(max-width:600px){.ap-auto{grid-template-columns:1fr;gap:10px}.ap-auto>button{padding:12px 13px}.ap-auto small{font-size:11px}.ap-auto>button>span{font-size:23px}.ap-swatches{gap:8px}.ap-swatch{height:51px;padding:7px}.ap-swatch b{font-size:18px}.ap-swatch i{font-size:11px}.ap-swatches strong{font-size:10px}.ap-section-title{font-size:13px;flex-wrap:wrap;gap:7px}.ap-preview{padding:13px;gap:10px}.ap-preview-pill{display:none}.ap-preview strong{font-size:12px}.ap-preview p{font-size:11px}.ap-time-fields{gap:8px}.ap-time-fields label{font-size:11px}.ap-time-fields input{font-size:13px!important;padding:9px!important}.ap-settings{align-items:start;flex-direction:column}.ap-trigger{width:32px;height:32px;font-size:20px}.cimora-home-public .nav-actions>a[href="#/app"]{display:none}}
+@media(prefers-reduced-motion:reduce){.ap-panel *{transition:none!important}}
