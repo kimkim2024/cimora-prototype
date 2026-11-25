@@ -1,2 +1,414 @@
-.tm-workbench{display:grid;grid-template-columns:minmax(310px,.9fr) minmax(0,1.2fr);gap:22px;align-items:start}.tm-page .ts-panel{min-width:0}.tm-row,.tm-actions,.tm-mode{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tm-row{justify-content:space-between}.tm-row h2{margin:0;font-size:18px}.tm-note,.tm-caption,.tm-pending small{font-size:13px;line-height:1.8;color:var(--cm-muted,#716c82)}.tm-mode{margin:20px 0 8px}.tm-mode [aria-pressed=true],.tm-versions [aria-pressed=true]{border-color:#8052c3;background:#eee6f9;color:#6941a7}.tm-slots{display:grid;gap:14px}.tm-paired{grid-template-columns:1fr 1fr}.tm-slot{min-width:0;border:1px solid var(--cm-line,#ded6e8);border-radius:12px;padding:12px}.tm-slot>img{width:100%;height:145px;object-fit:contain;background:var(--cm-bg,#f6f3fa);border-radius:8px;margin:12px 0}.tm-slot small{display:block;overflow-wrap:anywhere;font-size:12px;color:var(--cm-muted,#716c82)}.tm-slot .cm-button{font-size:12px;min-height:30px;padding:4px 9px}.tm-slot-empty{height:120px;display:grid;place-items:center;color:var(--cm-muted,#716c82);background:var(--cm-bg,#f6f3fa);border-radius:8px;margin:12px 0}.tm-upload{display:block;font-size:13px;color:var(--cm-muted,#716c82);border:1px dashed #cbb9df;border-radius:8px;padding:10px;margin:10px 0}.tm-upload input{display:block;width:100%;min-width:0;margin-top:8px;font-size:11px}.tm-slot summary,.tm-crop summary{font-size:12px;cursor:pointer;padding:8px 0}.tm-slot select{max-width:100%;font-size:12px}.tm-input label{display:block}.tm-input textarea,.tm-input select{box-sizing:border-box;width:100%}.tm-prompt-label{margin:22px 0 10px;font-weight:600}.tm-input textarea{resize:vertical;min-height:110px}#tm-generate{width:100%;margin-top:20px}.tm-input>label:has(select){margin-top:16px}.tm-input>label select{margin-top:8px}.tm-actions{margin-top:14px}.tm-output .tm-actions .cm-button{padding:9px 12px;font-size:12px}.tm-video{display:block;width:100%;max-height:400px;margin-top:18px;background:#15121b;border-radius:12px}.tm-output .tl-motion{max-width:440px;max-height:430px}.tm-output .tl-motion img{max-height:430px}.tm-empty{min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}.tm-empty>span{font-size:44px;color:#9c79c8}.tm-empty h3{font-size:18px}.tm-empty p{font-size:13px;color:var(--cm-muted,#716c82);line-height:1.8}.tm-pending{background:var(--cm-bg,#f7f3fc);border:1px solid #cfbde4;border-radius:10px;padding:16px;margin:18px 0}.tm-pending p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}.tm-pending small{display:block}.tm-pending .cm-button{margin-top:12px}.tm-versions{display:flex;gap:10px;overflow-x:auto;margin-top:18px;padding:4px}.tm-versions button{display:flex;flex-direction:column;gap:6px;flex:none;width:110px}.tm-versions img{width:84px;height:60px;object-fit:cover;border-radius:5px}.tm-output{position:sticky;top:85px}.tm-crop .tl-region{max-width:280px}.tm-crop{margin-top:18px}@media(max-width:1050px){.tm-workbench{grid-template-columns:1fr}.tm-output{position:static}.tm-slot>img{height:190px}}@media(max-width:500px){.tm-paired{grid-template-columns:1fr 1fr;gap:8px}.tm-slot{padding:9px}.tm-slot>img{height:110px}.tm-slot .tm-row{gap:4px}.tm-slot .tm-row strong{font-size:13px}.tm-slot .tm-upload{padding:6px}.tm-empty{min-height:270px}.tm-mode .cm-button{flex:1}}
-.tm-page .tm-mode .cm-button[aria-pressed="true"],.tm-page .tm-versions .cm-button[aria-pressed="true"]{background:#eee6f9!important;border-color:#8052c3!important;color:#6941a7!important}
+/* Image to Motion only: shared product tokens, adaptive media and stable controls. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail {
+  --tw-surface:var(--color-paper);--tw-soft:var(--color-paper-muted);
+  --tw-line:var(--color-hairline);--tw-text:var(--color-ink);--tw-muted:var(--color-ink-muted);
+  --tm-control-height:36px;--tm-control-radius:10px;
+  color:var(--color-ink);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench {align-items:start}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .ts-panel {
+  background:var(--color-paper);border-color:var(--color-hairline);
+  border-radius:var(--radius-xl);box-shadow:var(--shadow-sm),var(--shadow-md);
+  align-self:start;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(h1,h2,h3,strong,.tm-prompt-label,.tm-camera-label) {color:var(--color-ink)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(p,small,label,summary) {color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .ts-heading p {color:var(--color-ink)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel>.tm-row {
+  min-height:36px;align-items:center;margin:0 0 12px;gap:var(--space-2);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel>.tm-row h2 {
+  margin:0;font-size:16px;font-weight:600;line-height:24px;text-align:left;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tm-slot>.tm-row>strong,.tm-prompt-label,.tm-camera-label) {
+  font-family:inherit;font-size:13px;font-weight:600;line-height:1.6;
+  letter-spacing:0;text-align:left;color:var(--color-ink)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel>.tm-row>small {font-size:12px;line-height:1.5}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-input>.tm-mode {
+  display:flex;gap:var(--space-2);margin:0 0 var(--space-4);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-mode>.cm-button {flex:1;min-width:0}
+
+/* Back button and asset-picker dialog live outside .tw-v2, so they keep local rules. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-button,
+html[data-cimora-theme] #site-modal .tm-picker-dialog :is(.cm-button,.close) {
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:36px;min-height:36px;padding:0 12px;border:1px solid transparent!important;border-radius:10px;
+  font-family:var(--font-ui);font-size:12px;font-weight:500;line-height:1.4;text-decoration:none;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+  box-shadow:none!important;cursor:pointer;
+  transition:background-color var(--dur-fast) ease,color var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-button:not(:disabled):hover,
+html[data-cimora-theme] #site-modal .tm-picker-dialog :is(.cm-button,.close):not(:disabled):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:var(--tw-hover-shadow,0 4px 12px rgba(0,0,0,.10))!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-button:not(:disabled):active,
+html[data-cimora-theme] #site-modal .tm-picker-dialog :is(.cm-button,.close):not(:disabled):active {
+  transform:translateY(0);box-shadow:none!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-button:disabled,
+html[data-cimora-theme] #site-modal .tm-picker-dialog :is(.cm-button,.close):disabled {
+  opacity:.45;cursor:not-allowed;background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+}
+html[data-cimora-theme] #site-modal .tm-picker-dialog :is(button,a):focus-visible {
+  outline:2px solid var(--color-accent-text);outline-offset:2px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tm-mode,.tm-versions,.tm-frame-steps) .cm-button[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-upload:is(:focus-within,:has(input:focus-visible)) {
+  outline:none!important;box-shadow:none!important;border-color:transparent!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tm-control-icon,.tm-asset-icon,.tm-back-button>svg) {
+  display:block;width:18px;height:18px;flex:none;color:inherit;fill:none;
+  stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-nav {display:flex;align-items:center;gap:8px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-back-button {width:36px;padding:0;flex:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-asset-icon {overflow:visible}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-asset-icon path {transition:transform var(--dur-base) ease}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-asset-link:is(:hover,:focus-visible) path:first-child {transform:translateY(-2px)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-asset-link:is(:hover,:focus-visible) path:last-child {transform:translateY(1px)}
+
+/* Always-visible, independently selectable steps. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-steps {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 12px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-steps>.tm-step {
+  min-width:0;padding:0 8px;line-height:1.4;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slots {display:block;margin:0 0 12px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot {padding:0;border:0;min-width:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot>.tm-row {min-height:0;margin:0 0 12px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-empty {
+  padding:20px 12px;margin:0 0 12px;background:var(--color-paper-muted);border-radius:12px;
+  font-size:12px;line-height:1.6;text-align:center;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-empty:has(>.cm-button) {padding:22px 12px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-empty>span {display:block}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-empty>.cm-button {
+  margin:6px auto 0;width:max-content;background:var(--color-paper)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-empty>.cm-button:not(:disabled):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot-actions,
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-step-actions {
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 12px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-upload {
+  position:relative;overflow:visible;margin:0;flex:none;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot-actions {flex-wrap:nowrap;gap:8px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot-actions>:is(.tm-upload,.tm-library-button) {width:auto;min-width:0;padding:0 8px;gap:6px;white-space:nowrap}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-upload-heading {display:inline-flex;align-items:center;gap:6px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tw-upload-hint {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-upload input[type=file] {
+  position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;opacity:0;cursor:pointer;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-upload>input[type=file]:is(:focus,:focus-visible,:focus-within) {
+  outline:none!important;outline-offset:0!important;box-shadow:none!important;border:0!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-tooltip {position:relative}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-tooltip::after {
+  content:attr(data-tooltip);position:absolute;z-index:30;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  width:max-content;max-width:200px;padding:6px 9px;border-radius:6px;pointer-events:none;
+  background:var(--color-ink);color:var(--color-ink-inverse);font:400 11px/1.4 var(--font-ui);
+  opacity:0;visibility:hidden;transition:opacity var(--dur-fast) ease;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-tooltip:is(:hover,:focus-within)::after {opacity:1;visibility:visible}
+
+/* Intrinsic media ratios: no fixed image rectangles or vertical letterboxing. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame {
+  position:relative;width:fit-content;max-width:100%;margin:0 auto 8px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame>img,
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tl-region>img,.tl-motion img,.tm-video,.tm-versions img) {
+  display:block;width:auto;height:auto;min-height:0;max-width:100%;max-height:min(60vh,640px);
+  aspect-ratio:auto;object-fit:contain;margin:0 auto;border-radius:8px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame>.cm-button {
+  position:absolute;left:50%;top:50%;translate:-50% -50%;opacity:0;pointer-events:none;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame:is(:hover,:focus-within)>.cm-button {opacity:1;pointer-events:auto}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-meta {margin:0 0 12px;text-align:center}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-meta small {font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tl-region,.tl-motion) {
+  width:fit-content;max-width:100%;height:auto;min-height:0;max-height:none;margin:8px auto;
+}
+/* Result panel: preview, motion description, versions, actions. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result {padding:0!important;overflow:hidden}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-head {
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px 0;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-head h2 {font-size:15px;font-weight:600;margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-head small {font-size:12px;color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result .tm-pending {
+  display:grid;justify-items:start;gap:6px;margin:16px 24px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result .tm-pending>p {margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage {margin:12px 0 0;padding:0 24px 18px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-media {
+  display:grid;justify-items:center;gap:10px;width:100%;min-height:0;padding:0;overflow:visible;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-media :is(img,.tm-video) {
+  display:block;width:auto;max-width:100%;height:auto;max-height:min(64vh,600px);object-fit:contain;margin:0 auto;
+  border-radius:14px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-media .tl-motion {width:auto;max-width:100%;margin:0;max-height:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-bar {display:flex;align-items:center;gap:10px;padding:0;width:auto;max-width:100%}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-play {gap:6px;padding:0 12px 0 10px;flex:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-play>span {display:flex;align-items:center}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-play[aria-pressed="true"] .tm-play-glyph,
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-play[aria-pressed="false"] .tm-pause-glyph {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-meta {font-size:12px;color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-versions {
+  display:flex;gap:12px;margin:12px 0 0 -2px!important;padding:4px 2px 8px!important;border-top:0!important;overflow-x:auto;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description {display:grid;gap:12px;padding:0 24px;align-content:start}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-section-head {display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:36px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-section-head h3 {font-size:13px;font-weight:600;margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-section-head small {font-size:12px;color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description .tm-section-head .cm-button {
+  height:32px;min-height:32px;padding:0 12px;font-size:12px;
+  background:var(--color-paper)!important;border:1px solid var(--color-hairline)!important;color:var(--color-ink-label)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description .tm-section-head .cm-button:not(:disabled):hover {
+  background:var(--color-accent-soft)!important;border-color:transparent!important;color:#000!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description>p {margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description .tm-user-copy {font-size:13px;line-height:1.6;color:var(--color-ink);background:var(--color-paper-muted);border-radius:12px;padding:12px 14px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version-block {padding:18px 24px 14px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-versions>.tm-version {
+  flex:0 0 auto;width:92px;height:auto;min-height:0;padding:8px 6px 6px;display:grid;gap:6px;justify-items:center;
+  align-content:start;text-align:center;
+  background:transparent!important;border:1px solid transparent!important;border-radius:12px;box-shadow:none!important;
+  transition:transform var(--dur-fast) ease,background-color var(--dur-fast) ease,border-color var(--dur-fast) ease;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version img {
+  width:76px!important;max-width:100%!important;height:58px!important;max-height:58px!important;
+  object-fit:cover;margin:0 auto;border-radius:8px;opacity:.7;transition:opacity var(--dur-fast) ease;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version-label {display:block;font-size:11px;font-weight:500;color:var(--color-ink-muted);text-align:center}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version-time {display:block;font-size:10px;line-height:1.2;color:var(--color-ink-muted);opacity:.75;text-align:center}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;border-color:var(--color-accent-line)!important;
+  transform:scale(1.06);transform-origin:center;position:relative;z-index:1;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version[aria-pressed="true"] img {opacity:1}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version[aria-pressed="true"] .tm-version-label {color:#000}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version:not([aria-pressed="true"]):hover {
+  background:var(--color-paper-muted)!important;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions {margin:0 24px 16px;padding:0;background:transparent;border-radius:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-primary .cm-button {
+  width:100%;justify-content:center;background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-primary .cm-button:not(:disabled):hover {
+  background:#2b2b2b!important;color:var(--color-ink-inverse)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-secondary {
+  display:flex;gap:8px;margin:8px 0 0;padding:0;border-top:0!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-secondary .cm-button {flex:1;justify-content:center;min-width:0;background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;border-color:transparent!important}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions>.tm-note {margin:12px 0 0;color:var(--color-ink-muted);opacity:.9}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions .cm-button {
+  transition:background-color var(--dur-fast) ease,color var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions .cm-button:not(:disabled):hover {
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions .cm-button:not(:disabled):active {
+  transform:translateY(0);box-shadow:none!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-output .tw-empty-stage {flex:none;padding:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-output .tm-empty {
+  aspect-ratio:auto;min-height:0;width:100%;max-height:none;padding:24px 16px;
+  border-color:var(--color-hairline);background:var(--color-paper-muted);color:var(--color-ink-muted);
+}
+
+/* Existing prompt, camera motion and crop interactions. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tw-field {gap:8px;margin:16px 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tw-field>.tm-prompt-label {margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail #tm-prompt {color:var(--color-ink-muted);border-radius:12px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label {display:grid;gap:8px;margin:16px 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label :is(select,.cm-select-field) {margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label summary strong {color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail #tm-generate {width:100%;margin-top:16px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop {margin:12px 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop>summary {display:flex;align-items:center;min-height:36px;list-style:none;padding:0;cursor:pointer}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop>summary::-webkit-details-marker {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop>summary::before {content:'';width:3px;height:3px;border-radius:50%;background:currentColor;box-shadow:6px 0 currentColor,12px 0 currentColor}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop:not([open])>*:not(summary) {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop-title {font-size:13px;font-weight:600;margin:0 0 8px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop .tl-region>span {border-color:var(--color-accent-text);background:var(--color-accent-soft)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-region-footer {display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:8px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-region-footer small {font-size:11px;line-height:1.5}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-pending {padding:12px;margin:12px 0;border:1px solid var(--color-accent-line);border-radius:12px;background:var(--color-accent-soft)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tm-note,.tm-caption,.tm-pending small) {font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+
+/* Picker is outside the page tree, explicitly scoped to its own dialog. */
+html[data-cimora-theme] #site-modal .tm-picker-dialog {width:min(760px,calc(100vw - 40px));max-height:85vh;overflow:auto}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .dialog-body {max-height:65vh;overflow:auto}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-picker-target {font-size:13px;color:var(--color-ink-muted);margin:0 0 16px}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-picker-target strong {color:var(--color-ink)}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;align-items:start}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-choice {
+  min-width:0;display:flex;flex-direction:column;align-items:center;gap:8px;margin:0;padding:10px;
+  border:1px solid transparent;border-radius:10px;background:var(--color-paper-muted);color:var(--color-ink-label);
+  font:500 12px/1.4 var(--font-ui);text-align:center;cursor:pointer;
+  transition:background-color var(--dur-fast) ease,color var(--dur-fast) ease;
+}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-choice:not(:disabled):hover {background:var(--color-accent-soft);color:#000}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-choice:disabled {opacity:.45;cursor:not-allowed}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-choice img {display:block;width:auto;height:auto;max-width:100%;max-height:160px;object-fit:contain;border-radius:6px}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .tm-asset-choice span {overflow-wrap:anywhere}
+html[data-cimora-theme] #site-modal .tm-picker-dialog #tm-picker-error {color:var(--color-negative);font-size:12px}
+html[data-cimora-theme] #site-modal .tm-picker-dialog #tm-picker-error:empty {display:none}
+html[data-cimora-theme] #site-modal .tm-picker-dialog .close {width:36px;padding:0}
+@media (prefers-reduced-motion:reduce) {
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.cm-button,.tm-upload,.tm-tooltip)::after {transition:none}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.cm-button,.tm-upload,.tm-back-button,.tm-asset-icon path),
+  html[data-cimora-theme] #site-modal .tm-picker-dialog :is(button,.close) {transition:none}
+}
+
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-row,
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-actions {
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-row {justify-content:space-between}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-actions {margin-top:12px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-input #tm-generate {height:36px;min-height:36px}
+
+/* Region disclosure shares the upload toolbar, aligned to its right edge. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot-actions>.tm-crop-toggle {
+  margin-left:auto;width:36px;padding:0;flex:none;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop-toggle svg {fill:currentColor;stroke:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop>summary {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-crop:not([open]) {margin:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail :is(.tm-mode,.tm-frame-steps) .cm-button[aria-pressed="true"]:focus:not(:focus-visible) {outline:none}
+
+/* Step actions menu and a secondary AI text action. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu {position:relative;min-width:0;margin:0;padding:0;border:0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu>summary {width:36px;padding:0;list-style:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu>summary::-webkit-details-marker {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu>summary svg {fill:currentColor;stroke:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu:not([open])>.tm-frame-menu-panel {display:none}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu-panel {
+  position:absolute;z-index:20;right:0;top:calc(100% + 8px);width:max-content;min-width:168px;
+  padding:4px;border:1px solid var(--color-hairline);border-radius:14px;background:var(--color-paper);box-shadow:var(--shadow-md);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu-panel>.cm-button {
+  width:100%;justify-content:flex-start;gap:8px;height:34px;min-height:34px;padding:0 10px;
+  background:transparent!important;border:0!important;border-radius:10px;box-shadow:none!important;
+  font-size:12px;font-weight:500;color:var(--color-ink-label)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu-panel>.cm-button:not(:disabled):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu-panel>.cm-button:disabled {
+  background:transparent!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu-panel .tm-control-icon {width:16px;height:16px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-slot-actions>.tm-frame-menu {
+  margin-left:auto;width:36px;flex:none;
+}
+/* Delayed, menu-aware tooltip for the overflow button. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu>summary::after {
+  background:var(--color-paper-muted);color:var(--color-ink);border:1px solid var(--color-hairline);
+  font:500 12px/1.4 var(--font-ui);
+  transition:opacity var(--dur-fast) ease 450ms,visibility 0s linear 450ms;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-frame-menu[open]>summary::after {
+  display:none;
+}
+
+/* Compact result layout on narrow screens. */
+@media (max-width:760px){
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-head {padding:16px 16px 0}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result .tm-pending {margin:14px 16px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage {margin:12px 0 0;padding:0 16px 14px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-description {padding:0 16px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version-block {padding:14px 16px 10px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-result-actions {margin:0 16px 12px;padding:0}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-media :is(img,.tm-video) {max-height:min(52vh,420px)}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-stage-bar {flex-wrap:wrap}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-secondary {flex-wrap:wrap}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-action-secondary .cm-button {flex:1 1 140px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-versions>.tm-version {width:92px}
+  html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-version img {height:54px!important;max-height:54px!important}
+}
+
+/* Motion editing panel: prompt → motion settings → primary action. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-group {display:grid;gap:12px;margin:20px 0 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-group-head {display:flex;align-items:center;gap:8px;min-height:22px;flex-wrap:wrap}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-prompt-label {
+  margin:0;font-size:13px;font-weight:600;line-height:1.4;color:var(--color-ink);letter-spacing:0;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-edit-status {
+  display:inline-flex;align-items:center;height:20px;padding:0 7px;border-radius:6px;
+  font-size:11px;font-weight:500;line-height:1;letter-spacing:0;
+  color:var(--color-accent-text);background:var(--color-accent-soft);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail #tm-prompt {
+  min-height:84px;height:84px;padding:10px 12px;border:1px solid var(--color-hairline)!important;
+  border-radius:10px;background:var(--color-paper)!important;color:var(--color-ink);
+  font-size:13px;line-height:1.6;resize:vertical;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail #tm-prompt:focus {
+  border-color:var(--color-accent-line)!important;box-shadow:0 0 0 3px var(--color-accent-soft);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-edit-foot {display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-edit-foot>.tm-note {margin:0;font-size:12px;color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-edit-foot [data-tm="clear-base"] {
+  height:auto;min-height:0;padding:2px 0;background:transparent!important;color:var(--color-ink-muted)!important;
+  font-size:12px;font-weight:500;text-decoration:underline;text-underline-offset:3px;box-shadow:none!important;transform:none!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-edit-foot [data-tm="clear-base"]:not(:disabled):hover {
+  background:transparent!important;color:var(--color-ink)!important;box-shadow:none!important;transform:none!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-settings {margin:24px 0 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-settings>h3 {
+  margin:0;font-size:13px;font-weight:600;line-height:1.4;color:var(--color-ink);letter-spacing:0;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label {margin:0;display:block}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label .cm-select-field {display:block;width:100%}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label .cm-select-menu {
+  display:flex;align-items:center;width:100%!important;height:40px!important;padding:0;border:1px solid var(--color-hairline)!important;
+  border-radius:10px;background:var(--color-paper)!important;box-shadow:none!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label .cm-select-menu>summary {
+  width:100%;height:40px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label .cm-select-menu summary strong {
+  font-size:13px;font-weight:500;color:var(--color-ink);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-camera-label .cm-select-menu>summary .cm-activity-dropdown-chevron {margin-left:auto;color:var(--color-ink-muted)}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-submit {display:grid;gap:8px;margin:24px 0 0}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-submit #tm-generate {
+  width:100%;height:40px!important;min-height:40px!important;border-radius:10px;
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-submit #tm-generate:not(:disabled):hover {
+  background:#2b2b2b!important;color:var(--color-ink-inverse)!important;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-submit-hint {
+  margin:0;font-size:11px;line-height:1.5;color:var(--color-ink-muted);
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-submit #ts-message {margin:0;font-size:12px;color:var(--color-ink-muted)}
+
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel.tm-input>.tm-row {margin:0 0 19px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-input>.tm-mode {margin:0 0 20px}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-input>.tm-mode {margin:0 0 20px}
+
+/* Title row hugs its text so the mode switch is optically centred between the title and the next block. */
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel.tm-input>.tm-row {
+  min-height:0;height:auto;align-items:flex-start;
+}
+html[data-cimora-theme] body.tool-detail-page .tm-page.tw-detail .tm-workbench>.ts-panel.tm-input>.tm-row h2 {
+  display:block;height:auto;min-height:0;line-height:20px;
+}

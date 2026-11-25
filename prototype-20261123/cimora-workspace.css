@@ -19,12 +19,12 @@ html body.cimora-home-app .cm-main:has(>.hm-workspace){
   html body.cimora-home-app .cm-main:has(>.hm-workspace){--workspace-gutter:clamp(20px,3.4vw,34px);--workspace-bottom-space:34px;padding-top:22px!important}
 }
 
-html[data-cimora-theme] body:is(.cimora-home-app,.cimora-workspace-landing) .cm-app-main{
+html[data-cimora-theme] body:is(.cimora-home-app,.cimora-workspace-landing,.tool-detail-page) .cm-app-main{
   --workspace-lime:#c8f24e;
   --workspace-gradient:radial-gradient(120% 90% at 20% 110%,var(--workspace-lime) 0%,color-mix(in oklab,var(--workspace-lime) 35%,#fff) 45%,#fff 100%);
   --workspace-paper:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'100%25'%20height%3D'100%25'%3E%3Cfilter%20id%3D'grain'%20x%3D'0'%20y%3D'0'%20width%3D'100%25'%20height%3D'100%25'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'.8'%20numOctaves%3D'3'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20values%3D'0%200%200%200%20.5%200%200%200%200%20.5%200%200%200%200%20.5%200%200%200%20.6%200'%2F%3E%3C%2Ffilter%3E%3Cpattern%20id%3D'paper'%20patternUnits%3D'userSpaceOnUse'%20width%3D'180'%20height%3D'180'%3E%3Crect%20width%3D'180'%20height%3D'180'%20filter%3D'url(%23grain)'%2F%3E%3C%2Fpattern%3E%3ClinearGradient%20id%3D'fade'%20x1%3D'0'%20y1%3D'1'%20x2%3D'.28'%20y2%3D'0'%3E%3Cstop%20stop-color%3D'white'%2F%3E%3Cstop%20offset%3D'.45'%20stop-color%3D'white'%20stop-opacity%3D'.6'%2F%3E%3Cstop%20offset%3D'.9'%20stop-color%3D'white'%20stop-opacity%3D'0'%2F%3E%3C%2FlinearGradient%3E%3Cmask%20id%3D'mask'%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'url(%23fade)'%2F%3E%3C%2Fmask%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20fill%3D'url(%23paper)'%20opacity%3D'.26'%20mask%3D'url(%23mask)'%2F%3E%3C%2Fsvg%3E");
 }
-html[data-cimora-theme] body.cimora-workspace-landing .cm-app-main{
+html[data-cimora-theme] body:is(.cimora-workspace-landing,.tool-detail-page) .cm-app-main{
   background:var(--workspace-paper) center bottom / 100% min(48%,480px) no-repeat,var(--workspace-gradient);
 }
 
