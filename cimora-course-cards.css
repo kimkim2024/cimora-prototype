@@ -1,0 +1,37 @@
+/* Course design card structure and reference palette. Homepage only. */
+.course-templates .course-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:stretch}
+.course-templates .course-card{--course-accent:#01c3a8;--course-soft:#173d38;background:#232228;color:#fff;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px #0000000d;transition:transform .2s,box-shadow .2s;border:1px solid #36343d;min-width:0}
+.course-templates .course-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px #0000001a}
+.course-templates .course-orange{--course-accent:#ffb741;--course-soft:#463923}
+.course-templates .course-red{--course-accent:#d96b55;--course-soft:#422a28}
+.course-templates .course-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 26px 0;color:#b5b3bf;font-size:12px}
+.course-templates .course-more{width:28px;height:28px;display:grid;place-items:center;background:none;border:0;border-radius:8px;color:#ddd;padding:4px;cursor:pointer}
+.course-templates .course-more:hover{background:#36343d;color:white}.course-templates .course-more svg{width:20px;height:20px;fill:currentColor}
+.course-templates .course-body{padding:24px 26px 28px;flex:1;display:flex;flex-direction:column}
+.course-templates .course-kind{align-self:flex-start;padding:4px 9px;border-radius:6px;background:var(--course-soft);color:var(--course-accent);font-size:10px;font-weight:600;letter-spacing:.04em;margin-bottom:14px}
+.course-templates .course-body h3{font-size:23px;font-weight:600;line-height:1.3;letter-spacing:-.5px;color:#fff;min-height:60px;margin:0}
+.course-templates .course-body>p{font-size:13px;line-height:1.7;color:#aaa8b5;margin:12px 0 24px;min-height:44px}
+.course-templates .course-progress{margin-top:auto}
+.course-templates .course-progress>div:first-child{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#ddd}
+.course-templates .course-progress strong{font-size:12px;font-weight:500;color:var(--course-accent)}
+.course-templates .course-track{display:flex;gap:5px;margin:12px 0 16px;height:6px;border-radius:999px;overflow:hidden;background:#363636}
+.course-templates .course-track span{flex:1;background:var(--course-accent)}
+.course-templates .course-progress ol{display:none}
+.course-templates .course-progress li{display:flex;gap:9px;align-items:baseline;font-size:11px;color:#b9b7c2;line-height:1.5}
+.course-templates .course-progress li:before{counter-increment:recipe;content:counter(recipe,decimal-leading-zero);color:var(--course-accent);font-size:9px;font-variant-numeric:tabular-nums}
+.course-templates .course-footer{background:#151419;border-top:1px solid #36343d;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.course-templates .course-author{display:flex;align-items:center;min-width:0;gap:8px}
+.course-templates .course-avatar{width:32px;height:32px;border-radius:50%;background:var(--course-soft);color:var(--course-accent);border:2px solid #151419;display:grid;place-items:center;font-size:10px;font-weight:700;flex:none}
+.course-templates .course-add{width:28px;height:28px;border-radius:50%;border:1px solid var(--course-accent);background:#151419;color:var(--course-accent);display:grid;place-items:center;padding:4px;margin-left:-15px;cursor:pointer;flex:none}
+.course-templates .course-add:hover{background:var(--course-soft)}.course-templates .course-add svg{width:18px;height:18px;stroke:currentColor;stroke-width:1.8;fill:none}
+.course-templates .course-author-name{font-size:10px;color:#aaa8b5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course-templates a.course-countdown{padding:8px 12px;border-radius:999px;background:var(--course-soft);color:var(--course-accent);font-size:11px;font-weight:600;white-space:nowrap;transition:filter .2s}
+.course-templates a.course-countdown:hover{filter:brightness(1.2)}
+html[data-cimora-theme] body.cimora-home-public .course-templates .course-card :is(button,a):focus-visible{outline:2px solid var(--course-accent);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.course-templates .course-card{transition:none}.course-templates .course-card:hover{transform:none}}
+/* Reference glow: strongest at the upper-right, fading into the dark card. */
+.course-templates .course-card{
+ border:1px solid transparent;
+ background:radial-gradient(ellipse 95% 68% at 100% 0%,color-mix(in srgb,var(--course-accent) 44%,#151419) 0%,color-mix(in srgb,var(--course-accent) 18%,#151419) 38%,#151419 78%) padding-box,
+ linear-gradient(225deg,color-mix(in srgb,var(--course-accent) 80%,#36343d) 0%,#36343d 35%,#29282e 70%) border-box;
+}

@@ -1,0 +1,40 @@
+/* 视频使用漫画的公共组件，仅补齐宿主容器和通用控件样式。 */
+.creation-shared-planning{grid-template-columns:minmax(280px,.85fr) minmax(0,1.3fr);gap:20px;align-items:stretch}
+.creation-shared-planning>.cs-plan-conversation,.creation-shared-planning>.cs-plan-reading{background:var(--ap-surface);border:1px solid var(--ap-line);border-radius:14px;padding:20px;min-width:0}
+.creation-shared-planning>.cs-plan-conversation{max-height:740px;min-height:500px}
+.creation-shared-planning .cs-plan-log.v4-chat{max-height:none;min-height:100px;flex:1;overflow:auto}
+.creation-shared-planning .cs-plan-log .v4-user,.creation-shared-planning .cs-plan-log .v4-assistant{background:var(--ap-raised);margin:0 0 8px;padding:10px 12px}
+.creation-shared-planning .cs-plan-composer form{margin:0}
+.creation-shared-planning .cs-plan-composer label{margin:0;display:grid;gap:6px;font-size:12px}
+.creation-shared-planning .cs-plan-composer textarea{min-height:70px;resize:vertical;padding:10px}
+.creation-shared-planning .cs-plan-composer .actions,.creation-shared-planning .question .actions{display:flex;gap:7px;flex-wrap:wrap}
+.creation-shared-planning .cs-plan-composer button,.creation-shared-planning .question button{font-size:12px;padding:7px 10px}
+.creation-shared-planning .cs-plan-reading{max-height:740px}
+.creation-shared-planning .cs-plan-reading .sectionHead{display:flex;justify-content:space-between;align-items:center}
+.creation-shared-planning .cs-plan-reading>h3{font-size:14px;margin-top:22px}
+.creation-shared-planning .v6-metadata{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
+.creation-shared-planning .v6-episode{padding:12px 0;border:0;border-bottom:1px solid var(--ap-line);border-radius:0}
+.creation-shared-planning .vf-sources{margin-bottom:12px}
+.creation-shared-planning .vf-sources .cm-button{padding:6px 10px;font-size:12px}
+.creation-shared-planning .creation-source{max-height:260px;overflow:auto;flex-shrink:0}
+.creation-shared-planning .v6-suggestion{max-height:200px;overflow:auto}
+.creation-shared-assets .cs-va-layout{grid-template-columns:minmax(0,2fr) minmax(240px,1fr);gap:18px}
+.creation-shared-assets .cs-va-detail,.creation-shared-assets .cs-va-nav{max-height:670px;overflow:auto;min-width:0}
+.creation-shared-assets .cs-va-nav{position:static;padding-left:14px}
+.creation-shared-assets .cs-va-image{height:240px;min-height:180px;padding:8px}
+.creation-shared-assets .cs-va-image>img{max-height:100%;height:auto}
+.creation-shared-assets .cs-va-tools button,.creation-shared-assets .cs-va-slots button,.creation-shared-assets .cs-va-categories button{padding:6px 9px;min-height:30px;font-size:11px}
+.creation-shared-assets .cs-va-asset-list{max-height:none;margin:0}
+.creation-shared-assets .cs-va-asset-list>button{padding:9px;gap:10px;min-height:74px;border-radius:8px}
+.creation-shared-assets .cs-va-asset-list>button>span{min-width:0}
+.creation-shared-assets .cs-va-thumb img{width:100%;height:100%}
+.creation-shared-assets .cs-va-version-list>button{flex:0 0 120px;max-width:120px;font-size:10px;padding:5px;overflow:hidden;white-space:normal}
+.creation-shared-assets .cs-va-version-list img{height:50px;width:100%}
+.creation-shared-assets .cs-va-form label,.creation-shared-assets .cs-va-upload label{font-size:11px;display:grid;gap:5px;margin:0}
+.creation-shared-assets .cs-va-form textarea{height:56px;min-height:40px;padding:7px;width:100%;box-sizing:border-box}
+.creation-shared-assets .cs-va-top .hint,.creation-shared-assets .hint,.creation-shared-planning .hint{color:var(--ap-muted);font-size:11px;line-height:1.7}
+.creation-shared-assets .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.creation-shared-assets .vva-voice{margin:10px 0;font-size:12px}
+.creation-shared-assets .vva-voice form{display:flex;gap:10px;align-items:end;flex-wrap:wrap;padding:10px 0}
+.creation-shared-assets .vva-voice label{display:grid;gap:6px;font-size:11px}
+@media(max-width:760px){.creation-shared-planning{grid-template-columns:1fr}.creation-shared-planning>.cs-plan-conversation,.creation-shared-planning .cs-plan-reading{max-height:none}.creation-shared-planning .cs-plan-log.v4-chat{max-height:300px}.creation-shared-assets .cs-va-layout{display:flex;flex-direction:column-reverse}.creation-shared-assets .cs-va-nav{max-height:none;border:0;padding:0}.creation-shared-assets .cs-va-asset-list{display:flex;max-height:160px;overflow:auto}.creation-shared-assets .cs-va-detail{max-height:none;overflow:visible}.creation-shared-assets .cs-va-form{grid-template-columns:1fr}}

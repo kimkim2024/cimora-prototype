@@ -1,0 +1,48 @@
+[
+  {
+    "key": "A",
+    "model": "gpt-image-2",
+    "operation": "edit",
+    "inputs": [
+      {
+        "path": "assets/plans/A-layout.png",
+        "sha256": "104217aadb2c53e904ae2cfe1e0d7f4cc4d59e7451a12ef5cfd435b758b9c7dd"
+      },
+      {
+        "path": "assets/reference.png",
+        "sha256": "7205747b09e6293c24c58bdd6c31bad6dc22eee6b4842462a806248418c0a111"
+      },
+      {
+        "path": "assets/style-reference.png",
+        "sha256": "55682156848e27b9af7d0066d5898b32233bc29cc2aea94e3e7876a692533fd3"
+      }
+    ],
+    "prompt": "assets/plans/A-prompt.txt",
+    "manifest": "assets/plans/A-manifest.json",
+    "output": "assets/result-A.png",
+    "note": "实际三张输入与提示词对应；此清单是核验时补充的请求索引，先验时间以manifest及events为准。"
+  },
+  {
+    "key": "B",
+    "model": "gpt-image-2",
+    "operation": "edit",
+    "inputs": [
+      {
+        "path": "assets/plans/B-layout.png",
+        "sha256": "4c73dcff43e249fd48dfa84ce9417b1f9e1e125c2c822380b9b13758bf26e4f8"
+      },
+      {
+        "path": "assets/reference.png",
+        "sha256": "7205747b09e6293c24c58bdd6c31bad6dc22eee6b4842462a806248418c0a111"
+      },
+      {
+        "path": "assets/style-reference.png",
+        "sha256": "55682156848e27b9af7d0066d5898b32233bc29cc2aea94e3e7876a692533fd3"
+      }
+    ],
+    "prompt": "assets/plans/B-prompt.txt",
+    "manifest": "assets/plans/B-manifest.json",
+    "output": "assets/result-B.png",
+    "note": "实际三张输入与提示词对应；此清单是核验时补充的请求索引，先验时间以manifest及events为准。"
+  }
+]

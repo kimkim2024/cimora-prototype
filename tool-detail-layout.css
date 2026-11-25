@@ -1,0 +1,742 @@
+/* Scoped to tool details: the catalog's existing card design stays unchanged. */
+.tool-detail-page .cm-main{max-width:none;padding:24px 28px 40px}
+.tool-detail-page #portable-demo-guide{display:none}
+.tool-detail-page .ts-page.tw-detail{max-width:1480px;width:100%;box-sizing:border-box;padding:0;margin:0 auto;--tw-line:var(--ap-line,var(--cm-border,#ded7e8));--tw-surface:var(--ap-surface,var(--cm-panel,#fff));--tw-soft:var(--ap-surface-soft,var(--cm-bg,#f7f5fa));--tw-text:var(--ap-text,var(--cm-text,#29253a));--tw-muted:var(--ap-muted,var(--cm-muted,#716c82));color:var(--tw-text);container-type:inline-size}
+.tw-detail .ts-heading{margin:0 0 14px;align-items:center;flex-direction:row}
+.tw-detail .ts-heading h1{font-size:24px;line-height:1.35;margin:6px 0}
+.tw-detail .ts-heading p{font-size:13px;line-height:1.6}
+.tw-detail .ts-heading .cm-text-link{font-size:12px}
+.tw-detail .tw-workbench{display:grid;grid-template-columns:clamp(340px,29%,420px) minmax(0,1fr);gap:20px;align-items:start}
+.tw-detail .tw-workbench>.ts-panel{min-width:0;padding:20px;border-color:var(--tw-line);background:var(--tw-surface);box-sizing:border-box}
+.tw-detail .tw-output{position:static;min-height:0}
+.tw-detail .ts-panel h2{font-size:16px;line-height:1.5;margin-bottom:12px}
+.tw-detail .ts-panel h3{line-height:1.5}
+.tw-detail .ts-panel label{margin:12px 0;gap:7px;font-size:13px}
+.tw-detail .ts-panel textarea{min-height:96px;padding:10px 12px;line-height:1.65;font-size:14px}
+.tw-detail .ts-panel input:not([type=file]):not([type=checkbox]):not([type=range]),.tw-detail .ts-panel select{min-height:40px;font-size:13px;box-sizing:border-box;max-width:100%}
+.tw-detail .ts-panel :is(p,small){overflow-wrap:anywhere}
+.tw-detail .ts-panel :is(.ts-note,.td-subnote,.tm-note,.tr-note,.oc-profile-dialogue>p,.vo-hint,.bgm-hint){font-size:12px;line-height:1.65;color:var(--tw-muted)}
+.tw-detail .ts-panel :is(.cm-button,summary){font-size:13px}
+.tw-detail .ts-panel .cm-button{min-height:36px;padding:8px 12px}
+.tw-detail .ts-panel [hidden]{display:none!important}
+.tw-detail .ts-panel :is(#ts-message,#stk-message):empty{display:none}
+.tw-detail .tw-disclosure{border:0;border-top:1px solid var(--tw-line);padding:12px 0;margin:12px 0 0;font-size:13px}
+.tw-detail .tw-disclosure>summary{cursor:pointer;font-size:13px;line-height:1.6;color:var(--tw-muted);padding:0}
+.tw-detail .tw-disclosure>summary:hover{color:var(--tw-text)}
+.tw-detail .tw-disclosure>section{border:0;border-radius:0;padding:14px 0 0;margin:0;background:transparent}
+.tw-detail>.tw-disclosure{margin:0 0 16px;padding:0;border:0;font-size:12px}
+.tw-detail>.tw-disclosure>summary{font-size:12px}
+.tw-detail>.tw-disclosure>p{margin:8px 0;max-width:78ch;color:var(--tw-muted);line-height:1.6}
+.tw-detail .tw-upload{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;min-height:78px;padding:12px 14px;border:1px dashed var(--tw-line);border-radius:10px;background:var(--tw-soft);cursor:pointer;box-sizing:border-box;overflow:hidden}
+.tw-detail .tw-upload input[type=file]{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;padding:0;cursor:pointer}
+.tw-detail .tw-upload:focus-within,.tw-detail .tw-upload.is-dragging{outline:2px solid var(--ap-accent,#7953b5);outline-offset:2px}
+.tw-detail .tw-upload:has(input:disabled){opacity:.5;cursor:not-allowed}
+.tw-detail .tw-upload small,.tw-upload-hint{font-size:11px;color:var(--tw-muted);line-height:1.5;overflow-wrap:anywhere;max-width:100%}
+.tw-detail :is(.td-empty,.tc-empty,.oc-empty,.pn-empty,.perf-empty,.stk-empty,.tm-empty,.tr-empty,.cut-empty,.opt-empty){min-height:280px;padding:28px 16px;gap:10px;box-sizing:border-box}
+.tw-detail :is(.td-empty,.tc-empty,.oc-empty,.pn-empty,.perf-empty,.stk-empty,.tm-empty,.tr-empty,.cut-empty,.opt-empty)>p{max-width:36ch;margin:0 auto 12px;font-size:13px;line-height:1.7;color:var(--tw-muted)}
+.tw-detail :is(.td-empty,.tc-empty,.oc-empty,.pn-empty,.perf-empty,.stk-empty,.tm-empty,.tr-empty,.cut-empty,.opt-empty)>:is(h2,h3){margin:6px 0;font-size:17px;color:var(--tw-text)}
+.tw-detail :is(.td-empty,.tc-empty,.oc-empty,.pn-empty,.perf-empty,.tm-empty,.tr-empty,.cut-empty,.opt-empty)>span{font-size:32px}
+.tw-detail .stk-empty img{height:140px}
+.tw-detail .td-preview{background:transparent;border:0}
+.tw-detail .td-preview button{padding:0}
+.tw-detail :is(.td-preview img,.oc-preview>img,.tm-video,.tr-screen video,.ts-preview img){display:block;width:100%;height:auto;max-height:min(64vh,760px);object-fit:contain}
+.tw-detail .tr-screen{width:fit-content;max-width:100%;margin-inline:auto}
+.tw-detail .tr-screen video{width:auto;max-width:100%}
+.tw-detail .tm-video{background:var(--tw-soft)}
+.tw-detail .td-versions{display:flex;gap:10px;overflow-x:auto;padding:14px 2px 4px;margin-top:14px}
+.tw-detail .td-versions>.cm-button{flex:0 0 100px}
+.tw-detail :is(.td-versions,.tm-versions,.tr-versions) img{object-fit:contain}
+.tw-detail .td-caption,.tw-detail .tm-caption,.tw-detail .tr-caption{max-width:75ch;font-size:13px;line-height:1.6}
+.tw-detail .tw-view-switch{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tw-detail .tw-view-switch [aria-pressed=true],.tw-detail .tw-character-thumb[aria-pressed=true]{border-color:var(--ap-accent,#7953b5);background:var(--ap-accent-soft,#f0eafa);color:var(--tw-text)}
+.tw-detail :is(.tc-compare,.opt-comparison)[data-tw-view=single]{grid-template-columns:minmax(0,1fr)}
+.tw-detail :is(.tc-compare,.opt-comparison)[data-tw-view=compare]{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tw-detail .tc-compare figure{border:0;background:transparent}
+.tw-detail .tc-compare figure>button{padding:0;background:transparent}
+.tw-detail .tc-compare img{height:auto;max-height:min(62vh,720px);object-fit:contain}
+.tw-detail .tc-compare[data-tw-view=compare] img{height:min(50vh,540px)}
+.tw-detail .opt-picture{height:min(62vh,650px)}
+.tw-detail .opt-comparison[data-tw-view=compare] .opt-picture{height:min(50vh,520px)}
+.tw-detail .tw-character-stage{margin:0;display:grid;justify-items:center;gap:8px}
+.tw-detail .tw-character-stage img{width:100%;height:min(60vh,680px);object-fit:contain}
+.tw-detail .tw-character-stage figcaption{font-size:12px;color:var(--tw-muted)}
+.tw-detail .oc-base-board{display:flex;justify-content:center;gap:10px;margin:16px 0;overflow-x:auto}
+.tw-detail .tw-character-thumb{flex:0 0 88px;border:1px solid var(--tw-line);border-radius:9px;padding:6px;background:var(--tw-surface);color:var(--tw-text);cursor:pointer;display:grid;gap:6px;font:inherit;font-size:12px}
+.tw-detail .tw-character-thumb img{width:100%;height:68px;object-fit:contain}
+.tw-detail .oc-output>.tw-disclosure{margin:16px 0 0;padding:14px 0 0}
+.tw-detail .oc-profile{background:transparent}
+.tw-detail .pn-stage{width:min(100%,520px);max-height:64vh}
+.tw-detail .pn-states{max-width:600px;width:100%;margin-inline:auto}
+.tw-detail .stk-stage canvas{width:min(100%,480px)}
+.tw-detail .perf-grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.tw-detail .vo-steps,.tw-detail .bgm-flow{margin:0 0 14px;gap:8px}
+.tw-detail .vo-steps>.cm-button{padding:8px 14px;min-height:44px;flex:0 1 220px}
+.tw-detail .vo-steps small{display:none}
+.tw-detail .vo-steps b{width:24px;height:24px;font-size:12px}
+.tw-detail :is(.vo-section-title,.bgm-section-heading)>span{display:none}
+.tw-detail :is(.vo-section-title,.bgm-section-heading) h2{margin:0 0 14px}
+.tw-detail :is(.vo-empty,.bgm-empty){min-height:210px;gap:8px;padding:16px}
+.tw-detail :is(.vo-empty,.bgm-empty)>span{font-size:32px}
+.tw-detail :is(.vo-empty,.bgm-empty) p{margin:0 0 10px;color:var(--tw-muted)}
+.tw-detail :is(.vo-card,.bgm-card){padding:14px;border-radius:10px}
+.tw-detail :is(.vo-player,.bgm-player){margin:10px 0}
+.tw-detail :is(.vo-card-top,.bgm-card-heading) p{margin:3px 0 0;font-size:12px}
+.tw-detail :is(.vo-delivery,.bgm-delivery){margin-top:16px;padding-top:16px}
+.tw-detail .vo-take-text{font-size:15px;line-height:1.8;margin:16px 0}
+.tw-detail .vo-current{padding:10px 14px;margin:0 0 14px}
+.tw-detail .tw-delivery-actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--tw-line);margin-top:12px}
+.tw-detail :is(button,a,summary):focus-visible{outline:2px solid var(--ap-accent,#7953b5);outline-offset:3px}
+@container (max-width:850px){.tw-detail .tw-workbench{grid-template-columns:minmax(0,1fr)}.tw-detail .tw-output{position:static}.tw-detail .tw-character-stage img{height:min(55vh,560px)}}
+@media(max-width:700px){.tool-detail-page .cm-main{padding:18px 16px 32px}.tw-detail .ts-heading{gap:12px;align-items:flex-start}.tw-detail .ts-heading h1{font-size:21px}.tw-detail .ts-heading p{font-size:12px}.tw-detail .tw-workbench>.ts-panel{padding:16px}.tw-detail .ts-panel textarea{font-size:16px}.tw-detail :is(.td-empty,.tc-empty,.oc-empty,.pn-empty,.perf-empty,.stk-empty,.tm-empty,.tr-empty,.cut-empty,.opt-empty){min-height:220px}.tw-detail .tw-character-thumb{flex-basis:64px}.tw-detail .tw-character-thumb img{height:52px}.tw-detail .ts-heading>.cm-button{flex:none}.tw-detail .vo-steps>.cm-button{flex:1}.tw-detail :is(.tc-compare,.opt-comparison)[data-tw-view=compare]{gap:8px}.tw-detail .ts-panel .cm-button{white-space:normal}.tw-detail .tr-screen video{max-height:55vh}}
+/* Avoid adding label margins on top of the tools' existing grid gaps. */
+.tw-detail :is(.oc-input,.td-input,.pn-input,.cut-input,.opt-input){gap:14px}
+.tw-detail :is(.oc-input,.td-input,.pn-input,.cut-input,.opt-input)>label{margin:0}
+.tw-detail .tw-input>h2,.tw-detail .tw-input>.td-row h2{margin:0}
+.tw-detail .oc-reference{padding:0;background:transparent;border-radius:0}
+.tw-detail .oc-reference>.tw-upload{width:100%;margin:0}
+.tw-detail .oc-reference>p{font-size:12px;line-height:1.6;margin:8px 0 0;color:var(--tw-muted)}
+.tw-detail .oc-input>.ts-note{margin:0}
+.tw-detail .td-references{gap:8px}
+.tw-detail .td-references>.td-row h3{margin:0}
+.tw-detail .td-references>.tw-upload{margin:0}
+.tw-detail .td-options{margin:0;padding-top:12px}
+.tw-detail .tw-upload input[type=file]{max-width:none}
+.tw-detail .tw-input .td-example-note{margin:0}
+.tw-detail .ts-panel label:has(>input:not([type=file])){line-height:1.5}
+.tw-detail .tw-input input[type=text],.tw-detail .tw-input input:not([type]){height:40px;padding:8px 10px}
+.tw-detail .tc-footer .tw-delivery-actions{margin-top:0}
+.tw-detail .bgm-card-heading>small,.tw-detail .vo-state{display:inline-block;font-size:11px;white-space:normal}
+
+/* A common title row establishes the same baseline in both columns. */
+.tw-detail .tw-input>h2,.tw-detail .tw-output>h2,
+.tw-detail :is(.td-row,.cut-row,.opt-row,.tr-row,.tm-row,.pn-row,.stk-row):first-child,
+.tw-detail :is(.oc-visual-heading,.ts-result-heading,.perf-result-head,.vo-section-title,.bgm-section-heading):first-child{
+  min-height:36px;box-sizing:border-box;margin:0 0 16px;padding:0;display:flex;align-items:center;gap:10px
+}
+.tw-detail :is(.tw-input,.tw-output)>h2,
+.tw-detail :is(.td-row,.cut-row,.opt-row,.tr-row,.tm-row,.pn-row,.stk-row,.oc-visual-heading,.ts-result-heading,.perf-result-head,.vo-section-title,.bgm-section-heading):first-child h2{font-size:16px;line-height:24px;margin:0}
+.tw-detail :is(.oc-input,.td-input,.pn-input,.cut-input,.opt-input)>:first-child{margin-bottom:0}
+.tw-detail .oc-visual-heading{justify-content:space-between;border:0}
+.tw-detail .oc-visual-heading small{font-size:12px;color:var(--tw-muted)}
+.tw-detail .oc-input{gap:16px;align-content:start}
+.tw-detail .oc-input>label{line-height:20px;gap:8px}
+.tw-detail .oc-input textarea{min-height:110px;margin:0}
+.tw-detail .oc-input select{height:42px;padding:8px 12px}
+.tw-detail .oc-input>.ts-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tw-detail .oc-input>.ts-actions .cm-button{width:100%;margin:0;min-height:42px}
+.tw-detail .oc-input>.tw-disclosure{margin:0;padding-top:14px}
+.tw-detail .oc-reference>.tw-upload{min-height:90px}
+.tw-detail .oc-output:has(>.oc-empty){align-self:start;display:flex;flex-direction:column}
+.tw-detail .oc-output>.oc-empty{flex:1;min-height:300px;padding:32px 20px;border:1px dashed var(--tw-line);border-radius:10px;background:var(--tw-soft);margin:0}
+.tw-detail .oc-output>.oc-empty>h2{font-size:17px;margin:8px 0;min-height:0}
+.tw-detail .oc-output>.oc-empty>p{max-width:32ch;margin:0;line-height:1.7}
+.tw-detail .oc-output>.tw-disclosure:has(.oc-profile){flex:none}
+.tw-detail .oc-result-title{margin:0 0 12px;padding:0;display:flex;align-items:center;justify-content:space-between}
+.tw-detail .oc-result-title h2{font-size:14px;margin:0}
+.tw-detail .oc-result-title span{font-size:12px;color:var(--tw-muted)}
+.tw-detail .oc-base-board{background:transparent;border:0;padding:0}
+.tw-detail .tw-character-stage img{height:min(48vh,540px)}
+@container (max-width:850px){.tw-detail .tw-workbench{grid-template-columns:minmax(0,1fr)}.tw-detail .oc-output>.oc-empty{min-height:250px}.tw-detail .tw-character-stage img{height:min(52vh,480px)}}
+
+/* Use a fixed text row rather than letting a nearby button shift its baseline. */
+.tw-detail .ts-panel .tw-panel-title{display:flex;align-items:center;height:44px;min-height:44px;font-size:16px;line-height:24px;margin:0;padding:0}
+.tw-detail :is(.td-row,.cut-row,.opt-row,.tr-row,.tm-row,.pn-row,.stk-row,.oc-visual-heading,.ts-result-heading,.perf-result-head,.vo-section-title,.bgm-section-heading):first-child{min-height:44px;align-items:flex-start}
+.tw-detail :is(.td-row,.cut-row,.opt-row,.tr-row,.tm-row,.pn-row,.stk-row):first-child>.cm-button{height:44px;min-height:44px;box-sizing:border-box}
+.tw-detail :is(.oc-visual-heading,.ts-result-heading,.td-row,.cut-row,.opt-row,.tr-row,.tm-row,.pn-row):first-child>small{align-self:center}
+.tw-detail .oc-visual-heading{margin-bottom:16px}
+/* Consistent inner rhythm for every tool; explicit groups retain their own controls. */
+.tw-detail .tw-input :is(.tm-slot,.tr-reference,.stk-source,.perf-source,.tc-source){min-width:0}
+.tw-detail .tw-input>h2{margin-bottom:16px}
+.tw-detail .tw-input :is(.tm-slot,.tr-reference){padding:0;border:0;background:transparent}
+.tw-detail .tm-slot>.tm-row{min-height:0;margin:0 0 8px}
+.tw-detail .tm-slot>strong{display:block;margin-bottom:8px;font-size:13px}
+.tw-detail .tm-slots{gap:12px;margin:14px 0}
+.tw-detail .tm-slot .tw-upload{margin:0 0 10px}
+.tw-detail .tm-slot-empty[hidden]{display:none}
+.tw-detail .tm-slot>img{height:140px;width:100%;object-fit:contain;margin:8px 0}
+.tw-detail .tm-slot details{padding:8px 0}
+.tw-detail .tm-mode,.tw-detail .tr-suggestions{gap:8px;margin:0 0 10px}
+.tw-detail .tm-mode>.cm-button{flex:1}
+.tw-detail .tw-field{display:grid;gap:8px;margin:16px 0}
+.tw-detail .tw-field>label{margin:0;font-weight:500}
+.tw-detail .tw-field>textarea{margin:0}
+.tw-detail .tw-input>textarea{margin:0 0 14px}
+.tw-detail .tw-input :is(.tc-settings,.opt-settings,.perf-settings,.stk-request,.bgm-settings){margin-top:16px;padding-top:16px}
+.tw-detail .tw-input :is(.stk-source,.stk-request,.perf-source,.perf-settings,.tc-source,.tc-settings)>label{margin:12px 0}
+.tw-detail .tw-input :is(.stk-source,.stk-request,.perf-source,.perf-settings,.tc-source,.tc-settings)>p{margin:8px 0;line-height:1.65;font-size:12px;color:var(--tw-muted)}
+.tw-detail .tw-input :is(.stk-presets,.perf-presets,.vo-examples,.bgm-examples,.pn-suggestions){display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.tw-detail .tw-input :is(.stk-presets,.perf-presets,.vo-examples,.bgm-examples,.pn-suggestions)>.cm-button{font-size:12px;min-height:32px;padding:6px 10px}
+.tw-detail .stk-tabs{gap:6px;margin:12px 0;flex-wrap:wrap}
+.tw-detail .stk-tabs>.cm-button{padding:0 12px;flex:1 1 auto;min-width:max-content;white-space:nowrap}
+/* PNGTuber source switch matches Image to Motion's segmented control. */
+html[data-cimora-theme] .tw-detail .pn-tabs {
+  display:flex;gap:8px;background:transparent!important;padding:0!important;border-radius:0;
+}
+html[data-cimora-theme] .tw-detail .pn-tabs>.cm-button {
+  flex:1 1 0;min-width:0;height:36px;padding:0 12px;border-radius:10px;
+  border:1px solid transparent!important;box-shadow:none!important;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+  font-size:12px;font-weight:500;
+}
+html[data-cimora-theme] .tw-detail .pn-tabs>.cm-button[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+}
+html[data-cimora-theme] .tw-detail .pn-tabs>.cm-button:not([aria-pressed="true"]):not(:disabled):hover {
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+}
+.tw-detail .stk-request>h2,.tw-detail .tc-settings>h2,.tw-detail .opt-settings>h2,.tw-detail .perf-settings>h2{margin:0 0 12px;font-size:14px;line-height:22px}
+.tw-detail .stk-source>.stk-row{margin-bottom:12px}
+.tw-detail .stk-source .stk-upload{margin:0}
+.tw-detail .tw-input :is(.tr-upload,.tc-file,.opt-upload,.pn-upload,.perf-upload){margin:12px 0}
+.tw-detail .tw-input :is(.ts-actions,.tr-actions){gap:8px}
+.tw-detail .tw-input :is(.ts-actions,.tr-actions)>.cm-button{flex:1;min-width:0}
+.tw-detail .tw-input :is(#ts-run,#tm-generate,#td-generate,#tr-generate,#vo-generate,#vo-recommend,#bgm-generate,#bgm-recommend){min-height:42px}
+.tw-detail #ts-form{display:grid;gap:14px}
+.tw-detail #ts-form>label,.tw-detail #ts-form>.tw-upload{margin:0}
+.tw-detail #ts-form .tl-task>label{margin:0 0 14px}
+.tw-detail #ts-form .tl-task textarea{margin:0}
+.tw-detail #ts-form>[data-ts=sample]{justify-self:start}
+.tw-detail .tw-output.tw-awaiting{display:flex;flex-direction:column;align-self:start}
+.tw-detail .tw-output.tw-awaiting>#ts-result{display:flex;flex:1;flex-direction:column}
+.tw-detail .tw-result-empty{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;min-height:260px;margin:0;padding:28px 20px;border:1px dashed var(--tw-line);border-radius:10px;background:var(--tw-soft);text-align:center;box-sizing:border-box}
+.tw-detail .tw-result-empty>p{max-width:34ch;margin:0;font-size:13px;line-height:1.7;color:var(--tw-muted)}
+.tw-detail .tw-result-empty>h3{font-size:16px;line-height:24px;color:var(--tw-text);margin:0}
+.tw-detail .tw-result-empty>span{font-size:30px;line-height:1.4}
+.tw-detail .tw-output.tw-awaiting>.perf-result-footer{margin-top:16px}
+.tw-detail .tw-output :is(.td-result-actions,.tm-actions,.tr-actions,.tc-result-actions,.opt-actions,.pn-actions,.stk-actions){display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.tw-detail :is(.td-versions,.tm-versions,.tr-versions){gap:8px;margin:16px 0 0;padding:12px 0 4px;border-top:1px solid var(--tw-line);align-items:stretch}
+.tw-detail :is(.td-versions,.tm-versions,.tr-versions)>.cm-button{width:100px;flex:0 0 100px;padding:8px;box-sizing:border-box}
+.tw-detail :is(.td-versions,.tm-versions,.tr-versions) img{width:82px;height:66px;object-fit:contain}
+.tw-detail .tw-output :is(.bgm-candidates,.vo-candidates){display:grid;gap:10px}
+.tw-detail :is(.bgm-card,.vo-card){background:var(--tw-surface);border:1px solid var(--tw-line);padding:14px}
+.tw-detail :is(.bgm-card-heading,.vo-card-top){align-items:center;gap:10px;min-width:0}
+.tw-detail :is(.bgm-card-heading,.vo-card-top)>div{flex:1;min-width:0}
+.tw-detail :is(.bgm-card-heading,.vo-card-top) h3{font-size:14px;line-height:1.5;margin:0}
+.tw-detail :is(.bgm-card-actions,.vo-card-actions,.sfx-card-buttons){display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.tw-detail :is(.bgm-selection,.vo-selection,.bgm-full,.vo-take){padding:16px;background:var(--tw-soft);border-color:var(--tw-line)}
+.tw-detail :is(.bgm-history,.vo-history){margin-top:16px}
+.tw-detail :is(.bgm-flow,.ts-sound-modes,.opt-modes){gap:8px}
+.tw-detail .ts-sound-modes{margin:0 0 14px}
+.tw-detail .bgm-source{padding-bottom:12px;margin:0 0 14px}
+.tw-detail .vo-source{margin-bottom:12px}
+.tw-detail .tw-output .tw-disclosure>p{margin:10px 0 0;line-height:1.7;font-size:13px;color:var(--tw-muted)}
+.tw-detail .tw-lettering-canvas{min-width:0}
+.tw-detail .tw-lettering-canvas .tl-region{width:min(100%,470px);margin:14px auto}
+.tw-detail .tw-canvas-hint{font-size:13px;line-height:1.6;margin:0;color:var(--tw-muted)}
+.tw-detail .tw-canvas-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0}
+.tw-detail .tw-canvas-controls small{font-size:12px;color:var(--tw-muted)}
+.tw-detail .tl-compare[data-tw-view=single]{grid-template-columns:minmax(0,1fr)}
+.tw-detail .tl-compare[data-tw-view=compare]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tw-detail .tl-compare img{max-height:62vh;width:100%;height:auto;object-fit:contain}
+.tw-detail.tw-lettering .ts-output{position:static}
+.tw-detail .tw-lettering-canvas[hidden],.tw-detail #ts-result[hidden]{display:none!important}
+@container (max-width:850px){.tw-detail .tw-output.tw-awaiting{align-self:start}.tw-detail .tw-result-empty{min-height:240px}.tw-detail .tw-output.tw-awaiting>#ts-result{min-height:240px}}
+@media(max-width:500px){.tw-detail .tm-slots.tm-paired{grid-template-columns:1fr}.tw-detail .tw-result-empty{padding:24px 12px}.tw-detail .tw-canvas-controls{gap:8px}.tw-detail .ts-panel .bgm-card-heading>small{max-width:70px}.tw-detail .ts-sound-modes>.cm-button{flex:1}.tw-detail .ts-panel :is(.bgm-player,.vo-player){flex-wrap:wrap}.tw-detail .vo-play-status,.tw-detail .bgm-play-status{white-space:normal}}
+.tw-detail .tw-run-actions{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px}
+.tw-detail .tw-run-actions>.cm-button{min-height:42px;min-width:0;padding:8px 10px}
+.tw-detail :is(.bgm-card,.vo-card){display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 12px}
+.tw-detail :is(.bgm-card-heading,.vo-card-top){grid-column:1/-1}
+.tw-detail :is(.bgm-card,.vo-card)>:is(.bgm-player,.vo-player){margin:0;min-width:0}
+.tw-detail :is(.bgm-card-actions,.vo-card-actions,.sfx-card-buttons){margin:0;align-self:center}
+.tw-detail :is(.bgm-card,.vo-card)>p{grid-column:1/-1;margin:0}
+.tw-detail .bgm-card .bgm-card-heading>small{margin-left:auto}
+.tw-detail .tw-input :is(.tr-source-heading,.tr-range,.tc-current,.pn-identity,.stk-identity,.perf-current){margin-top:12px;margin-bottom:12px}
+.tw-detail .tw-input .tr-range{padding:12px;border-radius:8px}
+.tw-detail .tw-input .tr-time-fields{gap:8px}
+.tw-detail .tw-input .tr-source-heading{font-size:12px}
+.tw-detail .tw-input .tr-source-heading .cm-button{min-height:32px}
+.tw-detail .tm-paired{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tw-detail .tm-paired .tw-upload{padding:10px;min-height:84px}
+.tw-detail .tm-paired summary{font-size:12px}
+.tw-detail .tm-paired .tm-slot>img{height:100px}
+.tw-detail .pn-preview-controls,.tw-detail .stk-preview-bar{gap:8px;padding:12px 0}
+.tw-detail .pn-states{gap:8px}
+.tw-detail .perf-card-actions{display:flex;gap:6px;flex-wrap:wrap}
+.tw-detail .perf-card-actions .cm-button{flex:1;min-height:32px;font-size:12px;padding:6px 8px}
+.tw-detail .perf-card-body{padding:12px}
+.tw-detail .perf-card-body h3{font-size:14px;margin:8px 0 12px}
+.tw-detail .tw-output>.tw-view-switch{margin-top:0}
+@media(max-width:700px){.tw-detail :is(.bgm-card,.vo-card){grid-template-columns:minmax(0,1fr)}.tw-detail :is(.bgm-card-heading,.vo-card-top){grid-column:1}.tw-detail :is(.bgm-card-actions,.vo-card-actions,.sfx-card-buttons){justify-content:flex-start}.tw-detail .tw-run-actions{grid-template-columns:minmax(0,1fr)}}
+
+/* Keep the Live2D illustration and its compact layer checklist on one grid. */
+.tw-detail.ts-live2d .layer-result{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.8fr);gap:20px;align-items:start}
+.tw-detail.ts-live2d .layer-preview{height:410px;min-width:0;overflow:hidden;border-radius:10px;background:var(--tw-soft)}
+.tw-detail.ts-live2d .layer-preview img{width:100%;height:100%;object-fit:contain}
+.tw-detail.ts-live2d .layer-tree{min-width:0}
+.tw-detail.ts-live2d .layer-tree h3{margin:0 0 12px;font-size:14px}
+.tw-detail.ts-live2d .layer-tree>div{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid var(--tw-line)}
+.tw-detail.ts-live2d .layer-tree>p{font-size:12px;line-height:1.7}
+.tw-detail.ts-live2d .layer-tree>label{display:grid;gap:10px;margin-top:16px;font-size:13px}
+.tw-detail.ts-live2d .layer-tree input{width:100%}
+@container(max-width:1000px){.tw-detail.ts-live2d .layer-result{grid-template-columns:minmax(0,1fr)}.tw-detail.ts-live2d .layer-preview{height:340px}}
+/* Grid groups own their spacing; avoid adding a second margin around every field. */
+.tw-detail .tw-input :is(.tc-source,.tc-settings,.opt-settings)>:is(label,p,h2,.tc-current){margin:0}
+.tw-detail .tw-output .tw-upload{display:inline-flex;flex-direction:row;align-items:center;min-height:40px;padding:8px 12px;margin:0;border-style:solid;background:var(--tw-surface);font-size:12px!important;line-height:22px}
+.tw-detail .tw-output .tw-upload>.tw-upload-hint{display:none}
+.tw-detail .tw-view-switch .cm-button[aria-pressed=true]{background:var(--ap-accent-soft,#f0eafa)!important;color:var(--ap-accent,#7953b5)!important;border-color:var(--ap-accent,#7953b5)!important}
+
+/* Media determines its own rectangle. Bound the available space, not its aspect ratio.
+   With both dimensions auto, intrinsic image/video/canvas proportions survive either cap. */
+.tw-detail{--tw-preview-height:clamp(280px,calc(100dvh - 360px),760px)}
+.tw-detail :is(.td-preview img,.oc-preview>img,.tw-character-stage img,.tc-compare img,.tl-compare img,.opt-picture img,.tm-video,.tr-screen video,.ts-preview img,.pn-stage img,.stk-stage canvas,.layer-preview img){display:block;width:auto;height:auto;max-width:100%;max-height:var(--tw-preview-height);aspect-ratio:auto;object-fit:contain;margin-inline:auto}
+.tw-detail :is(.td-preview,.oc-preview,.opt-picture,.pn-stage,.stk-stage,.tr-screen,.layer-preview,.tl-region){width:fit-content;max-width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:auto;margin-inline:auto;box-sizing:border-box}
+.tw-detail .td-preview>button,.tw-detail .tc-compare figure>button{display:block;width:fit-content;max-width:100%;height:auto;margin-inline:auto;padding:0}
+.tw-detail .tc-compare[data-tw-view=compare] img{width:auto;height:auto;max-height:var(--tw-preview-height)}
+.tw-detail .opt-comparison[data-tw-view=compare] .opt-picture{height:auto}
+.tw-detail .tw-character-stage{display:block;text-align:center}
+.tw-detail .tw-character-stage figcaption{margin-top:10px}
+.tw-detail .pn-stage img{position:static;inset:auto}
+.tw-detail .pn-stage>span{font-size:11px}
+.tw-detail .stk-stage{padding:0}
+.tw-detail .tw-lettering-canvas .tl-region{width:fit-content;max-width:100%}
+.tw-detail .tl-region>img{width:auto;height:auto;max-width:100%;max-height:var(--tw-preview-height)}
+.tw-detail.ts-live2d .layer-preview{width:fit-content;height:auto;max-width:100%}
+.tw-detail.ts-live2d .layer-preview img{width:auto;height:auto;max-height:var(--tw-preview-height)}
+.tw-detail .perf-grid{align-items:start}
+.tw-detail .perf-picture img{width:auto;height:auto;max-width:100%;max-height:360px;margin-inline:auto}
+.tw-detail .perf-picture{padding:0}
+.tw-detail .perf-picture span{position:static;display:block;width:auto;padding:8px;line-height:1.5}
+/* Cropping belongs to the animation itself, never to the static preview sizing. */
+.tw-detail .tl-motion{width:fit-content;max-width:100%;max-height:none}
+.tw-detail .tl-motion img{display:block;width:auto;height:auto;max-width:100%;max-height:var(--tw-preview-height)}
+/* Repair mode begins fitted to the image, then zooms within that same viewport. */
+.tw-detail .cut-viewport{width:min(100%,calc(var(--tw-preview-height) * var(--cut-ratio)),var(--cut-source-width));height:auto;max-height:none;aspect-ratio:var(--cut-ratio);margin-inline:auto;box-sizing:content-box}
+.tw-detail .cut-stage{min-height:100%;min-width:100%}
+.tw-detail .cut-stage canvas,.tw-detail .cut-stage>img{width:100%;height:auto;max-width:none;max-height:none}
+@media(max-width:700px){.tw-detail{--tw-preview-height:65vh}}
+
+/* Tall results use the adjacent space for actions and versions instead of a long footer. */
+.tw-detail .tw-media-layout{min-width:0}
+.tw-detail .tw-media-main{min-width:0;display:grid;align-content:start}
+.tw-detail .tw-media-aside{min-width:0}
+.tw-detail .tw-media-aside>:first-child{margin-top:12px}
+.tw-detail .tw-media-layout[data-media-shape=portrait]{display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:20px;align-items:start}
+.tw-detail .tw-media-layout[data-media-shape=portrait] .tw-media-aside{display:flex;flex-direction:column;gap:12px}
+.tw-detail .tw-media-layout[data-media-shape=portrait] .tw-media-aside>*{margin-block:0}
+.tw-detail .tw-media-layout[data-media-shape=portrait] .tw-delivery-actions{display:grid;grid-template-columns:minmax(0,1fr);padding:0;border:0}
+.tw-detail .tw-media-layout[data-media-shape=portrait] :is(.td-versions,.tm-versions,.tr-versions){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding-top:12px}
+.tw-detail .tw-media-layout[data-media-shape=portrait] :is(.td-versions,.tm-versions,.tr-versions)>.cm-button{width:100%;min-width:0}
+.tw-detail .tw-media-layout[data-media-shape=portrait] :is(.td-versions,.tm-versions,.tr-versions) img{max-width:100%}
+.tw-detail .tw-media-layout .td-preview{padding:0}
+.tw-detail .tw-media-layout .td-preview>button{padding:0}
+@container(max-width:1050px){.tw-detail .tw-media-layout[data-media-shape=portrait]{grid-template-columns:minmax(0,1fr)}.tw-detail .tw-media-layout[data-media-shape=portrait] .tw-delivery-actions{display:flex;flex-wrap:wrap}.tw-detail .tw-media-layout[data-media-shape=portrait] :is(.td-versions,.tm-versions,.tr-versions){display:flex;overflow-x:auto}.tw-detail .tw-media-layout[data-media-shape=portrait] :is(.td-versions,.tm-versions,.tr-versions)>.cm-button{width:100px}}
+
+/* The workspace aligns at its outer edges; media and empty canvases keep their own ratio. */
+.tw-detail .tw-workbench{align-items:stretch}
+.tw-detail .tw-workbench>.tw-input{align-self:stretch;align-content:start}
+.tw-detail .tw-workbench>.tw-output{align-self:stretch}
+.tw-detail .tw-output:has(.tw-empty-stage){display:flex;flex-direction:column}
+.tw-detail .tw-empty-stage{display:flex;flex:1;min-width:0;align-items:center;justify-content:center;padding:16px 0}
+.tw-detail .tw-empty-stage>.tw-empty-canvas{flex:none;width:min(100%,calc(480px * var(--tw-empty-ratio,1)));height:auto;min-height:0;max-height:none;aspect-ratio:var(--tw-empty-ratio,1);margin:0;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;box-sizing:border-box;border:1px dashed var(--tw-line);border-radius:10px;background:var(--tw-soft)}
+.tw-detail .tw-empty-canvas>h3{font-size:16px;line-height:1.5;margin:0}
+.tw-detail .tw-empty-canvas>p{font-size:13px;line-height:1.65;max-width:32ch;margin:0}
+.tw-detail .tw-empty-canvas>span{font-size:30px;line-height:1}
+.tw-detail .tw-empty-canvas>button[hidden]{display:none!important}
+@container(max-width:850px){.tw-detail .tw-workbench{align-items:start}.tw-detail .tw-workbench>.tw-input,.tw-detail .tw-workbench>.tw-output{align-self:start}.tw-detail .tw-empty-stage{padding:8px 0}.tw-detail .tw-empty-stage>.tw-empty-canvas{width:min(100%,calc(340px * var(--tw-empty-ratio,1)));padding:16px}.tw-detail .tw-empty-canvas>h3{font-size:14px}.tw-detail .tw-empty-canvas>p{font-size:12px}.tw-detail .tw-empty-canvas>span{font-size:24px}}
+
+/* ── Creative Tools v2 skin ───────────────────────────────────────────────
+   Opt-in only: a page gets these styles when its .ts-page element also has
+   .tw-v2. Values are lifted from Image to Motion, which is the visual
+   reference. Pages without .tw-v2 are unaffected. */
+html[data-cimora-theme] .tw-detail.tw-v2 {
+  --tw-control-h:36px;
+  --tw-control-radius:10px;
+  --tw-hover-shadow:0 4px 12px rgba(0,0,0,.10);
+  --tw-title-gap:12px;
+  --tw-section-gap:24px;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)) {
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:var(--tw-control-h);min-height:var(--tw-control-h);padding:0 12px;
+  border:1px solid transparent!important;border-radius:var(--tw-control-radius);
+  font-family:var(--font-ui);font-size:12px;font-weight:500;line-height:1.4;text-decoration:none;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+  box-shadow:none!important;cursor:pointer;
+  transition:background-color var(--dur-fast) ease,color var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):not(:disabled):not([aria-disabled="true"]):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:var(--tw-hover-shadow)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):not(:disabled):active {
+  transform:translateY(0);box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):is(:disabled,[aria-disabled="true"]) {
+  opacity:.45;cursor:not-allowed;background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+}
+/* Selected/toggle and primary buttons stay per-surface in this phase: the
+   result panel and the input panel style them separately, so the shared layer
+   only covers the neutral default. */
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-text-action {
+  height:auto;min-height:0;padding:2px 0;background:transparent!important;color:var(--color-ink-muted)!important;
+  font-size:12px;font-weight:500;text-decoration:underline;text-underline-offset:3px;
+  box-shadow:none!important;transform:none!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-text-action:not(:disabled):hover {
+  background:transparent!important;color:var(--color-ink)!important;box-shadow:none!important;transform:none!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(button,a,summary):focus-visible {
+  outline:2px solid var(--color-accent-text);outline-offset:2px;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-panel-title {
+  font-size:16px;font-weight:600;line-height:24px;margin:0;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-select-field>.cm-select-menu {
+  border:0!important;box-shadow:none!important;background:var(--color-paper-muted)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-select-field>.cm-select-menu:is(:hover,[open],:has(>summary:hover)) {
+  background:var(--color-accent-soft)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-select-menu>ul {
+  border:1px solid var(--color-hairline)!important;box-shadow:var(--shadow-md);background:var(--color-paper);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-select-menu li>button {
+  border:0!important;background:transparent;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-select-menu li>button:is(:hover,:focus-visible,[aria-pressed="true"]) {
+  background:var(--color-accent-soft)!important;color:#000;
+}
+
+/* ── Generic two-panel tool shell under .tw-v2 ───────────────────────────
+   Covers the shared ts-panel form shell used by Lettering (and later
+   Colorize). Image to Motion keeps its own layout rules. */
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel {
+  border:1px solid var(--color-hairline);border-radius:14px;background:var(--color-paper);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel>h2 {
+  font-size:16px;font-weight:600;line-height:24px;margin:0 0 12px;color:var(--color-ink);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel :is(label,.tw-field>label) {
+  display:grid;gap:8px;margin:14px 0;font-size:12px;font-weight:500;color:var(--color-ink-muted);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel :is(textarea,select,input[type="text"],input[type="search"]) {
+  box-sizing:border-box;width:100%;min-height:40px;padding:10px 12px;
+  border:1px solid var(--color-hairline);border-radius:10px;background:var(--color-paper);
+  font-family:var(--font-ui);font-size:13px;line-height:1.6;color:var(--color-ink);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel select {height:40px;padding:0 12px}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel textarea {line-height:1.7;resize:vertical}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel :is(textarea,select,input[type="text"]):focus {
+  border-color:var(--color-accent-line);box-shadow:0 0 0 3px var(--color-accent-soft);outline:none;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-upload.tw-dropzone {
+  display:grid;justify-items:start;justify-content:start;align-content:start;gap:4px;
+  width:100%;height:auto;min-height:0;padding:14px;text-align:left;
+  border:1px dashed var(--color-hairline)!important;border-radius:10px;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-muted)!important;
+  font-size:12px;font-weight:500;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-upload.tw-dropzone:not(:has(input:disabled)):hover {
+  border-color:var(--color-accent-line)!important;background:var(--color-accent-soft)!important;color:#000!important;
+  transform:none;box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-upload.tw-dropzone .tw-upload-hint {display:block;margin-top:6px;font-size:11px;font-weight:400;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-run-actions {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 0}
+html[data-cimora-theme] .tw-detail.tw-v2 #ts-run {
+  height:40px;min-height:40px;padding:0 16px;border-radius:10px;border-color:transparent;
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 #ts-run:not(:disabled):hover {
+  background:#2b2b2b!important;color:var(--color-ink-inverse)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-result-heading h2 {
+  font-size:16px;font-weight:600;line-height:24px;margin:0;color:var(--color-ink);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-result-heading span {font-size:12px;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-actions {display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-actions .cm-button.primary {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-actions .cm-button.primary:not(:disabled):is(:hover,:focus-visible) {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-view-switch .cm-button[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:var(--color-accent-line)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-disclosure {border-top:0;padding:0;margin:16px 0 0}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.tc-settings,.tc-plan,.tc-modes) {border-top:0;padding-top:0}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-disclosure>summary {font-size:12px;font-weight:500;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-disclosure>section {padding:12px 0 0}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-empty {color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-note {font-size:12px;line-height:1.6;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-input .cm-select-field>.cm-select-menu {
+  height:40px;border:1px solid var(--color-hairline)!important;border-radius:10px;
+  background:var(--color-paper)!important;box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-input .cm-select-field>.cm-select-menu>summary {
+  height:40px;padding:0 12px;font-size:13px;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-input .cm-select-menu summary strong {
+  font-size:13px;font-weight:500;color:var(--color-ink);
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tl-compare img,
+html[data-cimora-theme] .tw-detail.tw-v2 .tw-media-layout img {border-radius:12px}
+html[data-cimora-theme] .tw-detail.tw-v2 :is(.tl-compare,.opt-comparison,.tc-compare) figcaption {
+  font-size:11px;color:var(--color-ink-muted);margin-top:8px;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .ts-panel :is(textarea,select,input[type="text"]):focus {
+  background:var(--color-paper)!important;border-color:var(--color-accent-line)!important;
+  box-shadow:0 0 0 3px var(--color-accent-soft)!important;outline:none!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-button.primary {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .cm-button.primary:not(:disabled):is(:hover,:focus-visible) {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;
+}
+html[data-cimora-theme] .tw-detail.tw-v2 .tc-modes .cm-button[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:var(--color-accent-line)!important;
+}
+/* Back link: original text link with a small leading arrow, no border or fill. */
+html[data-cimora-theme] .tw-detail .ts-heading a.tw-back-link {
+  display:inline-flex;align-items:center;gap:6px;
+  border:0!important;background:transparent!important;box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail .ts-heading a.tw-back-link .tw-back-arrow {
+  display:block;width:14px;height:14px;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+html[data-cimora-theme] .tw-detail .tw-asset-link {
+  display:inline-flex;align-items:center;gap:8px;height:36px;min-height:36px;padding:0 12px;
+  border-radius:10px;font-size:12px;font-weight:500;white-space:nowrap;
+}
+html[data-cimora-theme] .tw-detail .tw-asset-link svg {
+  display:block;width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+
+/* Header asset link: identical look and icon motion on every tool page. */
+html[data-cimora-theme] .tw-detail .tw-asset-link path {transition:transform var(--dur-base) ease}
+html[data-cimora-theme] .tw-detail .tw-asset-link:is(:hover,:focus-visible) path:first-child {transform:translateY(-2px)}
+html[data-cimora-theme] .tw-detail .tw-asset-link:is(:hover,:focus-visible) path:last-child {transform:translateY(1px)}
+html[data-cimora-theme] .tw-detail .tw-asset-link:not(:disabled):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+
+/* ── Component skin for every tool page except Image to Motion ───────────
+   Scoped with :not(.tm-page) so the reference page keeps its own rules. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)) {
+  box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:36px;min-height:36px;padding:0 12px;border:1px solid transparent!important;border-radius:10px;
+  font-family:var(--font-ui);font-size:12px;font-weight:500;line-height:1.4;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+  box-shadow:none!important;cursor:pointer;
+  transition:background-color var(--dur-fast) ease,color var(--dur-fast) ease,border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):not(:disabled):not([aria-disabled="true"]):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):not(:disabled):active {
+  transform:translateY(0);box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)):is(:disabled,[aria-disabled="true"]) {
+  opacity:.45;cursor:not-allowed;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone))[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:var(--color-accent-line)!important;
+}
+/* Primary stays ink on hover: only the lift animation changes. */
+/* Ink-on-white actions keep their fill on hover; only the lift animates. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) [data-tw-ink]:not(:disabled):not([aria-disabled="true"]):is(:hover,:focus-visible) {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-button.primary {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;font-weight:600!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-button.primary:not(:disabled):not([aria-disabled="true"]):is(:hover,:focus-visible) {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;border-color:transparent!important;
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.10)!important;
+}
+/* Dropdowns: Image to Motion's select surface. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-field>.cm-select-menu {
+  display:flex;align-items:center;width:100%!important;height:40px!important;padding:0;
+  border:1px solid var(--color-hairline)!important;border-radius:10px;
+  background:var(--color-paper)!important;box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-field>.cm-select-menu>summary {
+  width:100%;height:40px;padding:0 12px;display:flex;align-items:center;gap:8px;font-size:13px;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-menu summary strong {font-size:13px;font-weight:500;color:var(--color-ink)}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-menu summary .cm-activity-dropdown-chevron {margin-left:auto;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-menu>ul {
+  border:1px solid var(--color-hairline)!important;border-radius:12px;box-shadow:var(--shadow-md);background:var(--color-paper);
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-menu li>button {border:0!important;background:transparent}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .cm-select-menu li>button:is(:hover,:focus-visible,[aria-pressed="true"]) {
+  background:var(--color-accent-soft)!important;color:#000;
+}
+
+/* Three-dot menu: replaces the disclosure triangle on non-Motion pages. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu {position:relative;display:block;width:100%;max-width:100%;justify-self:stretch;align-self:stretch;border:0;margin:0;padding:0}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu>summary {list-style:none;position:relative}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu>summary::-webkit-details-marker {display:none}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-button {width:36px;min-width:36px;padding:0!important;flex:none}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-dots {width:18px;height:18px;fill:currentColor;display:block}
+/* The panel extends inside the module: no popover, border hugs its content. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel {
+  position:static;left:auto;top:auto;z-index:auto;
+  width:auto;min-width:0;max-width:100%;box-sizing:border-box;
+  margin:10px 0 0;padding:0;
+  border:0;border-radius:0;
+  background:transparent;box-shadow:none;overflow-wrap:anywhere;
+}
+/* Merged options sit side by side instead of stacking. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel {
+  display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px 16px;
+}
+/* OC sheet: Outfit and Character Intro as parallel peers on tinted surfaces. */
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair {
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0 0;align-items:start;
+}
+@media (min-width:821px) {
+  html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair:has(>.tw-menu:only-child .oc-profile) {
+    grid-template-columns:minmax(0,calc((100% - 16px) / 2));justify-content:center;
+  }
+}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair>.tw-menu {
+  display:block;width:auto;max-width:none;box-sizing:border-box;min-width:0;
+  padding:18px;border-radius:12px;background:var(--color-paper-muted);
+}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair>.tw-menu>.tw-menu-panel {display:block;margin:0}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair :is(h2,h3) {margin:0 0 10px;font-size:14px;line-height:22px}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair :is(p,small) {margin-top:0}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair :is(.cm-button:not(:has(img)),.tw-upload:not(.tw-dropzone)) {
+  background:var(--color-paper)!important;
+}
+@media (max-width:820px) {html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair {grid-template-columns:minmax(0,1fr)}}
+/* OC sheet spacing rhythm: 4/8/12/16/24/28 from the shared space tokens. */
+html[data-cimora-theme] .tw-detail.oc-page .oc-input {row-gap:var(--space-3)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>.tw-panel-title+* {margin-top:var(--space-4)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>label+label {margin-top:var(--space-3)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>.oc-reference {margin-top:var(--space-3)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>.oc-reference+label {margin-top:var(--space-3)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-reference .tw-slot {margin-bottom:0;row-gap:var(--space-4)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>.ts-actions {margin-top:var(--space-1)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-input>label>textarea {margin-top:0}
+html[data-cimora-theme] .tw-detail.oc-page .oc-output>.oc-visual-heading {margin-bottom:var(--space-6)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-output>.oc-result-title {margin-bottom:20px}
+html[data-cimora-theme] .tw-detail.oc-page .oc-output>.oc-base-board {margin-top:var(--space-6)}
+html[data-cimora-theme] .tw-detail.oc-page .oc-output>.ts-note {margin:0 0 var(--space-4)}
+html[data-cimora-theme] .tw-detail.oc-page .tw-character-stage figcaption {margin-top:var(--space-2)}
+html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair .cm-button.primary {
+  background:var(--color-ink)!important;color:var(--color-ink-inverse)!important;
+}
+/* Segmented option rows: Image to Motion's flat pill pair. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-segmented {
+  display:flex;flex-wrap:nowrap;align-items:center;gap:8px;
+  width:100%;max-width:100%;min-width:0;margin:0;padding:0!important;
+  background:transparent!important;border:0!important;border-radius:0;box-shadow:none!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-segmented>button {
+  flex:1 1 0;min-width:0;height:36px;padding:0 10px;border-radius:10px;box-sizing:border-box;
+  border:1px solid transparent!important;box-shadow:none!important;
+  background:var(--color-paper-muted)!important;color:var(--color-ink-label)!important;
+  font-size:12px;font-weight:500;line-height:1.4;white-space:nowrap;
+  text-overflow:ellipsis;overflow:hidden;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-segmented>button[aria-pressed="true"] {
+  background:var(--color-accent-soft)!important;color:#000!important;border-color:transparent!important;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-segmented>button:not([aria-pressed="true"]):not(:disabled):hover {
+  background:var(--color-accent-soft)!important;color:#000!important;
+}
+@media (max-width:820px) {html[data-cimora-theme] .tw-detail.oc-page .tw-oc-pair {grid-template-columns:minmax(0,1fr)}}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel>* {flex:1 1 240px;min-width:0}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel>.tw-menu-item {
+  display:flex;flex-direction:column;gap:6px;min-width:0;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel>.cm-button,
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-item>.cm-button {flex:0 0 auto}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-caption {
+  font:500 11px/1.4 var(--font-ui);color:var(--color-ink-muted);text-transform:none;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel :is(img,video,textarea,select,input,button) {max-width:100%}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel :is(h2,h3,h4,p,label) {margin-top:0}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu:not([open])>.tw-menu-panel {display:none}
+/* The panel itself is the surface: inner cards drop their own frame. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-panel>:is(section,article,div,form) {
+  border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important;margin:0!important;
+}
+/* The slot's ⋯ menu opens the same nested surface, under its action row. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-menu {
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  padding:12px;border:1px solid var(--color-hairline);border-radius:12px;background:var(--color-paper);
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-menu[hidden] {display:none}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu>summary::after {
+  content:attr(data-tooltip);position:absolute;z-index:31;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  width:max-content;max-width:240px;padding:6px 9px;border-radius:6px;border:1px solid var(--color-hairline);
+  background:var(--color-paper-muted);color:var(--color-ink);
+  font:500 12px/1.4 var(--font-ui);white-space:nowrap;pointer-events:none;
+  opacity:0;visibility:hidden;transition:opacity var(--dur-fast) ease .45s,visibility 0s linear .45s;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu>summary:is(:hover,:focus-visible)::after {opacity:1;visibility:visible}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu[open]>summary::after {display:none}
+
+/* Upload slot: empty panel → action row, plus hover Remove after upload. */
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot {display:grid;gap:12px;margin:0 0 12px;min-width:0;max-width:100%}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-preview {
+  display:grid;justify-items:center;align-content:center;gap:6px;
+  padding:20px 12px;border-radius:12px;background:var(--color-paper-muted);text-align:center;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-preview:has(>.cm-button) {padding:22px 12px}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-preview:has(.tw-slot-media:not([hidden])) {padding:0;background:transparent}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-empty {margin:0;font-size:12px;line-height:1.6;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-media {position:relative;display:grid;place-items:center;width:100%;min-height:0}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-preview>.cm-button {background:var(--color-paper)!important;color:var(--color-ink-label)!important}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-preview>.cm-button:not(:disabled):hover {background:var(--color-accent-soft)!important;color:#000!important}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-media img {
+  display:block!important;width:auto!important;height:auto!important;
+  max-width:100%!important;max-height:min(60vh,640px)!important;
+  margin:0 auto;object-fit:contain;border-radius:8px;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-media .tw-remove {
+  position:absolute;left:50%;top:50%;translate:-50% -50%;opacity:0;pointer-events:none;
+  transition:opacity var(--dur-fast) ease,background-color var(--dur-fast) ease,color var(--dur-fast) ease,transform var(--dur-fast) ease;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-media:is(:hover,:focus-within) .tw-remove {opacity:1;pointer-events:auto}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions {display:flex;align-items:center;flex-wrap:wrap;gap:8px;min-width:0}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions>* {flex:0 1 auto;min-width:0;max-width:100%}
+/* Asset Library picker: saved images, opened from the upload action row. */
+html[data-cimora-theme] #site-modal .tw-picker {display:grid;gap:12px}
+html[data-cimora-theme] #site-modal .tw-picker-grid {
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;
+}
+html[data-cimora-theme] #site-modal .tw-picker-choice {
+  display:grid;gap:6px;padding:8px;border:1px solid var(--color-hairline);border-radius:12px;
+  background:var(--color-paper);color:var(--color-ink-label);cursor:pointer;min-width:0;text-align:center;
+  transition:border-color var(--dur-fast) ease,transform var(--dur-fast) ease,box-shadow var(--dur-fast) ease;
+}
+html[data-cimora-theme] #site-modal .tw-picker-choice:hover {
+  border-color:var(--color-accent-line);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+html[data-cimora-theme] #site-modal .tw-picker-choice img {
+  width:100%;height:96px;object-fit:contain;border-radius:8px;background:var(--color-paper-muted);
+}
+html[data-cimora-theme] #site-modal .tw-picker-choice span {
+  font-size:12px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+html[data-cimora-theme] #site-modal .tw-picker-empty {margin:0;font-size:12px;line-height:1.7;color:var(--color-ink-muted)}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-upload-button {gap:6px}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-icon {
+  display:block;width:18px;height:18px;flex:none;fill:none;stroke:currentColor;
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-frame-menu .tw-menu-button {width:36px;min-width:36px;padding:0!important}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-menu-button .tw-slot-icon {fill:currentColor;stroke:none}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions .tw-upload {
+  position:relative;display:inline-flex!important;flex-direction:row!important;flex-wrap:nowrap;
+  align-items:center;justify-content:center;width:auto!important;max-width:100%;
+  height:36px!important;min-height:36px!important;margin:0!important;padding:0 12px!important;
+  overflow:visible;gap:6px!important;line-height:1.4;white-space:nowrap;text-align:left;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions .tw-upload>span {
+  display:inline;font-size:12px;line-height:1.4;color:inherit;margin:0;
+}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions .tw-upload {position:relative}
+html[data-cimora-theme] .tw-detail:not(.tm-page) .tw-slot-actions .tw-upload>input[type=file] {
+  position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer;
+}

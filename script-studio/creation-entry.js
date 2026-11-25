@@ -1,0 +1,89 @@
+/* Shared inspiration composer. Imported prose stays separate from idea drafts. */
+(function(root){
+'use strict';
+const copy=x=>JSON.parse(JSON.stringify(x));
+function ensure(p){p.agent.entry??={};const e=p.agent.entry;e.mode??='agent';e.input??='idea';e.body??='';e.fileName??='';return e;}
+function text(p){const e=ensure(p);return e.input==='idea'?p.agent.draft||'':e.body;}
+function canStart(p){return ensure(p).mode==='manual'||!!text(p).trim();}
+function splitChapters(text,id){const out=[];let title='',body=[];const flush=()=>{if(title||body.join('\n').trim())out.push({id:id('chapter'),title:title||'Story text',body:body.join('\n').trim()});body=[];};for(const row of String(text).replace(/\r\n?/g,'\n').split('\n')){if(/^\s*(?:#{1,3}\s+.+|第[零一二三四五六七八九十百千万两\d]+[章节回卷][\s：:、.．]?.*)$/.test(row)){flush();title=row.trim().replace(/^#+\s*/,'');}else body.push(row);}flush();return out;}
+async function readFile(file,reader){if(!file)throw Error('Choose a story file.');if(file.size>12*1024*1024)throw Error('Choose a file under 12 MB.');if(!/\.(txt|md|docx)$/i.test(file.name))throw Error('Choose a TXT, MD, or DOCX file.');const result=/\.md$/i.test(file.name)?{text:await file.text()}:await reader(file);const value=typeof result==='string'?result:result.text;if(!value?.trim())throw Error('This file has no readable text. Choose another file.');return {text:value.replace(/^\uFEFF/,''),fileName:file.name};}
+function begin(source,{M,A,P,C,example,create,comic}){
+ const e=copy(ensure(source)),seed=text(source),manual=e.mode==='manual',imported=e.input!=='idea'&&!!seed.trim();
+ if(!manual&&!seed.trim())throw Error('Describe your idea, paste text, or upload a story file.');
+ // A new direction from an existing work always becomes an independent draft.
+ const p=source.agent.planning||manual?A.init(create()):source;
+ if(p!==source){p.settings=manual?{audience:'',genre:'',core:'',style:''}:copy(source.settings);p.agent.entry=e;p.agent.draft=source.agent.draft||'';if(source.storyWriting){p.storyWriting={length:copy(source.storyWriting.length),confirmedLength:manual?null:copy(source.storyWriting.confirmedLength||null),mode:manual?'free':'planned',items:[],confirmedOutline:'',undo:[]};}}
+ if(comic){comic.ensure(p);p.comic.style=source.comic?.style||'清新日漫';p.comic.outputRatio=source.comic?.outputRatio||'9:16';}
+ C.ensure(p);P.enter(p,manual||imported?'':seed,manual||imported,example);
+ if(imported){p.original=seed;p.sourceName=e.input==='upload'?e.fileName:'Paste story text';p.storyChapters=splitChapters(seed,M.id);Object.assign(p.agent.planning,{title:e.input==='upload'?e.fileName.replace(/\.[^.]+$/,''):seed.match(/《([^》]+)》/)?.[1]||'Imported story',synopsis:manual?'':seed.slice(0,600),highlights:manual?'':'Your original text is preserved in chapters. Review the synopsis, which is an excerpt from your text.'});p.agent.planningOrigin='imported';p.agent.demo=false;P.sync(p);}
+ if(comic&&!manual&&!imported)comic.completePreset(p,C);
+ p.agent.guideCollapsed=true;p.agent.draft='';return p;
+}
+function view(p,h,config){
+ const {E,btn,icon,busy,notice}=h,{state:e,kind='故事',prefix='ce',settings=[],extra='',uploadBusy=false,resume=false}=config;
+ const kindLabel=config.kindLabel||({故事:'Story',漫画:'Comic',视频:'Video'})[kind]||kind;
+ const input=e.input,value=input==='idea'?p.agent.draft||'':e.body||'',manual=e.mode==='manual',working=!!busy||uploadBusy,disabled=working?'disabled':'';
+ const option=s=>`<label class="vp-setting"><span class="as-sr-only">${E(s.label)}</span><select data-${prefix}-setting="${E(s.key)}" aria-label="${E(s.label)}" title="${E(s.label)}" ${s.previews?'data-option-previews':''} ${disabled}>${s.options.map(o=>{const [key,label]=Array.isArray(o)?o:[o,s.optionLabels?.[o]||o];const preview=s.previews?.[key];return `<option value="${E(key)}" ${preview?`data-description="${E(preview.description)}" data-preview-src="${E(preview.src||'')}"`:''} ${String(s.value)===String(key)?'selected':''}>${E(label)}</option>`;}).join('')}</select></label>`;
+ const fields=[['audience','Audience','person','For example, young women or mystery readers'],['genre','Genre','genre','For example, contemporary romance, mystery, or fantasy'],['core','Premise','core','For example, two former partners reunite three days before one leaves town'],['style','Style','style','For example, subtle, warm, or open-ended']];
+ const fileInput=`<input id="${prefix}-file" type="file" accept=".txt,.md,.docx" aria-label="Upload a story file" ${disabled}>`;
+ const guidance=config.guidance||(manual?(input!=='idea'&&value.trim()?'Bring in your existing text, then write the synopsis and character profiles.':'Start with a blank synopsis and ask AI for help anytime.'):(kind==='漫画'?'Choose a page format to use for comic layouts and generation.':'Set the chapter count and length before planning your story.'));
+ const compact=config.compactComposer;
+ const videoPlanning=compact&&prefix==='vp';
+ const inputMethods=[['idea','Describe an idea','spark'],['paste','Paste story text','edit'],['upload','Upload a file','attach']];
+ const inputButtons=(menu=false)=>inputMethods.map(([key,label,glyph])=>{
+   const attach=menu&&key==='upload';
+   return btn(icon(glyph)+label,prefix+(attach?'-attach':'-input'),input===key?'active':'',`data-key="${key}" ${attach?'':`aria-pressed="${input===key}"`} ${disabled}`);
+ }).join('');
+ const inputToolbar=compact?
+   `<div class="as-entry-source"><details><summary aria-label="Add story input" title="Add story input"><span aria-hidden="true">+</span></summary><div class="as-entry-source-menu" role="group" aria-label="Story input method">${inputButtons(true)}</div></details>${input!=='upload'?'<div hidden>'+fileInput+'</div>':''}</div>`:
+   `<div class="vp-input-tabs" role="group" aria-label="Story input method">${inputButtons()}</div>`;
+ const storySettings=`<div class="as-entry-settings vp-story-settings${compact?' as-entry-setting-pills':''}">${fields.map(([key,label,glyph,placeholder])=>`<details class="as-entry-setting"><summary>${icon(glyph)}<span>${label}</span><span class="as-setting-dot" ${p.settings[key]?'':'hidden'}></span></summary><div class="as-setting-popover"><label>${label}<input data-entry-setting="${key}" value="${E(p.settings[key]||'')}" placeholder="${placeholder}" ${disabled}></label><span>Optional</span></div></details>`).join('')}${extra}</div>`;
+ const entryActions=`<div class="vp-mode" role="group" aria-label="Creation mode">${btn(icon('spark')+'Create with AI',prefix+'-mode',!manual?'active':'',`data-key="agent" aria-pressed="${!manual}" ${disabled}`)}${btn(icon('person')+'Write manually',prefix+'-mode',manual?'active':'',`data-key="manual" aria-pressed="${manual}" ${disabled}`)}</div>`;
+ const visualSettings=settings.length?`<div class="vp-settings">${settings.map(option).join('')}</div>`:'';
+ const iconSubmit=compact&&!working&&!manual&&input==='idea';
+ const submitLabel=uploadBusy?'Reading…':busy?'Planning…':manual?'Start writing':input==='idea'?'Plan with AI':compact?'Import & continue':'Import text and continue';
+ const submit=`<button class="as-btn primary as-entry-send vp-start${iconSubmit?' as-entry-send-icon':''}" type="submit" ${iconSubmit?'aria-label="Plan with AI" title="Plan with AI"':''} ${working||(!manual&&!value.trim())?'disabled':''}>${icon(iconSubmit?'up':'send')}${iconSubmit?'':submitLabel}</button>`;
+ const projectLabel='My '+kindLabel+' Projects';
+ const projectsButton=videoPlanning?btn(icon('folder')+'<span>My projects</span>','projects','as-entry-projects-icon',`title="${E(projectLabel)}" ${disabled}`):btn(projectLabel,'projects','',disabled);
+ const backButton=config.backAction?(videoPlanning?btn(icon('back'),config.backAction,'',`aria-label="Back" title="Back" ${disabled}`):btn('← Back',config.backAction,'',disabled)):'';
+ return `<header class="as-entry-header">${config.backAction?`<div class="as-row">${backButton}<h2>Story Planning</h2></div>`:'<h2>Story Planning</h2>'}<div class="as-row">${resume?btn('Back to project',prefix+'-resume','',disabled):''}${projectsButton}</div></header><main class="as-entry-main creation-entry${compact?' as-entry-paper-canvas':''}" aria-label="${kindLabel} creation"><div class="as-entry-content"><h1${videoPlanning?' class="as-entry-video-heading"':''}>${videoPlanning?'<img src="assets/video-planning-cimora-logo.png?v=lime-mascot" width="1254" height="1254" alt="">':''}<span>${kindLabel} Planning</span></h1>${videoPlanning?'<p class="as-entry-intro as-entry-canvas-caption"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m10 9 10 4.5-5.1 1.2-2 4.8L10 9ZM4 4l2 2M9 3v2M3 9h2"/></svg><span>Double-click to enter Canvas</span></p>':'<p class="as-entry-intro">Describe your story idea and use AI to draft its setting and synopsis.</p>'}
+ <form class="as-entry-composer vp-compose-frame${compact?' as-entry-composer-compact':''}" data-form="${prefix}-start">${inputToolbar}
+ ${input==='upload'&&!e.body?`<div class="vp-upload-zone">${fileInput}<div class="vp-upload-content">${icon('book')}<strong>${uploadBusy?'Reading story file…':'Choose a story file or drop it here'}</strong><span>TXT, MD, or DOCX · up to 12 MB</span></div></div>`:`${input==='upload'?`<div class="vp-file-summary">${icon('book')}<strong>${E(e.fileName||'Imported story')}</strong><label class="as-btn vp-file-button">Change file${fileInput}</label>${btn('Remove',prefix+'-clear-file','',disabled)}</div>`:''}<label class="as-sr-only" for="${prefix}-seed">${input==='idea'?'Describe your story idea':'Story text'}</label><textarea id="${prefix}-seed" rows="${compact?4:5}" placeholder="${input==='idea'?'Start with an idea, a character, a scene, or a single line…':'Paste a novel excerpt, story, or script. Your original text will be preserved.'}" ${disabled}>${E(value)}</textarea>${input!=='idea'?`<div class="vp-input-foot" data-${prefix}-count>${value.replace(/\s/g,'').length} characters · Original text preserved</div>`:''}`}
+ ${compact?'':storySettings}<div class="vp-entry-options">${compact?`${visualSettings}<div class="as-entry-action-group">${entryActions}${submit}</div>`:`${entryActions}${visualSettings}${submit}`}</div></form>${compact?storySettings:''}
+ ${busy?`<div class="as-entry-feedback" role="status">${E(busy)} ${btn('Cancel','cancel')}</div>`:''}${notice?`<div class="as-entry-feedback" role="status">${E(notice)}</div>`:''}<p class="vp-entry-guidance">${E(guidance)}${resume?'<br>Starting over creates a new project and keeps your current draft.':''}</p><div class="as-entry-secondary">${btn('Try a sample idea',prefix+'-example','',disabled)}<span aria-hidden="true">·</span><span>Interactive prototype · Sample story</span></div></div></main>`;
+}
+function bindVideoDotHighlight(){
+ const enabled=matchMedia('(any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference)');
+ const selector='.as-root.as-entry:has(.as-entry-video-heading)';
+ let surface=null,frame=0,x=0,y=0;
+ function clear(){
+   if(frame)cancelAnimationFrame(frame);
+   frame=0;
+   surface?.classList.remove('vp-dot-hover');
+   surface=null;
+ }
+ document.addEventListener('pointermove',event=>{
+   if(!enabled.matches||event.pointerType!=='mouse')return;
+   const next=event.target.closest(selector);
+   if(next!==surface){clear();surface=next;}
+   if(!surface)return;
+   x=event.clientX;
+   y=event.clientY;
+   if(frame)return;
+   frame=requestAnimationFrame(()=>{
+     frame=0;
+     const bounds=surface.getBoundingClientRect();
+     surface.style.setProperty('--vp-pointer-x',`${x-bounds.left}px`);
+     surface.style.setProperty('--vp-pointer-y',`${y-bounds.top}px`);
+     surface.classList.add('vp-dot-hover');
+   });
+ },{passive:true});
+ document.addEventListener('pointerout',event=>{
+   if(event.pointerType==='mouse'&&surface&&!surface.contains(event.relatedTarget))clear();
+ });
+ enabled.addEventListener('change',clear);
+ root.addEventListener('blur',clear);
+}
+if(typeof document!=='undefined')bindVideoDotHighlight();
+const api={ensure,text,canStart,splitChapters,readFile,begin,view};if(typeof module!=='undefined')module.exports=api;else root.CreationEntry=api;
+})(globalThis);

@@ -1,0 +1,578 @@
+[
+  {
+    "page": 1,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-01.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-01-panel-1.jpg"
+  },
+  {
+    "page": 1,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-01.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-01-panel-2.jpg"
+  },
+  {
+    "page": 1,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-01.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-01-panel-3.jpg"
+  },
+  {
+    "page": 1,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-01.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-01-panel-4.jpg"
+  },
+  {
+    "page": 2,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-02-fixed.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-02-panel-1.jpg"
+  },
+  {
+    "page": 2,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-02-fixed.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-02-panel-2.jpg"
+  },
+  {
+    "page": 2,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-02-fixed.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-02-panel-3.jpg"
+  },
+  {
+    "page": 2,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-02-fixed.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-02-panel-4.jpg"
+  },
+  {
+    "page": 3,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-03.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-03-panel-1.jpg"
+  },
+  {
+    "page": 3,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-03.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-03-panel-2.jpg"
+  },
+  {
+    "page": 3,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-03.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-03-panel-3.jpg"
+  },
+  {
+    "page": 3,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-03.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-03-panel-4.jpg"
+  },
+  {
+    "page": 4,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-04.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-04-panel-1.jpg"
+  },
+  {
+    "page": 4,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-04.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-04-panel-2.jpg"
+  },
+  {
+    "page": 4,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-04.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-04-panel-3.jpg"
+  },
+  {
+    "page": 4,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-04.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-04-panel-4.jpg"
+  },
+  {
+    "page": 5,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-05.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-05-panel-1.jpg"
+  },
+  {
+    "page": 5,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-05.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-05-panel-2.jpg"
+  },
+  {
+    "page": 5,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-05.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-05-panel-3.jpg"
+  },
+  {
+    "page": 5,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-05.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-05-panel-4.jpg"
+  },
+  {
+    "page": 6,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-06.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-06-panel-1.jpg"
+  },
+  {
+    "page": 6,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-06.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-06-panel-2.jpg"
+  },
+  {
+    "page": 6,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-06.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-06-panel-3.jpg"
+  },
+  {
+    "page": 6,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-06.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-06-panel-4.jpg"
+  },
+  {
+    "page": 7,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-07.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-07-panel-1.jpg"
+  },
+  {
+    "page": 7,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-07.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-07-panel-2.jpg"
+  },
+  {
+    "page": 7,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-07.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-07-panel-3.jpg"
+  },
+  {
+    "page": 7,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-07.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-07-panel-4.jpg"
+  },
+  {
+    "page": 8,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-08.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-08-panel-1.jpg"
+  },
+  {
+    "page": 8,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-08.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-08-panel-2.jpg"
+  },
+  {
+    "page": 8,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-08.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-08-panel-3.jpg"
+  },
+  {
+    "page": 8,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-08.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-08-panel-4.jpg"
+  },
+  {
+    "page": 9,
+    "panel": 1,
+    "source": "output\\imagegen\\romance-comic\\page-09.png",
+    "crop": [
+      12,
+      12,
+      500,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-09-panel-1.jpg"
+  },
+  {
+    "page": 9,
+    "panel": 2,
+    "source": "output\\imagegen\\romance-comic\\page-09.png",
+    "crop": [
+      524,
+      12,
+      1012,
+      756
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-09-panel-2.jpg"
+  },
+  {
+    "page": 9,
+    "panel": 3,
+    "source": "output\\imagegen\\romance-comic\\page-09.png",
+    "crop": [
+      12,
+      780,
+      500,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-09-panel-3.jpg"
+  },
+  {
+    "page": 9,
+    "panel": 4,
+    "source": "output\\imagegen\\romance-comic\\page-09.png",
+    "crop": [
+      524,
+      780,
+      1012,
+      1524
+    ],
+    "size": [
+      488,
+      744
+    ],
+    "file": "page-09-panel-4.jpg"
+  }
+]
