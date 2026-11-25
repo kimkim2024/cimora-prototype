@@ -1,0 +1,11 @@
+.cm-glass-nameplate {
+  display:inline-flex;align-items:center;gap:4px;max-width:100%;padding:2px 5px 2px 3px;
+  border:1px solid #b7e5eb60;border-radius:999px;
+  background:linear-gradient(115deg,#09202be8,#155463d9);
+  box-shadow:0 2px 5px #0a263d2e,inset 0 1px 0 #ffffff24;
+  backdrop-filter:blur(6px);color:#fff;font-size:10px;font-weight:650;line-height:1.15;
+}
+.cm-glass-nameplate-portrait {
+  display:block;width:12px;height:12px;flex:none;object-fit:cover;border-radius:50%;
+}
+.cm-glass-nameplate-name {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
