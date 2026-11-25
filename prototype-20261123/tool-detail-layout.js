@@ -2,6 +2,7 @@
 (()=>{
   'use strict';
   const states=new Map();
+  const slotMedia=new Map(); // page hash + slot index -> object URL
   const state=()=>{const key=location.hash.split('?')[0];if(!states.has(key))states.set(key,{});return states.get(key);};
   const summary=(text)=>{const node=document.createElement('summary');node.textContent=text;return node;};
   function fold(node,label,key){
@@ -40,7 +41,7 @@
   function uploads(page){
     page.querySelectorAll('input[type=file]').forEach(input=>{
       const label=input.closest('label');if(!label||label.dataset.twUpload)return;
-      label.dataset.twUpload='true';label.classList.add('tw-upload');
+      label.dataset.twUpload='true';label.classList.add('tw-upload');if(!label.classList.contains('tm-upload'))label.classList.add('tw-dropzone');
       const hint=document.createElement('span');hint.className='tw-upload-hint';hint.textContent='点击选择或拖入文件';label.append(hint);
       label.addEventListener('dragover',event=>{if(input.disabled)return;event.preventDefault();label.classList.add('is-dragging');});
       label.addEventListener('dragleave',()=>label.classList.remove('is-dragging'));
@@ -133,9 +134,18 @@
     const workbench=page.querySelector('[class$="-workbench"]');if(workbench){workbench.classList.add('tw-workbench');workbench.children[0]?.classList.add('tw-input');workbench.children[1]?.classList.add('tw-output');}
     lettering(page);contentLayout(page);
     page.querySelectorAll('.tw-input,.tw-output').forEach(panel=>{panel.querySelector('h2')?.classList.add('tw-panel-title');});
+    const isMotion=page.classList.contains('tm-page');
     page.querySelectorAll(':scope > p:not([role]):not([id])').forEach((note,index)=>{
-      if(/演示|Demo|本机/.test(note.textContent))fold(note,'演示说明 · 未接入 AI','demo-'+index);
+      if(!/演示|Demo|本机/.test(note.textContent))return;
+      // The demo notice folds away on Image to Motion and is dropped elsewhere.
+      if(isMotion)fold(note,'演示说明 · 未接入 AI','demo-'+index);else note.remove();
     });
+    // Shared header component: every other tool page reuses Image to Motion's link.
+    if(!isMotion){
+      const heading=page.querySelector('.ts-heading');
+      const current=heading&&[...heading.querySelectorAll('a')].find(a=>/assets/.test(a.getAttribute('href')||''));
+      if(current&&!current.classList.contains('tw-asset-link'))current.outerHTML=assetLibraryLink();
+    }
     fold(page.querySelector('.oc-profile'),'人物介绍与设定','profile');
     fold(page.querySelector('.oc-profile-dialogue'),'调整人物介绍','profile-edit');
     fold(page.querySelector('.oc-outfit'),'更换服饰与配饰','outfit');
@@ -144,7 +154,9 @@
     page.querySelectorAll('.tc-compare,.opt-comparison,.tl-compare').forEach(comparison);
     page.querySelectorAll('.oc-base-board').forEach(characterGallery);
     uploads(page);
-    // Keep a single sample action for each operation; the input-side action stays available after generation.
+    // Sticker opens on a ready character, so its extra sample trigger is redundant.
+    // PNGTuber keeps its sample: the slot moves it under the empty panel.
+    page.querySelectorAll('[data-sticker="sample"]').forEach(button=>button.remove());
     const samples=new Map();
     page.querySelectorAll('button').forEach(button=>{
       const entry=Object.entries(button.dataset).find(([key,value])=>['draw','tm','tr','sticker','cut','vo','opt'].includes(key)&&['sample','sample-text'].includes(value));
@@ -156,7 +168,350 @@
         [...button.parentElement.children].filter(node=>node!==button&&node.tagName==='BUTTON'&&node.textContent.includes('下载')).forEach(node=>{node.classList.remove('primary');node.classList.add('ghost');});
         button.classList.remove('ghost');button.classList.add('primary');button.parentElement.classList.add('tw-delivery-actions');}
     });
+    slots(page);
+    // Once a slot hosts the sample trigger, the stray one in the header is redundant.
+    page.querySelectorAll('[data-png="sample"]').forEach(button=>{if(!button.closest('.tw-slot'))button.remove();});
+    menus(page);
+    ocPanels(page);
+    inkButtons(page);
+    backControl(page);
+    segmented(page);
     mediaWorkspace(page);emptyCanvas(page);
   }
-  window.ToolDetailLayout={enhance};
+  /* Buttons that are already ink on white keep their fill on hover; only the
+     lift animation changes, so no accent tint creeps in. */
+  /* Image to Motion's floating Go Back trigger duplicates the header link, so it
+     is removed; every page keeps the original text link plus a small arrow. */
+  function backControl(page){
+    page.querySelectorAll('.tm-back-button,[data-tm="back"]').forEach(node=>node.remove());
+    const link=page.querySelector('.ts-heading a[href="#/app/tools"]');
+    if(!link||link.classList.contains('tw-back-link'))return;
+    link.classList.add('tw-back-link');
+    const icon=svgIcon('<path d="m14 5-7 7 7 7M7 12h14"/>');
+    icon.setAttribute('class','tw-back-arrow');
+    link.prepend(icon);
+  }
+  /* Mutual-exclusive option rows adopt Image to Motion's segmented control.
+     Content grids (thumbnails, presets, action rows) keep their own layout. */
+  const SEGMENTED_SKIP='.oc-base-board,.pn-states,.pn-actions,.pn-background,.perf-presets,.perf-cards,.tr-suggestions,'+
+    '.tr-operations,.stk-presets,.stk-card-grid,.vo-examples,.bgm-examples,.pn-suggestions,.tm-page';
+  function segmented(page){
+    page.querySelectorAll('[aria-pressed]').forEach(button=>{
+      const box=button.parentElement;
+      if(!box||box.classList.contains('tw-segmented'))return;
+      if(box.closest(SEGMENTED_SKIP)||box.closest('.tm-page'))return;
+      const kids=[...box.children].filter(child=>child.matches?.('button,[role="button"],[aria-pressed]'));
+      if(kids.length<2||kids.length>3)return;
+      if(kids.some(child=>child.querySelector('img,video,canvas')))return;
+      if(kids.some(child=>!child.hasAttribute('aria-pressed')))return;
+      box.classList.add('tw-segmented');
+    });
+  }
+  function inkButtons(page){
+    page.querySelectorAll('button,a.cm-button,[role="tab"]').forEach(element=>{
+      if(element.classList.contains('tw-menu-button'))return;
+      const value=getComputedStyle(element).backgroundColor||'';
+      const parts=value.match(/[\d.]+/g);
+      if(!parts||parts.length<3)return;
+      const alpha=parts.length>3?Number(parts[3]):1;
+      if(alpha<0.5)return;
+      const [r,g,b]=parts.map(Number);
+      const luminance=(0.299*r+0.587*g+0.114*b)/255;
+      if(luminance<0.3)element.setAttribute('data-tw-ink','');
+      else element.removeAttribute('data-tw-ink');
+    });
+  }
+
+  /* Upload slot: Image to Motion's empty panel + action row + hover Remove. */
+  const ICON_UPLOAD='<path d="M12 16V3m-4 4 4-4 4 4M4 15v5h16v-5"/>';
+  const ICON_LIBRARY='<path d="m12 3-9 4.5 9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5l9 4.5 9-4.5"/>';
+  const ICON_DOTS='<circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/>';
+  function svgIcon(paths){
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+    svg.setAttribute('class','tw-slot-icon');
+    svg.innerHTML=paths;return svg;
+  }
+  const slotKey=slot=>location.hash.split('?')[0]+'#'+(slot.dataset.twIndex||'0');
+  function paintSlot(slot){
+    const refs=slot.tw;if(!refs)return;
+    const url=slotMedia.get(slotKey(slot));
+    // Compare before writing: idempotent so the observer never sees phantom edits.
+    const hide=(node,value)=>{if(node&&node.hidden!==value)node.hidden=value;};
+    hide(refs.sample,!!url);
+    if(url){
+      if(refs.image.getAttribute('src')!==url)refs.image.src=url;
+      hide(refs.image,false);hide(refs.media,false);hide(refs.empty,true);
+    }else{
+      if(refs.image.hasAttribute('src'))refs.image.removeAttribute('src');
+      hide(refs.image,true);hide(refs.media,true);hide(refs.empty,false);
+    }
+  }
+  /* Saved images available in the Asset Library, flattened to one entry per frame. */
+  function assetSources(){
+    const result=[],seen=new Set(),L=window.StudioLibraryModel;
+    let assets=[];
+    try{assets=window.StudioLibrary?.load()?.assets||[];}catch{assets=[];}
+    for(const asset of assets){
+      if(asset.state&&asset.state!=='active')continue;
+      if(L?.categoryOf&&!['角色','场景','道具','图片与漫画'].includes(L.categoryOf(asset)))continue;
+      const frames=Object.entries(asset.version?.images||{});
+      if(asset.image)frames.unshift(['image',asset.image]);
+      for(const [part,value] of frames){
+        const src=L?.imageOf?L.imageOf(value,asset.owner?.startsWith('comic:')):value;
+        if(!src||typeof src!=='string'||seen.has(src))continue;
+        seen.add(src);result.push({key:asset.key+':'+part,name:asset.name||'Untitled image',src});
+      }
+    }
+    return result;
+  }
+  let libraryPicker=null;
+  function openLibrary(slot){
+    const site=window.Site;
+    if(!site?.modal)return;
+    const entries=assetSources();
+    const esc=value=>String(value).replace(/[&<>"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
+    site.modal('Asset Library',
+      entries.length
+        ? `<div class="tw-picker"><div class="tw-picker-grid">${entries.map((entry,index)=>`<button type="button" class="tw-picker-choice" data-tw-asset="${index}"><img src="${esc(entry.src)}" alt="" loading="lazy"><span>${esc(entry.name)}</span></button>`).join('')}</div></div>`
+        : '<div class="tw-picker"><p class="tw-picker-empty">No image assets yet. Save an image to the Asset Library first.</p></div>',
+      '<button type="button" class="cm-button ghost" data-tw-asset="cancel">Cancel</button>',true);
+    libraryPicker={slot,entries};
+  }
+  document.addEventListener('click',async event=>{
+    const node=event.target.closest?.('[data-tw-asset]');
+    if(!node)return;
+    event.preventDefault();event.stopImmediatePropagation();
+    const picker=libraryPicker;
+    if(node.dataset.twAsset==='cancel'){libraryPicker=null;window.Site?.close?.();return;}
+    const entry=picker?.entries[Number(node.dataset.twAsset)];
+    if(!picker||!entry)return;
+    libraryPicker=null;
+    window.Site?.close?.();
+    const slot=picker.slot;
+    slotMedia.set(slotKey(slot),entry.src);
+    paintSlot(slot);
+    // Feed the page the same way a local upload would, when the bytes are reachable.
+    const input=slot.querySelector('input[type=file]');
+    if(!input)return;
+    try{
+      const file=await pngFile(entry.src,entry.name);
+      if(file){
+        const transfer=new DataTransfer();
+        transfer.items.add(file);
+        input.files=transfer.files;
+        input.dispatchEvent(new Event('input',{bubbles:true}));
+        input.dispatchEvent(new Event('change',{bubbles:true}));
+      }
+    }catch{/* Preview already shows the asset; the page keeps its own state. */}
+  },true);
+  /* Assets may be WebP or JPEG; the pages validate PNG, so re-encode before handing over. */
+  async function pngFile(src,name){
+    const image=await new Promise((resolve,reject)=>{
+      const node=new Image();
+      node.onload=()=>resolve(node);
+      node.onerror=()=>reject(new Error('load'));
+      node.src=src;
+    });
+    let scale=Math.min(1,1400/Math.max(image.naturalWidth||1,image.naturalHeight||1));
+    for(let attempt=0;attempt<5;attempt++){
+      const width=Math.max(1,Math.round((image.naturalWidth||1)*scale));
+      const height=Math.max(1,Math.round((image.naturalHeight||1)*scale));
+      const canvas=document.createElement('canvas');canvas.width=width;canvas.height=height;
+      canvas.getContext('2d').drawImage(image,0,0,width,height);
+      const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));
+      if(blob&&blob.size<=2.8*1024*1024)return new File([blob],(name||'asset').replace(/\.[a-z0-9]+$/i,'')+'.png',{type:'image/png'});
+      scale*=0.7;
+    }
+    return null;
+  }
+  function clearSlot(slot){
+    slotMedia.delete(slotKey(slot));
+    const input=slot.querySelector('input[type=file]');
+    if(input)input.value='';
+    paintSlot(slot);
+    input?.dispatchEvent(new Event('change',{bubbles:true}));
+  }
+  function buildSlot(label,index,sample){
+    const slot=document.createElement('section');slot.className='tw-slot';slot.dataset.twIndex=String(index);
+    const preview=document.createElement('div');preview.className='tw-slot-preview';
+    const empty=document.createElement('p');empty.className='tw-slot-empty';
+    const media=document.createElement('div');media.className='tw-slot-media';media.hidden=true;
+    const image=document.createElement('img');image.alt='';image.hidden=true;
+    const remove=document.createElement('button');remove.type='button';remove.className='cm-button tw-remove';remove.textContent='Remove';
+    media.append(image,remove);preview.append(empty,media);
+    const actions=document.createElement('div');actions.className='tw-slot-actions';
+    label.before(slot);slot.append(preview);actions.append(label);
+    // Asset Library opens a picker of saved images instead of leaving the page.
+    const library=document.createElement('button');
+    library.type='button';
+    library.className='cm-button ghost tw-library-button';
+    library.setAttribute('aria-label','Asset Library');
+    library.append(svgIcon(ICON_LIBRARY));
+    const libText=document.createElement('span');libText.textContent='Asset Library';library.append(libText);
+    library.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();openLibrary(slot);});
+    actions.append(library);
+    // Only the image's own hover control removes it; no duplicate row button.
+    slot.append(actions);
+    slot.tw={preview,empty,media,image,remove,sample:null};
+    if(sample&&!sample.closest('.tw-slot')){preview.append(sample);slot.tw.sample=sample;}
+    remove.addEventListener('click',event=>{event.preventDefault();event.stopPropagation();clearSlot(slot);});
+    // Delegated in the capture phase: the tool pages stop `change` at the document
+    // level, so the earlier `input` event keeps the slot in sync after a pick.
+    const picked=event=>{
+      const input=event.target;
+      if(!input||input.type!=='file')return;
+      const file=input.files&&input.files[0];
+      if(!file){slotMedia.delete(slotKey(slot));paintSlot(slot);return;}
+      slotMedia.set(slotKey(slot),URL.createObjectURL(file));
+      paintSlot(slot);
+    };
+    slot.addEventListener('input',picked,true);
+    slot.addEventListener('change',picked,true);
+    return slot;
+  }
+  function decorate(label,index){
+    const input=label.querySelector(':scope>input[type=file]');
+    if(!input)return;
+    if(label.classList.contains('tw-upload-button')&&label.querySelector(':scope>span')&&label.querySelector(':scope>.tw-slot-icon'))return;
+    const captionText=index===0?'Upload Image':'Upload Reference';
+    [...label.childNodes].forEach(node=>{if(node!==input)node.remove();});
+    label.classList.remove('tw-dropzone');
+    label.classList.add('tw-upload','tw-upload-button');
+    label.prepend(svgIcon(ICON_UPLOAD));
+    const caption=document.createElement('span');caption.textContent=captionText;
+    label.insertBefore(caption,input);
+    input.setAttribute('aria-label',captionText);
+  }
+  function slots(page){
+    if(page.classList.contains('tm-page'))return;
+    const labels=[...page.querySelectorAll('label')].filter(label=>label.querySelector(':scope>input[type=file]'));
+    if(!labels.length)return;
+    const sample=[...page.querySelectorAll('button')].find(button=>{
+      if(button.closest('.tw-slot'))return false;
+      const flags=Object.entries(button.dataset).map(([key,value])=>key+'='+value).join(' ');
+      return /sample/.test(flags)||/^(试用|使用)示例/.test(button.textContent.trim());
+    });
+    labels.forEach((label,index)=>{
+      const slot=label.closest('.tw-slot')||buildSlot(label,index,index===0?sample:null);
+      const index$=String(index);
+      if(slot.dataset.twIndex!==index$)slot.dataset.twIndex=index$;
+      // Adopt the page's own thumbnail once, then let the slot own the preview.
+      const thumb=label.querySelector('img[src]');
+      if(thumb&&!slotMedia.get(slotKey(slot))){
+        const src=thumb.getAttribute('src');
+        if(src)slotMedia.set(slotKey(slot),src);
+      }
+      decorate(label,index);
+      const empty=slot.querySelector('.tw-slot-empty');
+      const emptyText=index===0?'No image added yet.':'No reference added yet.';
+      if(empty&&empty.textContent!==emptyText)empty.textContent=emptyText;
+      paintSlot(slot);
+    });
+    observe();
+  }
+  let slotObserver=null,slotTimer=0;
+  function observe(){
+    if(slotObserver)return;
+    slotObserver=new MutationObserver(()=>{
+      clearTimeout(slotTimer);
+      slotTimer=setTimeout(()=>{
+        const page=document.querySelector('.ts-page');
+        if(page&&page.classList.contains('tw-detail'))slots(page);
+      },80);
+    });
+    slotObserver.observe(document.body,{childList:true,subtree:true});
+  }
+  /* Collapsible notes become the same three-dot menu used by Image to Motion. */
+  function menus(page){
+    if(page.classList.contains('tm-page'))return;
+    page.querySelectorAll('details.tw-disclosure, .ts-panel details').forEach(details=>{
+      if(details.dataset.twMenu)return;
+      // The upload slot and the Motion page own their own menus.
+      if(details.classList.contains('tw-frame-menu')||details.closest('.tw-slot'))return;
+      const summary=details.querySelector(':scope>summary');
+      if(!summary)return;
+      details.dataset.twMenu='true';
+      details.classList.add('tw-menu');
+      const label=(summary.textContent||'').trim()||'More options';
+      const panel=document.createElement('div');panel.className='tw-menu-panel';
+      [...details.children].forEach(node=>{if(node!==summary&&node.tagName!=='SUMMARY')panel.append(node);});
+      details.append(panel);
+      summary.textContent='';
+      const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
+      svg.setAttribute('class','tw-menu-dots');
+      [5,12,19].forEach(x=>{const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',String(x));dot.setAttribute('cy','12');dot.setAttribute('r','1.6');svg.append(dot);});
+      summary.append(svg);
+      summary.classList.add('cm-button','ghost','tw-menu-button');
+      summary.setAttribute('aria-label',label);
+      summary.setAttribute('data-tooltip',label);
+    });
+    if(!page.dataset.twMenuClose){
+      page.dataset.twMenuClose='true';
+      document.addEventListener('click',event=>{if(event.target.closest('.tw-menu'))return;page.querySelectorAll('.tw-menu[open]').forEach(node=>{node.open=false;});},true);
+      document.addEventListener('keydown',event=>{if(event.key!=='Escape')return;page.querySelectorAll('.tw-menu[open]').forEach(node=>{node.open=false;});},true);
+    }
+    mergeMenus(page);
+  }
+  /* OC sheet: Outfit and Character Intro are peers, so they sit side by side
+     on their own tinted surfaces instead of nesting in each other's menu. */
+  function ocPanels(page){
+    if(!page.classList.contains('oc-page'))return;
+    // The page's own reference card duplicates the upload slot and its remove action.
+    page.querySelectorAll('.oc-outfit-ref,[data-oc="outfit-remove"]').forEach(node=>node.remove());
+    const output=page.querySelector('.oc-output')||page;
+    const menus=[...output.querySelectorAll('.tw-menu')].filter(menu=>menu.querySelector('.oc-outfit,.oc-profile'));
+    if(!menus.length)return;
+    menus.forEach(menu=>{
+      if(!menu.open)menu.open=true;
+      const summary=menu.querySelector(':scope>summary');
+      if(summary&&!summary.hidden)summary.hidden=true;
+    });
+    let pair=output.querySelector(':scope>.tw-oc-pair');
+    if(!pair){pair=document.createElement('div');pair.className='tw-oc-pair';menus[0].before(pair);}
+    menus.forEach(menu=>{if(menu.parentElement!==pair)pair.append(menu);});
+  }
+  /* Two stacked ⋯ triggers become one: the second panel moves inside the first
+     and the options sit side by side instead of doubling the button. */
+  function mergeMenus(page){
+    const menus=[...page.querySelectorAll('.tw-menu')];
+    const absorbed=new Set();
+    menus.forEach((menu,index)=>{
+      if(absorbed.has(menu))return;
+      const next=menus[index+1];
+      if(!next||absorbed.has(next))return;
+      // The OC peers stay separate so they can sit in parallel columns.
+      if(menu.querySelector('.oc-outfit,.oc-profile')||next.querySelector('.oc-outfit,.oc-profile'))return;
+      const box=menu.getBoundingClientRect(),nextBox=next.getBoundingClientRect();
+      if(!box.height||!nextBox.height)return;
+      if(Math.abs(box.left-nextBox.left)>6)return;
+      if(nextBox.top-box.bottom>90)return;
+      const target=[...menu.children].find(node=>node.classList?.contains('tw-menu-panel'));
+      const source=[...next.children].find(node=>node.classList?.contains('tw-menu-panel'));
+      if(!target||!source)return;
+      const item=document.createElement('div');item.className='tw-menu-item';
+      [...source.children].forEach(node=>item.append(node));
+      if(!item.querySelector('label,h2,h3')){
+        const caption=document.createElement('small');caption.className='tw-menu-caption';
+        caption.textContent=next.querySelector(':scope>summary')?.getAttribute('aria-label')||'';
+        if(caption.textContent)item.prepend(caption);
+      }
+      target.append(item);
+      absorbed.add(next);
+      next.remove();
+    });
+  }
+  /* Shared header component: the Asset Library link used by the .tw-v2 pages.
+     Keeps the .tm-asset-link class so Image to Motion's existing icon motion
+     still applies while generic pages pick up the shared sizing. */
+  function assetLibraryLink(){
+    return '<a class="cm-button ghost tw-asset-link tm-asset-link" href="#/app/assets?assetSource=tools">'
+      + '<svg class="tm-asset-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" focusable="false">'
+      + '<path d="M8.64298 3.14559L6.93816 3.93362C4.31272 5.14719 3 5.75397 3 6.75C3 7.74603 4.31272 8.35281 6.93817 9.56638L8.64298 10.3544C10.2952 11.1181 11.1214 11.5 12 11.5C12.8786 11.5 13.7048 11.1181 15.357 10.3544L17.0618 9.56638C19.6873 8.35281 21 7.74603 21 6.75C21 5.75397 19.6873 5.14719 17.0618 3.93362L15.357 3.14559C13.7048 2.38186 12.8786 2 12 2C11.1214 2 10.2952 2.38186 8.64298 3.14559Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>'
+      + '<path d="M20.788 11.0972C20.9293 11.2959 21 11.5031 21 11.7309C21 12.7127 19.6873 13.3109 17.0618 14.5072L15.357 15.284C13.7048 16.0368 12.8786 16.4133 12 16.4133C11.1214 16.4133 10.2952 16.0368 8.64298 15.284L6.93817 14.5072C4.31272 13.3109 3 12.7127 3 11.7309C3 11.5031 3.07067 11.2959 3.212 11.0972" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>'
+      + '<path d="M20.3767 16.2661C20.7922 16.5971 21 16.927 21 17.3176C21 18.2995 19.6873 18.8976 17.0618 20.0939L15.357 20.8707C13.7048 21.6236 12.8786 22 12 22C11.1214 22 10.2952 21.6236 8.64298 20.8707L6.93817 20.0939C4.31272 18.8976 3 18.2995 3 17.3176C3 16.927 3.20778 16.5971 3.62334 16.2661" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>'
+      + '</svg><span>Asset Library</span></a>';
+  }
+  window.ToolDetailLayout={enhance,assetLibraryLink};
 })();
