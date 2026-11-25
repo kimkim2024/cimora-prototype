@@ -1,0 +1,21 @@
+{
+  "note": "known heavy assets, regenerated with --write-baseline",
+  "assets": {
+    "assets/cta-banner.png": 2431378,
+    "assets/mini-tools-arcade.png": 2761251,
+    "assets/oc-dress-up.png": 2259355,
+    "assets/room-day.png": 2670867,
+    "assets/room-night.mp4": 12842560,
+    "assets/room-night.png": 2634332,
+    "assets/avatar-1.png": 342846,
+    "assets/avatar-3.png": 347701,
+    "assets/comic-creation-square.png": 1725594,
+    "assets/hero-1.jpg": 429537,
+    "assets/oc-character.png": 500832,
+    "assets/studio-cimora-logo.png": 1408623,
+    "assets/tombstone.png": 521790,
+    "assets/work-02.jpg": 314707,
+    "assets/work-03.jpg": 343902,
+    "assets/workflow-robot.png": 395848
+  }
+}

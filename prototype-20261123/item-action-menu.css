@@ -1,0 +1,33 @@
+/* The menu is positioned against the nearest positioned ancestor. */
+.cm-item-actions{display:inline-flex}
+.cm-item-actions-trigger{display:inline-grid;place-items:center;width:28px;height:28px;padding:5px;border:0;border-radius:7px;background:transparent;color:inherit;cursor:pointer}
+.cm-item-actions :is(.cm-item-actions-trigger,.cm-item-actions-menu button) svg{display:block;width:15px;height:15px;pointer-events:none}
+.cm-item-actions-menu{
+  position:absolute;z-index:3;inset-block-start:calc(100% + 6px);inset-inline-end:8px;
+  width:max-content;max-width:calc(100% - 16px);box-sizing:border-box;padding:5px;
+  border:1px solid #dce4d1;border-radius:24px;background:#fbfdf7f5;
+  box-shadow:inset 0 1px #fff,0 10px 25px #23321829;backdrop-filter:blur(14px);
+}
+.cm-item-actions-menu:has(.cm-item-actions-form:not([hidden])){width:290px}
+.cm-item-actions-menu :is(.cm-item-actions-options,.cm-item-actions-form,.cm-item-actions-controls){display:flex;align-items:center;gap:4px;min-width:0}
+.cm-item-actions :is(.cm-item-actions-menu,.cm-item-actions-options,.cm-item-actions-form)[hidden]{display:none}
+.cm-item-actions-menu button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;flex:none;
+  width:34px;height:34px;padding:0;border:0;border-radius:999px;
+  background:#edf2e7;color:#334026;font:inherit;font-size:12px;cursor:pointer;
+}
+.cm-item-actions-menu .cm-item-actions-labelled{width:auto;justify-content:flex-start;padding:0 11px;background:#fff;white-space:nowrap}
+.cm-item-actions-menu button:hover{background:#e4f2ce}
+.cm-item-actions-controls button[type="submit"]{background:#e3f4e4;color:#236a3a}
+.cm-item-actions-controls button[type="submit"]:hover{background:#cee9d2}
+.cm-item-actions-controls button[data-item-action="cancel"]{background:#fbe8e7;color:#a83335}
+.cm-item-actions-controls button[data-item-action="cancel"]:hover{background:#f6d6d5}
+.cm-item-actions-menu button[data-item-action="archive"]:hover{background:#fce9e7;color:#9f3f37}
+.cm-item-actions-menu button:focus-visible{outline:2px solid #586e38;outline-offset:-2px}
+.cm-item-actions-menu .cm-item-actions-form input{flex:1;min-width:0;width:100%;height:34px;margin:0;padding:4px 9px;border:1px solid #d4dfc7;border-radius:999px;background:#fff;font-size:12px}
+@media(prefers-reduced-motion:no-preference){
+  .cm-item-actions-menu:not([hidden]){animation:cm-item-actions-enter 210ms ease-out both}
+  .cm-item-actions-form:not([hidden]) .cm-item-actions-controls{animation:cm-item-actions-controls-enter 180ms ease-out both}
+  @keyframes cm-item-actions-enter{from{opacity:0;transform:translateY(-8px)}}
+  @keyframes cm-item-actions-controls-enter{from{opacity:0;transform:translateX(6px)}}
+}

@@ -1,0 +1,71 @@
+/* Shared pill surface for stage selectors and single-choice category filters. */
+:root {
+  --cm-segment-fill: linear-gradient(100deg, #ddf7a6, #c6ea73);
+}
+:is(#hm-type, .cm-segmented-control, .cm-segment-group) {
+  box-sizing: border-box;
+  padding: 4px;
+  gap: 0;
+  border: 1px solid #e2e8d9;
+  border-radius: 999px;
+  background: #fbfdf6;
+  box-shadow: 0 3px 10px rgb(54 73 30 / 7%);
+}
+.cm-segment-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: fit-content;
+  max-width: 100%;
+}
+.cm-segmented-control {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(var(--segment-count), minmax(0, 1fr));
+  width: 100%;
+}
+.cm-segmented-control::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 4px auto 4px 4px;
+  width: calc((100% - 8px) / var(--segment-count));
+  transform: translateX(calc(var(--segment-index) * 100%));
+  transition: transform 180ms ease-out;
+}
+.cm-segmented-control::before {
+  border-radius: 999px;
+  background: var(--cm-segment-fill);
+  box-shadow: none;
+}
+:is(#hm-type, .cm-segmented-control, .cm-segment-group) > :is(button, a) {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 36px;
+  margin: 0;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #50564a;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+:is(#hm-type, .cm-segmented-control) > button { min-height: 40px; padding-inline: 8px; }
+:is(#hm-type, .cm-segmented-control, .cm-segment-group) > :is(.selected, .active, [aria-pressed=true], [aria-selected=true], [aria-current=page]) { color: #29351f; }
+:is(#hm-type, .cm-segment-group):not(.cm-segmented-control) > :is(.selected, .active, [aria-pressed=true], [aria-selected=true], [aria-current=page]) { background: var(--cm-segment-fill); }
+@media (hover: hover) {
+  :is(#hm-type, .cm-segmented-control, .cm-segment-group) > :is(button, a):not(.selected, .active, [aria-pressed=true], [aria-selected=true], [aria-current=page]):hover { background: #eff4e6; }
+}
+:is(#hm-type, .cm-segmented-control, .cm-segment-group) > :is(button, a):focus-visible { outline: 2px solid #57732e; outline-offset: -2px; }
+@media (max-width: 600px) {
+  :is(#hm-type, .cm-segmented-control) > button { font-size: 11px; padding-inline: 4px; min-height: 44px; }
+  .cm-segment-group { border-radius: 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .cm-segmented-control::before { transition: none; } }

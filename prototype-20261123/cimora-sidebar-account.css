@@ -1,0 +1,77 @@
+/* Compact credit gauge and glass account strip; scoped to the sidebar. */
+.cm-sidebar .cm-user-card{
+  --credit-accent:#63813b;
+  min-width:0;margin:0 0 10px;display:grid;gap:7px;
+  color:#171717;container-type:inline-size;
+}
+.cm-sidebar .cm-credit-gauge{
+  position:relative;isolation:isolate;aspect-ratio:1.75;
+  overflow:hidden;
+}
+.cm-sidebar .cm-account-icon{
+  position:absolute;z-index:2;top:10px;width:25px;height:25px;
+  display:grid;place-items:center;border-radius:50%;
+  border:1px solid #bcc9ac;background:#f5f8ef;color:#3d572b!important;
+  text-decoration:none;transition:background .18s ease;
+}
+.cm-sidebar .cm-account-settings{left:9px}
+.cm-sidebar .cm-account-wallet{right:9px}
+.cm-sidebar .cm-account-icon svg{width:16px;height:16px;display:block}
+.cm-sidebar .cm-account-icon:hover{background:#dce9cb}
+.cm-sidebar .cm-gauge-label{
+  position:absolute;top:15px;left:36px;right:36px;text-align:center;
+  color:#495940;font-size:7px;letter-spacing:1.1px;text-transform:uppercase;
+}
+.cm-sidebar .cm-gauge-arc{position:absolute;bottom:3px;left:14%;width:72%;height:auto;overflow:visible}
+.cm-sidebar :is(.cm-gauge-track,.cm-gauge-fill){fill:none;stroke-width:18;stroke-linecap:round}
+.cm-sidebar .cm-gauge-track{stroke:#d0dac6}
+.cm-sidebar .cm-gauge-fill{stroke:var(--credit-accent)}
+.cm-sidebar .cm-gauge-start{stop-color:var(--account-mint)}
+.cm-sidebar .cm-gauge-end{stop-color:var(--account-green)}
+.cm-sidebar .cm-gauge-dot{fill:#fff;stroke:var(--credit-accent);stroke-width:4}
+.cm-sidebar .cm-user-card-pct{
+  position:absolute;left:0;right:0;bottom:12%;text-align:center;
+  font-size:clamp(17px,13cqi,26px);font-weight:600;line-height:1.1;
+  letter-spacing:-.6px;color:#24331e!important;pointer-events:none;
+}
+.cm-sidebar :is(.cm-account-profile,.cm-credit-gauge){
+  border:1px solid #bcc9ac;border-radius:22px;
+  background:
+    radial-gradient(ellipse at 12% 22%,rgb(211 230 178 / 62%),transparent 68%),
+    linear-gradient(150deg,rgb(235 241 226 / 78%),rgb(237 240 234 / 58%));
+  -webkit-backdrop-filter:blur(20px) saturate(1.15);backdrop-filter:blur(20px) saturate(1.15);
+  box-shadow:inset 0 1px 0 rgb(255 255 255 / 92%),0 4px 10px -6px rgb(40 58 25 / 28%);
+}
+.cm-sidebar .cm-account-profile{
+  --account-green:#acd83d;flex-shrink:0;
+  display:grid;grid-template-columns:26px minmax(0,1fr) auto 6px;align-items:center;gap:5px;
+  min-width:0;min-height:49px;padding:9px 7px;
+  color:#171717!important;text-decoration:none;
+}
+.cm-sidebar .cm-account-profile:hover{border-color:#a1b38d}
+.cm-sidebar .cm-account-avatar{width:26px;height:26px;border:1px solid var(--account-green);border-radius:50%;object-fit:cover;display:block}
+.cm-sidebar .cm-account-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:600;color:#252b20}
+.cm-sidebar .cm-account-plan{padding:2px 5px;border-radius:999px;border:1px solid #a9cc744d;background:#ddf4ad80;color:#496521;font-size:8px;font-weight:600;white-space:nowrap;max-width:65px;overflow:hidden;text-overflow:ellipsis}
+.cm-sidebar .cm-account-chevron{display:block;width:6px;height:12px;color:#747d69}
+.cm-sidebar :is(.cm-user-card a,.cm-account-profile):focus-visible{outline:2px solid #526b24;outline-offset:2px}
+.cm-sidebar .cm-user-card[data-low="true"]{--credit-accent:#96621d}
+@media(prefers-reduced-motion:reduce){.cm-sidebar .cm-account-icon{transition:none}}
+
+/* Colored Hugeicons in the workspace navigation. */
+.cm-sidebar svg[data-hugeicon] {
+  color:var(--icon-ink);
+  fill:var(--icon-tint);
+}
+.cm-sidebar [data-hugeicon="DashboardSquare01"] { --icon-ink:#58409b; --icon-tint:#e5dafc; }
+.cm-sidebar [data-hugeicon="Folder02"]          { --icon-ink:#865308; --icon-tint:#ffdb82; }
+.cm-sidebar [data-hugeicon="Layers01"]          { --icon-ink:#205792; --icon-tint:#beddff; }
+.cm-sidebar [data-hugeicon="Task01"]            { --icon-ink:#175d43; --icon-tint:#bdebd1; }
+.cm-sidebar [data-hugeicon="PaintBrush01"]      { --icon-ink:#943565; --icon-tint:#ffd0e7; }
+.cm-sidebar [data-hugeicon="PackageDelivered"]  { --icon-ink:#92431d; --icon-tint:#ffd1a6; }
+.cm-sidebar [data-hugeicon="Image02"]           { --icon-ink:#17606c; --icon-tint:#bcebed; }
+.cm-sidebar [data-hugeicon="Store01"]           { --icon-ink:#953c45; --icon-tint:#ffc9cb; }
+.cm-sidebar .cm-account-profile + nav { margin-block-start:20px; }
+
+html body.cimora-app .cm-sidebar .cm-nav-item>.cm-nav-text{display:inline;width:auto;height:auto;color:inherit!important}
+
+.cm-sidebar .cm-logout{width:100%;border:0;background:transparent;text-align:left;cursor:pointer;font-family:inherit}
