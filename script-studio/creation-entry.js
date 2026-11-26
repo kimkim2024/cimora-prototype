@@ -28,7 +28,8 @@ function view(p,h,config){
  const fileInput=`<input id="${prefix}-file" type="file" accept=".txt,.md,.docx" aria-label="Upload a story file" ${disabled}>`;
  const guidance=config.guidance||(manual?(input!=='idea'&&value.trim()?'Bring in your existing text, then write the synopsis and character profiles.':'Start with a blank synopsis and ask AI for help anytime.'):(kind==='漫画'?'Choose a page format to use for comic layouts and generation.':'Set the chapter count and length before planning your story.'));
  const compact=config.compactComposer;
- const videoPlanning=compact&&prefix==='vp';
+ const canvasCaption=compact&&prefix==='vp';
+ const intro=kind==='漫画'?'Start with a story and plan how it unfolds in panels.':'Start with an idea and develop it into a story.';
  const inputMethods=[['idea','Describe an idea','spark'],['paste','Paste story text','edit'],['upload','Upload a file','attach']];
  const inputButtons=(menu=false)=>inputMethods.map(([key,label,glyph])=>{
    const attach=menu&&key==='upload';
@@ -37,24 +38,24 @@ function view(p,h,config){
  const inputToolbar=compact?
    `<div class="as-entry-source"><details><summary aria-label="Add story input" title="Add story input"><span aria-hidden="true">+</span></summary><div class="as-entry-source-menu" role="group" aria-label="Story input method">${inputButtons(true)}</div></details>${input!=='upload'?'<div hidden>'+fileInput+'</div>':''}</div>`:
    `<div class="vp-input-tabs" role="group" aria-label="Story input method">${inputButtons()}</div>`;
- const storySettings=`<div class="as-entry-settings vp-story-settings${compact?' as-entry-setting-pills':''}">${fields.map(([key,label,glyph,placeholder])=>`<details class="as-entry-setting"><summary>${icon(glyph)}<span>${label}</span><span class="as-setting-dot" ${p.settings[key]?'':'hidden'}></span></summary><div class="as-setting-popover"><label>${label}<input data-entry-setting="${key}" value="${E(p.settings[key]||'')}" placeholder="${placeholder}" ${disabled}></label><span>Optional</span></div></details>`).join('')}${extra}</div>`;
+ const storySettings=`<div class="as-entry-settings vp-story-settings${compact?' as-entry-setting-pills':''}">${fields.map(([key,label,glyph,placeholder])=>`<details class="as-entry-setting"><summary>${icon(glyph)}<span>${label}</span><span class="as-setting-dot" ${p.settings[key]?'':'hidden'}></span></summary><div class="as-setting-popover"><label>${label}<input data-entry-setting="${key}" value="${E(p.settings[key]||'')}" placeholder="${placeholder}" ${disabled}></label><span>Optional</span></div></details>`).join('')}</div>`;
  const entryActions=`<div class="vp-mode" role="group" aria-label="Creation mode">${btn(icon('spark')+'Create with AI',prefix+'-mode',!manual?'active':'',`data-key="agent" aria-pressed="${!manual}" ${disabled}`)}${btn(icon('person')+'Write manually',prefix+'-mode',manual?'active':'',`data-key="manual" aria-pressed="${manual}" ${disabled}`)}</div>`;
  const visualSettings=settings.length?`<div class="vp-settings">${settings.map(option).join('')}</div>`:'';
  const iconSubmit=compact&&!working&&!manual&&input==='idea';
  const submitLabel=uploadBusy?'Reading…':busy?'Planning…':manual?'Start writing':input==='idea'?'Plan with AI':compact?'Import & continue':'Import text and continue';
  const submit=`<button class="as-btn primary as-entry-send vp-start${iconSubmit?' as-entry-send-icon':''}" type="submit" ${iconSubmit?'aria-label="Plan with AI" title="Plan with AI"':''} ${working||(!manual&&!value.trim())?'disabled':''}>${icon(iconSubmit?'up':'send')}${iconSubmit?'':submitLabel}</button>`;
  const projectLabel='My '+kindLabel+' Projects';
- const projectsButton=videoPlanning?btn(icon('folder')+'<span>My projects</span>','projects','as-entry-projects-icon',`title="${E(projectLabel)}" ${disabled}`):btn(projectLabel,'projects','',disabled);
- const backButton=config.backAction?(videoPlanning?btn(icon('back'),config.backAction,'',`aria-label="Back" title="Back" ${disabled}`):btn('← Back',config.backAction,'',disabled)):'';
- return `<header class="as-entry-header">${config.backAction?`<div class="as-row">${backButton}<h2>Story Planning</h2></div>`:'<h2>Story Planning</h2>'}<div class="as-row">${resume?btn('Back to project',prefix+'-resume','',disabled):''}${projectsButton}</div></header><main class="as-entry-main creation-entry${compact?' as-entry-paper-canvas':''}" aria-label="${kindLabel} creation"><div class="as-entry-content"><h1${videoPlanning?' class="as-entry-video-heading"':''}>${videoPlanning?'<img src="assets/video-planning-cimora-logo.png?v=lime-mascot" width="1254" height="1254" alt="">':''}<span>${kindLabel} Planning</span></h1>${videoPlanning?'<p class="as-entry-intro as-entry-canvas-caption"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m10 9 10 4.5-5.1 1.2-2 4.8L10 9ZM4 4l2 2M9 3v2M3 9h2"/></svg><span>Double-click to enter Canvas</span></p>':'<p class="as-entry-intro">Describe your story idea and use AI to draft its setting and synopsis.</p>'}
+ const projectsButton=compact?btn(icon('folder')+'<span>My projects</span>','projects','as-entry-projects-icon',`title="${E(projectLabel)}" ${disabled}`):btn(projectLabel,'projects','',disabled);
+ const backButton=config.backAction?(compact?btn(icon('back'),config.backAction,'',`aria-label="Back" title="Back" ${disabled}`):btn('← Back',config.backAction,'',disabled)):'';
+ return `<header class="as-entry-header">${config.backAction?`<div class="as-row">${backButton}<h2>${prefix==='vp'?'Story':kindLabel} Planning</h2></div>`:'<h2>Story Planning</h2>'}<div class="as-row">${resume?btn('Back to project',prefix+'-resume','',disabled):''}${projectsButton}</div></header><main class="as-entry-main creation-entry${compact?' as-entry-paper-canvas':''}" aria-label="${kindLabel} creation"><div class="as-entry-content"><h1${compact?' class="as-entry-planning-heading"':''}>${compact?'<img src="assets/video-planning-cimora-logo.png?v=lime-mascot" width="1254" height="1254" alt="">':''}<span>${kindLabel} Planning</span></h1>${canvasCaption?'<p class="as-entry-intro as-entry-canvas-caption"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m10 9 10 4.5-5.1 1.2-2 4.8L10 9ZM4 4l2 2M9 3v2M3 9h2"/></svg><span>Double-click to enter Canvas</span></p>':`<p class="as-entry-intro${compact?' as-entry-canvas-caption':''}">${E(intro)}</p>`}
  <form class="as-entry-composer vp-compose-frame${compact?' as-entry-composer-compact':''}" data-form="${prefix}-start">${inputToolbar}
  ${input==='upload'&&!e.body?`<div class="vp-upload-zone">${fileInput}<div class="vp-upload-content">${icon('book')}<strong>${uploadBusy?'Reading story file…':'Choose a story file or drop it here'}</strong><span>TXT, MD, or DOCX · up to 12 MB</span></div></div>`:`${input==='upload'?`<div class="vp-file-summary">${icon('book')}<strong>${E(e.fileName||'Imported story')}</strong><label class="as-btn vp-file-button">Change file${fileInput}</label>${btn('Remove',prefix+'-clear-file','',disabled)}</div>`:''}<label class="as-sr-only" for="${prefix}-seed">${input==='idea'?'Describe your story idea':'Story text'}</label><textarea id="${prefix}-seed" rows="${compact?4:5}" placeholder="${input==='idea'?'Start with an idea, a character, a scene, or a single line…':'Paste a novel excerpt, story, or script. Your original text will be preserved.'}" ${disabled}>${E(value)}</textarea>${input!=='idea'?`<div class="vp-input-foot" data-${prefix}-count>${value.replace(/\s/g,'').length} characters · Original text preserved</div>`:''}`}
- ${compact?'':storySettings}<div class="vp-entry-options">${compact?`${visualSettings}<div class="as-entry-action-group">${entryActions}${submit}</div>`:`${entryActions}${visualSettings}${submit}`}</div></form>${compact?storySettings:''}
+ ${compact?'':storySettings}<div class="vp-entry-options">${compact?`${visualSettings}<div class="as-entry-action-group">${entryActions}${submit}</div>`:`${entryActions}${visualSettings}${submit}`}</div></form>${compact?storySettings:''}${extra?`<div class="as-entry-extra">${extra}</div>`:''}
  ${busy?`<div class="as-entry-feedback" role="status">${E(busy)} ${btn('Cancel','cancel')}</div>`:''}${notice?`<div class="as-entry-feedback" role="status">${E(notice)}</div>`:''}<p class="vp-entry-guidance">${E(guidance)}${resume?'<br>Starting over creates a new project and keeps your current draft.':''}</p><div class="as-entry-secondary">${btn('Try a sample idea',prefix+'-example','',disabled)}<span aria-hidden="true">·</span><span>Interactive prototype · Sample story</span></div></div></main>`;
 }
-function bindVideoDotHighlight(){
+function bindPlanningDotHighlight(){
  const enabled=matchMedia('(any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference)');
- const selector='.as-root.as-entry:has(.as-entry-video-heading)';
+ const selector='.as-root.as-entry:has(.as-entry-planning-heading)';
  let surface=null,frame=0,x=0,y=0;
  function clear(){
    if(frame)cancelAnimationFrame(frame);
@@ -84,6 +85,6 @@ function bindVideoDotHighlight(){
  enabled.addEventListener('change',clear);
  root.addEventListener('blur',clear);
 }
-if(typeof document!=='undefined')bindVideoDotHighlight();
+if(typeof document!=='undefined')bindPlanningDotHighlight();
 const api={ensure,text,canStart,splitChapters,readFile,begin,view};if(typeof module!=='undefined')module.exports=api;else root.CreationEntry=api;
 })(globalThis);

@@ -124,38 +124,38 @@ html[data-cimora-theme] .as-root .cs-embedded-production .wp-source{top:64px}
 }
 
 /* Continuous chapter editing in the video workspace. */
-.cimora-script-workspace #script-workspace.as-planning.video-planning {
+.cimora-script-workspace #script-workspace.as-planning:is(.video-planning,.comic-overview) {
   grid-template-rows:auto 64px auto minmax(0,1fr);
 }
 .cimora-script-workspace #script-workspace.as-planning.video-chapters {
   --chapter-active-bg:#effacb;
   background:linear-gradient(160deg,var(--ap-bg,#fff) 25%,color-mix(in srgb,var(--ap-bg,#fff) 88%,#c8f24e));
 }
-#script-workspace.video-planning > .as-plan-toolbar{grid-column:1/-1;grid-row:2;justify-content:flex-end;align-self:center;margin:0}
-#script-workspace.video-planning > .vp-stage-toolbar{
+#script-workspace:is(.video-planning,.comic-overview) > .as-plan-toolbar{grid-column:1/-1;grid-row:2;justify-content:flex-end;align-self:center;margin:0}
+#script-workspace:is(.video-planning,.comic-overview) > .vp-stage-toolbar{
   grid-column:1/-1;grid-row:3;display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;
   gap:8px 16px;padding:4px 8px 4px var(--video-inset);margin-bottom:12px;
 }
-#script-workspace.video-planning > .vp-stage-toolbar-overview {
+#script-workspace:is(.video-planning,.comic-overview) > .vp-stage-toolbar-overview {
   align-items:center;
 }
-#script-workspace.video-planning .vp-stage-toolbar-overview > .as-plan-toolbar {
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-overview > .as-plan-toolbar {
   max-width:100%;margin:0 0 0 auto;
 }
-#script-workspace.video-planning .vp-stage-toolbar > #video-editor-stage{
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar > :is(#video-editor-stage,#comic-editor-stage){
   flex:0 1 620px;width:100%;max-width:100%;height:auto;margin:0;
 }
-#script-workspace.video-planning .vp-stage-toolbar > .as-plan-context-actions{
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar > .as-plan-context-actions{
   position:static;min-height:0;margin:7px 0 0 auto;padding:0;
 }
-#script-workspace.video-planning .vp-stage-toolbar-with-actions{align-items:center}
-#script-workspace.video-planning .vp-stage-toolbar-with-actions > .as-plan-context-actions{
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-with-actions{align-items:center}
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-with-actions > .as-plan-context-actions{
   max-width:100%;margin-top:0;background:transparent;
 }
-#script-workspace.video-planning .vp-stage-toolbar-with-actions .as-plan-global-actions{width:auto;margin:0}
-#script-workspace.video-planning .vp-stage-toolbar-with-actions .as-plan-context-actions .as-btn{min-height:38px;white-space:nowrap}
-#script-workspace.video-planning .vp-stage-toolbar-with-actions .as-plan-global-actions .as-btn{padding-inline:10px}
-#script-workspace.video-planning > .as-plan-scroll {grid-row:4}
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-with-actions .as-plan-global-actions{width:auto;margin:0}
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-with-actions .as-plan-context-actions .as-btn{min-height:38px;white-space:nowrap}
+#script-workspace:is(.video-planning,.comic-overview) .vp-stage-toolbar-with-actions .as-plan-global-actions .as-btn{padding-inline:10px}
+#script-workspace:is(.video-planning,.comic-overview) > .as-plan-scroll {grid-row:4}
 #script-workspace.video-chapters > .as-plan-scroll {scrollbar-width:none;scrollbar-gutter:auto}
 .video-chapters .as-chapter-edit-hint {display:none}
 .video-chapters .as-plan-toolbar:not(:has(.as-plan-global-actions button:not([hidden]))) {display:none}
@@ -253,30 +253,30 @@ html[data-cimora-theme] .as-root .cs-embedded-production .wp-source{top:64px}
   #script-workspace.video-chapters .as-chapters-layout{grid-template-columns:minmax(0,1fr) 260px;gap:24px}
 }
 @media(max-width:700px){
-  #script-workspace.video-planning #video-editor-stage button{padding:6px 2px;font-size:11px}
+  #script-workspace:is(.video-planning,.comic-overview) :is(#video-editor-stage,#comic-editor-stage) button{padding:6px 2px;font-size:11px}
 }
 
-#script-workspace.video-planning > .as-guide-sidebar{grid-row:4}
-.video-planning .plan-inline-tags{display:flex;flex-wrap:wrap;gap:8px}
+#script-workspace:is(.video-planning,.comic-overview) > .as-guide-sidebar{grid-row:4}
+:is(.video-planning,.comic-overview) .plan-inline-tags{display:flex;flex-wrap:wrap;gap:8px}
 
-:is(#script-workspace.video-planning :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip{
+:is(#script-workspace:is(.video-planning,.comic-overview) :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip{
   display:inline-flex;align-items:center;gap:8px;min-width:0;min-height:36px;padding:4px 11px 4px 5px;
   background:var(--ap-surface,#fff);color:var(--ap-text,#171717);border:1px solid var(--ap-line,#dedede);
   border-radius:10px;font-weight:600;box-shadow:0 2px 5px #1717170c;
   transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
 }
-:is(.video-planning,.sl-filter-popover) .plan-chip-icon{display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:6px;color:var(--chip-ink);background:color-mix(in srgb,var(--chip-ink) 14%,transparent)}
-:is(.video-planning,.sl-filter-popover) .plan-chip-icon svg{display:block;width:15px;height:15px}
-:is(#script-workspace.video-planning :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:is([aria-pressed="true"],:has(> input:checked)){background:#e9f8bc;border-color:#8aad38;color:#26320e}
+:is(.video-planning,.comic-overview,.sl-filter-popover) .plan-chip-icon{display:inline-grid;place-items:center;flex:none;width:26px;height:26px;border-radius:6px;color:var(--chip-ink);background:color-mix(in srgb,var(--chip-ink) 14%,transparent)}
+:is(.video-planning,.comic-overview,.sl-filter-popover) .plan-chip-icon svg{display:block;width:15px;height:15px}
+:is(#script-workspace:is(.video-planning,.comic-overview) :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:is([aria-pressed="true"],:has(> input:checked)){background:#e9f8bc;border-color:#8aad38;color:#26320e}
 @media (hover:hover){
-  :is(#script-workspace.video-planning :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:not(:disabled):hover{transform:translateY(-2px);border-color:#acb2aa;box-shadow:0 4px 10px #17171720}
+  :is(#script-workspace:is(.video-planning,.comic-overview) :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:not(:disabled):hover{transform:translateY(-2px);border-color:#acb2aa;box-shadow:0 4px 10px #17171720}
 }
-.video-planning .plan-chip:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+:is(.video-planning,.comic-overview) .plan-chip:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .sl-filter-popover .plan-chip:has(> input:focus-visible){outline:2px solid currentColor;outline-offset:-2px}
-.video-planning .plan-chip:disabled{opacity:.48}
+:is(.video-planning,.comic-overview) .plan-chip:disabled{opacity:.48}
 @media(prefers-reduced-motion:reduce){
-  :is(#script-workspace.video-planning :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip{transition:none}
-  :is(#script-workspace.video-planning :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:not(:disabled):hover{transform:none}
+  :is(#script-workspace:is(.video-planning,.comic-overview) :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip{transition:none}
+  :is(#script-workspace:is(.video-planning,.comic-overview) :is(.as-plan-basics,.vp-asset-types), .sl-filter-popover .sl-filter-options) .plan-chip:not(:disabled):hover{transform:none}
 }
 .plan-inline-tags{position:relative;container-type:inline-size;align-items:center;min-width:0}
 .plan-custom-group{position:relative;display:inline-flex;align-items:center;min-width:0;max-width:100%}
@@ -297,18 +297,18 @@ html[data-cimora-theme] .as-root .cs-embedded-production .wp-source{top:64px}
   .plan-custom-group{position:static}
   .plan-custom-editor{top:100%;left:auto;right:0;translate:0 0;max-width:100%;background:var(--ap-surface,#fff);border-radius:8px}
 }
-#script-workspace.video-planning .as-plan-main-story textarea:focus{outline:none;box-shadow:none;border-color:var(--ap-text,#171717)}
+#script-workspace:is(.video-planning,.comic-overview) .as-plan-main-story textarea:focus{outline:none;box-shadow:none;border-color:var(--ap-text,#171717)}
 
-#script-workspace.video-planning {
+#script-workspace:is(.video-planning,.comic-overview) {
   --video-inset:clamp(2px,calc(24vw - 285px),146px);
 }
-#script-workspace.video-planning > .as-plan-header,
-#script-workspace.video-planning .as-plan-wrap {
+#script-workspace:is(.video-planning,.comic-overview) > .as-plan-header,
+#script-workspace:is(.video-planning,.comic-overview) .as-plan-wrap {
   padding-inline-start:var(--video-inset);
 }
 
-#script-workspace.video-planning{position:relative;isolation:isolate}
-.video-planning > .vp-project-cover{
+#script-workspace:is(.video-planning,.comic-overview){position:relative;isolation:isolate}
+:is(.video-planning,.comic-overview) > .vp-project-cover{
   position:absolute;z-index:-1;pointer-events:none;top:0;right:clamp(0px,12%,220px);
   width:min(65%,780px);height:clamp(230px,21vw,320px);
   object-fit:cover;object-position:center 30%;opacity:.25;
@@ -317,10 +317,10 @@ html[data-cimora-theme] .as-root .cs-embedded-production .wp-source{top:64px}
   mask-composite:intersect;
 }
 @media(max-width:700px){
-  .video-planning > .vp-project-cover{right:0;width:82%;height:210px}
+  :is(.video-planning,.comic-overview) > .vp-project-cover{right:0;width:82%;height:210px}
 }
-#script-workspace.video-planning .vp-title{height:55px;min-width:0}
-#script-workspace.video-planning .vp-title :is(.vp-title-button,input){
+#script-workspace:is(.video-planning,.comic-overview) .vp-title{height:55px;min-width:0}
+#script-workspace:is(.video-planning,.comic-overview) .vp-title :is(.vp-title-button,input){
   font-family:inherit;font-size:clamp(22px,2.2vw,34px);font-weight:600;line-height:1.2;
   letter-spacing:-.025em;color:var(--ap-text,#171717);border:0;background:transparent;padding:0;margin:0;border-radius:0;box-shadow:none;
 }
@@ -328,7 +328,7 @@ html[data-cimora-theme] .as-root .cs-embedded-production .wp-source{top:64px}
 .vp-title-button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
 
-#script-workspace.video-planning .vp-title input:focus{width:100%;outline:0;border:0;border-bottom:1px solid currentColor;background:transparent}
+#script-workspace:is(.video-planning,.comic-overview) .vp-title input:focus{width:100%;outline:0;border:0;border-bottom:1px solid currentColor;background:transparent}
 
 .as-root .as-chapter-editor > .as-content-heading button.chapter-icon-action {
   display: inline-grid;

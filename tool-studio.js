@@ -14,10 +14,54 @@
   function write(tool,patch){if(!store)throw Error(storageError);return store.update(tool.id,patch);}
   const cardDescriptions={"image-motion":"让单图动起来，或连接首尾两帧。","oc-sheet":"创建角色形象与人物设定。","pngtuber":"制作会随声音切换的角色形象。","expressions":"为角色补充表情和姿势。","lettering":"翻译漫画文字，调整画面排字。","colorize":"清理线稿，为画面上色。","batch-assets":"放大图片，或压缩文件体积。","sticker-maker":"添加配字，制作静态或动态表情包。","live2d-generation":"整理角色分层与绑定，预览动作。","anime-draw":"文字生图，或修改已有图片。","remove-bg":"移除背景，修补透明边缘。","video-redraw":"保留视频动作，调整画风与角色。","voiceover":"选择声音，为角色和旁白配音。","music-sound":"制作背景音乐、环境音与音效。"};
   function card(tool){return `<a class="ts-card" href="#${href(tool.id)}"><span class="ts-card-icon${tool.reviewRound?' ts-reviewed':''}" ${tool.reviewRound?'title="一轮通过" aria-label="一轮通过"':''}>${tool.reviewRound?'★':tool.icon}</span><div><h3>${E(tool.title)}</h3><p>${E(cardDescriptions[tool.id]||tool.desc)}</p></div><b>↗</b></a>`;}
+  const cardCovers={
+    'image-motion':{images:['https://images.unsplash.com/photo-1699307558369-cdb8e8a9dbc2?auto=format&fit=crop&w=960&q=82']},
+    'oc-sheet':{style:'sheet',images:['https://www.peppercarrot.com/0_sources/0ther/sketchbook/hi-res/2017-08-06_Pepper_s-model-sheet_by-David-Revoy.jpg']},
+    'pngtuber':{style:'puppet',images:[
+      'https://res.cloudinary.com/dol86wsz1/image/upload/c_limit,w_680,f_auto,q_auto:good/v1789853000/summer_transparent/nobg-1407d086a575-1789853000037_1789853000037_7xjk49qv.png',
+      'https://res.cloudinary.com/dol86wsz1/image/upload/c_limit,w_680,f_auto,q_auto:good/v1789853008/summer_transparent/nobg-cd44ca97c2fe-1789853007793_1789853007793_wvnx7nlm.png'
+    ]},
+    'expressions':{style:'sheet',images:['https://www.peppercarrot.com/0_sources/0ther/sketchbook/hi-res/2018-04-11_Pepper-expression-study-for-episode-30_by-David-Revoy.jpg']},
+    'lettering':{images:['https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/en_Pepper-and-Carrot_by-David-Revoy_E01P02.jpg']},
+    'colorize':{style:'colorize',images:[
+      'https://opengameart.org/sites/default/files/lineart_transparent_file.png',
+      'https://opengameart.org/sites/default/files/png_transparent_file_0.png'
+    ]},
+    'batch-assets':{images:['https://images.unsplash.com/photo-1773047747721-f75d546d7290?auto=format&fit=crop&w=960&q=82']},
+    'sticker-maker':{style:'stickers',images:['https://kenney.nl/media/pages/assets/emotes-pack/0cae06c6af-1677578794/preview.png']},
+    'live2d-generation':{style:'rig',images:['https://opengameart.org/sites/default/files/Character_Bones.png']},
+    'anime-draw':{images:['https://images.unsplash.com/photo-1758521232750-909a8b065963?auto=format&fit=crop&w=960&q=82']},
+    'remove-bg':{style:'cutout',images:[
+      'https://opengameart.org/sites/default/files/png_transparent_file_0.png',
+      'https://opengameart.org/sites/default/files/png_transparent_file_0.png'
+    ]},
+    'video-redraw':{images:['https://images.unsplash.com/photo-1764557175375-9e2bea91530e?auto=format&fit=crop&w=960&q=82']},
+    'voiceover':{images:['https://images.unsplash.com/photo-1701491086385-83b8cefeb4fe?auto=format&fit=crop&w=960&q=82']},
+    'music-sound':{images:['https://images.unsplash.com/photo-1789182219782-748f25a6c4f9?auto=format&fit=crop&w=960&q=82']},
+  };
+  function coverCard(tool){
+    const cover=cardCovers[tool.id];
+    const art=cover?.images.map(src=>`<span class="ts-cover-frame"><img src="${E(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>`).join('')||'';
+    return `<a class="ts-card ts-cover-card" href="#${href(tool.id)}">
+      <span class="ts-cover-art" data-cover="${cover?.style||'image'}" aria-hidden="true">${art}</span>
+      <div class="ts-cover-copy"><h3>${tool.id==='oc-sheet'?'OC Character Sheet':E(tool.title)}</h3><p>${E(cardDescriptions[tool.id]||tool.desc)}</p></div>
+      <span class="ts-cover-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M8 6h10v10"/></svg></span>
+    </a>`;
+  }
   function filtered(){return T.all().filter(tool=>(group==='全部'||tool.group===group)&&(`${tool.title} ${tool.desc} ${tool.group} ${tool.id}`).toLowerCase().includes(query.trim().toLowerCase())).sort((a,b)=>Number(!!a.secondary)-Number(!!b.secondary));}
-  function list(){
+  function catalogCards(items,publicCatalog){
+    return items.map(publicCatalog?coverCard:card).join('')||'<p class="ts-empty">No matching tools. Try another keyword or select All.</p>';
+  }
+  function refreshCatalog(){
+    const grid=document.getElementById('ts-grid');
+    const items=filtered();
+    grid.innerHTML=catalogCards(items,grid.classList.contains('ts-cover-grid'));
+    document.getElementById('ts-count').textContent=items.length+' 项';
+  }
+  function list(publicCatalog=false){
     active='';S.pageTitle='创作工具';
-return `<main class="ts-page"><header class="ts-heading"><div><h1 class="cm-workspace-title">创作工具</h1></div></header>${storageError?`<p role="alert">${E(storageError)}</p>`:''}<div class="ts-catalog-toolbar"><nav class="ts-groups cm-segment-group" aria-label="工具分类">${T.groups.map(name=>action(name,'group',`data-value="${name}" aria-pressed="${group===name}"`)).join('')}</nav>${CimoraSearchField.render(`<input id="ts-search" type="search" aria-label="搜索工具" placeholder="搜索图片、角色、Live2D、配音…" value="${E(query)}">`, "ts-search")}</div><div class="ts-count"><span id="ts-count">${filtered().length} 项</span></div><div class="ts-grid" id="ts-grid">${filtered().map(card).join('')||'<p class="ts-empty">没有匹配工具。试试清空搜索或选择全部工具。</p>'}</div></main>`;
+    const items=filtered();
+return `<main class="ts-page"><header class="ts-heading"><div><h1 class="cm-workspace-title">创作工具</h1></div></header>${storageError?`<p role="alert">${E(storageError)}</p>`:''}<div class="ts-catalog-toolbar"><nav class="ts-groups cm-segment-group" aria-label="工具分类">${T.groups.map(name=>action(name,'group',`data-value="${name}" aria-pressed="${group===name}"`)).join('')}</nav>${CimoraSearchField.render(`<input id="ts-search" type="search" aria-label="搜索工具" placeholder="搜索图片、角色、Live2D、配音…" value="${E(query)}">`, "ts-search")}</div><div class="ts-count"><span id="ts-count">${items.length} 项</span></div><div class="ts-grid${publicCatalog?' ts-cover-grid':''}" id="ts-grid">${catalogCards(items,publicCatalog)}</div></main>`;
   }
   function inputSlot(tool,value,role,label,accept='image/png,image/jpeg,image/webp',multiple=false){const input=value.inputs[role];return `<label class="ts-upload">${E(label)}<input type="file" data-ts-upload="${role}" accept="${accept}" ${multiple?'multiple':''}>${input?`<small>${E(input.name)} · 已保留本机参考</small>${input.src?`<img src="${E(input.src)}" alt="${E(label)}输入参考">`:'<small>文件未处理，刷新后需重选文件才能重新预览</small>'}`:'<small>可选；也可直接使用示例</small>'}</label>`;}
   function inputs(tool,value){
@@ -265,7 +309,7 @@ return `<main class="ts-page"><header class="ts-heading"><div><h1 class="cm-work
     return oldRoute(context);
   };
   function renderDetail(id){const tool=T.find(id);if(tool?.retired){active='';return S.empty('这个工具已移除','可返回创作工具继续使用其他功能。','创作工具','/app/tools');}if(tool?.hidden&&tool.id==='storyboard'){active='';return '<main class="ts-page"><h1>剧情分镜已归入作品创作</h1><p>在漫画创作中分页编排，或在视频创作中拆分镜头，继续沿用项目的人物、场景与道具。</p><div class="ts-actions">'+S.link('进入漫画创作','/app/comic','cm-button primary')+S.link('进入视频创作','/app/video','cm-button ghost')+S.link('查看资产库','/app/assets?assetSource=tools','cm-button ghost')+'</div></main>';}if(tool?.hidden){active='';return `<main class="ts-page"><h1>漫画切格与文字整理已归入素材导入</h1><p>不再作为独立小工具。已有项目素材直接复用，无需重新切格或识别。</p><p>要改编外部漫画，可进入视频创作，选择「外部漫画」上传页面并整理文字；当前为人工核对演示。</p><div class="ts-actions">${S.link('进入视频创作','/app/video','cm-button primary')}${S.link('漫画翻译与排字',href('lettering'),'cm-button ghost')}${S.link('图片动起来',href('image-motion'),'cm-button ghost')}${S.link('查看资产库','/app/assets?assetSource=tools','cm-button ghost')}</div></main>`;}return tool?detail(tool,id):S.empty('工具不存在','可回到全部工具查找。','创作工具','/app/tools');}
-  S.tools={...legacy,render:context=>context.parts[1]?renderDetail(context.parts[1]):list()};
+  S.tools={...legacy,render:context=>context.parts[1]?renderDetail(context.parts[1]):list(true)};
   const oldAfter=C.afterRender;C.afterRender=context=>{
     oldAfter(context);document.body.classList.toggle('tool-studio-page',!!document.querySelector('.ts-page'));libraryFeedback();editingFeedback();
     if(document.querySelector('.stk-page'))ToolSticker.hydrate();else ToolSticker.stop();
@@ -297,7 +341,13 @@ return `<main class="ts-page"><header class="ts-heading"><div><h1 class="cm-work
   document.addEventListener('click',async event=>{
     const button=event.target.closest('[data-ts]');
     if(button){event.preventDefault();event.stopImmediatePropagation();try{const tool=T.find(active),value=tool&&draft(tool);switch(button.dataset.ts){
-      case'group':group=button.dataset.value;S.render();break;
+      case'group':
+        group=button.dataset.value;
+        button.closest('.ts-groups').querySelectorAll('[data-ts="group"]').forEach(tab=>{
+          tab.setAttribute('aria-pressed',String(tab.dataset.value===group));
+        });
+        refreshCatalog();
+        break;
       case'audio-play':ToolAudio.play(button.closest('#site-modal')?selectedSnapshot?.audio:tool?.kind==='audio'?value.audio:selectedSnapshot?.audio);break;
       case'audio-stop':ToolAudio.stop();break;
       case'sample':write(tool,{prompt:textDefault(tool),inputs:{},region:null,sourceText:null,targetText:null,translated:null,ready:false,dirty:false});S.render();break;
@@ -329,7 +379,12 @@ return `<main class="ts-page"><header class="ts-heading"><div><h1 class="cm-work
     }catch(error){notice(error);}
   },true);
   document.addEventListener('input',event=>{
-    const input=event.target;if(input.id==='ts-search'){query=input.value;document.getElementById('ts-grid').innerHTML=filtered().map(card).join('')||'<p>没有匹配的工具，请换个关键词或选择全部工具。</p>';document.getElementById('ts-count').textContent=filtered().length+' 项';return;}
+    const input=event.target;
+    if(input.id==='ts-search'){
+      query=input.value;
+      refreshCatalog();
+      return;
+    }
     if(!input.closest('.ts-page'))return;const tool=T.find(active);if(!tool)return;
     try{if(input.id==='ts-prompt'){write(tool,{prompt:input.value,dirty:!!draft(tool).ready});document.getElementById('ts-message').textContent='输入已保存；修改后请重新生成示例。';}
       if(['tl-original','tl-target'].includes(input.id)){write(tool,{[input.id==='tl-original'?'sourceText':'targetText']:input.value,dirty:!!draft(tool).ready});document.getElementById('ts-message').textContent='文字已保存，请生成排字预览。';event.stopImmediatePropagation();}

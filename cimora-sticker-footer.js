@@ -186,7 +186,7 @@ function stickerSvg(kind,id) {
   return `<svg viewBox="-6 -6 132 132" aria-hidden="true" focusable="false"><defs><clipPath id="${id}c">${shape}</clipPath><linearGradient id="${id}g" x1="0" x2="1" y1="0" y2="0"><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset=".65" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g fill="#fff" stroke="#fff" stroke-width="11" stroke-linejoin="round">${shape}</g>${art}<g clip-path="url(#${id}c)"><g transform="rotate(20 60 60)"><rect class="csf-sheen" x="-30" y="-30" width="180" height="180" fill="url(#${id}g)"/></g></g></svg>`;
 }
 const columns=[
-  ['Create',[['Comic Creation','#/app/new?output=comic'],['Video Creation','#/app/new?output=motion'],['Infinite Canvas','#/app/new?view=canvas']]],
+  ['Create',[['Comic Creation','#/app/new?output=comic'],['Video Creation','#/app/new?output=motion'],['Infinite Canvas','#/app/infinite-canvas']]],
   ['Explore',[['Showcase','#/showcase'],['Templates','#/templates'],['Guides','#/resources']]],
   ['Support',[['Help Center','#/help'],['Privacy & Data','#/legal/privacy'],['Terms of Service','#/legal/terms']]]
 ];

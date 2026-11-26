@@ -10,7 +10,6 @@
 .sl-page.st-trash-page .st-trash-tab{position:relative;min-height:48px;border:0;border-radius:0;padding:0 2px 14px;background:transparent;color:var(--sl-muted);font-size:16px;font-weight:500;gap:8px}
 .st-trash-tab span{padding:1px 7px;border-radius:6px;background:var(--ap-raised);font-size:12px;font-variant-numeric:tabular-nums}
 .sl-page.st-trash-page .st-trash-tab[aria-selected=true]{color:var(--ap-accent)}
-.st-trash-tab[aria-selected=true]:after{content:'';position:absolute;bottom:-1px;height:2px;left:0;right:0;background:var(--ap-accent)}
 .st-trash-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
 .st-trash-toolbar .sl-search{display:flex;align-items:center;margin:0;flex:1;max-width:460px;min-width:160px;height:42px;box-sizing:border-box}
 .st-trash-toolbar .sl-search input{width:100%;min-width:0;font-size:13px}

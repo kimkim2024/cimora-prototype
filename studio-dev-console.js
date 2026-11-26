@@ -20,7 +20,7 @@
       <p>视口 <output id="size"></output></p>
     </section><nav aria-label="预览页面"></nav></details>`;
   const pages = [
-    ['创作空间','/app'], ['项目库','/app/projects'], ['素材库','/app/assets'],
+    ['创作空间','/app'], ['无限画布','/app/infinite-canvas'], ['项目库','/app/projects'], ['素材库','/app/assets'],
     ['任务编排','/app/tasks'], ['创作工具','/app/tools'], ['导出交付','/app/exports'],
     ['项目管理','/app/projects?view=manage'], ['回收站','/app/trash'], ['积分账户','/app/wallet'], ['官网首页','/'], ['产品','/product'], ['展示','/showcase'], ['模板','/templates'],
     ['指南','/resources'], ['价格','/pricing'], ['工具','/tools'], ['帮助','/help']

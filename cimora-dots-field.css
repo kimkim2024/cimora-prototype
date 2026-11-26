@@ -1,4 +1,5 @@
 /* Dot pattern layer around the homepage composer (SVG pattern + radial mask). */
+.hm-official .hm-hero-vignette > .hm-gallery{isolation:isolate}
 .hm-official .hm-public-launch{position:relative;isolation:isolate}
 .hm-official .hm-public-launch>.hm-dot-pattern{position:absolute;z-index:0;pointer-events:none;display:block;
  left:-104px;top:-52px;width:calc(100% + 208px);height:calc(100% + 104px);

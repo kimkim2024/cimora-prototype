@@ -235,7 +235,7 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact>text
   .as-root .creation-entry .as-entry-composer-compact{padding:12px}
 }
 
-/* Video output selectors share the composer action row when space allows. */
+/* Output selectors share the composer action row when space allows. */
 .as-root .creation-entry .as-entry-composer-compact>.vp-entry-options>.vp-settings{
   display:grid;grid-template-columns:minmax(0,1fr) 104px 116px;
   width:min(100%,458px);margin:0;
@@ -250,14 +250,14 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact>text
 .as-root .as-entry-composer-compact>.vp-entry-options>.vp-settings .cm-select-menu{background:transparent;border:0;box-shadow:none}
 .as-root .as-entry-composer-compact>.vp-entry-options>.vp-settings .cm-select-menu>summary{color:#fff;gap:6px;width:fit-content;max-width:100%;border-radius:999px}
 .as-root .as-entry-composer-compact>.vp-entry-options>.vp-settings .cm-select-menu>summary:hover{background:#353931}
-.as-root .as-entry-composer-compact .cm-select-field:has(>select[data-vp-setting])>.cm-select-menu>summary::before{
+.as-root .as-entry-composer-compact .cm-select-field:has(>select:is([data-vp-setting],[data-ce-setting]))>.cm-select-menu>summary::before{
   content:"";flex:none;width:22px;height:22px;border-radius:50%;
   background:#3e4936 var(--vp-setting-icon) center / 14px no-repeat;
 }
-.as-root .as-entry-composer-compact .cm-select-field:has(>select[data-vp-setting="style"])>.cm-select-menu>summary::before{
+.as-root .as-entry-composer-compact .cm-select-field:has(>select:is([data-vp-setting="style"],[data-ce-setting="style"]))>.cm-select-menu>summary::before{
   --vp-setting-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8efb1' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3a9 9 0 1 0 0 18h1a1.8 1.8 0 0 0 1.2-3.1 1.8 1.8 0 0 1 1.2-3.1H17a4 4 0 0 0 4-4C21 6.4 17 3 12 3Z'/%3E%3Cpath d='M7.5 12h.01M9 7.8h.01M13.3 6.7h.01M17.1 9.1h.01' stroke-width='2.5'/%3E%3C/svg%3E");
 }
-.as-root .as-entry-composer-compact .cm-select-field:has(>select[data-vp-setting="ratio"])>.cm-select-menu>summary::before{
+.as-root .as-entry-composer-compact .cm-select-field:has(>select:is([data-vp-setting="ratio"],[data-ce-setting="ratio"]))>.cm-select-menu>summary::before{
   --vp-setting-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8efb1' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='3'/%3E%3Cpath d='M10 9H7v3m7 3h3v-3'/%3E%3C/svg%3E");
 }
 .as-root .as-entry-composer-compact .cm-select-field:has(>select[data-vp-setting="quality"])>.cm-select-menu>summary::before{
@@ -291,14 +291,14 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact>.vp-
   background:#f5f7f1 radial-gradient(circle,#a0aa916b .75px,transparent 1px) center / 22px 22px;
 }
 @media (any-hover:hover) and (any-pointer:fine) and (prefers-reduced-motion:no-preference){
-  .as-root.as-entry:has(.as-entry-video-heading){position:relative}
-  .as-root.as-entry:has(.as-entry-video-heading)::before{
+  .as-root.as-entry:has(.as-entry-planning-heading){position:relative}
+  .as-root.as-entry:has(.as-entry-planning-heading)::before{
     content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
     background:radial-gradient(circle,#659500 1.25px,transparent 1.8px) center / 22px 22px;
     mask-image:radial-gradient(circle 155px at var(--vp-pointer-x,50%) var(--vp-pointer-y,50%),#000 20%,transparent 100%);
     opacity:0;transition:opacity .22s ease-out;
   }
-  .as-root.as-entry.vp-dot-hover:has(.as-entry-video-heading)::before{opacity:1}
+  .as-root.as-entry.vp-dot-hover:has(.as-entry-planning-heading)::before{opacity:1}
 }
 .as-entry-source{margin-bottom:8px}
 .as-root .as-entry-source>details{position:relative;margin:0;padding:0;border:0}
@@ -331,18 +331,18 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact>.vp-
 .as-root .creation-entry .as-entry-composer-compact .vp-mode .as-btn.active{
   border-color:#596a48;background:#394334;color:#d2f580;
 }
-.as-root .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):is(:hover,:focus-visible){
+.as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):is(:hover,:focus-visible){
   filter:brightness(1.16);
   border-color:#74875f;
 }
 @media(prefers-reduced-motion:no-preference){
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn{
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn{
     transition:transform .18s ease-out,filter .18s ease-out,border-color .18s ease-out,background-color .18s ease-out;
   }
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):hover{
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):hover{
     transform:translateY(-2px);
   }
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):active{
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn:not(:disabled):active{
     transform:translateY(0);
   }
 }
@@ -439,14 +439,14 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact .vp-
   src:url("../assets/fonts/nunito-800-latin.woff2") format("woff2");
   font-style:normal;font-weight:800;font-display:swap;
 }
-.as-root .as-entry-content>.as-entry-video-heading>span{
+.as-root .as-entry-content>.as-entry-planning-heading>span{
   font-family:"Nunito",ui-rounded,system-ui,sans-serif;
   font-weight:800;letter-spacing:normal;
 }
-.as-root .as-entry-content>.as-entry-video-heading{
+.as-root .as-entry-content>.as-entry-planning-heading{
   display:flex;align-items:center;justify-content:center;gap:10px;
 }
-.as-entry-video-heading>img{
+.as-entry-planning-heading>img{
   flex:none;width:clamp(48px,6vw,68px);height:auto;
 }
 
@@ -461,58 +461,64 @@ html[data-cimora-theme] body.cimora-app .cm-main .as-entry-composer-compact .vp-
 }
 
 
-.as-entry-video-heading~.as-entry-composer-compact{--vp-toolbar-control-height:34px}
-.as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-settings .cm-select-menu{padding:0}
-.as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-settings select,
-.as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn{
+.as-entry-planning-heading~.as-entry-composer-compact{--vp-toolbar-control-height:34px}
+.as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-settings .cm-select-menu{padding:0}
+.as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-settings select,
+.as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn{
   min-height:var(--vp-toolbar-control-height);
 }
-.as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn{
+.as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn{
   align-self:center;padding:3px 12px 3px 5px;
 }
-.as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-mode .as-btn>svg{
+.as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-mode .as-btn>svg{
   width:26px;height:26px;padding:6px;
 }
 
-/* Enlarge the video prompt and its controls when space allows. */
+/* Enlarge the planning prompt and its controls when space allows. */
 @media(min-width:801px){
-  .as-root .as-entry-content:has(>.as-entry-video-heading){width:min(1056px,100%)}
-  .as-entry-video-heading~.as-entry-composer-compact.as-entry-composer{
+  .as-root .as-entry-content:has(>.as-entry-planning-heading){width:min(1056px,100%)}
+  .as-entry-planning-heading~.as-entry-composer-compact.as-entry-composer{
     padding:19px 24px;border-radius:29px;
   }
-  html[data-cimora-theme] body.cimora-app .cm-main .as-entry-video-heading~.as-entry-composer-compact>textarea,
-  .as-root .as-entry-video-heading~.as-entry-composer-compact>textarea{
+  html[data-cimora-theme] body.cimora-app .cm-main .as-entry-planning-heading~.as-entry-composer-compact>textarea,
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact>textarea{
     min-height:127px;font-size:16.8px;padding:7px 2px;
   }
-  .as-entry-video-heading~.as-entry-composer-compact .as-entry-source{margin-bottom:10px}
-  .as-entry-video-heading~.as-entry-composer-compact .as-entry-source summary{
+  .as-entry-planning-heading~.as-entry-composer-compact .as-entry-source{margin-bottom:10px}
+  .as-entry-planning-heading~.as-entry-composer-compact .as-entry-source summary{
     width:46px;height:46px;border-radius:13px;font-size:23px;
   }
-  .as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-entry-options{
+  .as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-entry-options{
     gap:10px 14px;margin-top:7px;padding-top:10px;
   }
-  .as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .vp-settings{
+  .as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .vp-settings{
     grid-template-columns:minmax(0,1fr) 125px 139px;width:min(100%,550px);gap:7px;
   }
-  .as-entry-video-heading~.as-entry-composer-compact{--vp-toolbar-control-height:41px}
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .vp-settings summary strong{font-size:15.6px}
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .vp-settings summary::before{
+  .as-entry-planning-heading~.as-entry-composer-compact{--vp-toolbar-control-height:41px}
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-settings summary strong{font-size:15.6px}
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .vp-settings summary::before{
     width:26px;height:26px;background-size:17px;
   }
-  .as-root .as-entry-video-heading~.as-entry-setting-pills .as-entry-setting>summary{
+  .as-root .as-entry-planning-heading~.as-entry-setting-pills .as-entry-setting>summary{
     min-height:48px;gap:10px;padding:5px 14px 5px 6px;font-size:14px;
   }
-  .as-root .as-entry-video-heading~.as-entry-setting-pills summary>svg{
+  .as-root .as-entry-planning-heading~.as-entry-setting-pills summary>svg{
     width:36px;height:36px;padding:8px;
   }
-  .as-root .creation-entry .as-entry-video-heading~.as-entry-composer-compact .as-entry-send-icon{
+  .as-root .creation-entry .as-entry-planning-heading~.as-entry-composer-compact .as-entry-send-icon{
     width:50px;height:50px;min-height:50px;
   }
-  .as-root .as-entry-video-heading~.as-entry-composer-compact .as-entry-send-icon svg{width:23px;height:23px}
-  .as-root .creation-entry .as-entry-video-heading~.as-entry-setting-pills{
+  .as-root .as-entry-planning-heading~.as-entry-composer-compact .as-entry-send-icon svg{width:23px;height:23px}
+  .as-root .creation-entry .as-entry-planning-heading~.as-entry-setting-pills{
     width:min(100%,720px);gap:10px;margin-top:17px;
   }
 }
+
+.as-root .creation-entry .as-entry-composer-compact > .vp-entry-options > .vp-settings:has(select[data-ce-setting]) {
+  grid-template-columns: minmax(0,1fr) minmax(0,1.15fr);
+  width: min(100%,380px);
+}
+.as-root .creation-entry .as-entry-extra { display: flex; justify-content: center; margin-top: 12px; }
 
 .as-root .as-drawer.vp-project-drawer{
   inset:16px 16px 16px auto;width:min(500px,calc(100% - 32px));border-radius:24px;

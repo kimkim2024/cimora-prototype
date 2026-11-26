@@ -1,7 +1,7 @@
 /* Two homepages: shared visuals and creative handoff. The website showcases works; the workspace puts continuing first. */
 (()=>{
   const C=Cimora,{S,M,E,link,art,path}=C;
-  const H={slide:0,step:0,engineering:'ready',collection:'all'};
+  const H={slide:0,collection:'all'};
   const films=[
     {title:'Letters to the Stars',en:'LETTERS TO THE STARS',tag:'Fantasy · Original World',type:'Comic',cover:'assets/work-02.jpg',id:'sky-public',line:'The one who delivers letters to the stars is still looking for home.',prompt:'A girl at the Star Sea Post Office receives a letter from the future, and must find its sender before sunset.',position:'center'},
     {title:'Before the Rain Ends',en:'BEFORE THE RAIN ENDS',tag:'Urban · A Gentle Reunion',type:'Comic / Video',cover:'assets/work-03.jpg',id:'rain-public',line:'An unsent letter, and a reunion seven years late.',prompt:'Back at the bookstore after seven years, a girl meets the one who has kept her letter all along.',position:'center'},
@@ -23,17 +23,140 @@
   const capabilities=[
     ['Comic Creation','Let your story unfold, panel by panel.','comic',0,'▤'],['Video Creation','Give your visuals a little life.','motion',4,'▷'],['OC Character Sheet','Make every appearance feel familiar.','oc',1,'◎'],['Infinite Canvas','Ideas roam free, connections stay clear.','canvas',3,'⌘'],['Mini Tools','Start with a small idea.','tools',8,'✧']
   ];
-  function capabilitiesSection(){return `<section class="room-demo" aria-label="Creation capabilities"><div class="cards">${capabilities.map(([title,description],i)=>{const image=i===0?'assets/comic-creation-square.png':i===1?'assets/video-creation.jpg':i===2?'assets/oc-dress-up.png':i===4?'assets/mini-tools-arcade.png':'assets/infinite-canvas.jpg';return `<div class="card-frame"><article class="direct-card" aria-label="${E(title)}"><div class="direct-card__artboard" id="capabilityArtboard${i}"><img class="direct-card__photo" src="${image}" data-night-src="${image}" alt="${i===0?'Comic illustration artwork':i===1?'Ronin film poster':i===2?'Character dress-up interface with outfit selection':i===4?'Retro pocket arcade artwork':'Colorful interface and dashboard collage'}"><div class="direct2-grade"></div><div class="direct-footer"><div class="direct-footer__head"><span class="direct-footer__icon" aria-hidden="true"><span class="material-icons">construction</span></span><h3 class="direct-footer__title">${E(title)}</h3></div><p class="direct-footer__desc">${E(description)}</p></div></div></article></div>`;}).join('')}</div></section>`;}
-  const process=[
-    {title:'First, tell the story well.',desc:'One line is enough to begin. Expand the plot, polish the dialogue, and split it into chapters ready to produce.',cta:'Start with an Idea',url:'/app/new',kind:'story'},
-    {title:'Let words grow into storyboards.',desc:'Confirm the narrative and action first, then generate sketches. Every panel’s dialogue, order, and detail stays editable.',cta:'Explore Comic Creation',url:'/features/webtoon',kind:'boards'},
-    {title:'Keep your character unmistakably themselves.',desc:'Characters, scenes, and props belong to projects and chapters. Pinned versions keep every step traceable.',cta:'See Character Sheets',url:'/app/tools/oc-sheet',kind:'assets'},
-    {title:'One story, another way to tell it.',desc:'Lay out comics directly, or keep going with shots and sound for video. Switch freely between the workflow and the Infinite Canvas.',cta:'Start with Video',url:'/app/new?output=motion',kind:'motion'}
-  ];
-  function processPreview(){const k=process[H.step].kind;return `<div class="hm-preview-bar"><span><i></i> Before the Rain Ends / Sample Project</span><span>${['STORY ROOM','STORYBOARDS','WORLD BIBLE','MOTION STUDIO'][H.step]}</span></div>${k==='story'?`<div class="hm-script-preview"><span>CHAPTER 01</span><h3>Reunion in the Rain</h3><p>Seven years later, Lin Xia returns to the old bookstore on the corner.<br>The doorbell rings, and a familiar figure turns from behind the shelves.</p><blockquote>“I thought you’d never come back.”</blockquote><div><span>Original Idea</span><b>→</b><span>Story Outline</span><b>→</b><span class="active">Chapter Content</span></div><small>Editable candidates · Original text kept separately</small></div>`:k==='boards'?`<div class="hm-boards-preview">${[0,1,3].map((n,i)=>`<figure>${art(n)}<figcaption><span>0${i+1}</span>${['Old bookstore · Wide shot','Meeting eyes · Close-up','Unsent letter · Medium shot'][i]}</figcaption></figure>`).join('')}</div><div class="hm-preview-foot"><span>Sketch v2</span><span>Dialogue and reading order, saved together</span></div>`:k==='assets'?`<div class="hm-assets-preview"><div class="hm-character">${art(1)}<span>Lin Xia <b>v2 · Locked</b></span></div><div><span class="hm-eyebrow">Pinned in this chapter</span>${[[0,'Old Bookstore','Scene v1'],[3,'Unsent Letter','Prop v1'],[2,'Chen Xu','Character v1']].map(([n,t,v])=>`<div class="hm-asset-mini">${art(n)}<div><strong>${t}</strong><small>${v}</small></div><span>✓</span></div>`).join('')}<p>You confirm new versions; existing visuals stay as they are.</p></div></div>`:`<div class="hm-motion-demo">${art(4)}<span class="hm-preview-subtitle">“This time, let’s go together.”</span><span class="hm-motion-tag">Steady camera · CSS preview</span></div><div class="hm-demo-timeline">${[0,1,2,3,4,8].map((n,i)=>`<span>${art(n)}<b>0${i+1}</b></span>`).join('')}</div>`}`;}
-  function processSection(){return `<section class="hm-section hm-process" id="hm-process">${label('01 / MAKE YOUR STORY','Every step of creating,<br>firmly in your hands.','From the first line, to your first work.')}<div class="hm-process-grid"><div class="hm-process-steps">${process.map((x,i)=>`<article class="${H.step===i?'active':''}"><h3>${action(`<span>0${i+1}</span>${x.title}<b>↗</b>`,'process','',`data-index="${i}" aria-expanded="${H.step===i}" aria-controls="hm-process-preview"`)}</h3><div class="hm-process-copy" ${H.step!==i?'hidden':''}><p>${x.desc}</p>${link(x.cta+' →',x.url,'hm-text-link')}</div></article>`).join('')}</div><div id="hm-process-preview" class="hm-process-preview" role="region" aria-label="Production steps preview" aria-live="polite">${processPreview()}</div></div></section>`;}
-  function engineeringPreview(){const state=H.engineering,changed=state==='changed',failed=state==='failed',recovered=state==='recovered';return `<div class="hm-graph-header"><span><i></i> Before the Rain Ends / Chapter 01</span><span class="hm-sample-tag">Standalone sample project</span></div><div class="hm-engine-nodes">${[['Character Assets',changed?'v2 · New version':'v1 · Pinned','asset'],['Storyboard Sketches',changed?'Needs Review':'Done','boards'],['Comic Layout',changed?'Source Updated':'Stable Version Kept','layout'],['Motion Shot',failed?'Generation Failed':recovered?'Recovered':changed?'Source Updated':'Stable Base','motion']].map(([t,v,k],i)=>`<div class="hm-engine-node ${changed&&i>0?'stale':failed&&i===3?'failed':recovered&&i===3?'recovered':''}"><span>${['◎','▤','▥','▷'][i]}</span><strong>${t}</strong><small>${v}</small></div>${i<3?'<b class="hm-engine-arrow">→</b>':''}`).join('')}</div><div class="hm-engine-status" role="status"><span class="hm-pulse"></span><div><strong>${changed?'3  downstream steps need review':failed?'Video step timed out; successful results kept':recovered?'Only the motion step was recovered; nothing else was redone':'One project to manage every stage of your story’s growth.'}</strong><p>${changed?'Previously adopted versions and visuals are kept; you decide when to sync.':failed?'Comic layout and the stable base remain usable; recover the failed step on its own.':recovered?'Sample recovery complete; no model was called and no real cost was incurred.':'See clearly how characters, chapters, candidates, and delivery connect.'}</p></div>${state!=='ready'?action('Reset','engineering','hm-subtle','data-state="ready"'):''}</div>`;}
-  function engineeringSection(){return `<section class="hm-section hm-engineering">${label('02 / BUILT FOR KEEPING GOING','Great creation needs a project that can keep going.','Connect different model APIs, while keeping inputs, versions, and every retry under control.')}<div class="hm-engineering-grid"><div><div class="hm-engine-choice">${action('◎ Try an Asset Version Update','engineering','hm-button secondary','data-state="changed"')}${action('↶ Try Failure Recovery','engineering','hm-button secondary','data-state="failed"')}${action('Recover only the failed step →','recover','hm-button primary')}</div><p class="hm-engine-explainer">Change one thing, see what it affects.<br>One step fails; keep everything already done.</p>${link('Open My Studio ↗','/app','hm-text-link')}<small>This interactive demo is separate from your projects and never changes real work.</small></div><div class="hm-engine-preview" id="hm-engine-preview">${engineeringPreview()}</div></div></section>`;}
+  function capabilitiesSection(){return `<section class="room-demo" aria-label="Creation capabilities"><div class="cards">${capabilities.map(([title,description],i)=>{const image=i===0?'assets/comic-creation-square.png':i===1?'assets/video-creation.jpg':i===2?'assets/oc-dress-up.png':i===4?'assets/mini-tools-arcade.png':'assets/infinite-canvas.jpg';const tag=i===3?'a':'div';return `<${tag} class="card-frame"${i===3?' href="#/app/infinite-canvas" aria-label="Open Infinite Canvas"':''}><article class="direct-card" aria-label="${E(title)}"><div class="direct-card__artboard" id="capabilityArtboard${i}"><img class="direct-card__photo" src="${image}" data-night-src="${image}" alt="${i===0?'Comic illustration artwork':i===1?'Ronin film poster':i===2?'Character dress-up interface with outfit selection':i===4?'Retro pocket arcade artwork':'Colorful interface and dashboard collage'}"><div class="direct2-grade"></div><div class="direct-footer"><div class="direct-footer__head"><span class="direct-footer__icon" aria-hidden="true"><span class="material-icons">construction</span></span><h3 class="direct-footer__title">${E(title)}</h3></div><p class="direct-footer__desc">${E(description)}</p></div></div></article></${tag}>`;}).join('')}</div></section>`;}
+  function processSection(){
+    const arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+    const start=`<span class="hm-journey-start-label">Start creating</span><span class="hm-journey-start-icon" aria-hidden="true">${arrow}${arrow}</span>`;
+    return `<section class="hm-section hm-journey" id="hm-process" aria-labelledby="hm-journey-title">
+      <header class="hm-journey-header" data-journey-reveal>
+        <h2 id="hm-journey-title"><span><span>Every step of creating,</span></span><span><span>firmly in your hands.</span></span></h2>
+        <div class="hm-journey-actions">${link(start,'/app/new','hm-journey-start')}</div>
+      </header>
+      <div class="hm-journey-grid">
+        <article class="hm-journey-card" data-journey-reveal>
+          <h3>Story Room</h3><p>Turn a single idea into a chapter.</p>
+          <div class="hm-journey-window hm-journey-story">
+            <div class="hm-journey-window-bar">Before the Rain Ends <span>Chapter 01</span></div>
+            <div class="hm-journey-script">
+              <h4>Reunion in the Rain</h4><p>Seven years later, Lin Xia returns to the old bookstore. The doorbell rings, and a familiar figure turns.</p>
+              <blockquote>“I thought you’d never come back.”</blockquote>
+            </div>
+            <ol class="hm-journey-stages" aria-label="Writing stages"><li>Idea</li><li>Outline</li><li>Chapter</li></ol>
+          </div>
+        </article>
+        <article class="hm-journey-card" data-journey-reveal>
+          <h3>Storyboards &amp; Characters</h3><p>Plan each shot and pin the character’s look.</p>
+          <div class="hm-journey-window">
+            <div class="hm-journey-window-bar">Storyboard <span>Sketch v2</span></div>
+            <div class="hm-journey-boards">
+              ${[[0,'Bookshop'],[5,'Reunion'],[3,'Unsent letter']].map(([image,caption])=>`<figure>${art(image,caption)}<figcaption>${caption}</figcaption></figure>`).join('')}
+            </div>
+            <div class="hm-journey-character">${art(1,'Portrait of Lin Xia')}<strong>Lin Xia</strong><span>v2 · Locked</span></div>
+          </div>
+        </article>
+        <article class="hm-journey-card" data-journey-reveal>
+          <h3>Comic &amp; Motion</h3><p>Tell the same scene in panels or in motion.</p>
+          <div class="hm-journey-window hm-journey-output">
+            <div class="hm-journey-window-bar">Scene preview <div class="hm-journey-switch" role="group" aria-label="Preview format">
+              ${action('Comic','journey-format','', 'data-format="comic" aria-pressed="true" aria-controls="hm-journey-comic"')}
+              ${action('Video','journey-format','', 'data-format="video" aria-pressed="false" aria-controls="hm-journey-video"')}
+            </div></div>
+            <div id="hm-journey-comic" class="hm-journey-comic">
+              <div>${art(0,'The bookstore on a rainy evening')}</div>
+              <div>${art(5,'Lin Xia and Chen Xu meet in the rain')}<span>“I thought you’d never come back.”</span></div>
+            </div>
+            <div id="hm-journey-video" class="hm-journey-video" hidden>
+              <div class="hm-journey-shot">${art(5,'Lin Xia and Chen Xu meet in the rain')}<span>Slow push-in</span></div>
+              <div class="hm-journey-timeline" aria-label="Timeline, three shots">${[0,5,3].map(i=>`<span>${art(i,' ')}</span>`).join('')}</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>`;
+  }
+  let journeyObserver;
+  function mountProcess(){
+    journeyObserver?.disconnect();
+    const section=S.$('#hm-process');
+    if(!section||!('IntersectionObserver' in window)||reduceMotion.matches)return;
+    journeyObserver=new IntersectionObserver((entries,observer)=>{
+      for(const entry of entries){
+        if(!entry.isIntersecting)continue;
+        entry.target.classList.add('is-in-view');
+        observer.unobserve(entry.target);
+      }
+    },{threshold:.12});
+    section.querySelectorAll('[data-journey-reveal]:not(.is-in-view)').forEach(el=>journeyObserver.observe(el));
+  }
+  function showWorkflowPlaybackButton(button,mode){
+    const label=mode==='replay'?'Replay scene':'Play scene';
+    button.dataset.playback=mode;
+    button.setAttribute('aria-label',label);
+    button.title=label;
+    button.hidden=false;
+  }
+  function playWorkflowFilm(compare){
+    const video=compare.querySelector('video');
+    const button=compare.querySelector('[data-home="workflow-replay"]');
+    if(button===document.activeElement)compare.querySelector('input').focus({preventScroll:true});
+    button.hidden=true;
+    if(video.ended)video.currentTime=0;
+    video.play().catch(()=>{
+      if(compare.dataset.film==='true'&&video.paused){
+        showWorkflowPlaybackButton(button,'play');
+      }
+    });
+  }
+  function updateWorkflowSlider(slider){
+    const position=Number(slider.value);
+    const compare=slider.closest('.hm-workflow-compare');
+    const video=compare.querySelector('video');
+    const wasFilm=compare.dataset.film==='true';
+    const showFilm=position===0;
+    compare.style.setProperty('--split',`${position}%`);
+    compare.dataset.film=String(showFilm);
+    compare.toggleAttribute('data-sheet-expanded',position>=97);
+    slider.setAttribute('aria-valuetext',showFilm?'Finished scene':position===100?'Full character sheet':`${position}% character sheet, ${100-position}% finished scene`);
+    if(showFilm&&!wasFilm){
+      playWorkflowFilm(compare);
+    }else if(!showFilm&&wasFilm){
+      video.pause();
+      video.currentTime=0;
+      compare.querySelector('[data-home="workflow-replay"]').hidden=true;
+    }
+  }
+  function engineeringSection(){
+    return `<section class="hm-section hm-workflow" id="hm-workflow" aria-labelledby="hm-workflow-title">
+      <div class="hm-workflow-copy">
+        ${link('Open My Studio','/app','hm-button primary hm-workflow-cta')}
+        <h2 id="hm-workflow-title">From character sheet to final shot.</h2>
+        <p>See the same character go from front, side and back views to a finished scene.</p>
+        <ul class="hm-workflow-highlights">
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5"/><path d="M9 3v18m6-18v18"/></svg><div><strong>Define the look</strong><p>Capture the silhouette, outfit and props from three angles.</p></div></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M10.8 2.7a3.2 3.2 0 0 1 2.4 0l5.2 2A3.2 3.2 0 0 1 20.5 7.7v3.1c0 4.5-2.8 7.9-7.4 10.3a2.4 2.4 0 0 1-2.2 0c-4.6-2.4-7.4-5.8-7.4-10.3V7.7a3.2 3.2 0 0 1 2.1-3zM8.2 12.1l2 2a.8.8 0 0 0 1.2-.05l4.4-5"/></svg><div><strong>Keep details consistent</strong><p>Use the same character reference across shots.</p></div></li>
+          <li><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><path d="M9.4 8.9q0-1 1-.5l5.1 2.9q1 .7 0 1.4l-5.1 2.9q-1 .5-1-.5z"/></svg><div><strong>Bring the scene to life</strong><p>Give the character movement, lighting and a setting.</p></div></li>
+        </ul>
+      </div>
+      <figure class="hm-workflow-panel">
+        <div class="hm-workflow-bar"><strong>Character to film DEMO</strong></div>
+        <div class="hm-workflow-compare" data-film="false">
+          <video class="hm-workflow-film" src="assets/spring-final-shot.mp4" poster="assets/spring-final-shot.webp" preload="metadata" muted playsinline aria-label="Spring in the finished animated scene"></video>
+          <div class="hm-workflow-sheet">
+            <img src="assets/spring-character-sheet.webp" alt="Front, side and back views of Spring in her coat and boots" loading="lazy" width="840" height="550">
+            <div class="hm-workflow-view-labels" aria-hidden="true"><span>Front</span><span>Side</span><span>Back</span></div>
+            <div class="hm-workflow-character-note"><strong>Spring</strong><p>A red coat, braided hair and a carved wooden staff.</p></div>
+          </div>
+          <div class="hm-workflow-divider" aria-hidden="true"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-4 4 4 4m8-8 4 4-4 4"/></svg></span></div>
+          <input class="hm-workflow-slider" type="range" min="0" max="100" value="80" aria-label="Reveal the finished scene" aria-valuetext="80% character sheet, 20% finished scene" aria-describedby="hm-workflow-instruction" data-home-input="workflow">
+          ${action('<svg class="hm-workflow-replay-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10a7.5 7.5 0 1 1 .8 6M4.5 5v5h5"/></svg><svg class="hm-workflow-play-icon" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>','workflow-replay','hm-workflow-replay','hidden data-playback="replay" aria-label="Replay scene" title="Replay scene"')}
+        </div>
+        <figcaption class="hm-workflow-caption">
+          <p id="hm-workflow-instruction">Drag all the way left to play the scene, or press Home on the slider.</p>
+          <p><a href="https://commons.wikimedia.org/wiki/File:Spring-concept_art-Spring.png">Character views by Julien Kaspar</a> · <a href="https://studio.blender.org/projects/spring/pages/about/">Spring © Blender Foundation</a> · <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Cropped character views and film stills · Muted excerpt</p>
+        </figcaption>
+      </figure>
+    </section>`;
+  }
   function workTile(f,i){return `<article class="hm-work-tile">${action(`<img src="${f.cover}" alt="${f.title}" loading="lazy" style="object-position:${f.position}"><span class="hm-work-kind">${f.type}</span>`,'work-preview','hm-work-art',`data-work="${i}" aria-label="Preview ${f.title}"`)}<div><h3>${f.title}</h3><p>${f.tag}<span>Original demo</span></p></div></article>`;}
   function storyTile(){return `<article class="hm-work-tile">${action('<img src="assets/work-01.jpg" alt="The Last Train Recording: story sample"><span class="hm-work-kind">Story</span>','read-story','hm-work-art','aria-label="Read the full story: The Last Train Recording"')}<div><h3>The Last Train Recording</h3><p>Mystery · A Late Reconciliation<span>Original complete short story</span></p></div></article>`;}
   function collection(){const shown=films.map((f,i)=>({f,i})).filter(({i})=>H.collection==='all'||H.collection==='comic'&&i<2||H.collection==='motion'&&i>0);return (['all','story'].includes(H.collection)?storyTile():'')+shown.map(({f,i})=>workTile(f,i)).join('');}
@@ -135,9 +258,15 @@
     case'drafts':drafts();break;
     case'restore-draft':if(M.restoreHomeDraft(+el.dataset.index)){S.toast('Backup not found. Please reopen Drafts.');break;}S.close();S.route('/app/new');S.toast('Draft restored; the previous draft was backed up automatically.');break;
     case'replace-draft':M.startFromHome(H.pending,true);H.pending=null;S.close();S.route('/app/new');break;
-    case'process':{H.step=+el.dataset.index;S.$$('.hm-process-steps article').forEach((a,i)=>{a.classList.toggle('active',i===H.step);a.querySelector('button').setAttribute('aria-expanded',i===H.step);a.querySelector('.hm-process-copy').hidden=i!==H.step;});S.$('#hm-process-preview').innerHTML=processPreview();break;}
-    case'engineering':H.engineering=el.dataset.state;S.$('#hm-engine-preview').innerHTML=engineeringPreview();break;
-    case'recover':if(H.engineering!=='failed'){S.toast('Choose “Try Failure Recovery” first to see the standalone demo.');break;}H.engineering='recovered';S.$('#hm-engine-preview').innerHTML=engineeringPreview();break;
+    case'journey-format':{
+      const card=el.closest('.hm-journey-output');
+      const video=el.dataset.format==='video';
+      card.querySelectorAll('[data-home="journey-format"]').forEach(button=>button.setAttribute('aria-pressed',String(button===el)));
+      card.querySelector('#hm-journey-comic').hidden=video;
+      card.querySelector('#hm-journey-video').hidden=!video;
+      break;
+    }
+    case'workflow-replay':playWorkflowFilm(el.closest('.hm-workflow-compare'));break;
     case'collection':{
       const next=el.dataset.filter;
       if(H.collection===next)break;
@@ -152,8 +281,15 @@
     case'template':{const x=C.catalog().find(t=>t.id===el.dataset.id);S.modal('Recipes · '+x.title,`<div class="hm-template-modal">${art(x.art,x.title)}<p>${E(x.desc)}</p><ol>${x.steps.map(t=>`<li>${E(t)}</li>`).join('')}</ol><small>✦ ${x.price} credits · Simulated resource license; later model costs are billed separately.</small></div>`,link('View License & Usage →','/app/market/'+x.id,'hm-button primary'));break;}
     case'tasks':{const k=el.dataset.kind,title={running:'Queued tasks',failed:'Failed, Awaiting Recovery',stale:'Pending source items · shots/steps',candidate:'Candidates to Adopt'}[k],groups=taskGroups()[k];S.modal(title,groups.map(g=>`<div class="hm-task-detail"><div><strong>${E(g.p.name)} / ${E(g.c.title)}</strong><p>${g.nodes.filter(n=>!n.sourceDifference).map(n=>E(n.title)).join('、')}</p>${g.nodes.filter(n=>n.sourceDifference).map(n=>`<p>${link(E(n.title)+' · Compare →',path(g,'boards','flow')+'&shot='+n.shotId+'&compare=1','hm-button secondary')}</p>`).join('')}</div>${g.nodes.some(n=>!n.sourceDifference)?link(k==='candidate'?'Confirm Candidate →':'View Project →',k==='candidate'?path(g,'review','flow'):k==='stale'?path(g,g.e.stage,'canvas'):`/app/runs/${g.p.id}/${g.c.id}`,'hm-button secondary'):''}</div>`).join('')||'<div class="hm-home-empty"><span>✓</span><h3>Nothing pending here for now.</h3><p>Keep creating; project status will sync here.</p></div>');break;}
   }});
-  document.addEventListener('input',ev=>{const el=ev.target;if(el.dataset.homeInput==='idea'){inputState(el.closest('form').dataset.scope).text=el.value;M.save();}if(el.dataset.homeInput==='project-search')S.$('#hm-home-projects').innerHTML=projectList(el.value.trim());});
+  document.addEventListener('ended',ev=>{
+    if(!ev.target.matches('.hm-workflow-film'))return;
+    const compare=ev.target.closest('.hm-workflow-compare');
+    if(compare.dataset.film!=='true')return;
+    const button=compare.querySelector('[data-home="workflow-replay"]');
+    showWorkflowPlaybackButton(button,'replay');
+  },true);
+  document.addEventListener('input',ev=>{const el=ev.target;if(el.dataset.homeInput==='idea'){inputState(el.closest('form').dataset.scope).text=el.value;M.save();}if(el.dataset.homeInput==='workflow')updateWorkflowSlider(el);if(el.dataset.homeInput==='project-search')S.$('#hm-home-projects').innerHTML=projectList(el.value.trim());});
   document.addEventListener('submit',ev=>{const f=ev.target.closest('[data-home-form="start"]');if(!f)return;ev.preventDefault();const d=inputState(f.dataset.scope);launch({text:f.querySelector('textarea').value,output:d.mode==='motion'?'motion':'comic',view:d.mode==='canvas'?'canvas':'flow'});});
   document.addEventListener('keydown',ev=>{if(!ev.target.closest('.hm-gallery')||!['ArrowLeft','ArrowRight'].includes(ev.key))return;ev.preventDefault();goSlide(H.slide+(ev.key==='ArrowRight'?1:-1));});
-  C.pages.home=workspace;C.workspaceHome=workspace;C.publicHome=official;C.home={projectList,taskGroups};
+  C.pages.home=workspace;C.workspaceHome=workspace;C.publicHome=official;C.home={projectList,taskGroups,mountProcess};
 })();

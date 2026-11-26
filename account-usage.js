@@ -231,13 +231,12 @@
  });
  const original=S.workspace.onClick;S.workspace.onClick=(action,element,...args)=>{if(action==='confirm-plan'){try{savePlan(element.dataset.plan,element.dataset.cycle||S.ui.priceCycle||S.state.cycle);}catch(error){S.toast(error.message);}return true;}return original(action,element,...args);};
  const onPublic=S.public.onClick;S.public.onClick=(action,element,...args)=>{
-  if(action==='price-cycle'){S.ui.priceCycle=element.dataset.value;S.render();return true;}
   if(action==='choose-plan'){
    const name=element.dataset.plan,cycle=S.ui.priceCycle||S.state.cycle;
-   S.modal('体验 '+name+' 方案',`<p>将把本机演示账户切换为 ${E(name)}（${cycle==='yearly'?'按年':'按月'}）。这不是购买，不会扣款或创建真实订阅。</p>`,`<button class="button ghost" data-act="close">取消</button><button class="button primary" data-act="confirm-plan" data-plan="${E(name)}" data-cycle="${E(cycle)}">确认演示方案</button>`);return true;
+   S.modal('Try '+name+' plan',`<p>Switch this demo account to ${E(name)} with ${cycle==='yearly'?'yearly':'monthly'} billing. No payment is required.</p>`,`<button type="button" class="button ghost" data-act="close">Cancel</button><button type="button" class="button primary" data-act="confirm-plan" data-plan="${E(name)}" data-cycle="${E(cycle)}">Confirm demo plan</button>`);return true;
   }
   return onPublic(action,element,...args);
  };
- window.AccountUsage={subscription,usage,balanceCard,openPricingDialog,day,examples,summarize,dateRange,filterRecords,rangeError};
+ window.AccountUsage={plans,subscription,usage,balanceCard,openPricingDialog,day,examples,summarize,dateRange,filterRecords,rangeError};
  const start=S.start;S.start=()=>{start();const parameters=S.context.params,name=parameters.get('offer'),cycle=parameters.get('cycle');if(S.context.path!=='/app/settings'||!Object.hasOwn(plans,name)||!['monthly','yearly'].includes(cycle))return;choosePlan(name,cycle);parameters.delete('offer');parameters.delete('cycle');history.replaceState(null,'',location.pathname+location.search+'#'+S.context.path+(parameters.size?'?'+parameters:''));};
 })();
